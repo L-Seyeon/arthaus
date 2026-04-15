@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARTHAUS | Artist & Collector Connect</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Playfair Display for Serif, Noto Sans KR for Base -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --color-space-cadet: #1D2951;
+            --color-bg: #ffffff;
+            --color-text-primary: #111111;
+            --color-border: #eeeeee;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            color: var(--color-text-primary);
+            overflow-x: hidden;
+        }
+
+        h1, h2, .font-playfair {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Hero Section Spline Wrapper */
+        .hero-spline-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(29, 41, 81, 0.2) 0%, rgba(255, 255, 255, 0.7) 100%);
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .nav-blur {
+            backdrop-filter: blur(1px);
+            background-color: rgba(255, 255, 255, 0.345);
+        }
+
+        /* Gallery Card Interactions */
+        .gallery-card .card-overlay {
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+
+        .gallery-card:hover .card-overlay {
+            opacity: 1;
+        }
+
+        .gallery-card img {
+            transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .gallery-card:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Glassmorphism Card Style */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), background 0.4s ease;
+        }
+
+        .btn-primary {
+            background-color: var(--color-space-cadet);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            filter: brightness(1.2);
+            box-shadow: 0 10px 20px -5px rgba(29, 41, 81, 0.3);
+        }
+
+        /* Custom Dropdown Reset */
+        .select-minimal {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%231D2951'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right center;
+            background-size: 14px;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #ccc;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--color-space-cadet);
+        }
+    </style>
+</head>
+<body class="bg-white">
+
+    <!-- HEADER (NAV) -->
+    <header class="fixed top-0 w-full z-50 border-b border-gray-100 nav-blur">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center gap-2 cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+                    <div class="w-6 h-6 border-2 border-[#1D2951] rounded-sm flex items-center justify-center">
+                        <div class="w-2 h-2 bg-[#1D2951]"></div>
+                    </div>
+                    <span class="text-lg font-bold tracking-tighter text-[#1D2951]">ARTHAUS</span>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#gallery" class="text-sm font-medium text-gray-500 hover:text-space-cadet transition-colors">Gallery</a>
+                    <a href="#" class="text-sm font-medium text-gray-500 hover:text-space-cadet transition-colors">Artist</a>
+                    <a href="#" class="text-sm font-medium text-gray-500 hover:text-space-cadet transition-colors">Exhibition</a>
+                    <a href="#" class="text-sm font-medium text-gray-500 hover:text-space-cadet transition-colors">Story</a>
+                    <a href="#" class="text-sm font-medium text-gray-500 hover:text-space-cadet transition-colors">Magazine</a>
+                </nav>
+
+                <!-- Actions -->
+                <div class="flex items-center gap-4">
+                    <button class="text-gray-400 hover:text-space-cadet transition-colors" aria-label="Search">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                    <button class="text-gray-400 hover:text-space-cadet transition-colors relative" aria-label="Cart">
+                        <i class="fa-solid fa-bag-shopping"></i>
+                        <span class="absolute -top-1 -right-1 bg-[#1D2951] text-white text-[10px] w-4 h-4 flex items-center justify-center rounded-full">3</span>
+                    </button>
+                    <button class="hidden md:block border border-[#1D2951] text-[#1D2951] px-4 py-1.5 rounded-md text-xs font-medium hover:bg-[#1D2951] hover:text-white transition-all">
+                        로그인
+                    </button>
+                    <button class="md:hidden text-gray-600" id="mobile-menu-btn">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN HERO SECTION -->
+    <section class="relative h-screen w-full flex items-center overflow-hidden">
+        <!-- Spline 3D Background -->
+        <div class="hero-spline-container">
+            <script type="module" src="https://unpkg.com/@splinetool/viewer@1.12.81/build/spline-viewer.js"></script>
+            <spline-viewer url="https://prod.spline.design/Bt0lXK-dJQlHo-TF/scene.splinecode"></spline-viewer>
+            <div class="hero-overlay"></div>
+        </div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full h-full flex flex-col justify-end pb-20">
+            <div class="flex flex-col md:flex-row justify-between items-end gap-12">
+                <!-- Hero Content -->
+                <div class="max-w-2xl mb-8 md:mb-0">
+                    <p class="text-xs tracking-[0.3em] text-space-cadet font-bold mb-4 uppercase opacity-80">Arthaus Curated Selection</p>
+                    <h1 class="text-6xl md:text-8xl font-light leading-tight mb-8 text-white drop-shadow-lg">
+                        OUR<br><span class="italic font-normal">Own Space</span>
+                    </h1>
+                    <p class="text-lg text-gray-700 mb-10 leading-relaxed max-w-md font-light">
+                        작가의 이야기를 통해 특별한 컬렉션을 시작해보세요.<br>당신의 공간에 예술의 숨결을 더합니다.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#gallery" class="btn-primary text-white px-8 py-4 rounded-md text-sm font-medium flex items-center gap-2">
+                            Gallery 보기 <i class="fa-solid fa-arrow-right-long"></i>
+                        </a>
+                        <button class="bg-white/50 backdrop-blur-sm border border-white/80 px-8 py-4 rounded-md text-sm font-medium hover:bg-white transition-all text-space-cadet">
+                            기획전 보기
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Side Featured Card -->
+                <div class="glass-card w-72 p-5 rounded-2xl shadow-xl cursor-pointer">
+                    <div class="aspect-square bg-white/40 rounded-xl mb-5 overflow-hidden border border-white/20">
+                        <img src=" " alt="Bright Abstract Art" class="w-full h-full object-cover">
+                    </div>
+                    <div class="space-y-1.5 px-1">
+                        <p class="text-[10px] text-space-cadet font-bold tracking-widest uppercase opacity-60">Featured Artist</p>
+                        <p class="text-base font-bold text-space-cadet">Morning Light #04</p>
+                        <p class="text-xs text-gray-500 mb-4">Artist Julian Kang</p>
+                        <div class="flex justify-between items-center mt-4 pt-4 border-t border-white/30">
+                            <span class="text-sm font-bold text-space-cadet">₩ 1,250,000</span>
+                            <div class="w-7 h-7 bg-white/80 rounded-full flex items-center justify-center text-space-cadet shadow-sm">
+                                <i class="fa-solid fa-plus text-[10px]"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY SECTION -->
+    <section id="gallery" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Gallery Header & Filter Toggle -->
+            <div class="flex flex-col md:flex-row justify-between items-baseline mb-12 gap-6">
+                <div>
+                    <h2 class="text-4xl md:text-5xl font-light text-space-cadet mb-4">Gallery</h2>
+                    <p class="text-gray-500 text-sm">감성과 취향에 맞는 작품을 탐색해보세요.</p>
+                </div>
+                
+                <div class="flex items-center gap-4 w-full md:w-auto">
+                    <!-- Sort Dropdown: Minimal Design -->
+                    <div class="relative">
+                        <select class="select-minimal bg-transparent border-none py-2 pl-2 pr-6 text-sm font-medium focus:outline-none cursor-pointer text-space-cadet">
+                            <option>최신순</option>
+                            <option>인기순</option>
+                            <option>가격 낮은순</option>
+                            <option>가격 높은순</option>
+                        </select>
+                    </div>
+                    <!-- Filter Toggle Button -->
+                    <button class="flex items-center gap-2 px-5 py-2 border border-gray-100 rounded-full text-sm hover:bg-gray-50 transition-colors">
+                        <i class="fa-solid fa-sliders text-xs text-space-cadet"></i> 필터
+                    </button>
+                </div>
+            </div>
+
+            <!-- Emotional Filters (Pills) -->
+            <div class="flex flex-wrap gap-2 mb-16 pb-4 overflow-x-auto">
+                <button class="px-5 py-2 rounded-full border border-space-cadet bg-space-cadet text-white text-xs font-medium">전체</button>
+                <button class="px-5 py-2 rounded-full border border-gray-100 text-gray-500 text-xs font-medium hover:border-gray-300">#따뜻한</button>
+                <button class="px-5 py-2 rounded-full border border-gray-100 text-gray-500 text-xs font-medium hover:border-gray-300">#미니멀</button>
+                <button class="px-5 py-2 rounded-full border border-gray-100 text-gray-500 text-xs font-medium hover:border-gray-300">#컬러풀</button>
+                <button class="px-5 py-2 rounded-full border border-gray-100 text-gray-500 text-xs font-medium hover:border-gray-300">#추상화</button>
+                <button class="px-5 py-2 rounded-full border border-gray-100 text-gray-500 text-xs font-medium hover:border-gray-300">#풍경</button>
+                <button class="px-5 py-2 rounded-full border border-gray-100 text-gray-500 text-xs font-medium hover:border-gray-300">#소형(10호 미만)</button>
+                <button class="px-5 py-2 rounded-full border border-gray-100 text-gray-500 text-xs font-medium hover:border-gray-300">#대형(50호 이상)</button>
+            </div>
+
+            <!-- Artwork Grid: Adjusted Gap for better spacing -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-10 gap-y-14">
+                
+                <!-- Card 1 -->
+                <div class="gallery-card group px-1">
+                    <div class="relative aspect-[3/4] bg-gray-50 rounded-lg overflow-hidden mb-5">
+                        <img src="">
+                        <div class="card-overlay absolute inset-0 bg-space-cadet/20 backdrop-blur-[2px] flex flex-col justify-center items-center gap-3">
+                            <button class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-space-cadet shadow-lg hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-magnifying-glass-plus"></i>
+                            </button>
+                            <button class="px-6 py-2 bg-white rounded-md text-xs font-bold text-space-cadet shadow-lg hover:bg-space-cadet hover:text-white transition-all">
+                                장바구니 담기
+                            </button>
+                        </div>
+                    </div>
+                    <div class="space-y-1 px-1">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <p class="text-[10px] text-gray-400 mb-1 uppercase tracking-wider">Painting</p>
+                                <h3 class="text-sm font-bold text-space-cadet truncate">도시의 파편들 #01</h3>
+                                <p class="text-xs text-gray-500">Artist 김세진</p>
+                            </div>
+                            <button class="text-gray-300 hover:text-red-400 transition-colors pt-1"><i class="fa-regular fa-heart"></i></button>
+                        </div>
+                        <div class="flex justify-between items-center pt-3 mt-3 border-t border-gray-50">
+                            <p class="text-sm font-bold text-space-cadet italic tracking-tight">₩ 820,000</p>
+                            <span class="text-[10px] text-gray-400">30호 (90x72cm)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="gallery-card group px-1">
+                    <div class="relative aspect-[3/4] bg-gray-50 rounded-lg overflow-hidden mb-5">
+                        <img src="">
+                        <div class="card-overlay absolute inset-0 bg-space-cadet/20 backdrop-blur-[2px] flex flex-col justify-center items-center gap-3">
+                            <button class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-space-cadet shadow-lg hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-magnifying-glass-plus"></i>
+                            </button>
+                            <button class="px-6 py-2 bg-white rounded-md text-xs font-bold text-space-cadet shadow-lg hover:bg-space-cadet hover:text-white transition-all">
+                                장바구니 담기
+                            </button>
+                        </div>
+                    </div>
+                    <div class="space-y-1 px-1">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <p class="text-[10px] text-gray-400 mb-1 uppercase tracking-wider">Abstract</p>
+                                <h3 class="text-sm font-bold text-space-cadet truncate">정지된 시간 속의 흐름</h3>
+                                <p class="text-xs text-gray-500">Artist 이안</p>
+                            </div>
+                            <button class="text-red-400 transition-colors pt-1"><i class="fa-solid fa-heart"></i></button>
+                        </div>
+                        <div class="flex justify-between items-center pt-3 mt-3 border-t border-gray-50">
+                            <p class="text-sm font-bold text-space-cadet italic tracking-tight">₩ 1,500,000</p>
+                            <span class="text-[10px] text-gray-400">50호 (116x91cm)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="gallery-card group px-1">
+                    <div class="relative aspect-[3/4] bg-gray-50 rounded-lg overflow-hidden mb-5">
+                        <img src="">
+                        <div class="">
+                            <button class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-space-cadet shadow-lg hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-magnifying-glass-plus"></i>
+                            </button>
+                            <button class="px-6 py-2 bg-white rounded-md text-xs font-bold text-space-cadet shadow-lg hover:bg-space-cadet hover:text-white transition-all">
+                                장바구니 담기
+                            </button>
+                        </div>
+                    </div>
+                    <div class="space-y-1 px-1">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <p class="text-[10px] text-gray-400 mb-1 uppercase tracking-wider">Minimal</p>
+                                <h3 class="text-sm font-bold text-space-cadet truncate">여백의 미 #04</h3>
+                                <p class="text-xs text-gray-500">Artist 박준영</p>
+                            </div>
+                            <button class="text-gray-300 hover:text-red-400 transition-colors pt-1"><i class="fa-regular fa-heart"></i></button>
+                        </div>
+                        <div class="flex justify-between items-center pt-3 mt-3 border-t border-gray-50">
+                            <p class="text-sm font-bold text-space-cadet italic tracking-tight">₩ 450,000</p>
+                            <span class="text-[10px] text-gray-400">10호 (53x45cm)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="gallery-card group px-1">
+                    <div class="relative aspect-[3/4] bg-gray-50 rounded-lg overflow-hidden mb-5">
+                        <img src="">
+                        <div class="card-overlay absolute inset-0 bg-space-cadet/20 backdrop-blur-[2px] flex flex-col justify-center items-center gap-3">
+                            <button class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-space-cadet shadow-lg hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-magnifying-glass-plus"></i>
+                            </button>
+                            <button class="px-6 py-2 bg-white rounded-md text-xs font-bold text-space-cadet shadow-lg hover:bg-space-cadet hover:text-white transition-all">
+                                장바구니 담기
+                            </button>
+                        </div>
+                    </div>
+                    <div class="space-y-1 px-1">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <p class="text-[10px] text-gray-400 mb-1 uppercase tracking-wider">Contemporary</p>
+                                <h3 class="text-sm font-bold text-space-cadet truncate">Blue Emotion</h3>
+                                <p class="text-xs text-gray-500">Artist 한나래</p>
+                            </div>
+                            <button class="text-gray-300 hover:text-red-400 transition-colors pt-1"><i class="fa-regular fa-heart"></i></button>
+                        </div>
+                        <div class="flex justify-between items-center pt-3 mt-3 border-t border-gray-50">
+                            <p class="text-sm font-bold text-space-cadet italic tracking-tight">₩ 2,100,000</p>
+                            <span class="text-[10px] text-gray-400">60호 (130x97cm)</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- More Button -->
+            <div class="mt-20 text-center">
+                <button class="px-12 py-4 border border-gray-200 text-space-cadet text-sm font-bold hover:bg-gray-50 transition-all rounded-md">
+                    Load More Artworks
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-white pt-24 pb-12 border-t border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-16 mb-20">
+                <!-- Brand Col -->
+                <div class="lg:col-span-2">
+                    <div class="flex items-center gap-2 mb-8">
+                        <div class="w-5 h-5 border-2 border-[#1D2951] rounded-sm flex items-center justify-center">
+                            <div class="w-1.5 h-1.5 bg-[#1D2951]"></div>
+                        </div>
+                        <span class="text-base font-bold tracking-tighter text-[#1D2951]">ARTHAUS</span>
+                    </div>
+                    <p class="text-sm text-gray-500 leading-relaxed mb-8 max-w-xs font-light">
+                        작가와 수집가를 연결하는 프리미엄 아트 커머스.<br>
+                        엄선된 큐레이션을 통해 일상의 가치를 높입니다.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 border border-gray-100 rounded-full flex items-center justify-center text-gray-400 hover:border-space-cadet hover:text-space-cadet transition-all">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 border border-gray-100 rounded-full flex items-center justify-center text-gray-400 hover:border-space-cadet hover:text-space-cadet transition-all">
+                            <i class="fa-brands fa-youtube"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 border border-gray-100 rounded-full flex items-center justify-center text-gray-400 hover:border-space-cadet hover:text-space-cadet transition-all">
+                            <i class="fa-solid fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Footer Menu Grid -->
+                <div>
+                    <h4 class="text-xs font-bold mb-8 uppercase tracking-widest text-space-cadet">탐색</h4>
+                    <ul class="space-y-4">
+                        <li><a href="#" class="text-sm text-gray-400 hover:text-space-cadet transition-colors">Gallery</a></li>
+                        <li><a href="#" class="text-sm text-gray-400 hover:text-space-cadet transition-colors">Artist</a></li>
+                        <li><a href="#" class="text-sm text-gray-400 hover:text-space-cadet transition-colors">Exhibition</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-xs font-bold mb-8 uppercase tracking-widest text-space-cadet">정보</h4>
+                    <ul class="space-y-4">
+                        <li><a href="#" class="text-sm text-gray-400 hover:text-space-cadet transition-colors">Story</a></li>
+                        <li><a href="#" class="text-sm text-gray-400 hover:text-space-cadet transition-colors">Magazine</a></li>
+                        <li><a href="#" class="text-sm text-gray-400 hover:text-space-cadet transition-colors">Support</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-xs font-bold mb-8 uppercase tracking-widest text-space-cadet">구매</h4>
+                    <ul class="space-y-4">
+                        <li><a href="#" class="text-sm text-gray-400 hover:text-space-cadet transition-colors">배송 안내</a></li>
+                        <li><a href="#" class="text-sm text-gray-400 hover:text-space-cadet transition-colors">반품 정책</a></li>
+                        <li><a href="#" class="text-sm text-gray-400 hover:text-space-cadet transition-colors">구매 가이드</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="pt-10 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-6">
+                <p class="text-[11px] text-gray-400 font-light">© 2025 ARTHAUS. All rights reserved.</p>
+                <div class="flex gap-8">
+                    <a href="#" class="text-[11px] text-gray-400 hover:text-space-cadet">이용약관</a>
+                    <a href="#" class="text-[11px] text-gray-400 hover:text-space-cadet font-medium border-b border-gray-200">개인정보처리방침</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Header Scroll Effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('shadow-sm');
+                header.classList.remove('py-2');
+            } else {
+                header.classList.remove('shadow-sm');
+                header.classList.add('py-2');
+            }
+        });
+    </script>
+</body>
+</html>
