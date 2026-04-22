@@ -1,0 +1,102 @@
+[
+  {
+    "title": "빛의 화가, 클로드 모네",
+    "venue": "서울시립미술관 SeMA",
+    "desc": "인상주의 거장 모네의 수련 연작과 루앙 대성당 시리즈 등 유럽 8개 미술관 대여 원작 90여 점. 올해 상반기 최고 화제전, 연일 매진 행렬.",
+    "start": "2026-02-15",
+    "end": "2026-06-08",
+    "url": "https://sema.seoul.go.kr",
+    "img": "https://www.artic.edu/iiif/2/3c27b499-af56-f0d5-93b5-a7f2f1ad5813/full/843,/0/default.jpg",
+    "grad": "linear-gradient(135deg,#1a3050,#2a5070)"
+  },
+  {
+    "title": "반 고흐: 영혼의 편지",
+    "venue": "국립현대미술관 덕수궁관",
+    "desc": "테오에게 보낸 800통의 편지와 대표 회화를 연결하는 내러티브 전시. SNS #영혼의편지 해시태그 100만 건 돌파, 2026 최고 화제 전시.",
+    "start": "2026-04-05",
+    "end": "2026-08-31",
+    "url": "https://www.mmca.go.kr",
+    "img": "https://www.artic.edu/iiif/2/6644829f-f292-c5c4-a73c-0356a6fdbf0d/full/843,/0/default.jpg",
+    "grad": "linear-gradient(135deg,#0a1228,#1a2a50)"
+  },
+  {
+    "title": "프리다 칼로: 나는 나다",
+    "venue": "리움미술관",
+    "desc": "멕시코 국민 화가의 자화상·일기·유물 200여 점. 국내 최초 대규모 회고전. 예매 오픈 10분 만에 첫 달 전석 매진 기록.",
+    "start": "2026-03-01",
+    "end": "2026-07-13",
+    "url": "https://leeum.org",
+    "img": null,
+    "grad": "linear-gradient(135deg,#3a1020,#5a2030)"
+  },
+  {
+    "title": "클림트와 황금빛 빈 — 분리파의 혁명",
+    "venue": "예술의전당 한가람미술관",
+    "desc": "구스타프 클림트 황금기 대표작과 빈 분리파 130여 점. 누적 관람객 50만 돌파. 연장 운영 중.",
+    "start": "2025-12-20",
+    "end": "2026-04-27",
+    "url": "https://www.sac.or.kr",
+    "img": null,
+    "grad": "linear-gradient(135deg,#3a2800,#6a4a00)"
+  },
+  {
+    "title": "피카소와 입체주의의 혁명",
+    "venue": "대구미술관",
+    "desc": "입체주의 탄생 120주년 기념. 피카소·브라크·레제 원작 50점 한국 최초 공개. 개막 전 사전 예매 80% 완료된 올 하반기 최대 기대작.",
+    "start": "2026-05-01",
+    "end": "2026-09-14",
+    "url": "https://daeguartmuseum.or.kr",
+    "img": null,
+    "grad": "linear-gradient(135deg,#2a1a08,#3a2810)"
+  },
+  {
+    "title": "이우환: 마음의 여백",
+    "venue": "국립현대미술관 서울관",
+    "desc": "한국 현대미술의 세계적 거장 이우환. 모노하 시기부터 최근작까지 80여 점. 부산·파리·도쿄 동시 순회 중인 대형 회고전의 서울 정거장.",
+    "start": "2026-01-24",
+    "end": "2026-05-25",
+    "url": "https://www.mmca.go.kr",
+    "img": null,
+    "grad": "linear-gradient(135deg,#0d1a2e,#1a3055)"
+  },
+  {
+    "title": "단색화의 정신 — 박서보·정상화·하종현",
+    "venue": "갤러리현대",
+    "desc": "단색화 3대 거장 앙상블. 박서보의 묘법, 정상화의 격자 추상, 하종현의 접합 기법이 대화한다. 국제 컬렉터가 가장 주목하는 한국 전시.",
+    "start": "2026-02-08",
+    "end": "2026-05-30",
+    "url": "https://galleryhyundai.com",
+    "img": null,
+    "grad": "linear-gradient(135deg,#2a2620,#3a3228)"
+  },
+  {
+    "title": "바스키아: 거리에서 미술관으로",
+    "venue": "부산현대미술관 MoCA",
+    "desc": "장 미셸 바스키아 원작 60점 및 아카이브. 그래피티 시대부터 뉴욕 아트신 정점까지. 부산 MoCA 역대 최고 예매율 갱신.",
+    "start": "2026-03-20",
+    "end": "2026-08-02",
+    "url": "https://www.busan.go.kr/moca",
+    "img": null,
+    "grad": "linear-gradient(135deg,#180808,#2a1010)"
+  },
+  {
+    "title": "김환기: 우주, 그 푸른 울림",
+    "venue": "환기미술관",
+    "desc": "한국 추상미술의 선구자 김환기. 초기 서정 추상부터 뉴욕 전면 점화까지 60년 회화 세계를 집약. 미술관 개관 30주년 기념 특별전.",
+    "start": "2026-01-10",
+    "end": "2026-06-15",
+    "url": "http://whankimuseum.org",
+    "img": null,
+    "grad": "linear-gradient(135deg,#020810,#081838)"
+  },
+  {
+    "title": "미래 신호: 미디어아트 특별전",
+    "venue": "아트선재센터",
+    "desc": "국내외 미디어아트 작가 30팀의 몰입형 설치. AI·XR·사운드를 아우르는 2026년 SNS 미술 검색어 1위 전시.",
+    "start": "2026-02-20",
+    "end": "2026-06-22",
+    "url": "https://artsonje.org",
+    "img": null,
+    "grad": "linear-gradient(135deg,#080418,#180a30)"
+  }
+]

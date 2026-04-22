@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARTHAUS | Artist & Collector Connect</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Playfair Display for Serif, Noto Sans KR for Base -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --color-space-cadet: #1D2951;
+            --color-bg: #ffffff;
+            --color-text-primary: #111111;
+            --color-border: #eeeeee;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            color: var(--color-text-primary);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3, .font-playfair {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Hero Section Split Layout Styling */
+        .hero-title {
+            font-size: clamp(3rem, 8vw, 6.5rem);
+            line-height: 0.9;
+            letter-spacing: -0.03em;
+        }
+
+        .btn-primary {
+            background-color: var(--color-space-cadet);
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        /* Exhibition Custom Styles */
+        .exh-card-hover {
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .exh-card-hover:hover img {
+            transform: scale(1.05);
+        }
+        .curator-badge {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+        .note-line {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .note-line::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: var(--color-space-cadet);
+            opacity: 0.3;
+        }
+
+        /* NEW: Sub Block Motion & Transparency */
+        .sub-exh-block {
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            background-color: rgba(255, 255, 255, 0.4); /* 투명도 높임 */
+            backdrop-filter: blur(8px);
+        }
+        .sub-exh-block:hover {
+            transform: translateY(-8px); /* 블록 자체 모션 추가 */
+            background-color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+        }
+
+        /* Hero Fullscreen Spline BG */
+        .spline-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+    </style>
+</head>
+<body class="bg-white">
+
+    <!-- NAV (기존 유지) -->
+    <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center gap-2">
+                    <div class="w-6 h-6 border-2 border-space-cadet rounded-sm"></div>
+                    <span class="font-playfair font-bold text-xl tracking-tighter text-space-cadet">ARTHAUS</span>
+                </div>
+                <div class="hidden md:flex space-x-10 text-[11px] font-bold tracking-widest uppercase text-gray-400">
+                    <a href="#gallery" class="hover:text-space-cadet transition-colors">Gallery</a>
+                    <a href="#artist" class="hover:text-space-cadet transition-colors">Artist</a>
+                    <a href="#exhibition" class="text-space-cadet transition-colors">Exhibition</a>
+                    <a href="#" class="hover:text-space-cadet transition-colors">Story</a>
+                    <a href="#" class="hover:text-space-cadet transition-colors">Magazine</a>
+                </div>
+                <div class="flex items-center space-x-5 text-gray-500">
+                    <button><i class="fa-solid fa-magnifying-glass text-sm"></i></button>
+                    <button class="relative">
+                        <i class="fa-solid fa-bag-shopping text-sm"></i>
+                        <span class="absolute -top-2 -right-2 bg-space-cadet text-white text-[8px] w-4 h-4 flex items-center justify-center rounded-full">0</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION (기존 유지) -->
+   <section class="relative min-h-screen flex items-center overflow-hidden pt-16">
+        <!-- Spline Fullscreen Background -->
+        <div class="spline-bg">
+            <spline-viewer url="https://prod.spline.design/Bt0lXK-dJQlHo-TF/scene.splinecode"></spline-viewer>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Hero Text Contents -->
+                <div class="lg:col-span-7">
+                    <p class="text-[10px] font-bold tracking-[0.3em] uppercase text-gray-400 mb-6">Curated Art Commerce</p>
+                    <h1 class="hero-title text-space-cadet mb-8">
+                        The Art of <br>
+                        <span class="italic font-light">Connection.</span>
+                    </h1>
+                    <p class="max-w-md text-gray-500 leading-relaxed mb-10 text-sm">
+                        단순한 구매를 넘어 작가의 세계관과 수집가의 안목이 만나는 곳. 
+                        당신의 공간을 완성할 단 하나의 오리지널 피스를 발견하세요.
+                    </p>
+                    <div class="flex items-center gap-8">
+                        <a href="#gallery" class="btn-primary text-white px-10 py-4 rounded-full text-xs font-bold tracking-widest uppercase shadow-xl shadow-blue-900/10">Explore Gallery</a>
+                        <div class="flex -space-x-3">
+                            <div class="w-10 h-10 rounded-full border-2 border-white bg-gray-200"></div>
+                            <div class="w-10 h-10 rounded-full border-2 border-white bg-gray-300"></div>
+                            <div class="w-10 h-10 rounded-full border-2 border-white bg-gray-400"></div>
+                        </div>
+                        <p class="text-[10px] text-gray-400 font-medium">Join 2.4k+ <br>Collectors</p>
+                    </div>
+                </div>
+                <div class="lg:col-span-3 relative">
+                    <div class="aspect-[4/5] bg-gray-100 rounded-2xl overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1549490349-8643362247b5?auto=format&fit=crop&q=80" alt="Featured Art" class="w-full h-full object-cover">
+                        <div class="absolute bottom-4 left-6 right-6 bg-white/10 backdrop-blur-xl p-6 rounded-xl border border-white/20 text-white">
+                            <p class="text-[10px] uppercase tracking-widest opacity-70 mb-1">Artist of the month</p>
+                            <p class="text-xl font-playfair">Elena Ricci</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY SECTION (기존 유지) -->
+    <section id="gallery" class="py-24 bg-white border-t border-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+                <div>
+                    <h2 class="text-4xl font-light text-space-cadet mb-4">Original Works</h2>
+                    <div class="flex gap-4 text-[11px] font-bold uppercase tracking-widest">
+                        <button class="text-space-cadet border-b border-space-cadet pb-1">All Pieces</button>
+                        <button class="text-gray-300 hover:text-gray-500 transition-colors">Painting</button>
+                        <button class="text-gray-300 hover:text-gray-500 transition-colors">Photography</button>
+                        <button class="text-gray-300 hover:text-gray-500 transition-colors">Sculpture</button>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3 text-[10px] font-bold text-gray-400 uppercase tracking-widest">
+                    <span>Filter by style</span>
+                    <i class="fa-solid fa-sliders text-xs"></i>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
+                <!-- Item 1 -->
+                <div class="group cursor-pointer">
+                    <div class="aspect-[3/4] overflow-hidden bg-gray-100 rounded-lg mb-6 relative">
+                        <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&q=80" alt="Artwork" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                        <div class="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                            <button class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-space-cadet hover:bg-space-cadet hover:text-white transition-colors shadow-lg">
+                                <i class="fa-solid fa-plus text-xs"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <p class="text-[10px] text-gray-400 font-bold uppercase tracking-widest mb-1">Modern Abstract</p>
+                            <h3 class="text-lg text-space-cadet font-medium">Silent Resonance 01</h3>
+                            <p class="text-xs text-gray-500 mt-1 italic">Elena Ricci, 2024</p>
+                        </div>
+                        <p class="text-sm font-bold text-space-cadet">$4,200</p>
+                    </div>
+                </div>
+                <!-- Item 2 -->
+                <div class="group cursor-pointer">
+                    <div class="aspect-[3/4] overflow-hidden bg-gray-100 rounded-lg mb-6 relative">
+                        <img src="https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?auto=format&fit=crop&q=80" alt="Artwork" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                        <div class="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                            <button class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-space-cadet hover:bg-space-cadet hover:text-white transition-colors shadow-lg">
+                                <i class="fa-solid fa-plus text-xs"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <p class="text-[10px] text-gray-400 font-bold uppercase tracking-widest mb-1">Minimalist</p>
+                            <h3 class="text-lg text-space-cadet font-medium">Oceanic Void</h3>
+                            <p class="text-xs text-gray-500 mt-1 italic">Marcus Thorne, 2023</p>
+                        </div>
+                        <p class="text-sm font-bold text-space-cadet">$2,850</p>
+                    </div>
+                </div>
+                <!-- Item 3 -->
+                <div class="group cursor-pointer">
+                    <div class="aspect-[3/4] overflow-hidden bg-gray-100 rounded-lg mb-6 relative">
+                        <img src="https://images.unsplash.com/photo-1576133030430-2c2125b7afc8?auto=format&fit=crop&q=80" alt="Artwork" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                        <div class="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                            <button class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-space-cadet hover:bg-space-cadet hover:text-white transition-colors shadow-lg">
+                                <i class="fa-solid fa-plus text-xs"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <p class="text-[10px] text-gray-400 font-bold uppercase tracking-widest mb-1">Expressionism</p>
+                            <h3 class="text-lg text-space-cadet font-medium">Urban Rhythm</h3>
+                            <p class="text-xs text-gray-500 mt-1 italic">Sora Kim, 2024</p>
+                        </div>
+                        <p class="text-sm font-bold text-space-cadet">$3,100</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW: EXHIBITION SECTION (기획서 및 와이어프레임 반영) -->
+    <section id="exhibition" class="py-24 bg-[#F8F9FA] relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            
+            <!-- Section Header (기획서: 큐레이션 역할 강조) -->
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-4">
+                <div class="max-w-xl">
+                    <h2 class="text-4xl md:text-5xl font-light text-space-cadet mb-6 leading-tight">Curated <br><span class="italic">Exhibitions</span></h2>
+                    <p class="text-gray-500 text-sm leading-relaxed">
+                        선택이 어려운 당신을 위해 전문 큐레이터가 엄선한 테마별 기획전. <br>
+                        단순한 나열이 아닌, 작품 사이의 대화와 서사를 느껴보세요.
+                    </p>
+                </div>
+                <a href="#" class="text-[11px] font-bold text-space-cadet tracking-[0.2em] uppercase border-b border-space-cadet pb-1 hover:opacity-60 transition-opacity">
+                    Archive View All
+                </a>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                
+                <!-- Main Current Exhibition (와이어프레임: 좌측 메인 블록) -->
+                <div class="lg:col-span-8">
+                    <div class="group relative bg-white rounded-2xl overflow-hidden shadow-2xl shadow-gray-200/50 flex flex-col exh-card-hover">
+                        <!-- Image Container -->
+                        <div class="aspect-[16/9] overflow-hidden relative">
+                            <div class="absolute inset-0 bg-black/5 z-10"></div>
+                            <span class="absolute top-8 left-8 z-20 bg-white px-4 py-1.5 rounded-full text-[10px] font-bold text-space-cadet tracking-widest shadow-sm uppercase">현재 전시 중</span>
+                            <img src="https://images.unsplash.com/photo-1554188248-986adbb73be4?auto=format&fit=crop&w=1200&q=80" alt="Main Exhibition" class="w-full h-full object-cover transition-transform duration-1000">
+                        </div>
+
+                        <!-- Content Container (기획서 상세 UX 반영) -->
+                        <div class="p-10 md:p-14">
+                            <div class="flex items-start gap-8 mb-10">
+                                <div class="hidden md:block">
+                                    <span class="curator-badge text-[10px] font-bold tracking-[0.5em] text-gray-300 uppercase">ArtHaus Selection</span>
+                                </div>
+                                <div class="flex-grow">
+                                    <h3 class="text-3xl md:text-4xl font-light text-space-cadet mb-6 leading-tight">
+                                        고요의 본질 : <br>
+                                        <span class="italic">여백이 주는 위로와 사유</span>
+                                    </h3>
+                                    
+                                    <!-- Curator's Note (기획서: 핵심 UX) -->
+                                    <div class="note-line">
+                                        <p class="text-[10px] font-bold text-space-cadet uppercase tracking-widest mb-3 italic">Curator's Note</p>
+                                        <p class="text-gray-500 text-sm leading-loose max-w-2xl italic">
+                                            "우리는 너무 많은 소음에 둘러싸여 있습니다. 이번 전시는 복잡한 구성을 배제하고 선과 면, 그리고 여백만으로 공간을 채우는 작품들을 모았습니다. 당신의 시선이 머무는 그 비어있는 곳에서 비로소 진정한 자신과 마주하게 될 것입니다."
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="flex flex-wrap items-center gap-6 pt-4 border-t border-gray-50">
+                                <button class="btn-primary text-white px-10 py-4 rounded-full text-[11px] font-bold tracking-[0.2em] uppercase shadow-lg shadow-blue-900/20">
+                                    View Collection
+                                </button>
+                                <span class="text-[11px] font-medium text-gray-400 italic">2026. 04. 01 - 04. 30</span>
+                                <div class="ml-auto hidden sm:flex gap-4">
+                                    <button class="w-10 h-10 border border-gray-200 rounded-full flex items-center justify-center text-gray-400 hover:text-space-cadet transition-colors"><i class="fa-solid fa-share-nodes text-xs"></i></button>
+                                    <button class="w-10 h-10 border border-gray-200 rounded-full flex items-center justify-center text-gray-400 hover:text-red-400 transition-colors"><i class="fa-regular fa-heart text-xs"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Side Curation & Upcoming (와이어프레임: 우측 서브 블록) -->
+                <div class="lg:col-span-4 flex flex-col gap-8">
+                    
+                    <!-- Upcoming Exhibition 1 -->
+                    <div class="sub-exh-block p-6 rounded-2xl border border-gray-100 cursor-pointer">
+                        <div class="flex gap-6 items-center">
+                            <div class="w-20 h-20 rounded-xl overflow-hidden flex-shrink-0 bg-gray-50">
+                                <img src="https://images.unsplash.com/photo-1547826039-bfc35e0f1ea8?auto=format&fit=crop&w=300&q=80" alt="Upcoming" class="w-full h-full object-cover">
+                            </div>
+                            <div>
+                                <span class="text-[9px] font-bold text-blue-600 tracking-widest uppercase mb-1 block">Coming Soon</span>
+                                <h4 class="text-sm font-bold text-space-cadet mb-1">도시의 빛 : 야경의 서사</h4>
+                                <p class="text-[10px] text-gray-400">05. 05 - 06. 02</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Upcoming Exhibition 2 -->
+                    <div class="sub-exh-block p-6 rounded-2xl border border-gray-100 cursor-pointer">
+                        <div class="flex gap-6 items-center">
+                            <div class="w-20 h-20 rounded-xl overflow-hidden flex-shrink-0 bg-gray-50">
+                                <img src="https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=300&q=80" alt="Upcoming" class="w-full h-full object-cover">
+                            </div>
+                            <div>
+                                <span class="text-[9px] font-bold text-gray-400 tracking-widest uppercase mb-1 block">Curation</span>
+                                <h4 class="text-sm font-bold text-space-cadet mb-1">봄의 숨결 : 추상으로 피어나다</h4>
+                                <p class="text-[10px] text-gray-400">06. 10 - 07. 15</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Category Curation CTA (기획서: 카테고리 큐레이션 반영) -->
+                    <div class="flex-grow mt-2 bg-space-cadet rounded-2xl p-10 text-white relative overflow-hidden group shadow-2xl shadow-blue-900/40">
+                        <!-- Abstract BG Decor -->
+                        <div class="absolute -right-10 -top-10 w-40 h-40 bg-white/5 rounded-full blur-3xl transition-transform duration-1000 group-hover:scale-150"></div>
+                        <div class="absolute -left-10 -bottom-10 w-40 h-40 bg-blue-400/10 rounded-full blur-3xl transition-transform duration-1000 group-hover:scale-150"></div>
+                        
+                        <div class="relative z-10">
+                            <i class="fa-solid fa-wand-magic-sparkles text-2xl mb-6 opacity-60"></i>
+                            <h4 class="text-2xl font-light mb-4 leading-tight">당신만을 위한 <br><span class="italic font-normal">맞춤형 아트 큐레이션</span></h4>
+                            <p class="text-xs text-white/50 leading-relaxed mb-8">
+                                취향과 공간의 크기, 예산을 입력하시면 <br>아트하우스의 AI와 전문 큐레이터가 <br>최적의 작품을 제안해 드립니다.
+                            </p>
+                            <button class="text-[10px] font-bold tracking-[0.3em] uppercase border-b border-white pb-2 hover:text-blue-200 hover:border-blue-200 transition-colors">
+                                Get Started
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Section Decoration -->
+        <div class="absolute top-0 right-0 w-1/3 h-full bg-white/30 skew-x-[-12deg] translate-x-1/2 pointer-events-none"></div>
+    </section>
+
+    <!-- FOOTER (기존 유지) -->
+    <footer class="bg-white pt-24 pb-12 border-t border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                <div>
+                    <div class="flex items-center gap-2 mb-6">
+                        <div class="w-6 h-6 border-2 border-space-cadet rounded-sm"></div>
+                        <span class="font-playfair font-bold text-xl tracking-tighter text-space-cadet">ARTHAUS</span>
+                    </div>
+                    <p class="text-xs text-gray-400 leading-loose mb-8">
+                        ARTHAUS is a premium art commerce platform connecting independent artists with discerning collectors worldwide.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-8 h-8 rounded-full border border-gray-100 flex items-center justify-center text-gray-400 hover:text-space-cadet transition-colors"><i class="fa-brands fa-instagram text-xs"></i></a>
+                        <a href="#" class="w-8 h-8 rounded-full border border-gray-100 flex items-center justify-center text-gray-400 hover:text-space-cadet transition-colors"><i class="fa-brands fa-pinterest-p text-xs"></i></a>
+                        <a href="#" class="w-8 h-8 rounded-full border border-gray-100 flex items-center justify-center text-gray-400 hover:text-space-cadet transition-colors"><i class="fa-brands fa-facebook-f text-xs"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-[11px] font-bold uppercase tracking-widest text-space-cadet mb-8">Navigation</h4>
+                    <ul class="space-y-4 text-xs text-gray-500">
+                        <li><a href="#" class="hover:text-space-cadet transition-colors">Browse Gallery</a></li>
+                        <li><a href="#" class="hover:text-space-cadet transition-colors">Featured Artists</a></li>
+                        <li><a href="#" class="hover:text-space-cadet transition-colors">Curated Exhibitions</a></li>
+                        <li><a href="#" class="hover:text-space-cadet transition-colors">Art Magazine</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-[11px] font-bold uppercase tracking-widest text-space-cadet mb-8">Collector Services</h4>
+                    <ul class="space-y-4 text-xs text-gray-500">
+                        <li><a href="#" class="hover:text-space-cadet transition-colors">Private Advisory</a></li>
+                        <li><a href="#" class="hover:text-space-cadet transition-colors">White-Glove Delivery</a></li>
+                        <li><a href="#" class="hover:text-space-cadet transition-colors">Authentication Registry</a></li>
+                        <li><a href="#" class="hover:text-space-cadet transition-colors">Return Policy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-[11px] font-bold uppercase tracking-widest text-space-cadet mb-8">Newsletter</h4>
+                    <p class="text-xs text-gray-400 mb-6 leading-relaxed">Subscribe to receive first access to new arrivals and exclusive exhibition previews.</p>
+                    <div class="flex">
+                        <input type="email" placeholder="Email Address" class="bg-gray-50 border-none rounded-l-full px-5 py-3 text-xs flex-grow focus:ring-1 focus:ring-space-cadet outline-none">
+                        <button class="bg-space-cadet text-white px-6 py-3 rounded-r-full text-[10px] font-bold uppercase tracking-widest">Join</button>
+                    </div>
+                </div>
+            </div>
+            <div class="pt-12 border-t border-gray-50 flex flex-col md:flex-row justify-between items-center gap-6">
+                <p class="text-[10px] text-gray-300 font-medium">© 2024 ARTHAUS COLLECTIVE. ALL RIGHTS RESERVED.</p>
+                <div class="flex space-x-8 text-[10px] text-gray-300 font-bold uppercase tracking-widest">
+                    <a href="#" class="hover:text-space-cadet transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-space-cadet transition-colors">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

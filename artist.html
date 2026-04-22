@@ -1,11 +1,367 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta name="referrer" content="no-referrer">
+    <title>Artists — ARTHAUS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --color-space-cadet: #1D2951; }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background: #F8F9FA;
+            color: var(--color-space-cadet);
+        }
+
+        h1, h2, h3, h4, .font-playfair {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* ── Nav ── */
+        nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            background: rgba(248,249,250,0.92); backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(29,41,81,0.08);
+        }
+
+        /* ── Hero ── */
+        .hero {
+            background: var(--color-space-cadet);
+            padding: 160px 0 100px;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute; inset: 0;
+            background: radial-gradient(ellipse 80% 60% at 70% 50%, rgba(99,130,220,0.12) 0%, transparent 70%);
+        }
+
+        /* ── Artist Card ── */
+        .artist-card {
+            background: #fff;
+            border-radius: 20px;
+            overflow: hidden;
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+            cursor: pointer;
+        }
+        .artist-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 24px 64px rgba(29,41,81,0.13);
+        }
+
+        .artist-portrait {
+            width: 100%;
+            aspect-ratio: 3/4;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        .artist-card:hover .artist-portrait {
+            transform: scale(1.04);
+        }
+        .portrait-wrap { overflow: hidden; }
+
+        /* ── Works grid ── */
+        .work-thumb {
+            aspect-ratio: 1;
+            object-fit: cover;
+            width: 100%;
+            display: block;
+        }
+        .work-item { overflow: hidden; border-radius: 10px; }
+
+        /* ── Detail Modal ── */
+        #artist-modal {
+            display: none;
+            position: fixed; inset: 0; z-index: 200;
+            background: rgba(10,12,30,0.78); backdrop-filter: blur(8px);
+            align-items: center; justify-content: center; padding: 20px;
+        }
+        #artist-modal.open { display: flex; animation: fadeIn 0.3s ease; }
+        @keyframes fadeIn { from { opacity:0 } to { opacity:1 } }
+
+        .modal-inner {
+            background: #fff;
+            border-radius: 24px;
+            max-width: 860px; width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+        }
+        .modal-close {
+            position: absolute; top: 20px; right: 20px;
+            width: 36px; height: 36px;
+            background: rgba(29,41,81,0.08); border: none; border-radius: 50%;
+            cursor: pointer; font-size: 16px; color: var(--color-space-cadet);
+            display: flex; align-items: center; justify-content: center;
+            transition: background 0.2s;
+        }
+        .modal-close:hover { background: rgba(29,41,81,0.16); }
+
+        /* ── Tag pill ── */
+        .style-tag {
+            display: inline-block;
+            padding: 4px 14px;
+            border: 1px solid rgba(29,41,81,0.18);
+            border-radius: 100px;
+            font-size: 9px; font-weight: 700;
+            letter-spacing: 0.15em; text-transform: uppercase;
+            color: var(--color-space-cadet);
+        }
+
+        /* ── Back link ── */
+        .back-link {
+            display: inline-flex; align-items: center; gap: 8px;
+            font-size: 10px; font-weight: 700; letter-spacing: 0.15em;
+            text-transform: uppercase; text-decoration: none;
+            color: rgba(255,255,255,0.65);
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.15);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-radius: 100px;
+            padding: 10px 20px;
+            transition: background 0.25s, border-color 0.25s, color 0.25s;
+        }
+        .back-link:hover {
+            background: rgba(255,255,255,0.15);
+            border-color: rgba(255,255,255,0.3);
+            color: #fff;
+        }
+    </style>
 </head>
 <body>
-    
+
+    <!-- ── Navigation ── -->
+    <nav>
+        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <a href="story.html" class="font-playfair text-xl font-bold tracking-wider" style="color:var(--color-space-cadet); text-decoration:none;">
+                ARTHAUS
+            </a>
+            <div class="flex items-center gap-8">
+                <a href="story.html" style="font-size:11px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:rgba(29,41,81,0.5); text-decoration:none; transition:color 0.2s;"
+                   onmouseover="this.style.color='#1D2951'" onmouseout="this.style.color='rgba(29,41,81,0.5)'">Home</a>
+                <a href="artist.html" style="font-size:11px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:#1D2951; text-decoration:none;">Artists</a>
+                <a href="exhibition.html" style="font-size:11px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:rgba(29,41,81,0.5); text-decoration:none; transition:color 0.2s;"
+                   onmouseover="this.style.color='#1D2951'" onmouseout="this.style.color='rgba(29,41,81,0.5)'">Exhibition</a>
+                <a href="magazine.html" style="font-size:11px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:rgba(29,41,81,0.5); text-decoration:none; transition:color 0.2s;"
+                   onmouseover="this.style.color='#1D2951'" onmouseout="this.style.color='rgba(29,41,81,0.5)'">Magazine</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ── Hero ── -->
+    <section class="hero">
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <a href="story.html#artist-horizontal" class="back-link" style="margin-bottom:48px; display:inline-flex;">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                    <path d="M10 7H4M7 10L4 7l3-3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                돌아가기
+            </a>
+            <p class="text-[10px] font-bold uppercase tracking-[0.4em] mb-5" style="color:rgba(255,255,255,0.35); font-family:'Noto Sans KR',sans-serif; margin-top:40px;">
+                <i class="fa-solid fa-palette mr-2"></i>Meet Our Creators
+            </p>
+            <h1 class="font-playfair text-5xl md:text-7xl font-light text-white leading-tight mb-6">
+                Our <span class="italic">Artists</span>
+            </h1>
+            <p style="font-size:13px; color:rgba(255,255,255,0.45); max-width:440px; line-height:1.8; font-family:'Noto Sans KR',sans-serif;">
+                ARTHAUS와 함께하는 작가들의 이야기입니다. 각 작가의 카드를 클릭하면 작품 세계와 대표작을 만나볼 수 있습니다.
+            </p>
+        </div>
+    </section>
+
+    <!-- ── Artists Grid ── -->
+    <section class="py-24">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8" id="artists-grid">
+
+                <!-- Van Gogh -->
+                <div class="artist-card" onclick="openModal('vangogh')">
+                    <div class="portrait-wrap">
+                        <img src="images/vangogh_self.jpg" alt="Vincent van Gogh" class="artist-portrait">
+                    </div>
+                    <div class="p-6">
+                        <p style="font-size:9px; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:rgba(29,41,81,0.4); margin-bottom:8px;">Post-Impressionism · 1853–1890</p>
+                        <h3 class="font-playfair text-xl font-medium mb-3" style="color:var(--color-space-cadet);">Vincent van Gogh</h3>
+                        <p style="font-size:11px; color:rgba(29,41,81,0.55); line-height:1.7; margin-bottom:16px;">"나는 별이 빛나는 밤에 꿈을 꾼다. 내 영혼의 소용돌이를 색채와 붓질로 토해낸다."</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="style-tag">후기인상주의</span>
+                            <span class="style-tag">표현주의</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Monet -->
+                <div class="artist-card" onclick="openModal('monet')">
+                    <div class="portrait-wrap">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Claude_Monet_1899_Nadar_crop.jpg/960px-Claude_Monet_1899_Nadar_crop.jpg" alt="Claude Monet" class="artist-portrait">
+                    </div>
+                    <div class="p-6">
+                        <p style="font-size:9px; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:rgba(29,41,81,0.4); margin-bottom:8px;">Impressionism · 1840–1926</p>
+                        <h3 class="font-playfair text-xl font-medium mb-3" style="color:var(--color-space-cadet);">Claude Monet</h3>
+                        <p style="font-size:11px; color:rgba(29,41,81,0.55); line-height:1.7; margin-bottom:16px;">"빛은 매 순간 변한다. 나는 그 찰나를 포착하기 위해 같은 장면을 수십 번 다시 그렸다."</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="style-tag">인상주의</span>
+                            <span class="style-tag">빛과 색채</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Renoir -->
+                <div class="artist-card" onclick="openModal('renoir')">
+                    <div class="portrait-wrap">
+                        <img src="images/renoir_sisters.jpg" alt="Pierre-Auguste Renoir" class="artist-portrait">
+                    </div>
+                    <div class="p-6">
+                        <p style="font-size:9px; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:rgba(29,41,81,0.4); margin-bottom:8px;">Impressionism · 1841–1919</p>
+                        <h3 class="font-playfair text-xl font-medium mb-3" style="color:var(--color-space-cadet);">Pierre-Auguste Renoir</h3>
+                        <p style="font-size:11px; color:rgba(29,41,81,0.55); line-height:1.7; margin-bottom:16px;">"나에게 그림은 유쾌하고 아름다운 것이어야 한다. 삶에는 이미 충분히 불쾌한 것들이 있다."</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="style-tag">인상주의</span>
+                            <span class="style-tag">인물화</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sorolla -->
+                <div class="artist-card" onclick="openModal('sorolla')">
+                    <div class="portrait-wrap">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/1/16/Joaquin_Sorolla_Walk_on_the_Beach.jpg" alt="Joaquín Sorolla" class="artist-portrait">
+                    </div>
+                    <div class="p-6">
+                        <p style="font-size:9px; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:rgba(29,41,81,0.4); margin-bottom:8px;">Luminism · 1863–1923</p>
+                        <h3 class="font-playfair text-xl font-medium mb-3" style="color:var(--color-space-cadet);">Joaquín Sorolla</h3>
+                        <p style="font-size:11px; color:rgba(29,41,81,0.55); line-height:1.7; margin-bottom:16px;">"나는 지중해의 빛을 사랑한다. 그 빛이 물과 피부 위에서 춤추는 순간을 담는다."</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="style-tag">루미니즘</span>
+                            <span class="style-tag">스페인인상주의</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ── Artist Detail Modal ── -->
+    <div id="artist-modal" role="dialog" aria-modal="true">
+        <div class="modal-inner">
+            <button class="modal-close" onclick="closeModal()" aria-label="닫기">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div id="modal-content"></div>
+        </div>
+    </div>
+
+    <script>
+        const ARTISTS = {
+            vangogh: {
+                name: 'Vincent van Gogh',
+                period: 'Post-Impressionism · 1853–1890',
+                portrait: 'images/vangogh_self.jpg',
+                bio: '빈센트 반 고흐는 네덜란드 출신의 후기 인상주의 화가입니다. 짧은 생애 동안 2,100여 점의 작품을 남겼으며, 강렬한 색채와 소용돌이치는 붓터치로 내면의 감정을 표현했습니다. 생전에는 단 한 점의 그림만 팔았지만, 사후 미술사에서 가장 영향력 있는 화가 중 한 명으로 평가받습니다.',
+                tags: ['후기인상주의', '표현주의', '색채의 혁명'],
+                works: [
+                    { title: 'The Starry Night', year: 1889, img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg/960px-Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg' },
+                    { title: 'Irises', year: 1889, img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Irises-Vincent_van_Gogh.jpg/960px-Irises-Vincent_van_Gogh.jpg' },
+                    { title: 'Bedroom in Arles', year: 1888, img: 'images/vangogh_bedroom.jpg' },
+                ]
+            },
+            monet: {
+                name: 'Claude Monet',
+                period: 'Impressionism · 1840–1926',
+                portrait: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Claude_Monet_1899_Nadar_crop.jpg/960px-Claude_Monet_1899_Nadar_crop.jpg',
+                bio: '클로드 모네는 프랑스 인상주의의 창시자이자 대표적인 화가입니다. 빛의 변화에 따른 순간적인 인상을 포착하는 것을 목표로, 같은 장소를 시간대별로 반복해 그리는 연작 기법을 발전시켰습니다. 지베르니 정원에 연못을 만들고 수련 연작을 그리며 말년을 보냈습니다.',
+                tags: ['인상주의', '빛과 색채', '연작회화'],
+                works: [
+                    { title: 'Water Lilies', year: 1906, img: 'images/water_lilies.jpg' },
+                    { title: 'Impression, Sunrise', year: 1872, img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Monet_-_Impression%2C_Sunrise.jpg/960px-Monet_-_Impression%2C_Sunrise.jpg' },
+                    { title: 'Haystacks (End of Summer)', year: 1891, img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Claude_Monet_-_Stacks_of_Wheat_%28End_of_Summer%29_-_1985.1103_-_Art_Institute_of_Chicago.jpg/960px-Claude_Monet_-_Stacks_of_Wheat_%28End_of_Summer%29_-_1985.1103_-_Art_Institute_of_Chicago.jpg' },
+                ]
+            },
+            renoir: {
+                name: 'Pierre-Auguste Renoir',
+                period: 'Impressionism · 1841–1919',
+                portrait: 'images/renoir_sisters.jpg',
+                bio: '피에르오귀스트 르누아르는 프랑스 인상주의를 대표하는 화가로, 인물과 일상의 행복한 순간을 밝고 따뜻한 색채로 표현했습니다. 특히 인물화와 풍속화에 뛰어났으며, 빛이 사람과 자연 위에서 유희하는 장면을 즐겨 그렸습니다.',
+                tags: ['인상주의', '인물화', '풍속화'],
+                works: [
+                    { title: 'Dance at Moulin de la Galette', year: 1876, img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Renoir%2C_Pierre-Auguste_-_Dance_at_Le_Moulin_de_la_Galette%2C_1876.jpg/960px-Renoir%2C_Pierre-Auguste_-_Dance_at_Le_Moulin_de_la_Galette%2C_1876.jpg' },
+                    { title: 'Luncheon of the Boating Party', year: 1881, img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Pierre-Auguste_Renoir_-_Luncheon_of_the_Boating_Party_-_Google_Art_Project.jpg/960px-Pierre-Auguste_Renoir_-_Luncheon_of_the_Boating_Party_-_Google_Art_Project.jpg' },
+                    { title: 'Two Sisters (On the Terrace)', year: 1881, img: 'images/renoir_sisters.jpg' },
+                ]
+            },
+            sorolla: {
+                name: 'Joaquín Sorolla',
+                period: 'Luminism · Spanish Impressionism · 1863–1923',
+                portrait: 'https://upload.wikimedia.org/wikipedia/commons/1/16/Joaquin_Sorolla_Walk_on_the_Beach.jpg',
+                bio: '호아킨 소로야는 스페인의 루미니스트 화가로, "빛의 화가"라 불립니다. 지중해의 강렬한 햇살 아래 해변과 사람들을 생동감 넘치게 표현하는 데 탁월했으며, 밝고 눈부신 색채와 자유로운 붓터치가 특징입니다.',
+                tags: ['루미니즘', '스페인인상주의', '빛의 회화'],
+                works: [
+                    { title: 'Strolling on the Beach', year: 1909, img: 'https://upload.wikimedia.org/wikipedia/commons/1/16/Joaquin_Sorolla_Walk_on_the_Beach.jpg' },
+                    { title: 'Children on the Beach', year: 1910, img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Joaqu%C3%ADn_Sorolla_-_Chicos_en_la_playa.jpg/960px-Joaqu%C3%ADn_Sorolla_-_Chicos_en_la_playa.jpg' },
+                    { title: 'La siesta', year: 1911, img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Joaquin_Sorolla%2C_1908_-_Beach_of_Valencia_by_Morning_Light.jpg/960px-Joaquin_Sorolla%2C_1908_-_Beach_of_Valencia_by_Morning_Light.jpg' },
+                ]
+            },
+        };
+
+        const modal    = document.getElementById('artist-modal');
+        const modalContent = document.getElementById('modal-content');
+
+        function openModal(id) {
+            const a = ARTISTS[id];
+            if (!a) return;
+            modalContent.innerHTML = `
+                <div class="grid grid-cols-1 md:grid-cols-5" style="min-height:400px;">
+                    <!-- Portrait -->
+                    <div class="md:col-span-2" style="background:#eee;">
+                        <img src="${a.portrait}" alt="${a.name}"
+                             style="width:100%; height:100%; object-fit:cover; display:block; min-height:300px;">
+                    </div>
+                    <!-- Info -->
+                    <div class="md:col-span-3 p-8 md:p-10">
+                        <p style="font-size:9px; font-weight:700; letter-spacing:0.2em; text-transform:uppercase;
+                                  color:rgba(29,41,81,0.4); margin-bottom:10px;">${a.period}</p>
+                        <h2 class="font-playfair text-3xl font-medium mb-5" style="color:var(--color-space-cadet);">${a.name}</h2>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            ${a.tags.map(t => `<span class="style-tag">${t}</span>`).join('')}
+                        </div>
+                        <p style="font-size:12px; color:rgba(29,41,81,0.65); line-height:1.9; margin-bottom:28px;
+                                  font-family:'Noto Sans KR',sans-serif;">${a.bio}</p>
+                        <p style="font-size:9px; font-weight:700; letter-spacing:0.2em; text-transform:uppercase;
+                                  color:rgba(29,41,81,0.35); margin-bottom:12px;">대표 작품</p>
+                        <div style="display:grid; grid-template-columns:repeat(${Math.min(a.works.length,3)},1fr); gap:10px;">
+                            ${a.works.map(w => `
+                                <div class="work-item" title="${w.title} (${w.year})">
+                                    <img src="${w.img}" alt="${w.title}" class="work-thumb">
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                </div>`;
+            modal.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            modal.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+        /* URL 해시로 직접 진입 지원: artist.html#vangogh */
+        const hash = location.hash.replace('#','');
+        if (ARTISTS[hash]) openModal(hash);
+    </script>
 </body>
 </html>

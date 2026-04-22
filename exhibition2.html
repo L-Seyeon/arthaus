@@ -1,0 +1,2313 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="no-referrer">
+    <title>ARTHAUS | Artist & Collector Connect</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.12.81/build/spline-viewer.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Playfair Display for Serif, Noto Sans KR for Base -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --color-space-cadet: #1D2951;
+            --color-bg: #ffffff;
+            --color-text-primary: #111111;
+            --color-border: #eeeeee;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            color: var(--color-text-primary);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3, .font-playfair {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Hero Section Split Layout Styling */
+        .hero-title {
+            font-size: clamp(3rem, 8vw, 6.5rem);
+            line-height: 0.9;
+            letter-spacing: -0.03em;
+        }
+
+        .btn-primary {
+            background-color: var(--color-space-cadet);
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        /* Exhibition Custom Styles */
+        .exh-card-hover {
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .exh-card-hover:hover img {
+            transform: scale(1.05);
+        }
+        .curator-badge {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+        .note-line {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .note-line::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: var(--color-space-cadet);
+            opacity: 0.3;
+        }
+
+        /* Sub Block Motion & Transparency */
+        .sub-exh-block {
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            background-color: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(8px);
+        }
+        .sub-exh-block:hover {
+            transform: translateY(-8px);
+            background-color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+        }
+
+        /* Hero Fullscreen Spline BG */
+        .spline-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+        }
+
+        .spline-blur-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(2px);
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        spline-viewer {
+            width: 100%;
+            height: 100%;
+        }
+
+        .hero-overlay {
+            position: relative;
+            z-index: 10;
+            pointer-events: none;
+        }
+
+        /* 히어로 내 클릭 가능한 요소들만 pointer-events 복원 */
+        .hero-overlay a,
+        .hero-overlay button,
+        .hero-overlay input {
+            pointer-events: auto;
+        }
+
+        /* Glassmorphism Card Style */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), background 0.4s ease, box-shadow 0.4s ease;
+            pointer-events: auto;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.65);
+            box-shadow: 0 24px 48px rgba(29, 41, 81, 0.18);
+        }
+
+        .btn-primary {
+            background-color: var(--color-space-cadet);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            filter: brightness(1.2);
+            box-shadow: 0 10px 20px -5px rgba(29, 41, 81, 0.3);
+        }
+
+        .text-space-cadet {
+            color: var(--color-space-cadet);
+        }
+
+        /* Artist Horizontal Scroll Section Styles */
+        #artist-horizontal {
+            height: 400vh; 
+            position: relative;
+            background-color: #fff;
+        }
+
+        .sticky-wrapper {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .scroll-content {
+            display: flex;
+            padding-left: 10vw;
+            will-change: transform;
+            transition: transform 0.1s ease-out;
+            align-items: center; 
+            padding-top: 22vh;
+        }
+
+        .artist-card {
+            flex-shrink: 0;
+            width: 300px;
+            margin-right: 150px;
+        }
+
+        .artist-card.offset-up {
+            transform: translateY(-8vh);
+        }
+        .artist-card.offset-down {
+            transform: translateY(8vh);
+        }
+
+        .artist-image-container {
+            width: 100%;
+            height: 260px;
+            overflow: hidden;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            background-color: #f7f7f7;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.03);
+        }
+
+        .artist-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .artist-card:hover .artist-img {
+            transform: scale(1.1);
+        }
+
+        .progress-container {
+            position: absolute;
+            bottom: 6vh;
+            left: 10vw;
+            width: 80vw;
+            height: 1px;
+            background: rgba(29, 41, 81, 0.08);
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: var(--color-space-cadet);
+            width: 0%;
+        }
+
+        /* Story Section Styles (Based on Wireframe) */
+        .story-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 24px;
+        }
+
+        /* Magazine Section Styles */
+        .mag-card {
+            transition: all 0.4s ease;
+        }
+        .mag-card:hover .mag-img {
+            transform: scale(1.08);
+        }
+        .mag-img-container {
+            overflow: hidden;
+            border-radius: 12px;
+        }
+
+        /* ── Gallery Filter Sort Buttons ── */
+        .sort-btn {
+            transition: color 0.2s;
+            cursor: pointer;
+        }
+        .sort-btn:hover { color: #1D2951; }
+        .sort-btn.active-sort {
+            color: #1D2951;
+            border-bottom: 1px solid #1D2951;
+            padding-bottom: 2px;
+        }
+
+        /* ── Artwork Lightbox ── */
+        #artwork-lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 1100;
+            background: rgba(10, 10, 20, 0.82);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+        }
+        #artwork-lightbox.open {
+            display: flex;
+            animation: lbFadeIn 0.28s cubic-bezier(0.16, 1, 0.3, 1) both;
+        }
+        @keyframes lbFadeIn {
+            from { opacity: 0; }
+            to   { opacity: 1; }
+        }
+        #lightbox-inner {
+            border-radius: 16px;
+            overflow: hidden;
+            max-width: 92vw;
+            max-height: 90vh;
+            box-shadow: 0 40px 80px rgba(0,0,0,0.5);
+            animation: lbSlideUp 0.32s cubic-bezier(0.16, 1, 0.3, 1) both;
+            line-height: 0;
+        }
+        @keyframes lbSlideUp {
+            from { opacity: 0; transform: translateY(24px) scale(0.97); }
+            to   { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        #lightbox-inner img {
+            display: block;
+            max-width: 92vw;
+            max-height: 90vh;
+            width: auto;
+            height: auto;
+        }
+
+        /* ══════════════════════════════════════════
+           AI DISCOVERY ENGINE SECTION
+           palette: #1D2951 deep navy (space-cadet)
+           + ambient glow — mirrors Spline 3D hero
+        ══════════════════════════════════════════ */
+        #ai-discovery {
+            background: linear-gradient(155deg, #0c1528 0%, #1D2951 55%, #122040 100%);
+            position: relative;
+        }
+
+        /* ambient radial glows — echo the Spline 3D lighting */
+        #ai-discovery::before {
+            content: '';
+            position: absolute;
+            top: -80px; left: 20%;
+            width: 600px; height: 600px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(99,140,210,0.10) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        #ai-discovery::after {
+            content: '';
+            position: absolute;
+            bottom: -60px; right: 15%;
+            width: 480px; height: 480px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(58,100,180,0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        /* ── Featured Card ── */
+        .disc-featured-wrap {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 40px 80px rgba(0,0,0,0.5);
+        }
+        .disc-featured-img {
+            width: 100%;
+            aspect-ratio: 4/5;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .disc-featured-wrap:hover .disc-featured-img { transform: scale(1.03); }
+        .disc-featured-overlay {
+            position: absolute; inset: 0;
+            background: linear-gradient(to top, rgba(8,15,36,0.85) 0%, rgba(8,15,36,0.2) 45%, transparent 70%);
+        }
+        .disc-featured-info {
+            position: absolute; bottom: 0; left: 0; right: 0;
+            padding: 36px 32px;
+        }
+
+        /* ── Recommendation Cards ── */
+        .disc-rec-card {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.09);
+            transition: all 0.38s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .disc-rec-card:hover {
+            background: rgba(255,255,255,0.10);
+            transform: translateY(-6px);
+            border-color: rgba(255,255,255,0.20);
+            box-shadow: 0 24px 48px rgba(0,0,0,0.35);
+        }
+        .disc-rec-img {
+            width: 100%;
+            aspect-ratio: 1/1;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .disc-rec-card:hover .disc-rec-img { transform: scale(1.06); }
+        .disc-rec-info { padding: 14px 16px 16px; }
+
+        /* ── Animations ── */
+        .disc-anim-featured {
+            animation: discFeaturedIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+        }
+        @keyframes discFeaturedIn {
+            from { opacity: 0; transform: scale(0.96); }
+            to   { opacity: 1; transform: scale(1); }
+        }
+        .disc-anim-card {
+            animation: discCardIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+        }
+        @keyframes discCardIn {
+            from { opacity: 0; transform: translateY(18px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        .disc-loading .disc-rec-img {
+            filter: blur(4px);
+            transform: scale(1.04);
+        }
+
+        /* ── Tag chips ── */
+        .disc-tag {
+            display: inline-flex; align-items: center;
+            padding: 4px 12px;
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 100px;
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.45);
+            background: rgba(255,255,255,0.05);
+            transition: all 0.25s;
+        }
+        .disc-tag.matched {
+            border-color: rgba(99,160,255,0.35);
+            color: rgba(150,200,255,0.8);
+            background: rgba(60,110,200,0.15);
+        }
+
+        /* ── Pulse dot ── */
+        @keyframes discPulseDot {
+            0%,100% { opacity: 0.4; transform: scale(1); }
+            50%      { opacity: 1;   transform: scale(1.6); }
+        }
+        .disc-pulse-dot {
+            width: 6px; height: 6px; border-radius: 50%;
+            background: #63a0f8;
+            animation: discPulseDot 2s ease-in-out infinite;
+            flex-shrink: 0;
+        }
+        .disc-pulse-dot.scanning {
+            background: #f0a040;
+            animation: discPulseDot 0.5s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="bg-white">
+
+    <!-- NAV -->
+    <nav class="fixed w-full z-50 bg-white/40 backdrop-blur-md border-b border-gray-100/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="story.html" class="flex items-center gap-2 cursor-pointer">
+                    <div class="w-6 h-6 border-2 border-space-cadet rounded-sm"></div>
+                    <span class="font-playfair font-bold text-xl tracking-tighter text-space-cadet">ARTHAUS</span>
+                </a>
+                <div class="hidden md:flex space-x-10 text-[11px] font-bold tracking-widest uppercase text-gray-400">
+                    <a href="#gallery" class="hover:text-space-cadet transition-colors">Gallery</a>
+                    <a href="#artist-horizontal" class="hover:text-space-cadet transition-colors">Artist</a>
+                    <a href="#exhibition" class="hover:text-space-cadet transition-colors">Exhibition</a>
+                    <a href="#story" class="hover:text-space-cadet transition-colors">Story</a>
+                    <a href="#magazine" class="hover:text-space-cadet transition-colors">Magazine</a>
+                </div>
+                <div class="flex items-center space-x-5 text-gray-500">
+                    <div class="flex items-center">
+                        <div id="search-bar" class="overflow-hidden transition-all duration-300 ease-in-out w-0 opacity-0">
+                            <input id="search-input" type="text" placeholder="Search..." class="w-40 text-xs text-space-cadet bg-transparent border-b border-space-cadet/40 focus:border-space-cadet outline-none py-1 pr-2 placeholder-gray-300 transition-colors">
+                        </div>
+                        <button id="search-btn" class="ml-2 flex-shrink-0">
+                            <i class="fa-solid fa-magnifying-glass text-sm transition-colors"></i>
+                        </button>
+                    </div>
+                    <button id="cart-btn" class="relative">
+                        <i class="fa-solid fa-bag-shopping text-sm"></i>
+                        <span id="cart-count" class="absolute -top-2 -right-2 bg-space-cadet text-white text-[8px] w-4 h-4 flex items-center justify-center rounded-full">0</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- CART SIDEBAR -->
+    <div id="cart-overlay" class="fixed inset-0 bg-black/30 backdrop-blur-sm z-[998] hidden opacity-0 transition-opacity duration-300"></div>
+    <!-- ── Artwork Lightbox ── -->
+    <div id="artwork-lightbox" role="dialog" aria-modal="true">
+        <div id="lightbox-inner">
+            <img id="lightbox-img" src="" alt="">
+        </div>
+    </div>
+
+    <div id="cart-sidebar" class="fixed top-0 right-0 h-full w-80 bg-white z-[999] flex flex-col shadow-2xl translate-x-full transition-transform duration-400 ease-in-out">
+        <div class="flex items-center justify-between px-6 py-5 border-b border-gray-100">
+            <div>
+                <p class="text-[9px] font-bold tracking-[0.3em] uppercase text-gray-400 mb-0.5">Shopping</p>
+                <h3 class="font-playfair text-lg text-space-cadet">My Cart</h3>
+            </div>
+            <button id="cart-close" class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors text-gray-400">
+                <i class="fa-solid fa-xmark text-sm"></i>
+            </button>
+        </div>
+
+        <div id="cart-items" class="flex-1 overflow-y-auto px-6 py-4 space-y-4"></div>
+
+        <div id="cart-empty" class="flex-1 flex flex-col items-center justify-center text-center px-6">
+            <i class="fa-regular fa-bag-shopping text-3xl text-gray-200 mb-4"></i>
+            <p class="text-sm text-gray-400 font-light">담긴 작품이 없습니다</p>
+            <p class="text-[10px] text-gray-300 mt-1">갤러리에서 작품을 담아보세요</p>
+        </div>
+
+        <div id="cart-footer" class="px-6 py-5 border-t border-gray-100 hidden">
+            <div class="flex justify-between items-center mb-4">
+                <span class="text-xs font-bold uppercase tracking-widest text-gray-400">Total</span>
+                <span id="cart-total" class="font-bold text-space-cadet text-base"></span>
+            </div>
+            <button id="checkout-btn" class="w-full bg-space-cadet text-white text-[11px] font-bold uppercase tracking-widest py-4 rounded-xl hover:opacity-90 transition-opacity">
+                구매하기
+            </button>
+            <button id="cart-clear" class="w-full mt-2 text-[10px] text-gray-300 hover:text-gray-500 transition-colors py-2 uppercase tracking-widest">
+                전체 비우기
+            </button>
+        </div>
+    </div>
+
+    <!-- CHECKOUT MODAL -->
+    <div id="checkout-overlay" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-[1000] hidden flex items-center justify-center p-4">
+        <div id="checkout-modal" class="bg-white w-full max-w-md rounded-2xl shadow-2xl overflow-hidden scale-95 opacity-0 transition-all duration-300">
+
+            <!-- 헤더 -->
+            <div class="flex items-center justify-between px-7 py-5 border-b border-gray-100">
+                <div>
+                    <p class="text-[9px] font-bold tracking-[0.3em] uppercase text-gray-400 mb-0.5">Checkout</p>
+                    <h3 class="font-playfair text-lg text-space-cadet">결제 정보 입력</h3>
+                </div>
+                <button id="checkout-close" class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors text-gray-400">
+                    <i class="fa-solid fa-xmark text-sm"></i>
+                </button>
+            </div>
+
+            <div class="px-7 py-6 space-y-6 overflow-y-auto max-h-[70vh]">
+
+                <!-- 결제 금액 + 계좌 -->
+                <div class="bg-[#1D2951] rounded-xl p-5 text-white">
+                    <p class="text-[9px] font-bold tracking-[0.3em] uppercase opacity-50 mb-3">Payment Summary</p>
+                    <div class="flex justify-between items-center mb-4">
+                        <span class="text-xs opacity-60">총 결제금액</span>
+                        <span id="checkout-amount" class="text-xl font-bold font-playfair"></span>
+                    </div>
+                    <div class="border-t border-white/10 pt-4">
+                        <p class="text-[9px] opacity-50 uppercase tracking-widest mb-2">무통장 입금 계좌</p>
+                        <div class="flex items-center justify-between bg-white/10 rounded-lg px-4 py-3">
+                            <div>
+                                <p class="text-[10px] opacity-60 mb-0.5">신한은행</p>
+                                <p class="text-sm font-bold tracking-widest">110-421-836749</p>
+                            </div>
+                            <button id="copy-account" class="text-[9px] font-bold uppercase tracking-widest opacity-60 hover:opacity-100 transition-opacity border border-white/30 rounded-md px-3 py-1.5">
+                                복사
+                            </button>
+                        </div>
+                        <p class="text-[9px] opacity-40 mt-2">예금주: (주)아트하우스 컬렉티브</p>
+                    </div>
+                </div>
+
+                <!-- 구매자 정보 입력 -->
+                <div class="space-y-4">
+                    <p class="text-[9px] font-bold tracking-[0.3em] uppercase text-gray-400">구매자 정보</p>
+
+                    <div>
+                        <label class="block text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1.5">이름 *</label>
+                        <input id="buyer-name" type="text" placeholder="홍길동" class="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm text-space-cadet placeholder-gray-300 focus:outline-none focus:border-space-cadet transition-colors">
+                    </div>
+
+                    <div>
+                        <label class="block text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1.5">연락수단 *</label>
+                        <input id="buyer-contact" type="text" placeholder="이메일 또는 전화번호" class="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm text-space-cadet placeholder-gray-300 focus:outline-none focus:border-space-cadet transition-colors">
+                    </div>
+
+                    <div>
+                        <label class="block text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1.5">전시 공간</label>
+                        <input id="buyer-space" type="text" placeholder="작품을 전시할 공간 (예: 거실, 사무실, 갤러리)" class="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm text-space-cadet placeholder-gray-300 focus:outline-none focus:border-space-cadet transition-colors">
+                        <p class="text-[9px] text-gray-300 mt-1.5">작품 배치 제안을 위해 활용됩니다</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- 하단 버튼 -->
+            <div class="px-7 py-5 border-t border-gray-100 bg-gray-50/50">
+                <button id="confirm-btn" class="w-full bg-space-cadet text-white text-[11px] font-bold uppercase tracking-widest py-4 rounded-xl hover:opacity-90 transition-opacity">
+                    입금 완료 · 구매 신청
+                </button>
+                <p class="text-[9px] text-gray-300 text-center mt-3">입금 확인 후 담당자가 연락드립니다</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- HERO SECTION -->
+    <section class="relative min-h-screen flex items-center">
+        <div class="spline-container">
+            <div class="spline-blur-overlay"></div>
+            <spline-viewer url="https://prod.spline.design/Bt0lXK-dJQlHo-TF/scene.splinecode"></spline-viewer>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 hero-overlay w-full pt-20">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-7">
+                    <p class="text-[10px] font-bold tracking-[0.3em] uppercase text-space-cadet mb-6">Curated Art Commerce</p>
+                    <h1 class="hero-title text-space-cadet mb-8">
+                        The Art of <br>
+                        <span class="italic font-light">Connection.</span>
+                    </h1>
+                    <p class="max-w-md text-gray-800 font-semibold leading-relaxed mb-10 text-sm">
+                        단순한 구매를 넘어 작가의 세계관과 수집가의 안목이 만나는 곳.
+                        당신의 공간을 완성할 단 하나의 오리지널 피스를 발견하세요.
+                    </p>
+                    <div class="flex flex-wrap items-center gap-8">
+                        <a href="#gallery" class="btn-primary text-white px-10 py-4 rounded-full text-xs font-bold tracking-widest uppercase shadow-xl shadow-blue-900/20">Explore Gallery</a>
+                        <div class="flex items-center gap-4">
+                            <div class="flex -space-x-3">
+                                <div class="w-10 h-10 rounded-full border-2 border-white bg-gray-200 shadow-sm"></div>
+                                <div class="w-10 h-10 rounded-full border-2 border-white bg-gray-300 shadow-sm"></div>
+                                <div class="w-10 h-10 rounded-full border-2 border-white bg-gray-400 shadow-sm"></div>
+                            </div>
+                            <p class="text-[10px] text-gray-600 font-bold leading-tight">Join 2.4k+ <br>Collectors</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Side Featured Card — Absolute Bottom Right -->
+        <div class="glass-card hidden lg:block absolute bottom-10 right-8 lg:right-16 w-72 p-5 rounded-2xl shadow-xl cursor-pointer z-20">
+            <div class="aspect-square bg-white/40 rounded-xl mb-5 overflow-hidden border border-white/20">
+                <img src="images/water_lilies.jpg" alt="Water Lilies" class="w-full h-full object-cover transition-transform duration-700 hover:scale-105">
+            </div>
+            <div class="space-y-1.5 px-1">
+                <p class="text-[10px] text-space-cadet font-bold tracking-widest uppercase opacity-60">Featured Work</p>
+                <p class="text-base font-bold text-space-cadet">Water Lilies</p>
+                <p class="text-xs text-gray-500">Claude Monet, 1906</p>
+                <p class="text-[10px] text-gray-400 mt-0.5">Impressionism · 89.5 × 94.0 cm</p>
+                <div class="flex justify-between items-center mt-4 pt-4 border-t border-white/30">
+                    <span class="text-sm font-bold text-space-cadet">$9,200</span>
+                    <button
+                        data-add-to-cart="3"
+                        data-title="Water Lilies"
+                        data-artist="Claude Monet"
+                        data-price="9200"
+                        data-price-display="$9,200"
+                        data-image="images/water_lilies.jpg"
+                        class="w-8 h-8 bg-white/80 rounded-full flex items-center justify-center text-space-cadet shadow-sm hover:bg-space-cadet hover:text-white transition-colors">
+                        <i class="fa-solid fa-plus text-[10px] pointer-events-none"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY SECTION -->
+    <section id="gallery" class="py-24 bg-white relative z-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-4">
+                <div>
+                    <h2 class="text-4xl md:text-5xl font-light text-space-cadet mb-6 leading-tight">Original Works</h2>
+                    <div class="flex gap-4 text-[11px] font-bold uppercase tracking-widest">
+                        <button class="gallery-filter-btn teallext-space-cadet border-b border-space-cadet pb-1" data-category="all">All Pieces</button>
+                        <button class="gallery-filter-btn text-gray-300 hover:text-gray-500 transition-colors" data-category="under-30">30호</button>
+                        <button class="gallery-filter-btn text-gray-300 hover:text-gray-500 transition-colors" data-category="30-50">50호</button>
+                        <button class="gallery-filter-btn text-gray-300 hover:text-gray-500 transition-colors" data-category="50-100">100호</button>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3 text-[10px] font-bold text-gray-400 uppercase tracking-widest">
+                    <button class="sort-btn active-sort" data-sort="newest">신규순</button>
+                    <span class="text-gray-200 font-light select-none">|</span>
+                    <button class="sort-btn" data-sort="price-asc">가격 낮은순</button>
+                    <span class="text-gray-200 font-light select-none">|</span>
+                    <button class="sort-btn" data-sort="price-desc">가격 높은순</button>
+                </div>
+            </div>
+
+            <div id="gallery-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
+                <!-- Gallery Item 1 -->
+                <div class="group cursor-pointer">
+                    <div class="aspect-[3/4] overflow-hidden bg-gray-100 rounded-lg mb-6 relative">
+                        <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&q=80" alt="Artwork" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                        <div class="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                            <button class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-space-cadet hover:bg-space-cadet hover:text-white transition-colors shadow-lg">
+                                <i class="fa-solid fa-plus text-xs"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <p class="text-[10px] text-gray-400 font-bold uppercase tracking-widest mb-1">Modern Abstract</p>
+                            <h3 class="text-lg text-space-cadet font-medium">Silent Resonance 01</h3>
+                            <p class="text-xs text-gray-500 mt-1 italic">Elena Ricci, 2024</p>
+                        </div>
+                        <p class="text-sm font-bold text-space-cadet">$4,200</p>
+                    </div>
+                </div>
+                <!-- Gallery Item 2 -->
+                <div class="group cursor-pointer">
+                    <div class="aspect-[3/4] overflow-hidden bg-gray-100 rounded-lg mb-6 relative">
+                        <img src="https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?auto=format&fit=crop&q=80" alt="Artwork" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                        <div class="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                            <button class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-space-cadet hover:bg-space-cadet hover:text-white transition-colors shadow-lg">
+                                <i class="fa-solid fa-plus text-xs"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <p class="text-[10px] text-gray-400 font-bold uppercase tracking-widest mb-1">Minimalist</p>
+                            <h3 class="text-lg text-space-cadet font-medium">Oceanic Void</h3>
+                            <p class="text-xs text-gray-500 mt-1 italic">Marcus Thorne, 2023</p>
+                        </div>
+                        <p class="text-sm font-bold text-space-cadet">$2,850</p>
+                    </div>
+                </div>
+                <!-- Gallery Item 3 -->
+                <div class="group cursor-pointer">
+                    <div class="aspect-[3/4] overflow-hidden bg-gray-100 rounded-lg mb-6 relative">
+                        <img src="https://images.unsplash.com/photo-1576133030430-2c2125b7afc8?auto=format&fit=crop&q=80" alt="Artwork" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                        <div class="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                            <button class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-space-cadet hover:bg-space-cadet hover:text-white transition-colors shadow-lg">
+                                <i class="fa-solid fa-plus text-xs"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <p class="text-[10px] text-gray-400 font-bold uppercase tracking-widest mb-1">Expressionism</p>
+                            <h3 class="text-lg text-space-cadet font-medium">Urban Rhythm</h3>
+                            <p class="text-xs text-gray-500 mt-1 italic">Sora Kim, 2024</p>
+                        </div>
+                        <p class="text-sm font-bold text-space-cadet">$3,100</p>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         AI DISCOVERY ENGINE
+         위치: Gallery 아래 / Artist 섹션 위
+    ═══════════════════════════════════════════ -->
+    <section id="ai-discovery" class="relative py-28 overflow-hidden z-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+
+            <!-- Section Header -->
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-14 gap-6">
+                <div>
+                    <p class="text-[10px] font-bold tracking-[0.4em] uppercase mb-5" style="color:rgba(255,255,255,0.28)">
+                        <i class="fa-solid fa-wand-magic-sparkles mr-2"></i>AI Discovery Engine
+                    </p>
+                    <h2 class="text-4xl md:text-5xl font-light text-white leading-tight" style="font-family:'Playfair Display',serif">
+                        Works You May <br><span class="italic">Love Next.</span>
+                    </h2>
+                </div>
+                <div class="max-w-xs" style="font-family:'Noto Sans KR',sans-serif">
+                    <p class="text-xs leading-relaxed mb-3" style="color:rgba(255,255,255,0.38)">
+                        작품을 클릭하면 스타일·분위기·가격대가 유사한 작품을 AI가 실시간으로 탐색합니다. 체인 클릭으로 계속 탐색하세요.
+                    </p>
+                    <p class="text-xs leading-relaxed" style="color:rgba(255,255,255,0.28)">
+                        검색창에 풍경, 인물, 꽃, 바다, 초상화,<br>단체, 두명, 건물 등 자유롭게 입력하세요.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Search Bar -->
+            <div class="mb-10">
+                <div style="display:flex; align-items:center; gap:12px;
+                            background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.13);
+                            border-radius:100px; padding:13px 22px; transition:border-color 0.2s;"
+                     id="disc-search-box">
+                    <i class="fa-solid fa-magnifying-glass" style="color:rgba(255,255,255,0.3); font-size:12px; flex-shrink:0;"></i>
+                    <input id="disc-search-input" type="text" autocomplete="off"
+                           placeholder=""
+                           style="background:none; border:none; outline:none; color:rgba(255,255,255,0.85);
+                                  flex:1; font-size:13px; font-family:'Noto Sans KR',sans-serif;
+                                  letter-spacing:0.03em;">
+                    <button id="disc-search-clear" style="display:none; background:none; border:none;
+                            color:rgba(255,255,255,0.3); cursor:pointer; font-size:13px; padding:0; line-height:1;">✕</button>
+                </div>
+            </div>
+
+            <!-- Search Results (shown when query active) -->
+            <div id="disc-search-results" style="display:none;">
+                <div id="disc-search-grid" style="
+                    display:grid; grid-template-columns:repeat(auto-fill, minmax(200px,1fr)); gap:16px; margin-bottom:10px;">
+                </div>
+                <p id="disc-no-results" style="display:none; color:rgba(255,255,255,0.35);
+                   font-size:13px; font-family:'Noto Sans KR',sans-serif; text-align:center; padding:40px 0;">
+                    검색 결과가 없어요. 다른 키워드를 시도해보세요.
+                </p>
+            </div>
+
+            <!-- Main: Featured (left) + Recommendation Grid (right) -->
+            <div id="disc-main-layout" class="grid grid-cols-1 lg:grid-cols-12 gap-7 mb-10">
+
+                <!-- Featured Artwork -->
+                <div class="lg:col-span-5">
+                    <div id="disc-featured" class="disc-featured-wrap">
+                        <!-- rendered by JS -->
+                    </div>
+                </div>
+
+                <!-- Recommendation Grid -->
+                <div class="lg:col-span-7 flex flex-col">
+                    <p class="text-[9px] font-bold uppercase tracking-[0.35em] mb-5" style="color:rgba(255,255,255,0.22)">
+                        유사 작품 · 클릭하여 탐색
+                    </p>
+                    <div id="disc-rec-grid" class="grid grid-cols-2 gap-4 flex-grow">
+                        <!-- rendered by JS -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Algorithm Status Bar -->
+            <div class="flex flex-wrap items-center gap-3 pt-7" style="border-top:1px solid rgba(255,255,255,0.07)">
+                <div class="flex items-center gap-2 mr-2">
+                    <div class="disc-pulse-dot" id="disc-pulse-dot"></div>
+                    <span class="text-[9px] font-bold uppercase tracking-[0.3em]" style="color:rgba(255,255,255,0.28); font-family:'Noto Sans KR',sans-serif">
+                        분석 기준
+                    </span>
+                </div>
+                <div id="disc-tags" class="flex flex-wrap gap-2">
+                    <!-- tag chips rendered by JS -->
+                </div>
+                <span id="disc-status-text" class="ml-auto text-[9px]" style="color:rgba(255,255,255,0.20); font-family:'Noto Sans KR',sans-serif"></span>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ARTIST SECTION (Horizontal Scroll) -->
+    <section id="artist-horizontal">
+        <div class="sticky-wrapper">
+            <!-- Title Content Overlay: Positioned Higher to avoid overlap -->
+            <div class="absolute top-[20vh] left-[10vw] z-10">
+                <p class="text-[10px] font-bold text-gray-300 uppercase tracking-[0.4em] mb-4">Meet Our Creators</p>
+                <h2 class="text-4xl md:text-5xl font-light text-space-cadet mb-6 leading-tight">Selected Artists</h2>
+                <a href="artist.html"
+                   style="display:inline-flex; align-items:center; gap:8px;
+                          border:1px solid rgba(30,30,50,0.25); border-radius:100px;
+                          padding:9px 20px; font-size:10px; font-weight:700;
+                          letter-spacing:0.15em; text-transform:uppercase;
+                          color:#1e1e32; text-decoration:none;
+                          transition:background 0.2s, border-color 0.2s;"
+                   onmouseover="this.style.background='rgba(30,30,50,0.08)'; this.style.borderColor='rgba(30,30,50,0.5)'"
+                   onmouseout="this.style.background=''; this.style.borderColor='rgba(30,30,50,0.25)'">
+                    작가 전체보기
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                        <path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+            </div>
+
+            <div class="scroll-content" id="scroll-content">
+                <!-- Artist Card 1 — Vincent van Gogh -->
+                <div class="artist-card">
+                    <div class="artist-image-container">
+                        <!-- Van Gogh Self-Portrait (1889) — public domain -->
+                        <img src="images/vangogh_self.jpg" alt="Vincent van Gogh" class="artist-img">
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-playfair text-space-cadet mb-2 italic">Vincent van Gogh</h3>
+                        <p class="text-[9px] font-bold tracking-widest uppercase text-gray-400 mb-4">Post-Impressionist · 1853–1890</p>
+                        <p class="text-xs text-gray-500 leading-relaxed max-w-xs">
+                            "나는 별이 빛나는 밤에 꿈을 꾼다. 캔버스 위에서 내 영혼의 소용돌이를 색채와 붓질로 토해낸다."
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Artist Card 2 — Claude Monet -->
+                <div class="artist-card">
+                    <div class="artist-image-container">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Claude_Monet_1899_Nadar_crop.jpg/960px-Claude_Monet_1899_Nadar_crop.jpg" alt="Claude Monet" class="artist-img">
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-playfair text-space-cadet mb-2 italic">Claude Monet</h3>
+                        <p class="text-[9px] font-bold tracking-widest uppercase text-gray-400 mb-4">Impressionist Master · 1840–1926</p>
+                        <p class="text-xs text-gray-500 leading-relaxed max-w-xs">
+                            "빛은 매 순간 변한다. 나는 그 찰나를 포착하기 위해 같은 장면을 수십 번 다시 그렸다."
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Artist Card 3 — Pierre-Auguste Renoir -->
+                <div class="artist-card">
+                    <div class="artist-image-container">
+                        <img src="images/renoir_sisters.jpg" alt="Pierre-Auguste Renoir" class="artist-img">
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-playfair text-space-cadet mb-2 italic">Pierre-Auguste Renoir</h3>
+                        <p class="text-[9px] font-bold tracking-widest uppercase text-gray-400 mb-4">Impressionist · 1841–1919</p>
+                        <p class="text-xs text-gray-500 leading-relaxed max-w-xs">
+                            "나에게 그림은 유쾌하고 아름다운 것이어야 한다. 삶에는 이미 충분히 불쾌한 것들이 있다."
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Artist Card 4 — Joaquín Sorolla -->
+                <div class="artist-card">
+                    <div class="artist-image-container">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/1/16/Joaquin_Sorolla_Walk_on_the_Beach.jpg" alt="Joaquín Sorolla" class="artist-img">
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-playfair text-space-cadet mb-2 italic">Joaquín Sorolla</h3>
+                        <p class="text-[9px] font-bold tracking-widest uppercase text-gray-400 mb-4">Luminist · Spanish Impressionism · 1863–1923</p>
+                        <p class="text-xs text-gray-500 leading-relaxed max-w-xs">
+                            "나는 지중해의 빛을 사랑한다. 그 빛이 물과 피부 위에서 춤추는 순간을 캔버스에 담는다."
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Spacer for smooth ending -->
+                <div class="w-[30vw] flex-shrink-0"></div>
+            </div>
+
+            <div class="progress-container">
+                <div class="progress-bar" id="progress-bar"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXHIBITION SECTION -->
+    <section id="exhibition" class="py-24 bg-[#F8F9FA] relative overflow-hidden z-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-4">
+                <div class="max-w-xl">
+                    <h2 class="text-4xl md:text-5xl font-light text-space-cadet mb-6 leading-tight">Curated <br><span>Exhibitions</span></h2>
+                    <p class="text-gray-500 text-sm leading-relaxed">
+                        선택이 어려운 당신을 위해 전문 큐레이터가 엄선한 테마별 기획전. <br>
+                        단순한 나열이 아닌, 작품 사이의 대화와 서사를 느껴보세요.
+                    </p>
+                </div>
+                <a href="exhibition.html" class="text-[11px] font-bold text-space-cadet tracking-[0.2em] uppercase border-b border-space-cadet pb-1 hover:opacity-60 transition-opacity">
+                    Archive View All
+                </a>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                <div class="lg:col-span-8">
+                    <div class="group relative bg-white rounded-2xl overflow-hidden shadow-2xl shadow-gray-200/50 flex flex-col exh-card-hover">
+                        <div class="aspect-[16/9] overflow-hidden relative">
+                            <div class="absolute inset-0 bg-black/5 z-10"></div>
+                            <span class="absolute top-8 left-8 z-20 bg-white px-4 py-1.5 rounded-full text-[10px] font-bold text-space-cadet tracking-widest shadow-sm uppercase">현재 전시 중</span>
+                            <img src="https://images.unsplash.com/photo-1554188248-986adbb73be4?auto=format&fit=crop&w=1200&q=80" alt="Main Exhibition" class="w-full h-full object-cover transition-transform duration-1000">
+                        </div>
+                        <div class="p-10 md:p-14">
+                            <div class="flex items-start gap-8 mb-10">
+                                <div class="hidden md:block">
+                                    <span class="curator-badge text-[10px] font-bold tracking-[0.5em] text-gray-300 uppercase">ArtHaus Selection</span>
+                                </div>
+                                <div class="flex-grow">
+                                    <h3 class="text-3xl md:text-4xl font-light text-space-cadet mb-6 leading-tight">
+                                        고요의 본질 : <br>
+                                        <span class="italic">여백이 주는 위로와 사유</span>
+                                    </h3>
+                                    <div class="note-line">
+                                        <p class="text-[10px] font-bold text-space-cadet uppercase tracking-widest mb-3 italic">Curator's Note</p>
+                                        <p class="text-gray-500 text-sm leading-loose max-w-2xl italic">
+                                            "우리는 너무 많은 소음에 둘러싸여 있습니다. 이번 전시는 복잡한 구성을 배제하고 선과 면, 그리고 여백만으로 공간을 채우는 작품들을 모았습니다."
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex flex-wrap items-center gap-6 pt-4 border-t border-gray-50">
+                                <button class="btn-primary text-white px-10 py-4 rounded-full text-[11px] font-bold tracking-[0.2em] uppercase shadow-lg shadow-blue-900/20">
+                                    View Collection
+                                </button>
+                                <span class="text-[11px] font-medium text-gray-400 italic">2026. 04. 01 - 04. 30</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-4 flex flex-col gap-8">
+                    <div class="sub-exh-block p-6 rounded-2xl border border-gray-100 cursor-pointer">
+                        <div class="flex gap-6 items-center">
+                            <div class="w-20 h-20 rounded-xl overflow-hidden flex-shrink-0 bg-gray-50">
+                                <img src="https://images.unsplash.com/photo-1547826039-bfc35e0f1ea8?auto=format&fit=crop&w=300&q=80" alt="Upcoming" class="w-full h-full object-cover">
+                            </div>
+                            <div>
+                                <span class="text-[9px] font-bold text-blue-600 tracking-widest uppercase mb-1 block">Coming Soon</span>
+                                <h4 class="text-sm font-bold text-space-cadet mb-1">도시의 빛 : 야경의 서사</h4>
+                                <p class="text-[10px] text-gray-400">05. 05 - 06. 02</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sub-exh-block p-6 rounded-2xl border border-gray-100 cursor-pointer">
+                        <div class="flex gap-6 items-center">
+                            <div class="w-20 h-20 rounded-xl overflow-hidden flex-shrink-0 bg-gray-50">
+                                <img src="https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=300&q=80" alt="Upcoming" class="w-full h-full object-cover">
+                            </div>
+                            <div>
+                                <span class="text-[9px] font-bold text-gray-400 tracking-widest uppercase mb-1 block">Curation</span>
+                                <h4 class="text-sm font-bold text-space-cadet mb-1">봄의 숨결 : 추상으로 피어나다</h4>
+                                <p class="text-[10px] text-gray-400">06. 10 - 07. 15</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-grow mt-2 bg-space-cadet rounded-2xl p-10 text-white relative overflow-hidden group shadow-2xl shadow-blue-900/40">
+                        <div class="absolute -right-10 -top-10 w-40 h-40 bg-white/5 rounded-full blur-3xl transition-transform duration-1000 group-hover:scale-150"></div>
+                        <div class="relative z-10">
+                            <i class="fa-solid fa-wand-magic-sparkles text-2xl mb-6 opacity-60"></i>
+                            <h4 class="text-2xl font-light mb-4 leading-tight">당신만을 위한 <br><span class="italic font-normal">맞춤형 아트 큐레이션</span></h4>
+                            <button class="text-[10px] font-bold tracking-[0.3em] uppercase border-b border-white pb-2 hover:text-blue-200 transition-colors">
+                                Get Started
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- STORY SECTION -->
+    <section id="story" class="py-32 bg-white relative z-20 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <!-- Section Header — left-aligned, same pattern as Exhibition -->
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-20 gap-4">
+                <div>
+                    <p class="text-[10px] font-bold tracking-[0.4em] uppercase text-gray-300 mb-4">Our Philosophy</p>
+                    <h2 class="text-4xl md:text-5xl font-light text-space-cadet mb-6 leading-tight">
+                        The Art of <br>Connection
+                    </h2>
+                </div>
+                <a href="#" class="text-[11px] font-bold text-space-cadet tracking-[0.2em] uppercase border-b border-space-cadet pb-1 hover:opacity-60 transition-opacity flex items-center gap-3">
+                    Our Full Story <i class="fa-solid fa-arrow-right-long"></i>
+                </a>
+            </div>
+
+            <!-- Main Content Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start mb-24">
+
+                <!-- Left: Large image + floating quote card -->
+                <div class="lg:col-span-5 relative pb-10">
+                    <div class="aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl shadow-gray-200/80 group">
+                        <!-- Van Gogh — Bedroom in Arles (1888) — public domain -->
+                        <img src="images/vangogh_bedroom.jpg" alt="Van Gogh — Bedroom in Arles" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                    </div>
+                    <!-- Floating quote card — echoes the dark CTA from Exhibition -->
+                    <div class="absolute -bottom-2 -right-4 md:-right-6 max-w-[250px] bg-[#1D2951] text-white p-7 rounded-2xl shadow-2xl shadow-blue-900/30 z-10">
+                        <p class="text-[9px] font-bold uppercase tracking-[0.3em] opacity-50 mb-3">Artist Voice</p>
+                        <p class="text-xs font-light leading-relaxed italic">"나는 별이 빛나는 밤에도, 태양이 이글거리는 낮에도 그림을 그린다. 예술은 나를 살게 한다."</p>
+                        <div class="mt-4 pt-4 border-t border-white/10">
+                            <p class="text-[9px] opacity-50 font-bold">— Vincent van Gogh</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Philosophy + numbered list -->
+                <div class="lg:col-span-7 lg:pl-4 pt-4">
+                    <p class="text-gray-500 text-sm leading-loose mb-12 max-w-lg">
+                        ARTHAUS는 작가의 진심이 수집가의 일상에 스며드는 순간을 설계합니다. 우리는 예술이 특별한 소수의 전유물이 아닌, 삶을 풍요롭게 만드는 보편적인 가치가 되길 믿습니다.
+                    </p>
+
+                    <!-- Values: mirroring exhibition's curator note style -->
+                    <div class="space-y-0 border-t border-gray-100">
+                        <div class="flex items-start gap-8 group cursor-default py-7 border-b border-gray-100 hover:border-gray-200 transition-colors">
+                            <span class="text-space-cadet font-playfair text-2xl italic opacity-15 group-hover:opacity-100 transition-opacity duration-300 flex-shrink-0 w-8 pt-0.5">01</span>
+                            <div>
+                                <h4 class="text-xs font-bold uppercase tracking-widest text-space-cadet mb-2">작가와의 진정성 있는 연결</h4>
+                                <p class="text-[11px] text-gray-400 leading-relaxed">작가의 작업실에서 수집가의 공간까지, 모든 과정에서 함께합니다.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-8 group cursor-default py-7 border-b border-gray-100 hover:border-gray-200 transition-colors">
+                            <span class="text-space-cadet font-playfair text-2xl italic opacity-15 group-hover:opacity-100 transition-opacity duration-300 flex-shrink-0 w-8 pt-0.5">02</span>
+                            <div>
+                                <h4 class="text-xs font-bold uppercase tracking-widest text-space-cadet mb-2">엄선된 큐레이션 서비스</h4>
+                                <p class="text-[11px] text-gray-400 leading-relaxed">취향과 공간을 분석한 전문 큐레이터의 맞춤 추천으로 최적의 작품을 만나세요.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-8 group cursor-default py-7 hover:border-gray-200 transition-colors">
+                            <span class="text-space-cadet font-playfair text-2xl italic opacity-15 group-hover:opacity-100 transition-opacity duration-300 flex-shrink-0 w-8 pt-0.5">03</span>
+                            <div>
+                                <h4 class="text-xs font-bold uppercase tracking-widest text-space-cadet mb-2">투명한 작품 유통 프로세스</h4>
+                                <p class="text-[11px] text-gray-400 leading-relaxed">작품의 출처, 가치, 이력 모든 정보를 투명하게 공개합니다.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats Row — editorial numbers, Playfair italic -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 pt-16 border-t border-gray-100">
+                <div class="text-center group">
+                    <p class="text-4xl md:text-5xl font-playfair italic text-space-cadet mb-2 group-hover:opacity-70 transition-opacity">2.4k<span class="text-2xl opacity-30">+</span></p>
+                    <p class="text-[10px] font-bold uppercase tracking-widest text-gray-300">Collectors</p>
+                </div>
+                <div class="text-center group">
+                    <p class="text-4xl md:text-5xl font-playfair italic text-space-cadet mb-2 group-hover:opacity-70 transition-opacity">380<span class="text-2xl opacity-30">+</span></p>
+                    <p class="text-[10px] font-bold uppercase tracking-widest text-gray-300">Curated Artists</p>
+                </div>
+                <div class="text-center group">
+                    <p class="text-4xl md:text-5xl font-playfair italic text-space-cadet mb-2 group-hover:opacity-70 transition-opacity">12k<span class="text-2xl opacity-30">+</span></p>
+                    <p class="text-[10px] font-bold uppercase tracking-widest text-gray-300">Works Sold</p>
+                </div>
+                <div class="text-center group">
+                    <p class="text-4xl md:text-5xl font-playfair italic text-space-cadet mb-2 group-hover:opacity-70 transition-opacity">42<span class="text-2xl opacity-30">+</span></p>
+                    <p class="text-[10px] font-bold uppercase tracking-widest text-gray-300">Exhibitions</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MAGAZINE SECTION -->
+    <section id="magazine" class="py-32 bg-[#F8F9FA] relative z-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <!-- Section Header — left-aligned, matching Exhibition / Story -->
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-4">
+                <div>
+                    <p class="text-[10px] font-bold tracking-[0.4em] uppercase text-gray-300 mb-4">Arthaus Magazine</p>
+                    <h2 class="text-4xl md:text-5xl font-light text-space-cadet mb-6 leading-tight">
+                        Insight, <br>Inspiration
+                    </h2>
+                </div>
+                <a href="magazine.html" class="text-[11px] font-bold text-space-cadet tracking-[0.2em] uppercase border-b border-space-cadet pb-1 hover:opacity-60 transition-opacity">
+                    All Articles
+                </a>
+            </div>
+
+            <!-- Featured + Stacked Cards Layout (mirrors Exhibition's 8+4 grid) -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+
+                <!-- Featured article (large, left 7 cols) -->
+                <div class="lg:col-span-7 group cursor-pointer">
+                    <div class="aspect-[16/10] overflow-hidden rounded-2xl mb-8 shadow-xl shadow-gray-200/60 relative">
+                        <img src="https://images.unsplash.com/photo-1505330622279-bf7d7fc918f4?auto=format&fit=crop&q=80" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        <span class="absolute top-6 left-6 text-[9px] font-bold uppercase tracking-widest bg-white px-4 py-2 rounded-full text-space-cadet shadow-sm">Interview</span>
+                    </div>
+                    <div>
+                        <span class="text-[10px] font-bold uppercase tracking-widest text-gray-300 mb-4 block">2024. 03. 15</span>
+                        <h3 class="text-2xl md:text-3xl font-light text-space-cadet mb-4 leading-snug group-hover:opacity-70 transition-opacity">
+                            질감의 미학: 캔버스 위에 <span class="italic font-playfair">흐르는 무의식</span>
+                        </h3>
+                        <p class="text-xs text-gray-400 leading-relaxed max-w-lg mb-6">
+                            박지훈 작가가 전하는 추상 회화의 가치와 우리가 작품을 통해 얻는 정서적 해방감에 대하여...
+                        </p>
+                        <span class="flex items-center gap-3 text-[11px] font-bold text-space-cadet uppercase tracking-[0.2em] border-b border-space-cadet pb-1 w-fit group-hover:gap-5 transition-all duration-300">
+                            Read More <i class="fa-solid fa-arrow-right-long"></i>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Right column: 2 compact cards + newsletter CTA -->
+                <div class="lg:col-span-5 flex flex-col gap-6">
+
+                    <!-- Card 2 -->
+                    <div class="group cursor-pointer flex gap-5 items-start p-6 bg-white rounded-2xl border border-gray-100 hover:shadow-xl hover:shadow-gray-100/80 hover:-translate-y-1 transition-all duration-300">
+                        <div class="w-24 h-24 flex-shrink-0 overflow-hidden rounded-xl">
+                            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <span class="text-[9px] font-bold uppercase tracking-widest text-space-cadet bg-gray-50 px-3 py-1 rounded-full mb-3 inline-block">Interior</span>
+                            <h3 class="text-sm font-medium text-space-cadet mb-1 leading-snug">공간의 완성: 미니멀리즘과 대형 회화의 조화</h3>
+                            <p class="text-[10px] text-gray-400 leading-relaxed line-clamp-2 mt-1">당신의 거실이 갤러리가 되는 방법.</p>
+                            <span class="text-[9px] font-bold uppercase tracking-widest text-gray-300 mt-3 block">2024. 03. 02</span>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="group cursor-pointer flex gap-5 items-start p-6 bg-white rounded-2xl border border-gray-100 hover:shadow-xl hover:shadow-gray-100/80 hover:-translate-y-1 transition-all duration-300">
+                        <div class="w-24 h-24 flex-shrink-0 overflow-hidden rounded-xl">
+                            <img src="https://images.unsplash.com/photo-1482160549825-59d1b23cb208?auto=format&fit=crop&q=80" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <span class="text-[9px] font-bold uppercase tracking-widest text-space-cadet bg-gray-50 px-3 py-1 rounded-full mb-3 inline-block">Insight</span>
+                            <h3 class="text-sm font-medium text-space-cadet mb-1 leading-snug">컬렉팅의 시작: 가치 있는 예술 투자를 위한 3가지 질문</h3>
+                            <p class="text-[10px] text-gray-400 leading-relaxed line-clamp-2 mt-1">초보 컬렉터를 위한 안목 기르는 조언.</p>
+                            <span class="text-[9px] font-bold uppercase tracking-widest text-gray-300 mt-3 block">2024. 02. 20</span>
+                        </div>
+                    </div>
+
+                    <!-- Newsletter CTA — mirrors Exhibition's dark promo card -->
+                    <div class="bg-[#1D2951] rounded-2xl p-8 text-white relative overflow-hidden group shadow-2xl shadow-blue-900/30">
+                        <div class="absolute -right-8 -bottom-8 w-40 h-40 bg-white/5 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-1000"></div>
+                        <div class="relative z-10">
+                            <i class="fa-regular fa-envelope text-xl mb-5 opacity-50 block"></i>
+                            <h4 class="text-lg font-light mb-5 leading-snug">매주 가장 영감적인 <br><span class="italic">아트 스토리를 받으세요.</span></h4>
+                            <div class="flex gap-2">
+                                <input type="email" placeholder="이메일 입력" class="bg-white/10 border border-white/20 rounded-full px-4 py-2.5 text-[11px] flex-grow text-white placeholder-white/40 focus:outline-none focus:border-white/50 transition-colors">
+                                <button class="bg-white text-space-cadet rounded-full px-5 py-2.5 text-[10px] font-bold uppercase tracking-widest flex-shrink-0 hover:bg-gray-100 transition-colors">Join</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- FOOTER -->
+    <footer class="bg-white pt-24 pb-12 border-t border-gray-100 relative z-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                <div>
+                    <div class="flex items-center gap-2 mb-6">
+                        <div class="w-6 h-6 border-2 border-space-cadet rounded-sm"></div>
+                        <span class="font-playfair font-bold text-xl tracking-tighter text-space-cadet">ARTHAUS</span>
+                    </div>
+                    <p class="text-xs text-gray-400 leading-loose">
+                        ARTHAUS is a premium art commerce platform connecting independent artists with discerning collectors worldwide.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-[11px] font-bold uppercase tracking-widest text-space-cadet mb-8">Navigation</h4>
+                    <ul class="space-y-4 text-xs text-gray-500">
+                        <li><a href="#gallery" class="hover:text-space-cadet transition-colors">Browse Gallery</a></li>
+                        <li><a href="artist.html" class="hover:text-space-cadet transition-colors">Featured Artists</a></li>
+                        <li><a href="exhibition.html" class="hover:text-space-cadet transition-colors">Curated Exhibitions</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-[11px] font-bold uppercase tracking-widest text-space-cadet mb-8">Service</h4>
+                    <ul class="space-y-4 text-xs text-gray-500">
+                        <li><a href="#" class="hover:text-space-cadet transition-colors">Private Advisory</a></li>
+                        <li><a href="#" class="hover:text-space-cadet transition-colors">White-Glove Delivery</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-[11px] font-bold uppercase tracking-widest text-space-cadet mb-8">Newsletter</h4>
+                    <div class="flex">
+                        <input type="email" placeholder="Email" class="bg-gray-50 border-none rounded-l-full px-5 py-3 text-xs flex-grow focus:ring-1 focus:ring-space-cadet outline-none">
+                        <button class="bg-space-cadet text-white px-6 py-3 rounded-r-full text-[10px] font-bold uppercase tracking-widest">Join</button>
+                    </div>
+                </div>
+            </div>
+            <div class="pt-12 border-t border-gray-50 flex flex-col md:flex-row justify-between items-center gap-6">
+                <p class="text-[10px] text-gray-300 font-medium">© 2024 ARTHAUS COLLECTIVE. ALL RIGHTS RESERVED.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ── GALLERY FILTER + AI RECOMMENDATION SYSTEM ── -->
+    <script>
+    (function () {
+        // ── Artwork Database ──────────────────────────────────────────────────
+        const ARTWORKS_DB = [
+            // ─ Van Gogh ─
+            { id: 1,  title: "The Starry Night",            artist: "Vincent van Gogh",         year: 1889,
+              category: "painting", style: "Post-Impressionism",
+              tags: ["impressionist","night","swirling","emotional","landscape"],
+              price: 8500,  priceDisplay: "$8,500",  dateAdded: "2024-01-15",
+              sizeCategory: "under-30", sizeDisplay: "73.7 × 92.1 cm · 약 30호",
+              image: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg/960px-Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg" },
+
+            { id: 2,  title: "Self-Portrait with Straw Hat","artist": "Vincent van Gogh",       year: 1887,
+              category: "painting", style: "Post-Impressionism",
+              tags: ["impressionist","portrait","warm","expressive","gestural"],
+              price: 6200,  priceDisplay: "$6,200",  dateAdded: "2023-06-20",
+              sizeCategory: "under-30", sizeDisplay: "40.5 × 31.6 cm · 약 8호",
+              image: "images/vangogh_self.jpg" },
+
+            { id: 4,  title: "Irises",                      artist: "Vincent van Gogh",         year: 1889,
+              category: "painting", style: "Post-Impressionism",
+              tags: ["impressionist","flowers","nature","vibrant","gestural"],
+              price: 7600,  priceDisplay: "$7,600",  dateAdded: "2024-02-28",
+              sizeCategory: "30-50",    sizeDisplay: "71 × 93 cm · 약 30호",
+              image: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Irises-Vincent_van_Gogh.jpg/960px-Irises-Vincent_van_Gogh.jpg" },
+
+            { id: 11, title: "Bedroom in Arles",            artist: "Vincent van Gogh",         year: 1888,
+              category: "painting", style: "Post-Impressionism",
+              tags: ["impressionist","interior","warm","expressive","domestic"],
+              price: 9100,  priceDisplay: "$9,100",  dateAdded: "2023-12-01",
+              sizeCategory: "30-50",    sizeDisplay: "72.4 × 91.3 cm · 약 30호",
+              image: "images/vangogh_bedroom.jpg" },
+
+            // ─ Monet ─
+            { id: 3,  title: "Water Lilies",                artist: "Claude Monet",             year: 1906,
+              category: "painting", style: "Impressionism",
+              tags: ["impressionist","nature","serene","water","light"],
+              price: 9200,  priceDisplay: "$9,200",  dateAdded: "2024-03-10",
+              sizeCategory: "30-50",    sizeDisplay: "89.5 × 94.0 cm · 약 30호",
+              image: "images/water_lilies.jpg" },
+
+            { id: 6,  title: "Impression, Sunrise",         artist: "Claude Monet",             year: 1872,
+              category: "painting", style: "Impressionism",
+              tags: ["impressionist","harbor","sunrise","atmospheric","light"],
+              price: 11000, priceDisplay: "$11,000", dateAdded: "2024-04-02",
+              sizeCategory: "under-30", sizeDisplay: "48 × 63 cm · 약 15호",
+              image: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Monet_-_Impression%2C_Sunrise.jpg/960px-Monet_-_Impression%2C_Sunrise.jpg" },
+
+            { id: 9,  title: "Haystacks (End of Summer)",   artist: "Claude Monet",             year: 1891,
+              category: "painting", style: "Impressionism",
+              tags: ["impressionist","landscape","golden","light","nature"],
+              price: 12800, priceDisplay: "$12,800", dateAdded: "2024-02-15",
+              sizeCategory: "30-50",    sizeDisplay: "60.5 × 100.8 cm · 약 40호",
+              image: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Claude_Monet_-_Stacks_of_Wheat_%28End_of_Summer%29_-_1985.1103_-_Art_Institute_of_Chicago.jpg/960px-Claude_Monet_-_Stacks_of_Wheat_%28End_of_Summer%29_-_1985.1103_-_Art_Institute_of_Chicago.jpg" },
+
+            // ─ Renoir ─
+            { id: 7,  title: "Dance at Moulin de la Galette", artist: "Pierre-Auguste Renoir", year: 1876,
+              category: "painting", style: "Impressionism",
+              tags: ["impressionist","figurative","warm","joyful","outdoor"],
+              price: 14500, priceDisplay: "$14,500", dateAdded: "2023-11-14",
+              sizeCategory: "50-100",   sizeDisplay: "131 × 175 cm · 약 100호",
+              image: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Renoir%2C_Pierre-Auguste_-_Dance_at_Le_Moulin_de_la_Galette%2C_1876.jpg/960px-Renoir%2C_Pierre-Auguste_-_Dance_at_Le_Moulin_de_la_Galette%2C_1876.jpg" },
+
+            { id: 10, title: "Luncheon of the Boating Party", artist: "Pierre-Auguste Renoir", year: 1881,
+              category: "painting", style: "Impressionism",
+              tags: ["impressionist","figurative","social","warm","outdoor"],
+              price: 16000, priceDisplay: "$16,000", dateAdded: "2023-08-20",
+              sizeCategory: "50-100",   sizeDisplay: "130 × 175.5 cm · 약 100호",
+              image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Pierre-Auguste_Renoir_-_Luncheon_of_the_Boating_Party_-_Google_Art_Project.jpg/960px-Pierre-Auguste_Renoir_-_Luncheon_of_the_Boating_Party_-_Google_Art_Project.jpg" },
+
+            { id: 13, title: "Two Sisters (On the Terrace)", artist: "Pierre-Auguste Renoir", year: 1881,
+              category: "painting", style: "Impressionism",
+              tags: ["impressionist","figurative","warm","serene","portrait"],
+              price: 15800, priceDisplay: "$15,800", dateAdded: "2024-03-22",
+              sizeCategory: "30-50",    sizeDisplay: "100.4 × 80.9 cm · 약 40호",
+              image: "images/renoir_sisters.jpg" },
+
+            // ─ Sorolla ─
+            { id: 5,  title: "Strolling on the Beach",      artist: "Joaquín Sorolla",          year: 1909,
+              category: "painting", style: "Luminism · Spanish Impressionism",
+              tags: ["impressionist","beach","light","figures","serene"],
+              price: 8400,  priceDisplay: "$8,400",  dateAdded: "2023-09-05",
+              sizeCategory: "30-50",    sizeDisplay: "205 × 200 cm · 약 100호",
+              image: "https://upload.wikimedia.org/wikipedia/commons/1/16/Joaquin_Sorolla_Walk_on_the_Beach.jpg" },
+
+            { id: 8,  title: "Children on the Beach",       artist: "Joaquín Sorolla",          year: 1910,
+              category: "painting", style: "Luminism · Spanish Impressionism",
+              tags: ["impressionist","beach","children","light","vibrant"],
+              price: 7200,  priceDisplay: "$7,200",  dateAdded: "2024-01-30",
+              sizeCategory: "30-50",    sizeDisplay: "118 × 185 cm · 약 80호",
+              image: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Joaqu%C3%ADn_Sorolla_-_Chicos_en_la_playa.jpg/960px-Joaqu%C3%ADn_Sorolla_-_Chicos_en_la_playa.jpg" },
+
+            { id: 12, title: "La siesta",                   artist: "Joaquín Sorolla",          year: 1911,
+              category: "painting", style: "Luminism · Spanish Impressionism",
+              tags: ["impressionist","garden","light","serene","outdoor"],
+              price: 6800,  priceDisplay: "$6,800",  dateAdded: "2023-10-18",
+              sizeCategory: "30-50",    sizeDisplay: "100 × 140 cm · 약 60호",
+              image: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Joaquin_Sorolla%2C_1908_-_Beach_of_Valencia_by_Morning_Light.jpg/960px-Joaquin_Sorolla%2C_1908_-_Beach_of_Valencia_by_Morning_Light.jpg" },
+        ];
+
+        // ── State ─────────────────────────────────────────────────────────────
+        let currentCategory = 'all';
+        let currentSort     = 'newest';
+
+        // ── DOM Refs ──────────────────────────────────────────────────────────
+        const galleryGrid = document.getElementById('gallery-grid');
+
+        // ── Build one gallery card element ────────────────────────────────────
+        function createCard(artwork) {
+            const div = document.createElement('div');
+            div.className = 'group cursor-pointer';
+            div.dataset.id       = artwork.id;
+            div.dataset.category = artwork.category;
+            div.dataset.price    = artwork.price;
+            div.dataset.date     = artwork.dateAdded;
+
+            div.innerHTML = `
+                <div class="aspect-[3/4] overflow-hidden bg-gray-100 rounded-lg mb-6 relative">
+                    <img src="${artwork.image}" alt="${artwork.title}"
+                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                    <div class="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <button
+                            data-add-to-cart="${artwork.id}"
+                            data-title="${artwork.title}"
+                            data-artist="${artwork.artist}"
+                            data-price="${artwork.price}"
+                            data-price-display="${artwork.priceDisplay}"
+                            data-image="${artwork.image}"
+                            class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-space-cadet hover:bg-space-cadet hover:text-white transition-colors shadow-lg">
+                            <i class="fa-solid fa-plus text-xs pointer-events-none"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="flex justify-between items-start">
+                    <div>
+                        <p class="text-[10px] text-gray-400 font-bold uppercase tracking-widest mb-1">${artwork.style}</p>
+                        <h3 class="text-lg text-space-cadet font-medium">${artwork.title}</h3>
+                        <p class="text-xs text-gray-500 mt-1 italic">${artwork.artist}, ${artwork.year}</p>
+                        ${artwork.sizeDisplay ? `<p class="text-[10px] text-gray-400 mt-1">${artwork.sizeDisplay}</p>` : ''}
+                    </div>
+                    <p class="text-sm font-bold text-space-cadet">${artwork.priceDisplay}</p>
+                </div>`;
+
+            div.addEventListener('click', (e) => {
+                if (e.target.closest('[data-add-to-cart]')) return;
+                handleCardClick(artwork);
+            });
+            return div;
+        }
+
+        // ── Lightbox ──────────────────────────────────────────────────────────
+        const lightbox = document.getElementById('artwork-lightbox');
+        const lbImg    = document.getElementById('lightbox-img');
+
+        function openLightbox(artwork) {
+            lbImg.src = artwork.image;
+            lbImg.alt = artwork.title;
+            lightbox.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            lightbox.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        lightbox.addEventListener('click', closeLightbox);
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+        // ── Main gallery card click ───────────────────────────────────────────
+        function handleCardClick(artwork) {
+            openLightbox(artwork);
+        }
+
+        // ── Render gallery (filter + sort) ────────────────────────────────────
+        function renderGallery() {
+            let items = ARTWORKS_DB.filter(a =>
+                currentCategory === 'all' || a.sizeCategory === currentCategory
+            );
+            if      (currentSort === 'newest')     items.sort((a,b) => new Date(b.dateAdded) - new Date(a.dateAdded));
+            else if (currentSort === 'price-asc')  items.sort((a,b) => a.price - b.price);
+            else if (currentSort === 'price-desc') items.sort((a,b) => b.price - a.price);
+
+            galleryGrid.innerHTML = '';
+            items.forEach(a => galleryGrid.appendChild(createCard(a, false)));
+        }
+
+        // ── Wire up category filter buttons ───────────────────────────────────
+        document.querySelectorAll('.gallery-filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.gallery-filter-btn').forEach(b => {
+                    b.classList.remove('text-space-cadet', 'border-b', 'border-space-cadet', 'pb-1');
+                    b.classList.add('text-gray-300');
+                });
+                btn.classList.remove('text-gray-300');
+                btn.classList.add('text-space-cadet', 'border-b', 'border-space-cadet', 'pb-1');
+                currentCategory = btn.dataset.category;
+                renderGallery();
+            });
+        });
+
+        // ── Wire up sort buttons ───────────────────────────────────────────────
+        document.querySelectorAll('.sort-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.sort-btn').forEach(b => b.classList.remove('active-sort'));
+                btn.classList.add('active-sort');
+                currentSort = btn.dataset.sort;
+                renderGallery();
+            });
+        });
+
+        // ── Initial render ─────────────────────────────────────────────────────
+        renderGallery();
+    })();
+    </script>
+
+    <!-- ── AI DISCOVERY ENGINE SCRIPT ── -->
+    <script>
+    (function () {
+
+        /* ══════════════════════════════════════════════════════════════════════
+           시각 형식 7개 축 (Visual Formal Axes)
+           시대/장르가 아닌 화풍의 시각적 형식 요소로 유사도 측정
+        ══════════════════════════════════════════════════════════════════════ */
+
+        /* 축별 가중치 — 추상도 · 분위기가 화풍 유사성에 가장 중요 */
+        const AXIS_WEIGHTS = {
+            abstraction : 5,   // 추상도     : 구상 ↔ 반추상 ↔ 추상
+            mood        : 4,   // 분위기     : 고요 / 역동 / 서정 / 화려
+            colorTemp   : 3,   // 색온도     : 따뜻 / 차가움 / 중립 / 흑백
+            contrast    : 3,   // 명암 대비  : 강함 / 약함 / 평면
+            era         : 3,   // 시대·양식  : 인상주의 / 후기인상주의 / 루미니즘
+            brushwork   : 2,   // 터치·질감  : 표현적 / 매끄러움 / 질감 / 정교
+            space       : 2,   // 공간감     : 평면 / 대기감 / 깊은공간
+        };
+        const MAX_SCORE = Object.values(AXIS_WEIGHTS).reduce((a,b) => a+b, 0); // 22
+
+        /* 한국어 레이블 */
+        const AXIS_KR = {
+            abstraction:'추상도', mood:'분위기', colorTemp:'색온도',
+            contrast:'명암 대비', era:'시대·양식', brushwork:'터치·질감', space:'공간감',
+        };
+        const VALUE_KR = {
+            // abstraction
+            representational:'구상', 'semi-abstract':'반추상', abstract:'추상',
+            // mood
+            serene:'고요함', dynamic:'역동적', melancholic:'서정적', vibrant:'화려함',
+            // colorTemp
+            warm:'따뜻함', cool:'차가움', neutral:'중립', monochrome:'흑백',
+            // contrast
+            high:'강한 대비', low:'약한 대비', flat:'평면적',
+            // era
+            impressionism:'인상주의', 'post-impressionism':'후기인상주의', luminism:'루미니즘',
+            // brushwork
+            gestural:'표현적', smooth:'매끄러움', textured:'질감', precise:'정교함',
+            // space
+            'flat-space':'평면', atmospheric:'대기감', deep:'깊은 공간',
+        };
+
+        /* ══════════════════════════════════════════════════════════════════════
+           작품 데이터 — tags 대신 visualProfile (7축) 사용
+           각 작품의 이미지를 기준으로 시각 형식 요소 직접 분류
+        ══════════════════════════════════════════════════════════════════════ */
+        const DISC_DB = [
+            // ── Van Gogh ──────────────────────────────────────────────────────
+            {
+                id:1, title:"The Starry Night", artist:"Vincent van Gogh", year:1889,
+                category:"painting", style:"Post-Impressionism",
+                price:8500, priceDisplay:"$8,500", dateAdded:"2024-01-15",
+                image:"https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg/960px-Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg",
+                tags:['밤','별','밤하늘','하늘','달','마을','나무','풍경','소용돌이','우주','신비','어둠','파란','자연'],
+                desc:"밤하늘에 소용돌이치는 별빛과 달이 가득하고 어두운 마을과 사이프러스 나무가 보이는 역동적인 풍경화. 깊은 밤의 우주적 에너지와 신비로운 분위기.",
+                vp:{ abstraction:'semi-abstract', mood:'dynamic', colorTemp:'cool',
+                     contrast:'high', era:'post-impressionism', brushwork:'gestural', space:'atmospheric' }
+            },
+            {
+                id:2, title:"Self-Portrait with Straw Hat", artist:"Vincent van Gogh", year:1887,
+                category:"painting", style:"Post-Impressionism",
+                price:6200, priceDisplay:"$6,200", dateAdded:"2023-06-20",
+                image:"images/vangogh_self.jpg",
+                tags:['초상화','자화상','인물','얼굴','사람','남성','모자','한명','눈빛','표정'],
+                desc:"밀짚모자를 쓴 남성의 자화상. 강렬한 눈빛과 따뜻한 노란색 배경의 인물 초상화. 한 명의 얼굴을 클로즈업한 표현적인 그림.",
+                vp:{ abstraction:'representational', mood:'serene', colorTemp:'warm',
+                     contrast:'high', era:'post-impressionism', brushwork:'gestural', space:'flat-space' }
+            },
+            {
+                id:4, title:"Irises", artist:"Vincent van Gogh", year:1889,
+                category:"painting", style:"Post-Impressionism",
+                price:7600, priceDisplay:"$7,600", dateAdded:"2024-02-28",
+                image:"https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Irises-Vincent_van_Gogh.jpg/960px-Irises-Vincent_van_Gogh.jpg",
+                tags:['꽃','붓꽃','아이리스','정원','식물','보라','파란','자연','화사','풀'],
+                desc:"보라색과 파란색의 아이리스 붓꽃이 풍성하게 피어있는 화사한 정원. 생동감 넘치는 꽃과 식물 그림.",
+                vp:{ abstraction:'representational', mood:'vibrant', colorTemp:'cool',
+                     contrast:'high', era:'post-impressionism', brushwork:'gestural', space:'flat-space' }
+            },
+            {
+                id:11, title:"Bedroom in Arles", artist:"Vincent van Gogh", year:1888,
+                category:"painting", style:"Post-Impressionism",
+                price:9100, priceDisplay:"$9,100", dateAdded:"2023-12-01",
+                image:"images/vangogh_bedroom.jpg",
+                tags:['실내','방','침실','건물','가구','침대','의자','테이블','창문','인테리어','노란'],
+                desc:"노란 벽과 침대, 의자, 테이블이 있는 침실 실내 풍경. 정돈된 방 내부와 창문이 보이는 건물 인테리어 그림.",
+                vp:{ abstraction:'representational', mood:'serene', colorTemp:'warm',
+                     contrast:'low', era:'post-impressionism', brushwork:'gestural', space:'deep' }
+            },
+            // ── Monet ─────────────────────────────────────────────────────────
+            {
+                id:3, title:"Water Lilies", artist:"Claude Monet", year:1906,
+                category:"painting", style:"Impressionism",
+                price:9200, priceDisplay:"$9,200", dateAdded:"2024-03-10",
+                image:"images/water_lilies.jpg",
+                tags:['물','연못','수련','정원','꽃','자연','반사','풍경','녹색','고요','평화','풀'],
+                desc:"잔잔한 연못 위에 수련이 떠있는 지베르니 정원 풍경. 물에 반사된 녹색과 파란색의 고요하고 평화로운 자연.",
+                vp:{ abstraction:'representational', mood:'serene', colorTemp:'cool',
+                     contrast:'low', era:'impressionism', brushwork:'gestural', space:'flat-space' }
+            },
+            {
+                id:6, title:"Impression, Sunrise", artist:"Claude Monet", year:1872,
+                category:"painting", style:"Impressionism",
+                price:11000, priceDisplay:"$11,000", dateAdded:"2024-04-02",
+                image:"https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Monet_-_Impression%2C_Sunrise.jpg/960px-Monet_-_Impression%2C_Sunrise.jpg",
+                tags:['바다','물','항구','배','일출','아침','안개','하늘','빛','풍경','새벽','오렌지','반사'],
+                desc:"새벽 안개 낀 항구에 배들이 있고 오렌지빛 일출이 바다 위에 반짝이는 몽환적인 아침 풍경. 빛이 물에 반사되는 바닷가.",
+                vp:{ abstraction:'semi-abstract', mood:'serene', colorTemp:'warm',
+                     contrast:'low', era:'impressionism', brushwork:'gestural', space:'atmospheric' }
+            },
+            {
+                id:9, title:"Haystacks (End of Summer)", artist:"Claude Monet", year:1891,
+                category:"painting", style:"Impressionism",
+                price:12800, priceDisplay:"$12,800", dateAdded:"2024-02-15",
+                image:"https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Claude_Monet_-_Stacks_of_Wheat_%28End_of_Summer%29_-_1985.1103_-_Art_Institute_of_Chicago.jpg/960px-Claude_Monet_-_Stacks_of_Wheat_%28End_of_Summer%29_-_1985.1103_-_Art_Institute_of_Chicago.jpg",
+                tags:['들판','풍경','가을','농촌','시골','자연','하늘','황금','건초','노란','넓은','고요'],
+                desc:"가을 황금빛 들판에 건초더미가 놓인 농촌 시골 풍경. 따뜻하고 넓은 자연 속 고요한 풍경화.",
+                vp:{ abstraction:'representational', mood:'serene', colorTemp:'warm',
+                     contrast:'low', era:'impressionism', brushwork:'gestural', space:'atmospheric' }
+            },
+            // ── Renoir ────────────────────────────────────────────────────────
+            {
+                id:7, title:"Dance at Moulin de la Galette", artist:"Pierre-Auguste Renoir", year:1876,
+                category:"painting", style:"Impressionism",
+                price:14500, priceDisplay:"$14,500", dateAdded:"2023-11-14",
+                image:"https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Renoir%2C_Pierre-Auguste_-_Dance_at_Le_Moulin_de_la_Galette%2C_1876.jpg/960px-Renoir%2C_Pierre-Auguste_-_Dance_at_Le_Moulin_de_la_Galette%2C_1876.jpg",
+                tags:['사람','인물','군중','단체','여럿','춤','파티','축제','야외','남성','여성','빛','활기'],
+                desc:"야외 공원에서 많은 사람들이 춤추고 파티를 즐기는 활기찬 축제 장면. 군중 속 남성과 여성 인물들이 빛 속에 어우러진 그림.",
+                vp:{ abstraction:'representational', mood:'vibrant', colorTemp:'warm',
+                     contrast:'low', era:'impressionism', brushwork:'gestural', space:'atmospheric' }
+            },
+            {
+                id:10, title:"Luncheon of the Boating Party", artist:"Pierre-Auguste Renoir", year:1881,
+                category:"painting", style:"Impressionism",
+                price:16000, priceDisplay:"$16,000", dateAdded:"2023-08-20",
+                image:"https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Pierre-Auguste_Renoir_-_Luncheon_of_the_Boating_Party_-_Google_Art_Project.jpg/960px-Pierre-Auguste_Renoir_-_Luncheon_of_the_Boating_Party_-_Google_Art_Project.jpg",
+                tags:['사람','인물','군중','단체','여럿','식사','파티','야외','강','물','여름','남성','여성','대화'],
+                desc:"강가 테라스에서 여러 사람들이 식사와 대화를 나누는 즐거운 여름 파티 장면. 많은 인물들이 야외에서 어우러진 그림.",
+                vp:{ abstraction:'representational', mood:'vibrant', colorTemp:'warm',
+                     contrast:'low', era:'impressionism', brushwork:'gestural', space:'atmospheric' }
+            },
+            {
+                id:13, title:"Two Sisters (On the Terrace)", artist:"Pierre-Auguste Renoir", year:1881,
+                category:"painting", style:"Impressionism",
+                price:15800, priceDisplay:"$15,800", dateAdded:"2024-03-22",
+                image:"images/renoir_sisters.jpg",
+                tags:['인물','초상화','여성','두명','자매','꽃','야외','봄','사람','온화'],
+                desc:"야외 테라스에서 두 명의 여성이 앉아있는 봄날 초상화. 꽃과 따뜻한 배경 속 부드럽고 온화한 인물화.",
+                vp:{ abstraction:'representational', mood:'serene', colorTemp:'warm',
+                     contrast:'low', era:'impressionism', brushwork:'gestural', space:'atmospheric' }
+            },
+            // ── Sorolla ───────────────────────────────────────────────────────
+            {
+                id:5, title:"Strolling on the Beach", artist:"Joaquín Sorolla", year:1909,
+                category:"painting", style:"Luminism · Spanish Impressionism",
+                price:8400, priceDisplay:"$8,400", dateAdded:"2023-09-05",
+                image:"https://upload.wikimedia.org/wikipedia/commons/1/16/Joaquin_Sorolla_Walk_on_the_Beach.jpg",
+                tags:['바다','물','해변','인물','사람','여성','두명','산책','파도','빛','여름','지중해','해수욕'],
+                desc:"햇살 가득한 해변을 산책하는 두 명의 여성 인물. 밝고 눈부신 지중해 빛과 파도가 있는 바닷가 풍경.",
+                vp:{ abstraction:'representational', mood:'vibrant', colorTemp:'warm',
+                     contrast:'high', era:'luminism', brushwork:'gestural', space:'atmospheric' }
+            },
+            {
+                id:8, title:"Children on the Beach", artist:"Joaquín Sorolla", year:1910,
+                category:"painting", style:"Luminism · Spanish Impressionism",
+                price:7200, priceDisplay:"$7,200", dateAdded:"2024-01-30",
+                image:"https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Joaqu%C3%ADn_Sorolla_-_Chicos_en_la_playa.jpg/960px-Joaqu%C3%ADn_Sorolla_-_Chicos_en_la_playa.jpg",
+                tags:['바다','물','해변','아이','어린이','아동','인물','사람','파도','모래','여름','빛','뛰어놀기'],
+                desc:"모래 해변에서 뛰어노는 어린 아이들의 천진난만한 모습. 여름 햇살과 파도가 있는 밝고 생동감 넘치는 바닷가.",
+                vp:{ abstraction:'representational', mood:'vibrant', colorTemp:'warm',
+                     contrast:'high', era:'luminism', brushwork:'gestural', space:'atmospheric' }
+            },
+            {
+                id:12, title:"La siesta", artist:"Joaquín Sorolla", year:1911,
+                category:"painting", style:"Luminism · Spanish Impressionism",
+                price:6800, priceDisplay:"$6,800", dateAdded:"2023-10-18",
+                image:"https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Joaquin_Sorolla%2C_1908_-_Beach_of_Valencia_by_Morning_Light.jpg/960px-Joaquin_Sorolla%2C_1908_-_Beach_of_Valencia_by_Morning_Light.jpg",
+                tags:['바다','물','해변','빛','아침','풍경','여름','하늘','넓은','고요'],
+                desc:"아침 햇살이 눈부시게 반짝이는 발렌시아 해변. 넓은 바다와 빛이 가득한 여름 바닷가 풍경화.",
+                vp:{ abstraction:'representational', mood:'serene', colorTemp:'warm',
+                     contrast:'low', era:'luminism', brushwork:'gestural', space:'atmospheric' }
+            },
+        ];
+
+        /* ══════════════════════════════════════════════════════════════════════
+           화풍 유사도 알고리즘
+           - 7개 시각 축 각각 비교 → 일치 시 해당 축의 가중치 점수 부여
+           - 최대 21점, 정규화하여 % 로 표시
+        ══════════════════════════════════════════════════════════════════════ */
+        function visualScore(base, candidate) {
+            if (base.id === candidate.id) return { total: -1, matched: [] };
+            let total = 0;
+            const matched = [];
+            for (const axis of Object.keys(AXIS_WEIGHTS)) {
+                if (base.vp[axis] === candidate.vp[axis]) {
+                    total += AXIS_WEIGHTS[axis];
+                    matched.push(axis);
+                }
+            }
+            return { total, matched };
+        }
+
+        function getRecs(artwork, n = 4) {
+            return DISC_DB
+                .map(a => {
+                    const { total, matched } = visualScore(artwork, a);
+                    return { ...a, _score: total, _matched: matched };
+                })
+                .filter(a => a._score > 0)
+                .sort((a, b) => b._score - a._score)
+                .slice(0, n);
+        }
+
+        /* ══════════════════════════════════════════════════════════════════════
+           State & DOM
+        ══════════════════════════════════════════════════════════════════════ */
+        let seedArtwork = DISC_DB[0];
+        let isAnimating = false;
+
+        const featuredEl = document.getElementById('disc-featured');
+        const recGridEl  = document.getElementById('disc-rec-grid');
+        const tagsEl     = document.getElementById('disc-tags');
+        const pulseDot   = document.getElementById('disc-pulse-dot');
+        const statusText = document.getElementById('disc-status-text');
+
+        /* ══════════════════════════════════════════════════════════════════════
+           Render: Featured Card
+           — 시각 프로파일 7축 chip 표시
+        ══════════════════════════════════════════════════════════════════════ */
+        function renderFeatured(artwork) {
+            const vpChips = Object.entries(artwork.vp).map(([axis, val]) =>
+                `<span style="
+                    display:inline-flex; align-items:center; gap:4px;
+                    padding:3px 10px; border-radius:100px; font-size:9px;
+                    font-weight:700; letter-spacing:0.1em; text-transform:uppercase;
+                    border:1px solid rgba(255,255,255,0.15);
+                    color:rgba(255,255,255,0.50);
+                    background:rgba(255,255,255,0.05);
+                    font-family:'Noto Sans KR',sans-serif;">
+                    <span style="color:rgba(255,255,255,0.28)">${AXIS_KR[axis]}</span>
+                    &nbsp;${VALUE_KR[val] || val}
+                </span>`
+            ).join('');
+
+            featuredEl.innerHTML = `
+                <div class="disc-featured-wrap disc-anim-featured">
+                    <img src="${artwork.image}" alt="${artwork.title}" class="disc-featured-img">
+                    <div class="disc-featured-overlay"></div>
+                    <div class="disc-featured-info">
+                        <p class="text-[9px] font-bold uppercase tracking-[0.25em] mb-2"
+                           style="color:rgba(255,255,255,0.40); font-family:'Noto Sans KR',sans-serif">
+                            ${artwork.style}
+                        </p>
+                        <h3 class="text-2xl font-light italic text-white mb-1"
+                            style="font-family:'Playfair Display',serif; line-height:1.2">
+                            ${artwork.title}
+                        </h3>
+                        <p class="text-xs mb-4" style="color:rgba(255,255,255,0.50); font-family:'Noto Sans KR',sans-serif">
+                            ${artwork.artist} &nbsp;·&nbsp; ${artwork.year}
+                        </p>
+                        <div class="flex flex-wrap gap-1.5 mb-4">${vpChips}</div>
+                        <div class="flex items-center justify-between pt-3"
+                             style="border-top:1px solid rgba(255,255,255,0.10)">
+                            <span class="text-sm font-bold text-white"
+                                  style="font-family:'Playfair Display',serif">
+                                ${artwork.priceDisplay}
+                            </span>
+                            <span class="text-[9px] font-bold uppercase tracking-widest px-3 py-1 rounded-full"
+                                  style="border:1px solid rgba(255,255,255,0.15); color:rgba(255,255,255,0.40);
+                                         font-family:'Noto Sans KR',sans-serif">
+                                ${artwork.category}
+                            </span>
+                        </div>
+                    </div>
+                </div>`;
+        }
+
+        /* ══════════════════════════════════════════════════════════════════════
+           Render: Recommendation Cards
+           — 일치 축 이름 + 유사도 % 표시
+        ══════════════════════════════════════════════════════════════════════ */
+        function renderRecs(recs) {
+            recGridEl.innerHTML = '';
+            recs.forEach((artwork, i) => {
+                const pct = Math.round(artwork._score / MAX_SCORE * 100);
+                const matchLabels = artwork._matched
+                    .map(ax => VALUE_KR[artwork.vp[ax]] || artwork.vp[ax])
+                    .slice(0, 3)
+                    .join(' · ');
+
+                const card = document.createElement('div');
+                card.className = 'disc-rec-card disc-anim-card';
+                card.style.animationDelay = `${i * 0.08}s`;
+                card.innerHTML = `
+                    <div style="overflow:hidden; position:relative;">
+                        <img src="${artwork.image}" alt="${artwork.title}" class="disc-rec-img">
+                        <div style="
+                            position:absolute; top:10px; right:10px;
+                            background:rgba(13,20,44,0.75); backdrop-filter:blur(6px);
+                            border:1px solid rgba(99,160,255,0.25); border-radius:100px;
+                            padding:3px 10px; display:flex; align-items:center; gap:5px;">
+                            <span style="
+                                width:5px; height:5px; border-radius:50%;
+                                background:#63a0f8; display:inline-block; flex-shrink:0;"></span>
+                            <span style="
+                                font-size:9px; font-weight:700; color:rgba(150,200,255,0.85);
+                                letter-spacing:0.08em; font-family:'Noto Sans KR',sans-serif;">
+                                ${pct}% 일치
+                            </span>
+                        </div>
+                    </div>
+                    <div class="disc-rec-info">
+                        <h4 class="text-sm font-light italic text-white mb-0.5 leading-snug"
+                            style="font-family:'Playfair Display',serif">
+                            ${artwork.title}
+                        </h4>
+                        <p class="text-[11px] mb-2"
+                           style="color:rgba(255,255,255,0.42); font-family:'Noto Sans KR',sans-serif">
+                            ${artwork.artist}
+                        </p>
+                        <p class="text-[9px] mb-3"
+                           style="color:rgba(99,160,255,0.65); font-family:'Noto Sans KR',sans-serif;
+                                  letter-spacing:0.04em;">
+                            ${matchLabels}
+                        </p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold text-white"
+                                  style="font-family:'Noto Sans KR',sans-serif">
+                                ${artwork.priceDisplay}
+                            </span>
+                            <div style="width:${pct}%; height:2px; background:rgba(99,160,255,0.45);
+                                        border-radius:1px; max-width:60px; min-width:8px;"></div>
+                        </div>
+                    </div>`;
+                card.addEventListener('click', () => {
+                    if (isAnimating) return;
+                    handleSelect(artwork);
+                });
+                recGridEl.appendChild(card);
+            });
+        }
+
+        /* ══════════════════════════════════════════════════════════════════════
+           Render: 상태바 — 시드 작품의 7축 프로파일 chip
+           일치 축은 파란 강조, 불일치 축은 dim 처리
+        ══════════════════════════════════════════════════════════════════════ */
+        function renderAxisBar(seed, recs) {
+            // 상위 추천작들이 공유하는 축 집계
+            const matchCount = {};
+            Object.keys(AXIS_WEIGHTS).forEach(ax => { matchCount[ax] = 0; });
+            recs.forEach(r => {
+                (r._matched || []).forEach(ax => { matchCount[ax]++; });
+            });
+
+            tagsEl.innerHTML = Object.keys(AXIS_WEIGHTS).map(axis => {
+                const isMatched = matchCount[axis] > 0;
+                return `<span class="disc-tag${isMatched ? ' matched' : ''}"
+                              title="${AXIS_KR[axis]}">
+                    <span style="opacity:0.5; margin-right:3px">${AXIS_KR[axis]}</span>
+                    ${VALUE_KR[seed.vp[axis]] || seed.vp[axis]}
+                </span>`;
+            }).join('');
+        }
+
+        /* ══════════════════════════════════════════════════════════════════════
+           Selection handler
+        ══════════════════════════════════════════════════════════════════════ */
+        function handleSelect(artwork) {
+            if (isAnimating) return;
+            isAnimating = true;
+            pulseDot.classList.add('scanning');
+            statusText.textContent = '화풍 분석 중…';
+
+            setTimeout(() => {
+                seedArtwork = artwork;
+                const recs  = getRecs(artwork, 4);
+                renderFeatured(artwork);
+                renderRecs(recs);
+                renderAxisBar(artwork, recs);
+
+                const topPct = recs[0] ? Math.round(recs[0]._score / MAX_SCORE * 100) : 0;
+                pulseDot.classList.remove('scanning');
+                statusText.textContent =
+                    `"${artwork.title}" 기준 · 최고 유사도 ${topPct}%`;
+                isAnimating = false;
+            }, 340);
+        }
+
+        /* ── Search ──────────────────────────────────────────────────────────── */
+        const searchInput   = document.getElementById('disc-search-input');
+        const searchClear   = document.getElementById('disc-search-clear');
+        const searchResults = document.getElementById('disc-search-results');
+        const searchGrid    = document.getElementById('disc-search-grid');
+        const noResults     = document.getElementById('disc-no-results');
+        const mainLayout    = document.getElementById('disc-main-layout');
+
+        /* ── 작가 한글명 → 영문 매핑 ───────────────────────────────────────── */
+        const KO_ARTIST = {
+            '반고흐': 'van gogh', '고흐': 'van gogh', '빈센트': 'van gogh',
+            '모네': 'monet', '클로드모네': 'monet',
+            '르누아르': 'renoir', '레노아르': 'renoir',
+            '소로야': 'sorolla', '호아킨': 'sorolla',
+        };
+
+        /* ── 동의어 확장 맵 ──────────────────────────────────────────────────── */
+        const SYNONYMS = {
+            '물':   ['물','바다','연못','강','항구','파도','해변','수련','호수','반사'],
+            '바다': ['바다','해변','파도','항구','물','해수욕','지중해','바닷가'],
+            '사람': ['사람','인물','초상화','군중','단체','남성','여성','아이','두명','한명','여럿','자화상','자매'],
+            '인물': ['인물','사람','초상화','군중','남성','여성','아이','두명','한명'],
+            '꽃':   ['꽃','붓꽃','아이리스','정원','식물','수련'],
+            '자연': ['자연','풍경','정원','들판','나무','꽃','식물','풀'],
+            '풍경': ['풍경','자연','들판','하늘','마을','시골','농촌','해변','바다'],
+            '밤':   ['밤','밤하늘','별','달','어둠','신비'],
+            '하늘': ['하늘','밤하늘','별','구름','안개'],
+            '실내': ['실내','방','침실','건물','인테리어','가구'],
+            '건물': ['건물','실내','방','창문','인테리어'],
+            '아이': ['아이','어린이','아동','어린'],
+            '어린이':['어린이','아이','아동'],
+            '단체': ['단체','군중','여럿','사람','인물'],
+            '두명': ['두명','자매','둘','두 명'],
+            '한명': ['한명','초상화','자화상','한 명'],
+            '초상화':['초상화','자화상','인물','얼굴','한명'],
+            '파티': ['파티','축제','춤','단체','군중'],
+            '춤':   ['춤','파티','축제','군중'],
+            '여름': ['여름','바다','해변','빛','야외'],
+            '가을': ['가을','들판','황금','농촌'],
+            '빛':   ['빛','일출','아침','반사','햇살'],
+            '야외': ['야외','공원','해변','들판','자연'],
+        };
+
+        function renderSearchResults(matched) {
+            searchGrid.innerHTML = '';
+            noResults.style.display = matched.length ? 'none' : 'block';
+            matched.forEach((artwork, i) => {
+                const card = document.createElement('div');
+                card.style.cssText = `cursor:pointer; border-radius:12px; overflow:hidden;
+                    background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08);
+                    transition:transform 0.25s, border-color 0.25s;
+                    animation:fadeSlideUp 0.3s ${i*0.06}s both;`;
+                const scoreBadge = '';
+                card.innerHTML = `
+                    <div style="aspect-ratio:4/3; overflow:hidden; position:relative;">
+                        <img src="${artwork.image}" alt="${artwork.title}"
+                             style="width:100%; height:100%; object-fit:cover; display:block;
+                                    transition:transform 0.5s;">
+                        ${scoreBadge}
+                    </div>
+                    <div style="padding:12px 14px;">
+                        <p style="font-size:9px; font-weight:700; letter-spacing:0.2em; text-transform:uppercase;
+                                  color:rgba(255,255,255,0.28); margin-bottom:4px;
+                                  font-family:'Noto Sans KR',sans-serif;">${artwork.style}</p>
+                        <h4 style="font-size:13px; font-weight:300; color:#fff; font-style:italic; margin-bottom:2px;
+                                   font-family:'Playfair Display',serif; line-height:1.3;">${artwork.title}</h4>
+                        <p style="font-size:11px; color:rgba(255,255,255,0.4); margin-bottom:8px;
+                                  font-family:'Noto Sans KR',sans-serif;">${artwork.artist}</p>
+                        <p style="font-size:12px; font-weight:700; color:#fff;
+                                  font-family:'Noto Sans KR',sans-serif;">${artwork.priceDisplay}</p>
+                    </div>`;
+                card.addEventListener('mouseenter', () => { card.style.transform='translateY(-4px)'; card.style.borderColor='rgba(255,255,255,0.2)'; });
+                card.addEventListener('mouseleave', () => { card.style.transform=''; card.style.borderColor='rgba(255,255,255,0.08)'; });
+                card.addEventListener('click', () => {
+                    searchInput.value = '';
+                    runSearch('');
+                    handleSelect(artwork);
+                    document.getElementById('ai-discovery').scrollIntoView({ behavior:'smooth', block:'start' });
+                });
+                searchGrid.appendChild(card);
+            });
+        }
+
+        function runSearch(query) {
+            query = query.trim();
+            searchClear.style.display = query ? 'block' : 'none';
+            if (!query) {
+                searchResults.style.display = 'none';
+                mainLayout.style.display    = '';
+                return;
+            }
+            mainLayout.style.display    = 'none';
+            searchResults.style.display = 'block';
+
+            const q = query.toLowerCase();
+            /* 입력 토큰 생성 (공백 제거 버전도 포함: "반 고흐" → ["반고흐","반","고흐"]) */
+            const rawTokens = [q.replace(/\s+/g,''), ...q.split(/[\s,]+/)].filter((t,i,a) => t.length > 0 && a.indexOf(t)===i);
+
+            /* 각 토큰을 동의어로 확장 */
+            const expandedSets = rawTokens.map(t => {
+                const mapped = KO_ARTIST[t];          // 작가 한글명 → 영문
+                const syns   = SYNONYMS[t] || [];     // 동의어 확장
+                return new Set([t, ...(mapped ? [mapped] : []), ...syns]);
+            });
+
+            const scored = DISC_DB.map(a => {
+                const artistLo = a.artist.toLowerCase();
+                const titleLo  = a.title.toLowerCase();
+                const tags     = a.tags || [];
+                let score = 0;
+
+                for (const termSet of expandedSets) {
+                    let hit = 0;
+                    for (const term of termSet) {
+                        if (artistLo.includes(term))           { hit = Math.max(hit, 5); break; }
+                        if (titleLo.includes(term))            { hit = Math.max(hit, 4); }
+                        if (tags.includes(term))               { hit = Math.max(hit, 3); }
+                        if (a.style.toLowerCase().includes(term)) { hit = Math.max(hit, 2); }
+                        if (a.desc.includes(term))             { hit = Math.max(hit, 1); }
+                    }
+                    score += hit;
+                }
+                return { ...a, _s: score };
+            })
+            .filter(a => a._s > 0)
+            .sort((a, b) => b._s - a._s);
+
+            renderSearchResults(scored);
+        }
+
+        searchInput.addEventListener('input', e => runSearch(e.target.value));
+        searchClear.addEventListener('click', () => { searchInput.value = ''; runSearch(''); searchInput.focus(); });
+
+        /* ── Initial render ──────────────────────────────────────────────────── */
+        (function init() {
+            const recs = getRecs(seedArtwork, 4);
+            renderFeatured(seedArtwork);
+            renderRecs(recs);
+            renderAxisBar(seedArtwork, recs);
+            const topPct = recs[0] ? Math.round(recs[0]._score / MAX_SCORE * 100) : 0;
+            statusText.textContent =
+                `"${seedArtwork.title}" 기준 · 최고 유사도 ${topPct}%`;
+        })();
+
+    })();
+    </script>
+
+    <script>
+        // Artist Section Horizontal Scroll Logic
+        const artistSection = document.getElementById('artist-horizontal');
+        const scrollContent = document.getElementById('scroll-content');
+        const progressBar = document.getElementById('progress-bar');
+
+        const updateArtistScroll = () => {
+            const scrollTop = window.scrollY;
+            const sectionOffset = artistSection.offsetTop;
+            const sectionHeight = artistSection.offsetHeight;
+            const windowHeight = window.innerHeight;
+
+            if (scrollTop >= sectionOffset && scrollTop <= sectionOffset + sectionHeight - windowHeight) {
+                const scrollFraction = (scrollTop - sectionOffset) / (sectionHeight - windowHeight);
+                // 가로 스크롤 범위 계산 (전체 너비에서 화면 너비를 뺀 값 + 여유공간)
+                const maxMove = scrollContent.scrollWidth - window.innerWidth + (window.innerWidth * 0.1);
+                const moveX = scrollFraction * maxMove;
+                
+                scrollContent.style.transform = `translateX(-${moveX}px)`;
+                progressBar.style.width = `${scrollFraction * 100}%`;
+            } else if (scrollTop < sectionOffset) {
+                scrollContent.style.transform = `translateX(0px)`;
+                progressBar.style.width = '0%';
+            } else if (scrollTop > sectionOffset + sectionHeight - windowHeight) {
+                const maxMove = scrollContent.scrollWidth - window.innerWidth + (window.innerWidth * 0.1);
+                scrollContent.style.transform = `translateX(-${maxMove}px)`;
+                progressBar.style.width = '100%';
+            }
+        };
+
+        window.addEventListener('scroll', updateArtistScroll);
+        window.addEventListener('resize', updateArtistScroll);
+
+        // Header effect on scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.classList.remove('bg-white/40');
+                nav.classList.add('bg-white/90', 'shadow-sm');
+            } else {
+                nav.classList.add('bg-white/40');
+                nav.classList.remove('bg-white/90', 'shadow-sm');
+            }
+        });
+    </script>
+
+    <script>
+        /* ── Cart ────────────────────────────────────────────────── */
+        let cart = [];
+
+        const cartBtn      = document.getElementById('cart-btn');
+        const cartSidebar  = document.getElementById('cart-sidebar');
+        const cartOverlay  = document.getElementById('cart-overlay');
+        const cartClose    = document.getElementById('cart-close');
+        const cartItemsEl  = document.getElementById('cart-items');
+        const cartEmptyEl  = document.getElementById('cart-empty');
+        const cartFooterEl = document.getElementById('cart-footer');
+        const cartCountEl  = document.getElementById('cart-count');
+        const cartTotalEl  = document.getElementById('cart-total');
+        const cartClearBtn = document.getElementById('cart-clear');
+
+        function openCart() {
+            cartSidebar.style.transform = 'translateX(0)';
+            cartOverlay.classList.remove('hidden');
+            setTimeout(() => cartOverlay.style.opacity = '1', 10);
+        }
+        function closeCart() {
+            cartSidebar.style.transform = 'translateX(100%)';
+            cartOverlay.style.opacity = '0';
+            setTimeout(() => cartOverlay.classList.add('hidden'), 300);
+        }
+
+        cartBtn.addEventListener('click', openCart);
+        cartClose.addEventListener('click', closeCart);
+        cartOverlay.addEventListener('click', closeCart);
+
+        function updateCart() {
+            cartCountEl.textContent = cart.length;
+            if (!cart.length) {
+                cartItemsEl.innerHTML = '';
+                cartEmptyEl.classList.remove('hidden');
+                cartFooterEl.classList.add('hidden');
+                return;
+            }
+            cartEmptyEl.classList.add('hidden');
+            cartFooterEl.classList.remove('hidden');
+
+            const total = cart.reduce((s, a) => s + a.price, 0);
+            cartTotalEl.textContent = '$' + total.toLocaleString();
+
+            cartItemsEl.innerHTML = cart.map((a, i) => `
+                <div class="flex gap-3 items-start py-3 border-b border-gray-50 last:border-0">
+                    <div class="w-16 h-16 rounded-lg overflow-hidden bg-gray-100 flex-shrink-0">
+                        <img src="${a.image}" class="w-full h-full object-cover">
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <p class="text-xs font-medium text-space-cadet leading-snug">${a.title}</p>
+                        <p class="text-[10px] text-gray-400 italic mt-0.5">${a.artist}</p>
+                        <p class="text-xs font-bold text-space-cadet mt-1">${a.priceDisplay}</p>
+                    </div>
+                    <button data-remove="${i}" class="text-gray-300 hover:text-gray-500 transition-colors flex-shrink-0 mt-0.5">
+                        <i class="fa-solid fa-xmark text-xs"></i>
+                    </button>
+                </div>
+            `).join('');
+
+            cartItemsEl.querySelectorAll('[data-remove]').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    cart.splice(+btn.dataset.remove, 1);
+                    updateCart();
+                });
+            });
+        }
+
+        function addToCart(artwork) {
+            if (cart.find(a => a.id === artwork.id)) return; // 중복 방지
+            cart.push(artwork);
+            updateCart();
+            openCart();
+        }
+
+        if (cartClearBtn) cartClearBtn.addEventListener('click', () => { cart = []; updateCart(); });
+
+        /* ── Checkout Modal ──────────────────────────────────────── */
+        const checkoutOverlay = document.getElementById('checkout-overlay');
+        const checkoutModal   = document.getElementById('checkout-modal');
+        const checkoutClose   = document.getElementById('checkout-close');
+        const checkoutBtn     = document.getElementById('checkout-btn');
+        const checkoutAmount  = document.getElementById('checkout-amount');
+        const copyAccountBtn  = document.getElementById('copy-account');
+        const confirmBtn      = document.getElementById('confirm-btn');
+
+        function openCheckout() {
+            checkoutAmount.textContent = cartTotalEl.textContent;
+            checkoutOverlay.classList.remove('hidden');
+            checkoutOverlay.classList.add('flex');
+            setTimeout(() => {
+                checkoutModal.style.transform = 'scale(1)';
+                checkoutModal.style.opacity = '1';
+            }, 10);
+        }
+
+        function closeCheckout() {
+            checkoutModal.style.transform = 'scale(0.95)';
+            checkoutModal.style.opacity = '0';
+            setTimeout(() => {
+                checkoutOverlay.classList.add('hidden');
+                checkoutOverlay.classList.remove('flex');
+            }, 300);
+        }
+
+        if (checkoutBtn) checkoutBtn.addEventListener('click', openCheckout);
+        if (checkoutClose) checkoutClose.addEventListener('click', closeCheckout);
+        checkoutOverlay.addEventListener('click', e => { if (e.target === checkoutOverlay) closeCheckout(); });
+
+        if (copyAccountBtn) {
+            copyAccountBtn.addEventListener('click', () => {
+                navigator.clipboard.writeText('110-421-836749').then(() => {
+                    copyAccountBtn.textContent = '복사됨!';
+                    setTimeout(() => { copyAccountBtn.textContent = '복사'; }, 2000);
+                });
+            });
+        }
+
+        if (confirmBtn) {
+            confirmBtn.addEventListener('click', () => {
+                const name    = document.getElementById('buyer-name').value.trim();
+                const contact = document.getElementById('buyer-contact').value.trim();
+                if (!name || !contact) {
+                    document.getElementById('buyer-name').style.borderColor    = name    ? '' : '#ef4444';
+                    document.getElementById('buyer-contact').style.borderColor = contact ? '' : '#ef4444';
+                    return;
+                }
+                confirmBtn.textContent = '신청 완료 ✓';
+                confirmBtn.style.background = '#16a34a';
+                setTimeout(() => {
+                    closeCheckout();
+                    cart = [];
+                    updateCart();
+                    confirmBtn.textContent = '입금 완료 · 구매 신청';
+                    confirmBtn.style.background = '';
+                    document.getElementById('buyer-name').value    = '';
+                    document.getElementById('buyer-contact').value = '';
+                    document.getElementById('buyer-space').value   = '';
+                }, 1800);
+            });
+        }
+
+        // 갤러리 카드의 + 버튼을 cart에 연결
+        document.addEventListener('click', e => {
+            const plusBtn = e.target.closest('[data-add-to-cart]');
+            if (plusBtn) {
+                e.stopPropagation();
+                const artwork = {
+                    id:           +plusBtn.dataset.addToCart,
+                    title:        plusBtn.dataset.title,
+                    artist:       plusBtn.dataset.artist,
+                    price:        +plusBtn.dataset.price,
+                    priceDisplay: plusBtn.dataset.priceDisplay,
+                    image:        plusBtn.dataset.image,
+                };
+                addToCart(artwork);
+            }
+        });
+
+        updateCart();
+    </script>
+
+    <script>
+        const searchBtn   = document.getElementById('search-btn');
+        const searchBar   = document.getElementById('search-bar');
+        const searchInput = document.getElementById('search-input');
+        let searchOpen = false;
+
+        const searchDropdown = document.createElement('div');
+        searchDropdown.id = 'search-dropdown';
+        searchDropdown.style.cssText = `
+            position:fixed; top:64px; right:4rem;
+            width:280px; max-height:360px; overflow-y:auto;
+            background:rgba(255,255,255,0.95); backdrop-filter:blur(12px);
+            border:1px solid #eee; border-radius:12px;
+            box-shadow:0 8px 32px rgba(0,0,0,0.08);
+            display:none; z-index:9999;
+            font-family:'Noto Sans KR',sans-serif;
+        `;
+        document.body.appendChild(searchDropdown);
+
+        function buildIndex() {
+            const index = [];
+            const selectors = [
+                { sel: '#gallery h3',              section: '#gallery',           label: 'Gallery' },
+                { sel: '#gallery .text-xs.italic', section: '#gallery',           label: 'Gallery' },
+                { sel: '#artist-horizontal h3',    section: '#artist-horizontal', label: 'Artist' },
+                { sel: '#artist-horizontal p.text-xs', section: '#artist-horizontal', label: 'Artist' },
+                { sel: '#exhibition h3',           section: '#exhibition',        label: 'Exhibition' },
+                { sel: '#story h2, #story p',      section: '#story',             label: 'Story' },
+                { sel: '#magazine h3',             section: '#magazine',          label: 'Magazine' },
+            ];
+            selectors.forEach(({ sel, section, label }) => {
+                document.querySelectorAll(sel).forEach(el => {
+                    const text = el.textContent.trim();
+                    if (text.length < 2) return;
+                    const target = el.closest('[id]') || document.querySelector(section);
+                    index.push({ text, label, el, target });
+                });
+            });
+            if (typeof ARTWORKS_DB !== 'undefined') {
+                ARTWORKS_DB.forEach(a => {
+                    index.push({ text: a.title,  label: 'Artwork', el: null, sectionId: '#gallery', meta: a.artist });
+                    index.push({ text: a.artist, label: 'Artwork', el: null, sectionId: '#gallery', meta: a.title });
+                });
+            }
+            return index;
+        }
+
+        let INDEX = [];
+        window.addEventListener('load', () => { INDEX = buildIndex(); });
+
+        function runSearch(q) {
+            if (!q) { searchDropdown.style.display = 'none'; return; }
+            const kw = q.toLowerCase();
+            const hits = INDEX.filter(item => item.text.toLowerCase().includes(kw)).slice(0, 8);
+            if (!hits.length) {
+                searchDropdown.innerHTML = `<div style="padding:1rem 1.2rem;font-size:11px;color:#aaa;">결과 없음</div>`;
+                searchDropdown.style.display = 'block';
+                return;
+            }
+            searchDropdown.innerHTML = hits.map((h, i) => {
+                const highlighted = h.text.replace(
+                    new RegExp(`(${q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')})`, 'gi'),
+                    '<mark style="background:#1D2951;color:#fff;border-radius:2px;padding:0 2px">$1</mark>'
+                );
+                const meta = h.meta ? `<span style="color:#bbb;margin-left:6px">${h.meta}</span>` : '';
+                return `<div data-idx="${i}" style="
+                    padding:0.75rem 1.2rem; cursor:pointer; border-bottom:1px solid #f5f5f5;
+                    display:flex; justify-content:space-between; align-items:center; transition:background .15s;
+                " onmouseover="this.style.background='#f9f9f9'" onmouseout="this.style.background='transparent'">
+                    <span style="font-size:12px;color:#1D2951">${highlighted}${meta}</span>
+                    <span style="font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#ccc;margin-left:8px;flex-shrink:0">${h.label}</span>
+                </div>`;
+            }).join('');
+            searchDropdown.querySelectorAll('[data-idx]').forEach(row => {
+                row.addEventListener('click', () => {
+                    const h = hits[+row.dataset.idx];
+                    closeSearch();
+                    const target = h.el || document.querySelector(h.sectionId || '#gallery');
+                    if (target) setTimeout(() => target.scrollIntoView({ behavior:'smooth', block:'center' }), 100);
+                });
+            });
+            searchDropdown.style.display = 'block';
+        }
+
+        function closeSearch() {
+            searchOpen = false;
+            searchBar.style.width = '0';
+            searchBar.style.opacity = '0';
+            searchInput.value = '';
+            searchDropdown.style.display = 'none';
+        }
+
+        searchBtn.addEventListener('click', () => {
+            searchOpen = !searchOpen;
+            if (searchOpen) {
+                searchBar.style.width = '10rem';
+                searchBar.style.opacity = '1';
+                setTimeout(() => searchInput.focus(), 300);
+            } else {
+                closeSearch();
+            }
+        });
+
+        let debounceTimer;
+        searchInput.addEventListener('input', () => {
+            clearTimeout(debounceTimer);
+            debounceTimer = setTimeout(() => runSearch(searchInput.value.trim()), 180);
+        });
+
+        searchInput.addEventListener('keydown', e => { if (e.key === 'Escape') closeSearch(); });
+
+        document.addEventListener('click', e => {
+            if (searchOpen && !searchBtn.contains(e.target) && !searchBar.contains(e.target) && !searchDropdown.contains(e.target))
+                closeSearch();
+        });
+    </script>
+</body>
+</html>
