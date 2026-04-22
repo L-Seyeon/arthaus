@@ -32,6 +32,7 @@ jobs:
       - name: 전시 정보 업데이트
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          CULTURE_API_KEY: ${{ secrets.CULTURE_API_KEY }}
         run: python scripts/update_exhibitions.py
 
       - name: 변경 사항 커밋 & 푸시
