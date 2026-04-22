@@ -14,7 +14,7 @@ from pathlib import Path
 
 import requests
 from bs4 import BeautifulSoup
-import google.generativeai as genai
+from google import genai
 
 # ── 설정 ─────────────────────────────────────────────────────────────────────
 
@@ -176,11 +176,13 @@ def call_gemini(raw_text: str) -> list:
     if not api_key:
         raise EnvironmentError("GEMINI_API_KEY 환경변수가 설정되지 않았습니다.")
 
-    genai.configure(api_key=api_key)
-    model = genai.GenerativeModel("gemini-1.5-flash")
+    client = genai.Client(api_key=api_key)
 
     print("  Gemini API 호출 중...")
-    response = model.generate_content(build_prompt(raw_text))
+    response = client.models.generate_content(
+        model="gemini-2.0-flash",
+        contents=build_prompt(raw_text),
+    )
     return parse_json_from_response(response.text)
 
 
