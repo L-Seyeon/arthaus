@@ -74,7 +74,7 @@ def fetch_culture_api(service_key: str) -> list:
         "cPage":      "1",
         "rows":       "50",
         "sortStdr":   "1",
-        "realmCode":  "D",
+        "realmCode":  "I",    # I = 전시 (D = 무용)
     }
 
     print("  culture.go.kr API 호출 중...")
@@ -269,7 +269,7 @@ def refine_with_gemini(raw_text: str, max_retries: int = 3) -> list:
         print(f"  Gemini API 호출 중... (시도 {attempt}/{max_retries})")
         try:
             response = client.models.generate_content(
-                model="gemini-2.0-flash",
+                model="gemini-1.5-flash",
                 contents=build_gemini_prompt(raw_text),
             )
             results = parse_json_from_response(response.text)
