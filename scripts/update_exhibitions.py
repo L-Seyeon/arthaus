@@ -149,11 +149,23 @@ def fetch_culture_api(service_key: str) -> list:
         start_date = item.findtext("startDate", "").strip()
         end_date_  = item.findtext("endDate", "").strip()
         url        = item.findtext("url", "").strip()
+        seq        = item.findtext("seq", "").strip()
         thumbnail  = item.findtext("thumbnail", "").strip()
         contents   = item.findtext("contents", "").strip()
 
         if not title or not place:
             continue
+
+        # 개별 전시 URL 구성: seq 있으면 culture.go.kr 직접 링크, 없으면 네이버 검색
+        if url and url not in ("", "https://www.culture.go.kr", "http://www.culture.go.kr"):
+            final_url = url
+        elif seq:
+            final_url = f"https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq={seq}"
+        else:
+            final_url = (
+                "https://search.naver.com/search.naver?query="
+                + quote(f"{title} {place}")
+            )
 
         def fmt(d):
             return f"{d[:4]}-{d[4:6]}-{d[6:8]}" if len(d) == 8 else None
@@ -164,7 +176,7 @@ def fetch_culture_api(service_key: str) -> list:
             "desc":    (contents[:120] + "…") if len(contents) > 120 else contents,
             "start":   fmt(start_date),
             "end":     fmt(end_date_),
-            "url":     url or "https://www.culture.go.kr",
+            "url":     final_url,
             "img":     thumbnail if thumbnail else None,
             "grad":    get_grad(place),
             "_source": "api",

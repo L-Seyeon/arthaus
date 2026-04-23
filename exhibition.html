@@ -372,6 +372,11 @@ function getRegion(venue) {
 }
 
 /* ── 유틸 ── */
+function getCardUrl(item) {
+    if (item.url && item.url !== 'https://www.culture.go.kr') return item.url;
+    return 'https://search.naver.com/search.naver?query=' + encodeURIComponent(item.title + ' ' + item.venue);
+}
+
 function fmtDate(s) {
     if (!s) return '';
     return new Date(s).toLocaleDateString('ko-KR', { year: 'numeric', month: 'long', day: 'numeric' });
@@ -444,7 +449,7 @@ function renderSection(key, items, idx) {
     const subText = rule ? rule.sub : '';
 
     const slides = items.map(item => `
-        <div class="swiper-slide" onclick="window.open('${item.url}','_blank')">
+        <div class="swiper-slide" onclick="window.open('${getCardUrl(item)}','_blank')" style="cursor:pointer;">
             <div class="exh-card">
                 <div class="card-img-wrap">
                     ${cardImg(item)}
