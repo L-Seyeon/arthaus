@@ -617,55 +617,53 @@
     <!-- ══════════════════════════════════════
          FOOTER
     ══════════════════════════════════════ -->
-    <footer class="py-16">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-8 pb-10"
-                 style="border-bottom:1px solid rgba(255,255,255,0.08);">
-
+    <!-- ── ARTHAUS FOOTER ─────────────────────────────────────────────── -->
+    <footer style="background:#1D2951; padding:56px 0 0; font-family:'Noto Sans KR',sans-serif;">
+        <div style="max-width:1280px; margin:0 auto; padding:0 24px;">
+            <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:40px 48px; padding-bottom:48px; border-bottom:1px solid rgba(255,255,255,0.08);">
                 <!-- Brand -->
                 <div>
-                    <a href="index.html"
-                       class="font-playfair text-2xl font-bold tracking-wider text-white"
-                       style="text-decoration:none;">ARTHAUS</a>
-                    <p style="font-size:11px; color:rgba(255,255,255,0.3); margin-top:8px; letter-spacing:0.05em;">
-                        Art &amp; Culture Magazine
+                    <a href="index.html" style="font-family:'Cormorant Garamond',serif; font-size:1.35rem; font-weight:700; color:#fff; text-decoration:none; letter-spacing:0.1em; display:block; margin-bottom:14px;">ARTHAUS</a>
+                    <p style="font-size:11px; color:rgba(255,255,255,0.38); line-height:1.9; margin:0;">
+                        예술과 일상을 잇는 문화 큐레이션 플랫폼.<br>
+                        전시, 작가, 아틀리에, 매거진을 한 곳에서.
                     </p>
                 </div>
-
-                <!-- Nav -->
-                <nav aria-label="푸터 네비게이션">
-                    <div class="flex flex-wrap items-center gap-6">
-                        <a href="index.html"
-                           style="font-size:11px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase;
-                                  color:rgba(255,255,255,0.4); text-decoration:none; transition:color 0.2s;"
-                           onmouseover="this.style.color='rgba(255,255,255,0.85)'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">Home</a>
-                        <a href="artist.html"
-                           style="font-size:11px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase;
-                                  color:rgba(255,255,255,0.4); text-decoration:none; transition:color 0.2s;"
-                           onmouseover="this.style.color='rgba(255,255,255,0.85)'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">Artist</a>
-                        <a href="exhibition.html"
-                           style="font-size:11px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase;
-                                  color:rgba(255,255,255,0.4); text-decoration:none; transition:color 0.2s;"
-                           onmouseover="this.style.color='rgba(255,255,255,0.85)'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">Exhibition</a>
-                        <!-- Active: Magazine -->
-                        <a href="magazine.html"
-                           style="font-size:11px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase;
-                                  color:rgba(255,255,255,0.85); text-decoration:none;">Magazine</a>
-                        <a href="atelier.html"
-                           style="font-size:11px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase;
-                                  color:rgba(255,255,255,0.4); text-decoration:none; transition:color 0.2s;"
-                           onmouseover="this.style.color='rgba(255,255,255,0.85)'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">Atelier</a>
+                <!-- Navigation -->
+                <div>
+                    <h4 style="font-size:9px; font-weight:700; letter-spacing:0.35em; text-transform:uppercase; color:rgba(255,255,255,0.25); margin:0 0 20px; padding:0;">Navigation</h4>
+                    <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:13px;">
+                        <li><a href="index.html"      style="font-size:12px; color:rgba(255,255,255,0.5); text-decoration:none; transition:color .2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">Home</a></li>
+                        <li><a href="artist.html"     style="font-size:12px; color:rgba(255,255,255,0.5); text-decoration:none; transition:color .2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">Artist</a></li>
+                        <li><a href="exhibition.html" style="font-size:12px; color:rgba(255,255,255,0.5); text-decoration:none; transition:color .2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">Exhibition</a></li>
+                        <li><a href="magazine.html"   style="font-size:12px; color:rgba(255,255,255,0.5); text-decoration:none; transition:color .2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">Magazine</a></li>
+                        <li><a href="atelier.html"    style="font-size:12px; color:rgba(255,255,255,0.5); text-decoration:none; transition:color .2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">Atelier</a></li>
+                    </ul>
+                </div>
+                <!-- Support -->
+                <div>
+                    <h4 style="font-size:9px; font-weight:700; letter-spacing:0.35em; text-transform:uppercase; color:rgba(255,255,255,0.25); margin:0 0 20px; padding:0;">Support</h4>
+                    <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:13px;">
+                        <li><a href="https://forms.gle/1VrCGSSSHsVGJpeA9" target="_blank" style="font-size:12px; color:rgba(255,255,255,0.5); text-decoration:none; transition:color .2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">문의하기</a></li>
+                    </ul>
+                </div>
+                <!-- SNS -->
+                <div>
+                    <h4 style="font-size:9px; font-weight:700; letter-spacing:0.35em; text-transform:uppercase; color:rgba(255,255,255,0.25); margin:0 0 20px; padding:0;">SNS</h4>
+                    <div style="display:flex; gap:18px; align-items:center;">
+                        <a href="#" style="color:rgba(255,255,255,0.45); font-size:18px; text-decoration:none; transition:color .2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.45)'" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" style="color:rgba(255,255,255,0.45); font-size:18px; text-decoration:none; transition:color .2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.45)'" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="#" style="color:rgba(255,255,255,0.45); font-size:18px; text-decoration:none; transition:color .2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.45)'" aria-label="Naver Blog"><i class="fas fa-blog"></i></a>
                     </div>
-                </nav>
+                </div>
             </div>
-
-            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-                <p style="font-size:11px; color:rgba(255,255,255,0.2); letter-spacing:0.05em;">
-                    &copy; 2026 ARTHAUS. All rights reserved.
-                </p>
-                <p style="font-size:11px; color:rgba(255,255,255,0.15); letter-spacing:0.05em;">
-                    Art &amp; Culture · Seoul
-                </p>
+            <!-- Address & Copyright -->
+            <div style="padding:22px 0 32px; display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:10px;">
+                <div style="display:flex; flex-wrap:wrap; gap:24px;">
+                    <span style="font-size:10px; color:rgba(255,255,255,0.22); letter-spacing:0.04em;"><i class="fas fa-map-marker-alt" style="margin-right:6px;"></i>전북 익산시 영등동 766-5</span>
+                    <span style="font-size:10px; color:rgba(255,255,255,0.22); letter-spacing:0.04em;"><i class="fas fa-phone" style="margin-right:6px;"></i>010.7372.3117</span>
+                </div>
+                <p style="font-size:10px; color:rgba(255,255,255,0.18); letter-spacing:0.08em; margin:0;">© 2026 ARTHAUS. All rights reserved.</p>
             </div>
         </div>
     </footer>
