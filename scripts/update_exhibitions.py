@@ -16,7 +16,7 @@ from pathlib import Path
 
 import requests
 from bs4 import BeautifulSoup
-from urllib.parse import urlencode
+from urllib.parse import urlencode, quote, unquote
 from google import genai
 
 # ── 경로 설정 ──────────────────────────────────────────────────────────────────
@@ -77,7 +77,9 @@ def fetch_culture_api(service_key: str) -> list:
         "sortStdr":  "1",
         "realmCode": "I",    # I = 전시 (D = 무용)
     }
-    url = f"{CULTURE_API_URL}?serviceKey={service_key}&{urlencode(other_params)}"
+    # 키 정규화: plain text든 이미 인코딩된 키든 → 올바르게 URL-encode
+    key_encoded = quote(unquote(service_key), safe="")
+    url = f"{CULTURE_API_URL}?serviceKey={key_encoded}&{urlencode(other_params)}"
 
     print("  culture.go.kr API 호출 중...")
     try:
@@ -271,13 +273,14 @@ def refine_with_gemini(raw_text: str, max_retries: int = 3) -> list:
         print("  ⚠️ GEMINI_API_KEY 없음 — 크롤링 데이터 건너뜀")
         return []
 
-    client = genai.Client(api_key=api_key)
+    # v1 API 명시 — gemini-1.5-flash는 v1beta가 아닌 v1에 있음
+    client = genai.Client(api_key=api_key, http_options={"api_version": "v1"})
 
     for attempt in range(1, max_retries + 1):
         print(f"  Gemini API 호출 중... (시도 {attempt}/{max_retries})")
         try:
             response = client.models.generate_content(
-                model="gemini-1.5-flash-latest",
+                model="gemini-1.5-flash",
                 contents=build_gemini_prompt(raw_text),
             )
             results = parse_json_from_response(response.text)
