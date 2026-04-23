@@ -5,380 +5,425 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="referrer" content="no-referrer">
     <title>Exhibition — ARTHAUS</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
-        :root { --navy: #1D2951; }
+        :root { --navy: #1D2951; --bg: #f9f9f7; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Noto Sans KR', sans-serif; background: #f9f9f7; color: var(--navy); }
-        h1,h2,h3,h4 { font-family: 'Playfair Display', serif; }
+        body { font-family: 'Noto Sans KR', sans-serif; background: var(--bg); color: var(--navy); overflow-x: hidden; }
+        h1, h2, h3 { font-family: 'Cormorant Garamond', serif; }
 
-        nav {
+        /* ── Nav ─────────────────────────────────────────── */
+        #site-nav {
             position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-            background: rgba(249,249,247,0.92); backdrop-filter: blur(14px);
-            border-bottom: 1px solid rgba(29,41,81,0.07);
+            height: 64px; background: rgba(248,249,250,0.92);
+            backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(29,41,81,0.08);
         }
+        #site-nav .nav-inner {
+            max-width: 1280px; margin: 0 auto; padding: 0 24px;
+            height: 64px; display: flex; align-items: center; justify-content: space-between;
+        }
+        #site-nav .nav-links { display: flex; align-items: center; gap: 32px; }
+        #site-nav .nav-links a {
+            font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
+            text-transform: uppercase; color: rgba(29,41,81,0.45);
+            text-decoration: none; transition: color 0.2s;
+        }
+        #site-nav .nav-links a:hover { color: #1D2951; }
+        #site-nav .nav-links a.active { color: #1D2951; }
+
+        /* ── Hero (compact) ──────────────────────────────── */
         .hero {
-            background: var(--navy);
-            min-height: 52vh;
-            padding: 160px 0 80px;
+            background: var(--navy); padding: 108px 0 52px;
             position: relative; overflow: hidden;
         }
         .hero::before {
-            content: '';
-            position: absolute; inset: 0;
-            background: radial-gradient(ellipse 70% 80% at 80% 30%, rgba(80,110,200,0.15) 0%, transparent 65%);
+            content: ''; position: absolute; inset: 0;
+            background: radial-gradient(ellipse 60% 70% at 80% 30%, rgba(80,110,200,0.15) 0%, transparent 65%);
+        }
+        .hero-content {
+            max-width: 1280px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 1;
         }
         .hero-ticker {
             position: absolute; bottom: 0; left: 0; right: 0;
-            background: rgba(255,255,255,0.05);
-            border-top: 1px solid rgba(255,255,255,0.08);
-            overflow: hidden; height: 40px;
-            display: flex; align-items: center;
+            background: rgba(255,255,255,0.05); border-top: 1px solid rgba(255,255,255,0.08);
+            overflow: hidden; height: 36px; display: flex; align-items: center;
         }
         .ticker-inner {
-            display: flex; gap: 80px; white-space: nowrap;
+            display: flex; gap: 60px; white-space: nowrap;
             animation: ticker 30s linear infinite;
             font-size: 9px; font-weight: 700; letter-spacing: 0.25em;
-            text-transform: uppercase; color: rgba(255,255,255,0.25);
+            text-transform: uppercase; color: rgba(255,255,255,0.2);
         }
         @keyframes ticker { from { transform: translateX(0) } to { transform: translateX(-50%) } }
 
-        .filter-tab {
-            padding: 7px 18px; border-radius: 100px;
-            font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
-            text-transform: uppercase; cursor: pointer; border: 1px solid transparent;
-            transition: all 0.2s; color: rgba(29,41,81,0.45); background: none;
+        /* ── Section ─────────────────────────────────────── */
+        .exh-section {
+            padding: 64px 0 72px;
+            border-bottom: 1px solid rgba(29,41,81,0.06);
         }
-        .filter-tab:hover { color: var(--navy); border-color: rgba(29,41,81,0.2); }
-        .filter-tab.active { background: var(--navy); color: #fff; border-color: var(--navy); }
+        .exh-section:last-of-type { border-bottom: none; }
 
-        .exh-card {
-            background: #fff; border-radius: 20px; overflow: hidden;
-            transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s;
+        .section-header {
+            max-width: 1280px; margin: 0 auto 20px; padding: 0 24px;
+            display: flex; align-items: flex-end; gap: 12px; flex-wrap: wrap;
+        }
+        .section-label {
+            font-size: 9px; font-weight: 700; letter-spacing: 0.32em;
+            text-transform: uppercase; color: rgba(29,41,81,0.28); margin-bottom: 5px;
+        }
+        .section-title { font-size: 1.75rem; font-weight: 300; color: var(--navy); }
+        .section-count {
+            font-size: 10px; font-weight: 700; color: rgba(29,41,81,0.28);
+            letter-spacing: 0.06em; margin-bottom: 3px;
+        }
+        .nav-btns { margin-left: auto; display: flex; gap: 8px; align-items: center; }
+        .nav-btn {
+            width: 38px; height: 38px; border-radius: 50%;
+            border: 1px solid rgba(29,41,81,0.14); background: none;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; color: rgba(29,41,81,0.45); font-size: 11px;
+            transition: all 0.2s;
+        }
+        .nav-btn:hover { background: var(--navy); color: #fff; border-color: var(--navy); }
+        .nav-btn.swiper-button-disabled { opacity: 0.2; pointer-events: none; }
+
+        /* ── Main Swiper ─────────────────────────────────── */
+        .main-swiper {
+            width: 100%;
+            overflow: visible !important;
+            padding: 36px 0 !important;
+        }
+        .main-swiper .swiper-wrapper { align-items: center; }
+        .main-swiper .swiper-slide {
+            width: 300px;
+            transform: scale(0.8);
+            opacity: 0.4;
+            transition: transform 0.45s cubic-bezier(0.16,1,0.3,1), opacity 0.45s ease;
             cursor: pointer;
         }
-        .exh-card:hover { transform: translateY(-8px); box-shadow: 0 24px 60px rgba(29,41,81,0.10); }
-        .exh-card-img {
-            width: 100%; aspect-ratio: 16/10; object-fit: cover; display: block;
-            transition: transform 0.7s cubic-bezier(0.16,1,0.3,1);
-        }
-        .exh-card:hover .exh-card-img { transform: scale(1.04); }
-        .img-wrap { overflow: hidden; }
+        .main-swiper .swiper-slide-active  { transform: scale(1);    opacity: 1; }
+        .main-swiper .swiper-slide-prev,
+        .main-swiper .swiper-slide-next    { transform: scale(0.9);  opacity: 0.65; }
 
-        .exh-featured {
-            background: #fff; border-radius: 24px; overflow: hidden;
-            box-shadow: 0 8px 40px rgba(29,41,81,0.07);
+        /* ── Card ────────────────────────────────────────── */
+        .exh-card {
+            background: #fff; border-radius: 14px; overflow: hidden;
+            box-shadow: 0 4px 20px rgba(29,41,81,0.06);
+            transition: box-shadow 0.45s ease;
         }
-        .exh-featured-img {
+        .swiper-slide-active .exh-card { box-shadow: 0 20px 56px rgba(29,41,81,0.15); }
+
+        .card-img-wrap {
+            width: 100%; height: 280px;
+            position: relative; overflow: hidden;
+        }
+        .card-img-wrap img {
+            position: absolute; inset: 0;
             width: 100%; height: 100%; object-fit: cover; display: block;
-            transition: transform 0.8s cubic-bezier(0.16,1,0.3,1);
+            transition: transform 0.6s ease;
         }
-        .exh-featured:hover .exh-featured-img { transform: scale(1.03); }
-
-        .theme-card {
-            border-radius: 16px; overflow: hidden; position: relative;
-            transition: transform 0.35s ease, box-shadow 0.35s ease; cursor: pointer;
+        .swiper-slide-active .card-img-wrap img { transform: scale(1.04); }
+        .card-grad {
+            position: absolute; inset: 0;
+            display: flex; align-items: center; justify-content: center;
         }
-        .theme-card:hover { transform: translateY(-6px); box-shadow: 0 20px 48px rgba(29,41,81,0.12); }
+        .card-grad p {
+            font-size: 7px; font-weight: 700; letter-spacing: 0.2em;
+            text-transform: uppercase; color: rgba(255,255,255,0.3);
+            text-align: center; max-width: 90px; line-height: 1.8; padding: 0 8px;
+        }
 
-        @keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
-        .fade-up { animation: fadeUp 0.5s ease both; }
+        .card-info { padding: 18px 20px 22px; }
+        .card-venue {
+            font-size: 8px; font-weight: 700; letter-spacing: 0.16em;
+            text-transform: uppercase; color: rgba(29,41,81,0.36);
+            margin-bottom: 7px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+        }
+        .card-title {
+            font-size: 0.93rem; font-weight: 400; color: var(--navy);
+            line-height: 1.4; margin-bottom: 10px;
+            display: -webkit-box; -webkit-line-clamp: 2; line-clamp: 2;
+            -webkit-box-orient: vertical; overflow: hidden;
+        }
+        .card-date { font-size: 9px; color: rgba(29,41,81,0.3); }
+
+        /* ── Thumb Swiper ────────────────────────────────── */
+        .thumb-wrap {
+            max-width: 1280px; margin: 12px auto 0; padding: 0 24px;
+        }
+        .thumb-swiper .swiper-slide {
+            width: 68px !important; height: 50px;
+            border-radius: 6px; overflow: hidden;
+            opacity: 0.38; cursor: pointer;
+            transition: opacity 0.25s, border-color 0.25s;
+            border: 2px solid transparent; box-sizing: border-box; flex-shrink: 0;
+        }
+        .thumb-swiper .swiper-slide-thumb-active {
+            opacity: 1; border-color: var(--navy);
+        }
+        .thumb-swiper img {
+            width: 100%; height: 100%; object-fit: cover; display: block;
+        }
+        .thumb-grad-sm { width: 100%; height: 100%; }
+
+        /* ── Skeleton ────────────────────────────────────── */
+        @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.45} }
+        .skel { background: #ececea; border-radius: 8px; animation: pulse 1.5s ease-in-out infinite; }
+
+        @media (max-width: 640px) {
+            .main-swiper .swiper-slide { width: 240px; }
+            .card-img-wrap { height: 220px; }
+        }
     </style>
 </head>
 <body>
 
-    <!-- Nav -->
-    <nav>
-        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-            <a href="story.html" style="font-family:'Playfair Display',serif; font-size:1.2rem; font-weight:700; letter-spacing:0.08em; color:var(--navy); text-decoration:none;">ARTHAUS</a>
-            <div class="hidden md:flex items-center gap-8" style="font-size:11px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase;">
-                <a href="story.html" style="color:rgba(29,41,81,0.45); text-decoration:none;" onmouseover="this.style.color='#1D2951'" onmouseout="this.style.color='rgba(29,41,81,0.45)'">Home</a>
-                <a href="artist.html" style="color:rgba(29,41,81,0.45); text-decoration:none;" onmouseover="this.style.color='#1D2951'" onmouseout="this.style.color='rgba(29,41,81,0.45)'">Artists</a>
-                <a href="exhibition.html" style="color:#1D2951; text-decoration:none;">Exhibition</a>
-                <a href="magazine.html" style="color:rgba(29,41,81,0.45); text-decoration:none;" onmouseover="this.style.color='#1D2951'" onmouseout="this.style.color='rgba(29,41,81,0.45)'">Magazine</a>
-            </div>
-            <span style="font-size:9px; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:rgba(29,41,81,0.35);">🇰🇷 국내 전시 큐레이션</span>
+<!-- Nav -->
+<nav id="site-nav">
+    <div class="nav-inner">
+        <a href="story.html" style="font-family:'Cormorant Garamond',serif; font-size:1.2rem; font-weight:700; letter-spacing:0.08em; color:var(--navy); text-decoration:none;">ARTHAUS</a>
+        <div class="nav-links">
+            <a href="story.html">Home</a>
+            <a href="artist.html">Artist</a>
+            <a href="exhibition.html" class="active">Exhibition</a>
+            <a href="magazine.html">Magazine</a>
+            <a href="atelier.html">Atelier</a>
         </div>
-    </nav>
+    </div>
+</nav>
 
-    <!-- Hero -->
-    <section class="hero">
-        <div class="max-w-7xl mx-auto px-6 relative z-10">
-            <a href="story.html" style="display:inline-flex; align-items:center; gap:8px;
-               font-size:10px; font-weight:700; letter-spacing:0.15em; text-transform:uppercase;
-               color:rgba(255,255,255,0.55); text-decoration:none;
-               background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15);
-               border-radius:100px; padding:9px 18px; margin-bottom:48px; backdrop-filter:blur(8px);
-               transition:all 0.25s;"
-               onmouseover="this.style.background='rgba(255,255,255,0.15)'; this.style.color='#fff'"
-               onmouseout="this.style.background='rgba(255,255,255,0.08)'; this.style.color='rgba(255,255,255,0.55)'">
-                <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
-                    <path d="M9 6.5H4M6.5 9.5L4 6.5l2.5-3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                돌아가기
-            </a>
-            <p style="font-size:10px; font-weight:700; letter-spacing:0.4em; text-transform:uppercase; color:rgba(255,255,255,0.3); margin-bottom:20px; font-family:'Noto Sans KR',sans-serif;">
-                <i class="fa-solid fa-building-columns mr-2"></i>Curation &amp; Theme
-            </p>
-            <h1 style="font-family:'Playfair Display',serif; font-size:clamp(2.8rem,7vw,5.5rem); font-weight:300; color:#fff; line-height:1.05; margin-bottom:20px;">
-                Korean <span style="font-style:italic;">Exhibitions</span>
-            </h1>
-            <p style="font-size:13px; color:rgba(255,255,255,0.42); max-width:480px; line-height:1.8; font-family:'Noto Sans KR',sans-serif;">
-                국내 주요 미술관·갤러리의 화제 전시를 한눈에.<br>서울·부산·대구를 아우르는 지금 가장 주목받는 전시들.
-            </p>
+<!-- Hero -->
+<section class="hero">
+    <div class="hero-content">
+        <p style="font-size:9px; font-weight:700; letter-spacing:0.4em; text-transform:uppercase; color:rgba(255,255,255,0.28); margin-bottom:16px;">
+            <i class="fa-solid fa-building-columns" style="margin-right:8px;"></i>Curation &amp; Exhibition
+        </p>
+        <h1 style="font-size:clamp(2.4rem,6vw,4.5rem); font-weight:300; color:#fff; line-height:1.05; margin-bottom:12px;">
+            Korean <span style="font-style:italic;">Exhibitions</span>
+        </h1>
+        <p style="font-size:12px; color:rgba(255,255,255,0.38); font-family:'Noto Sans KR',sans-serif; line-height:1.7;">
+            국내 주요 미술관·갤러리의 화제 전시를 한눈에
+        </p>
+    </div>
+    <div class="hero-ticker">
+        <div class="ticker-inner">
+            <span>서울시립미술관</span><span>·</span><span>리움미술관</span><span>·</span>
+            <span>국립현대미술관</span><span>·</span><span>예술의전당</span><span>·</span>
+            <span>갤러리현대</span><span>·</span><span>부산현대미술관</span><span>·</span>
+            <span>환기미술관</span><span>·</span><span>아트선재센터</span><span>·</span>
+            <span>Contemporary Art</span><span>·</span><span>Korean Art</span><span>·</span>
+            <span>서울시립미술관</span><span>·</span><span>리움미술관</span><span>·</span>
+            <span>국립현대미술관</span><span>·</span><span>예술의전당</span><span>·</span>
+            <span>갤러리현대</span><span>·</span><span>부산현대미술관</span><span>·</span>
+            <span>환기미술관</span><span>·</span><span>아트선재센터</span><span>·</span>
+            <span>Contemporary Art</span><span>·</span><span>Korean Art</span><span>·</span>
         </div>
-        <div class="hero-ticker">
-            <div class="ticker-inner">
-                <span>서울시립미술관</span><span>·</span><span>리움미술관</span><span>·</span>
-                <span>국립현대미술관</span><span>·</span><span>예술의전당</span><span>·</span>
-                <span>갤러리현대</span><span>·</span><span>부산현대미술관</span><span>·</span>
-                <span>환기미술관</span><span>·</span><span>아트선재센터</span><span>·</span>
-                <span>대구미술관</span><span>·</span><span>Impressionism</span><span>·</span>
-                <span>Contemporary Art</span><span>·</span><span>Korean Art</span><span>·</span>
-                <span>서울시립미술관</span><span>·</span><span>리움미술관</span><span>·</span>
-                <span>국립현대미술관</span><span>·</span><span>예술의전당</span><span>·</span>
-                <span>갤러리현대</span><span>·</span><span>부산현대미술관</span><span>·</span>
-                <span>환기미술관</span><span>·</span><span>아트선재센터</span><span>·</span>
-                <span>대구미술관</span><span>·</span><span>Impressionism</span><span>·</span>
-                <span>Contemporary Art</span><span>·</span><span>Korean Art</span><span>·</span>
-            </div>
+    </div>
+</section>
+
+<!-- Main — filled by JS -->
+<main id="exh-main" style="padding-bottom: 80px;">
+    <div style="padding: 60px 24px;">
+        <div style="max-width:1280px; margin:0 auto 28px;">
+            <div class="skel" style="height:9px; width:80px; margin-bottom:10px;"></div>
+            <div class="skel" style="height:26px; width:160px;"></div>
         </div>
-    </section>
-
-    <!-- Main -->
-    <main class="max-w-7xl mx-auto px-6 py-20">
-
-        <div class="flex flex-wrap gap-2 mb-12" id="filter-bar">
-            <button class="filter-tab active" data-filter="all">전체</button>
-            <button class="filter-tab" data-filter="open">진행 중</button>
-            <button class="filter-tab" data-filter="coming">예정</button>
-            <button class="filter-tab" data-filter="closed">종료</button>
+        <div style="display:flex; gap:24px; justify-content:center; align-items:center;">
+            <div class="skel" style="width:240px; height:368px; border-radius:14px; flex-shrink:0; transform:scale(0.8); opacity:0.4;"></div>
+            <div class="skel" style="width:300px; height:368px; border-radius:14px; flex-shrink:0;"></div>
+            <div class="skel" style="width:240px; height:368px; border-radius:14px; flex-shrink:0; transform:scale(0.8); opacity:0.4;"></div>
         </div>
+    </div>
+</main>
 
-        <div id="featured-wrap" class="mb-16"></div>
+<footer style="background:#fff; border-top:1px solid rgba(29,41,81,0.07); padding:48px 0 32px;">
+    <div style="max-width:1280px; margin:0 auto; padding:0 24px; display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:16px;">
+        <a href="story.html" style="font-family:'Cormorant Garamond',serif; font-size:1.1rem; font-weight:700; color:var(--navy); text-decoration:none;">ARTHAUS</a>
+        <p style="font-size:10px; color:rgba(29,41,81,0.3);">전시 정보 제공: 공공데이터포털 문화정보 API</p>
+        <p style="font-size:10px; color:rgba(29,41,81,0.3);">© 2025 ARTHAUS COLLECTIVE</p>
+    </div>
+</footer>
 
-        <div class="flex items-center gap-4 mb-8">
-            <p style="font-size:9px; font-weight:700; letter-spacing:0.3em; text-transform:uppercase; color:rgba(29,41,81,0.3);">더 많은 전시</p>
-            <div style="flex:1; height:1px; background:rgba(29,41,81,0.08);"></div>
-            <span id="exh-count" style="font-size:9px; font-weight:700; letter-spacing:0.15em; color:rgba(29,41,81,0.3);"></span>
-        </div>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+/* ─────────────────────────────────────────────────────
+   exhibitions.json 동적 로드 → 기간별 Swiper 섹션 렌더
+───────────────────────────────────────────────────── */
 
-        <div id="exh-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+let EXHIBITIONS = [];
 
-        <div class="mt-24 mb-6">
-            <p style="font-size:9px; font-weight:700; letter-spacing:0.3em; text-transform:uppercase; color:rgba(29,41,81,0.3); margin-bottom:6px;">ARTHAUS Curation</p>
-            <h2 style="font-family:'Playfair Display',serif; font-size:2rem; font-weight:300; color:var(--navy);">테마별 큐레이션</h2>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
-            <div class="theme-card" style="background:var(--navy); padding:40px 32px; color:#fff;">
-                <i class="fa-solid fa-sun" style="font-size:1.4rem; opacity:0.4; margin-bottom:20px; display:block;"></i>
-                <p style="font-size:9px; font-weight:700; letter-spacing:0.25em; text-transform:uppercase; opacity:0.4; margin-bottom:10px;">Light & Atmosphere</p>
-                <h3 style="font-family:'Playfair Display',serif; font-size:1.4rem; font-weight:300; line-height:1.3; margin-bottom:12px;">빛과 분위기의<br><span style="font-style:italic;">인상주의</span></h3>
-                <p style="font-size:11px; line-height:1.7; opacity:0.5; font-family:'Noto Sans KR',sans-serif;">자연광과 순간적 인상을 담은 인상주의 작품들의 세계로 초대합니다.</p>
-            </div>
-            <div class="theme-card" style="background:#f0ede8; padding:40px 32px;">
-                <i class="fa-solid fa-person" style="font-size:1.4rem; opacity:0.35; margin-bottom:20px; display:block; color:var(--navy);"></i>
-                <p style="font-size:9px; font-weight:700; letter-spacing:0.25em; text-transform:uppercase; color:rgba(29,41,81,0.4); margin-bottom:10px;">Figure & Portrait</p>
-                <h3 style="font-family:'Playfair Display',serif; font-size:1.4rem; font-weight:300; color:var(--navy); line-height:1.3; margin-bottom:12px;">인물과 표정,<br><span style="font-style:italic;">그 깊은 서사</span></h3>
-                <p style="font-size:11px; line-height:1.7; color:rgba(29,41,81,0.5); font-family:'Noto Sans KR',sans-serif;">초상화와 인물화가 전하는 시대의 이야기와 개인의 감정을 탐구합니다.</p>
-            </div>
-            <div class="theme-card" style="background:#e8edf0; padding:40px 32px;">
-                <i class="fa-solid fa-water" style="font-size:1.4rem; opacity:0.35; margin-bottom:20px; display:block; color:var(--navy);"></i>
-                <p style="font-size:9px; font-weight:700; letter-spacing:0.25em; text-transform:uppercase; color:rgba(29,41,81,0.4); margin-bottom:10px;">Nature & Landscape</p>
-                <h3 style="font-family:'Playfair Display',serif; font-size:1.4rem; font-weight:300; color:var(--navy); line-height:1.3; margin-bottom:12px;">자연, 그 고요한<br><span style="font-style:italic;">존재감</span></h3>
-                <p style="font-size:11px; line-height:1.7; color:rgba(29,41,81,0.5); font-family:'Noto Sans KR',sans-serif;">풍경화와 자연을 담은 작품들로 일상의 여백에 쉼을 더합니다.</p>
-            </div>
-        </div>
+function fmtDate(s) {
+    if (!s) return '';
+    return new Date(s).toLocaleDateString('ko-KR', { month: 'long', day: 'numeric' });
+}
 
-    </main>
+function getStatus(item) {
+    const now = Date.now();
+    const s = item.start ? new Date(item.start).getTime() : 0;
+    const e = item.end   ? new Date(item.end).getTime()   : Infinity;
+    if (now < s) return 'coming';
+    if (now > e) return 'closed';
+    return 'open';
+}
 
-    <footer style="background:#fff; border-top:1px solid rgba(29,41,81,0.07); padding:48px 0 32px; margin-top:80px;">
-        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
-            <a href="story.html" style="font-family:'Playfair Display',serif; font-size:1.1rem; font-weight:700; color:var(--navy); text-decoration:none;">ARTHAUS</a>
-            <p style="font-size:10px; color:rgba(29,41,81,0.3); letter-spacing:0.08em; text-align:center;">전시 이미지 일부 제공: <a href="https://www.artic.edu" target="_blank" style="color:rgba(29,41,81,0.5); text-decoration:underline;">Art Institute of Chicago</a> Open Collection</p>
-            <p style="font-size:10px; color:rgba(29,41,81,0.3); letter-spacing:0.08em;">© 2025 ARTHAUS COLLECTIVE</p>
-        </div>
-    </footer>
+function onImgError(el) {
+    const grad = el.dataset.grad || 'linear-gradient(135deg,#1a2040,#2a3060)';
+    const venue = el.dataset.venue || '';
+    const d = document.createElement('div');
+    d.className = 'card-grad';
+    d.style.background = grad;
+    d.innerHTML = `<p>${venue}</p>`;
+    el.parentNode.replaceChild(d, el);
+}
 
-    <script>
-    /* ═══════════════════════════════════════════════════════
-       exhibitions.json 에서 동적 로드 (매주 자동 업데이트)
-    ═══════════════════════════════════════════════════════ */
-
-    let EXHIBITIONS = [];
-
-    /* ── 로딩 스켈레톤 ── */
-    function showSkeleton() {
-        document.getElementById('featured-wrap').innerHTML = `
-            <div style="background:#fff;border-radius:24px;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;min-height:360px;animation:pulse 1.5s ease-in-out infinite;">
-                <div style="background:#f0f0ee;"></div>
-                <div style="padding:48px 44px;display:flex;flex-direction:column;gap:14px;">
-                    <div style="height:12px;background:#f0f0ee;border-radius:6px;width:30%;"></div>
-                    <div style="height:28px;background:#f0f0ee;border-radius:6px;width:80%;"></div>
-                    <div style="height:28px;background:#f0f0ee;border-radius:6px;width:60%;"></div>
-                    <div style="height:12px;background:#f0f0ee;border-radius:6px;width:90%;margin-top:8px;"></div>
-                    <div style="height:12px;background:#f0f0ee;border-radius:6px;width:75%;"></div>
-                </div>
-            </div>`;
-        document.getElementById('exh-grid').innerHTML =
-            Array(6).fill(`<div style="background:#fff;border-radius:20px;overflow:hidden;animation:pulse 1.5s ease-in-out infinite;">
-                <div style="aspect-ratio:16/10;background:#f0f0ee;"></div>
-                <div style="padding:22px 24px 26px;display:flex;flex-direction:column;gap:10px;">
-                    <div style="height:10px;background:#f0f0ee;border-radius:5px;width:40%;"></div>
-                    <div style="height:16px;background:#f0f0ee;border-radius:5px;width:70%;"></div>
-                    <div style="height:10px;background:#f0f0ee;border-radius:5px;width:55%;"></div>
-                </div>
-            </div>`).join('');
-    }
-
-    /* ── 데이터 로드 ── */
-    async function loadExhibitions() {
-        showSkeleton();
-        try {
-            const res = await fetch('exhibitions.json?t=' + Date.now());
-            if (!res.ok) throw new Error('fetch failed');
-            EXHIBITIONS = await res.json();
-        } catch (e) {
-            document.getElementById('featured-wrap').innerHTML =
-                `<p style="text-align:center;padding:40px;color:rgba(29,41,81,0.4);font-family:'Noto Sans KR',sans-serif;font-size:13px;">
-                    전시 정보를 불러오는 중 오류가 발생했습니다.<br>잠시 후 다시 시도해주세요.
-                </p>`;
-            return;
-        }
-        renderFeatured(EXHIBITIONS[0]);
-        applyFilter();
-    }
-
-
-    /* ── 이미지 로드 실패 시 그라디언트 카드로 교체 ── */
-    function onImgError(el) {
-        const d = document.createElement('div');
-        d.className = el.className;
-        d.style.cssText = `background:${el.dataset.grad};display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;`;
-        if (el.dataset.mh) d.style.minHeight = el.dataset.mh;
-        d.innerHTML = `
-            <div style="width:24px;height:1px;background:rgba(255,255,255,0.2)"></div>
-            <p style="font-size:8px;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;color:rgba(255,255,255,0.3);font-family:'Noto Sans KR',sans-serif;text-align:center;max-width:150px;">${el.dataset.venue}</p>
-            <div style="width:24px;height:1px;background:rgba(255,255,255,0.2)"></div>`;
-        el.parentNode.replaceChild(d, el);
-    }
-
-    /* ── 이미지 or 그라디언트 영역 ── */
-    function imgArea(item, cls, minHeight) {
-        const mh = minHeight ? `min-height:${minHeight};` : '';
-        if (!item.img) {
-            return `<div class="${cls}" style="background:${item.grad};display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;${mh}">
-                <div style="width:24px;height:1px;background:rgba(255,255,255,0.2)"></div>
-                <p style="font-size:8px;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;color:rgba(255,255,255,0.3);font-family:'Noto Sans KR',sans-serif;text-align:center;max-width:150px;">${item.venue}</p>
-                <div style="width:24px;height:1px;background:rgba(255,255,255,0.2)"></div>
-            </div>`;
-        }
-        return `<img src="${item.img}" alt="${item.title}" class="${cls}" style="${mh}"
-            data-grad="${item.grad}" data-venue="${item.venue}" data-mh="${minHeight || ''}"
+function cardImg(item) {
+    if (item.img) {
+        return `<img src="${item.img}" alt="${item.title}"
+            data-grad="${item.grad}" data-venue="${item.venue}"
             onerror="onImgError(this)">`;
     }
+    return `<div class="card-grad" style="background:${item.grad};"><p>${item.venue}</p></div>`;
+}
 
-    /* ── 날짜 ── */
-    function fmtDate(s) {
-        return s ? new Date(s).toLocaleDateString('ko-KR', { year:'numeric', month:'long', day:'numeric' }) : '';
+function thumbImg(item) {
+    if (item.img) {
+        return `<img src="${item.img}" alt=""
+            data-grad="${item.grad}" data-venue=""
+            onerror="this.parentNode.style.background='${item.grad}'">`;
     }
+    return `<div class="thumb-grad-sm" style="background:${item.grad};"></div>`;
+}
 
-    /* ── 상태 ── */
-    function getStatus(item) {
-        const now = Date.now();
-        const s = item.start ? new Date(item.start).getTime() : 0;
-        const e = item.end   ? new Date(item.end).getTime()   : Infinity;
-        if (now < s) return 'coming';
-        if (now > e) return 'closed';
-        return 'open';
-    }
+function groupByEndMonth(items) {
+    const today = new Date();
+    const groups = new Map();
+    const order  = [];
 
-    /* ── 상태 배지 ── */
-    function statusBadge(status) {
-        const map = { open:'진행 중', coming:'예정', closed:'종료' };
-        const bg  = { open:'#e8f5e9', coming:'#e3f2fd', closed:'#fce4ec' };
-        const clr = { open:'#2e7d32', coming:'#1565c0', closed:'#c62828' };
-        return `<span style="display:inline-block;padding:3px 12px;border-radius:100px;font-size:9px;font-weight:700;letter-spacing:0.12em;background:${bg[status]};color:${clr[status]};">${map[status]}</span>`;
-    }
+    items.forEach(item => {
+        if (getStatus(item) !== 'open') return;
 
-    /* ── 피처드 카드 ── */
-    function renderFeatured(item) {
-        const status = getStatus(item);
-        document.getElementById('featured-wrap').innerHTML = `
-            <a href="${item.url}" target="_blank" rel="noopener" style="text-decoration:none;">
-            <div class="exh-featured fade-up" style="display:grid;grid-template-columns:1fr 1fr;">
-                <div style="overflow:hidden;min-height:360px;">
-                    ${imgArea(item, 'exh-featured-img', '360px')}
-                </div>
-                <div style="padding:48px 44px;display:flex;flex-direction:column;justify-content:center;">
-                    <div style="display:flex;align-items:center;gap:8px;margin-bottom:20px;">
-                        ${statusBadge(status)}
-                        <span style="font-size:9px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:rgba(29,41,81,0.3);">Featured</span>
-                    </div>
-                    <h2 style="font-family:'Playfair Display',serif;font-size:1.9rem;font-weight:300;color:var(--navy);line-height:1.25;margin-bottom:16px;">${item.title}</h2>
-                    <p style="font-size:10px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:rgba(29,41,81,0.4);margin-bottom:14px;">${item.venue}</p>
-                    <p style="font-size:12px;color:rgba(29,41,81,0.55);line-height:1.8;margin-bottom:24px;font-family:'Noto Sans KR',sans-serif;">${item.desc.slice(0,160)}…</p>
-                    <p style="font-size:11px;color:rgba(29,41,81,0.4);font-family:'Noto Sans KR',sans-serif;margin-bottom:28px;">${fmtDate(item.start)} — ${fmtDate(item.end)}</p>
-                    <span style="display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--navy);border-bottom:1px solid var(--navy);padding-bottom:2px;width:fit-content;">
-                        전시 상세보기 <i class="fa-solid fa-arrow-right-long"></i>
-                    </span>
-                </div>
-            </div>
-            </a>`;
-    }
-
-    /* ── 그리드 ── */
-    function renderGrid(items) {
-        const grid = document.getElementById('exh-grid');
-        document.getElementById('exh-count').textContent = `${items.length}개 전시`;
-        if (!items.length) {
-            grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:60px;color:rgba(29,41,81,0.3);font-family:'Noto Sans KR',sans-serif;font-size:13px;">해당 조건의 전시가 없습니다.</div>`;
-            return;
+        const endDate = item.end ? new Date(item.end) : null;
+        let key;
+        if (!endDate) {
+            key = '기간 미정';
+        } else {
+            const y  = endDate.getFullYear();
+            const m  = endDate.getMonth();
+            const ty = today.getFullYear();
+            key = (y === ty) ? `${m + 1}월 종료` : `${y}년 ${m + 1}월 종료`;
         }
-        grid.innerHTML = items.map(item => {
-            const status = getStatus(item);
-            return `
-            <a href="${item.url}" target="_blank" rel="noopener" style="text-decoration:none;" class="fade-up">
-            <div class="exh-card">
-                <div class="img-wrap">${imgArea(item, 'exh-card-img', '')}</div>
-                <div style="padding:22px 24px 26px;">
-                    <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:12px;">
-                        ${statusBadge(status)}
-                        <span style="font-size:9px;color:rgba(29,41,81,0.3);font-weight:700;margin-left:auto;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;max-width:130px;">${item.venue}</span>
-                    </div>
-                    <h3 style="font-family:'Playfair Display',serif;font-size:1rem;font-weight:400;color:var(--navy);line-height:1.35;margin-bottom:10px;">${item.title}</h3>
-                    <p style="font-size:11px;color:rgba(29,41,81,0.48);line-height:1.7;margin-bottom:14px;font-family:'Noto Sans KR',sans-serif;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">${item.desc}</p>
-                    <p style="font-size:10px;color:rgba(29,41,81,0.3);font-family:'Noto Sans KR',sans-serif;">${fmtDate(item.start)} — ${fmtDate(item.end)}</p>
-                </div>
-            </div>
-            </a>`;
-        }).join('');
-    }
 
-    /* ── 필터 ── */
-    let activeFilter = 'all';
-
-    function applyFilter() {
-        const pool = EXHIBITIONS.slice(1);
-        const filtered = activeFilter === 'all'
-            ? pool
-            : pool.filter(item => getStatus(item) === activeFilter);
-        renderGrid(filtered);
-    }
-
-    document.querySelectorAll('.filter-tab').forEach(btn => {
-        btn.addEventListener('click', () => {
-            document.querySelectorAll('.filter-tab').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            activeFilter = btn.dataset.filter;
-            applyFilter();
-        });
+        if (!groups.has(key)) { groups.set(key, []); order.push(key); }
+        groups.get(key).push(item);
     });
 
-    /* ── 초기 렌더 ── */
-    loadExhibitions();
-    </script>
+    return { groups, order };
+}
+
+function renderSection(key, items, idx) {
+    const mainId  = `sm${idx}`;
+    const thumbId = `st${idx}`;
+    const prevId  = `sp${idx}`;
+    const nextId  = `sn${idx}`;
+
+    const isThisMonth = /^\d+월 종료$/.test(key);
+    const labelText   = isThisMonth ? '이달 마감' : '전시 기간';
+
+    const slides = items.map(item => `
+        <div class="swiper-slide" onclick="window.open('${item.url}','_blank')">
+            <div class="exh-card">
+                <div class="card-img-wrap">${cardImg(item)}</div>
+                <div class="card-info">
+                    <p class="card-venue">${item.venue}</p>
+                    <h3 class="card-title">${item.title}</h3>
+                    <p class="card-date">~ ${fmtDate(item.end)}</p>
+                </div>
+            </div>
+        </div>`).join('');
+
+    const thumbs = items.map(item => `
+        <div class="swiper-slide">${thumbImg(item)}</div>`).join('');
+
+    const sec = document.createElement('section');
+    sec.className = 'exh-section';
+    sec.innerHTML = `
+        <div class="section-header">
+            <div>
+                <p class="section-label">${labelText}</p>
+                <h2 class="section-title">${key}</h2>
+            </div>
+            <span class="section-count">${items.length}개 전시</span>
+            <div class="nav-btns">
+                <button class="nav-btn" id="${prevId}">
+                    <i class="fa-solid fa-arrow-left"></i>
+                </button>
+                <button class="nav-btn" id="${nextId}">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="swiper main-swiper" id="${mainId}">
+            <div class="swiper-wrapper">${slides}</div>
+        </div>
+
+        <div class="thumb-wrap">
+            <div class="swiper thumb-swiper" id="${thumbId}">
+                <div class="swiper-wrapper">${thumbs}</div>
+            </div>
+        </div>`;
+
+    document.getElementById('exh-main').appendChild(sec);
+
+    const thumbSwiper = new Swiper(`#${thumbId}`, {
+        slidesPerView: 'auto',
+        spaceBetween: 8,
+        freeMode: { enabled: true },
+        watchSlidesProgress: true,
+    });
+
+    new Swiper(`#${mainId}`, {
+        centeredSlides: true,
+        slidesPerView: 'auto',
+        spaceBetween: 24,
+        navigation: { prevEl: `#${prevId}`, nextEl: `#${nextId}` },
+        thumbs: { swiper: thumbSwiper },
+    });
+}
+
+async function loadExhibitions() {
+    try {
+        const res = await fetch('exhibitions.json?t=' + Date.now());
+        if (!res.ok) throw new Error('fetch failed');
+        EXHIBITIONS = await res.json();
+    } catch (e) {
+        document.getElementById('exh-main').innerHTML = `
+            <p style="text-align:center;padding:80px 24px;color:rgba(29,41,81,0.4);
+               font-size:13px;font-family:'Noto Sans KR',sans-serif;">
+                전시 정보를 불러오는 중 오류가 발생했습니다.<br>잠시 후 다시 시도해주세요.
+            </p>`;
+        return;
+    }
+
+    const { groups, order } = groupByEndMonth(EXHIBITIONS);
+    document.getElementById('exh-main').innerHTML = '';
+
+    if (!order.length) {
+        document.getElementById('exh-main').innerHTML = `
+            <p style="text-align:center;padding:80px 24px;color:rgba(29,41,81,0.4);
+               font-size:13px;font-family:'Noto Sans KR',sans-serif;">
+                현재 진행 중인 전시가 없습니다.
+            </p>`;
+        return;
+    }
+
+    order.forEach((key, idx) => renderSection(key, groups.get(key), idx));
+}
+
+loadExhibitions();
+</script>
 </body>
 </html>
