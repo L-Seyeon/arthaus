@@ -64,16 +64,20 @@ def get_grad(venue: str) -> str:
 CULTURE_API_URL = "https://apis.data.go.kr/B553457/cultureinfo/realm2"
 
 def fetch_culture_api(service_key: str) -> list:
-    """culture.go.kr 공연전시정보 API 호출 → 전시(D) 항목만 반환"""
-    today    = date.today()
-    end_date = today + timedelta(days=90)
+    """data.go.kr B553457/cultureinfo/realm2 API 호출 → 전시(D000) 항목 반환"""
+    today     = date.today()
+    from_date = today.strftime("%Y%m%d")
+    to_date   = (today + timedelta(days=90)).strftime("%Y%m%d")
 
     # 서비스 키는 따로 붙여야 이중 인코딩 방지 (한국 공공 API 공통 이슈)
     other_params = {
-        "realmCode": "D0405",   # 전시 분야 코드 (한국문화정보원 B553457)
-        "cPage":     "1",
-        "rows":      "50",
-        "type":      "xml",
+        "realmCode":  "D000",   # 전시 분야 코드 (D000=전시, B553457 realm2)
+        "PageNo":     "1",
+        "numOfrows":  "50",
+        "from":       from_date,
+        "to":         to_date,
+        "sortStdr":   "1",      # 1=등록순
+        "type":       "xml",
     }
     # 키 정규화: plain text든 이미 인코딩된 키든 → 올바르게 URL-encode
     key_encoded = quote(unquote(service_key), safe="")
