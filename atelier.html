@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="no-referrer">
+    <title>Atelier — ARTHAUS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --color-space-cadet: #1D2951; }
+
+        /* ── Reset / Base ── */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background: #F8F9FA;
+            color: var(--color-space-cadet);
+        }
+
+        h1, h2, h3, h4, .font-playfair {
+            font-family: 'Cormorant Garamond', 'Gowun Batang', serif;
+        }
+
+        /* ── Nav ── */
+        #site-nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            height: 64px;
+            background: rgba(248,249,250,0.92);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(29,41,81,0.08);
+        }
+        #site-nav .nav-inner {
+            max-width: 80rem; margin: 0 auto; padding: 0 24px;
+            height: 64px; display: flex; align-items: center; justify-content: space-between;
+        }
+        #site-nav .nav-brand {
+            font-family: 'Cormorant Garamond', 'Gowun Batang', serif;
+            font-size: 1.2rem; font-weight: 700; letter-spacing: 0.08em;
+            color: #1D2951; text-decoration: none;
+        }
+        #site-nav .nav-links {
+            display: flex; align-items: center; gap: 32px;
+        }
+        #site-nav .nav-links a {
+            font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+            color: rgba(29,41,81,0.45); text-decoration: none;
+            transition: color 0.2s;
+        }
+        #site-nav .nav-links a:hover { color: #1D2951; }
+        #site-nav .nav-links a.active  { color: #1D2951; }
+
+        /* ── Hero ── */
+        .hero {
+            background: var(--color-space-cadet);
+            padding: 160px 0 100px;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute; inset: 0;
+            background: radial-gradient(ellipse 80% 60% at 70% 50%, rgba(99,130,220,0.12) 0%, transparent 70%);
+        }
+
+        /* ── Back link ── */
+        .back-link {
+            display: inline-flex; align-items: center; gap: 8px;
+            font-size: 10px; font-weight: 700; letter-spacing: 0.15em;
+            text-transform: uppercase; text-decoration: none;
+            color: rgba(255,255,255,0.65);
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.15);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-radius: 100px;
+            padding: 10px 20px;
+            transition: background 0.25s, border-color 0.25s, color 0.25s;
+        }
+        .back-link:hover {
+            background: rgba(255,255,255,0.15);
+            border-color: rgba(255,255,255,0.3);
+            color: #fff;
+        }
+
+        /* ── Section headers ── */
+        .section-eyebrow {
+            font-size: 10px; font-weight: 700; letter-spacing: 0.4em;
+            text-transform: uppercase; font-family: 'Noto Sans KR', sans-serif;
+        }
+
+        /* ── Class cards ── */
+        .class-card {
+            background: #fff;
+            border-radius: 20px;
+            padding: 32px;
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+            cursor: default;
+        }
+        .class-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 56px rgba(29,41,81,0.12);
+        }
+
+        /* ── Tag pill ── */
+        .tag-pill {
+            display: inline-block;
+            padding: 4px 14px;
+            border: 1px solid rgba(29,41,81,0.18);
+            border-radius: 100px;
+            font-size: 9px; font-weight: 700;
+            letter-spacing: 0.12em; text-transform: uppercase;
+            color: var(--color-space-cadet);
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+
+        /* ── CTA button (primary) ── */
+        .btn-primary {
+            display: inline-flex; align-items: center; gap: 8px;
+            font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
+            text-transform: uppercase; text-decoration: none;
+            color: #fff;
+            background: var(--color-space-cadet);
+            border: 1px solid var(--color-space-cadet);
+            border-radius: 100px;
+            padding: 12px 24px;
+            transition: background 0.25s, color 0.25s;
+            cursor: pointer;
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+        .btn-primary:hover {
+            background: #2a3d73;
+            border-color: #2a3d73;
+        }
+
+        /* ── Commission card ── */
+        .commission-card {
+            background: #fff;
+            border: 1px solid rgba(29,41,81,0.1);
+            border-radius: 20px;
+            padding: 40px 32px;
+            text-align: center;
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+        }
+        .commission-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 56px rgba(29,41,81,0.10);
+        }
+
+        /* ── Process section ── */
+        .process-section {
+            background: var(--color-space-cadet);
+            padding: 96px 0;
+        }
+        .process-step-num {
+            font-family: 'Cormorant Garamond', 'Gowun Batang', serif;
+            font-size: 48px;
+            font-weight: 300;
+            color: rgba(255,255,255,0.12);
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+
+        /* ── Booking section ── */
+        .booking-section {
+            background: #fff;
+            padding: 96px 0;
+        }
+
+        /* ── CTA large ── */
+        .btn-cta-large {
+            display: inline-flex; align-items: center; gap: 10px;
+            font-size: 13px; font-weight: 700; letter-spacing: 0.12em;
+            text-transform: uppercase; text-decoration: none;
+            color: #fff;
+            background: var(--color-space-cadet);
+            border-radius: 100px;
+            padding: 18px 40px;
+            transition: background 0.25s, transform 0.25s;
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+        .btn-cta-large:hover {
+            background: #2a3d73;
+            transform: translateY(-2px);
+        }
+
+        /* ── Footer ── */
+        footer {
+            background: var(--color-space-cadet);
+            padding: 56px 0 40px;
+        }
+
+        /* ── Class icon circle ── */
+        .icon-circle {
+            width: 56px; height: 56px;
+            background: rgba(29,41,81,0.06);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 20px;
+            font-size: 22px;
+            color: var(--color-space-cadet);
+        }
+
+        /* ── Commission icon circle ── */
+        .commission-icon {
+            width: 72px; height: 72px;
+            background: rgba(29,41,81,0.06);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 24px;
+            font-size: 28px;
+            color: var(--color-space-cadet);
+        }
+
+        /* ── Process connector line (desktop) ── */
+        @media (min-width: 768px) {
+            .process-grid {
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                gap: 0;
+            }
+            .process-step {
+                position: relative;
+                padding: 0 24px;
+            }
+            .process-step:not(:last-child)::after {
+                content: '';
+                position: absolute;
+                top: 24px; /* align with number midpoint */
+                right: 0;
+                width: 1px;
+                height: 48px;
+                background: rgba(255,255,255,0.1);
+            }
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 640px) {
+            .hero { padding: 120px 0 72px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ── Navigation ── -->
+    <nav id="site-nav">
+        <div class="nav-inner">
+            <a href="story.html" class="nav-brand">ARTHAUS</a>
+            <div class="nav-links">
+                <a href="story.html">Home</a>
+                <a href="artist.html">Artist</a>
+                <a href="exhibition.html">Exhibition</a>
+                <a href="magazine.html">Magazine</a>
+                <a href="atelier.html" class="active">Atelier</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ── Hero ── -->
+    <section class="hero">
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <!-- Back button -->
+            <a href="story.html#atelier" class="back-link" style="margin-bottom:48px; display:inline-flex;">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                    <path d="M10 7H4M7 10L4 7l3-3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                돌아가기
+            </a>
+
+            <!-- Eyebrow -->
+            <p class="section-eyebrow" style="color:rgba(255,255,255,0.35); margin-top:40px; margin-bottom:20px;">
+                <i class="fa-solid fa-palette" style="margin-right:8px;"></i>Creative Space
+            </p>
+
+            <!-- H1 -->
+            <h1 class="font-playfair text-white leading-tight" style="font-size: clamp(52px, 8vw, 96px); font-weight:300; margin-bottom:24px;">
+                <em>Atelier</em>
+            </h1>
+
+            <!-- Subtitle -->
+            <p style="font-size:14px; color:rgba(255,255,255,0.45); max-width:480px; line-height:1.85; font-family:'Noto Sans KR',sans-serif;">
+                작가와 함께하는 창작 공간. 원데이클래스와 커미션 작업을 통해 예술을 일상으로.
+            </p>
+        </div>
+    </section>
+
+    <!-- ================================================================
+         Section 2: 원데이클래스
+    ================================================================ -->
+    <section id="classes" style="background:#fff; padding:96px 0;">
+        <div class="max-w-7xl mx-auto px-6">
+
+            <!-- Section header -->
+            <div style="margin-bottom:56px;">
+                <p class="section-eyebrow" style="color:rgba(29,41,81,0.4); margin-bottom:12px;">Classes</p>
+                <h2 class="font-playfair" style="font-size:clamp(32px,5vw,48px); font-weight:400; color:var(--color-space-cadet); line-height:1.2;">
+                    원데이클래스
+                </h2>
+            </div>
+
+            <!-- 2×2 → md: 4-col grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+                <!-- Card 1: 수채화 입문 -->
+                <article class="class-card">
+                    <div class="icon-circle">
+                        <i class="fa-solid fa-droplet"></i>
+                    </div>
+                    <h3 class="font-playfair" style="font-size:20px; font-weight:500; color:var(--color-space-cadet); margin-bottom:12px;">수채화 입문</h3>
+                    <p style="font-size:12px; color:rgba(29,41,81,0.55); line-height:1.75; margin-bottom:20px;">
+                        수채화의 기본 기법과 색 혼합. 초보자 환영.
+                    </p>
+                    <div style="display:flex; flex-wrap:wrap; gap:6px; margin-bottom:24px;">
+                        <span class="tag-pill">3시간</span>
+                        <span class="tag-pill">정원 6명</span>
+                        <span class="tag-pill">60,000원</span>
+                    </div>
+                    <a href="https://forms.gle/1VrCGSSSHsVGJpeA9" target="_blank" rel="noopener noreferrer" class="btn-primary" style="width:100%; justify-content:center;">
+                        예약 신청
+                    </a>
+                </article>
+
+                <!-- Card 2: 유화 드로잉 -->
+                <article class="class-card">
+                    <div class="icon-circle">
+                        <i class="fa-solid fa-palette"></i>
+                    </div>
+                    <h3 class="font-playfair" style="font-size:20px; font-weight:500; color:var(--color-space-cadet); margin-bottom:12px;">유화 드로잉</h3>
+                    <p style="font-size:12px; color:rgba(29,41,81,0.55); line-height:1.75; margin-bottom:20px;">
+                        캔버스에 유화로 나만의 정물 완성.
+                    </p>
+                    <div style="display:flex; flex-wrap:wrap; gap:6px; margin-bottom:24px;">
+                        <span class="tag-pill">4시간</span>
+                        <span class="tag-pill">정원 4명</span>
+                        <span class="tag-pill">90,000원</span>
+                    </div>
+                    <a href="https://forms.gle/1VrCGSSSHsVGJpeA9" target="_blank" rel="noopener noreferrer" class="btn-primary" style="width:100%; justify-content:center;">
+                        예약 신청
+                    </a>
+                </article>
+
+                <!-- Card 3: 디지털 페인팅 -->
+                <article class="class-card">
+                    <div class="icon-circle">
+                        <i class="fa-solid fa-tablet-screen-button"></i>
+                    </div>
+                    <h3 class="font-playfair" style="font-size:20px; font-weight:500; color:var(--color-space-cadet); margin-bottom:12px;">디지털 페인팅</h3>
+                    <p style="font-size:12px; color:rgba(29,41,81,0.55); line-height:1.75; margin-bottom:20px;">
+                        태블릿으로 배우는 디지털 일러스트.
+                    </p>
+                    <div style="display:flex; flex-wrap:wrap; gap:6px; margin-bottom:24px;">
+                        <span class="tag-pill">3시간</span>
+                        <span class="tag-pill">정원 6명</span>
+                        <span class="tag-pill">70,000원</span>
+                    </div>
+                    <a href="https://forms.gle/1VrCGSSSHsVGJpeA9" target="_blank" rel="noopener noreferrer" class="btn-primary" style="width:100%; justify-content:center;">
+                        예약 신청
+                    </a>
+                </article>
+
+                <!-- Card 4: 스케치 & 드로잉 -->
+                <article class="class-card">
+                    <div class="icon-circle">
+                        <i class="fa-solid fa-pencil"></i>
+                    </div>
+                    <h3 class="font-playfair" style="font-size:20px; font-weight:500; color:var(--color-space-cadet); margin-bottom:12px;">스케치 &amp; 드로잉</h3>
+                    <p style="font-size:12px; color:rgba(29,41,81,0.55); line-height:1.75; margin-bottom:20px;">
+                        연필·콘테로 기초 소묘. 모든 레벨.
+                    </p>
+                    <div style="display:flex; flex-wrap:wrap; gap:6px; margin-bottom:24px;">
+                        <span class="tag-pill">2시간</span>
+                        <span class="tag-pill">정원 8명</span>
+                        <span class="tag-pill">40,000원</span>
+                    </div>
+                    <a href="https://forms.gle/1VrCGSSSHsVGJpeA9" target="_blank" rel="noopener noreferrer" class="btn-primary" style="width:100%; justify-content:center;">
+                        예약 신청
+                    </a>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================================================
+         Section 3: 커미션
+    ================================================================ -->
+    <section id="commission" style="background:#F8F9FA; padding:96px 0;">
+        <div class="max-w-7xl mx-auto px-6">
+
+            <!-- Section header -->
+            <div style="margin-bottom:24px;">
+                <p class="section-eyebrow" style="color:rgba(29,41,81,0.4); margin-bottom:12px;">Commission</p>
+                <h2 class="font-playfair" style="font-size:clamp(32px,5vw,48px); font-weight:400; color:var(--color-space-cadet); line-height:1.2;">
+                    커미션 &amp; 외주
+                </h2>
+            </div>
+            <p style="font-size:13px; color:rgba(29,41,81,0.55); line-height:1.8; margin-bottom:56px; max-width:520px; font-family:'Noto Sans KR',sans-serif;">
+                회화, 디지털, 일러스트 등 다양한 매체로 의뢰 작업을 받습니다.
+            </p>
+
+            <!-- 3-col cards -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+                <!-- Card: 회화 -->
+                <article class="commission-card">
+                    <div class="commission-icon">
+                        <i class="fa-solid fa-image"></i>
+                    </div>
+                    <p class="section-eyebrow" style="color:rgba(29,41,81,0.35); margin-bottom:10px;">Painting</p>
+                    <h3 class="font-playfair" style="font-size:22px; font-weight:500; color:var(--color-space-cadet); margin-bottom:16px;">회화</h3>
+                    <p style="font-size:12px; color:rgba(29,41,81,0.55); line-height:1.8; margin-bottom:12px;">
+                        캔버스 유화·아크릴·수채화 원화 제작.<br>초상화, 풍경화, 정물화.
+                    </p>
+                    <p style="font-size:11px; font-weight:700; color:rgba(29,41,81,0.35); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:28px; font-family:'Noto Sans KR',sans-serif;">
+                        납기 2 – 4주
+                    </p>
+                    <a href="https://forms.gle/1VrCGSSSHsVGJpeA9" target="_blank" rel="noopener noreferrer" class="btn-primary" style="justify-content:center;">
+                        의뢰 신청
+                    </a>
+                </article>
+
+                <!-- Card: 디지털 -->
+                <article class="commission-card">
+                    <div class="commission-icon">
+                        <i class="fa-solid fa-tablet-screen-button"></i>
+                    </div>
+                    <p class="section-eyebrow" style="color:rgba(29,41,81,0.35); margin-bottom:10px;">Digital</p>
+                    <h3 class="font-playfair" style="font-size:22px; font-weight:500; color:var(--color-space-cadet); margin-bottom:16px;">디지털</h3>
+                    <p style="font-size:12px; color:rgba(29,41,81,0.55); line-height:1.8; margin-bottom:12px;">
+                        디지털 일러스트·커버아트·굿즈 디자인.<br>고해상도 파일 납품.
+                    </p>
+                    <p style="font-size:11px; font-weight:700; color:rgba(29,41,81,0.35); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:28px; font-family:'Noto Sans KR',sans-serif;">
+                        납기 1 – 2주
+                    </p>
+                    <a href="https://forms.gle/1VrCGSSSHsVGJpeA9" target="_blank" rel="noopener noreferrer" class="btn-primary" style="justify-content:center;">
+                        의뢰 신청
+                    </a>
+                </article>
+
+                <!-- Card: 일러스트 -->
+                <article class="commission-card">
+                    <div class="commission-icon">
+                        <i class="fa-solid fa-pen-nib"></i>
+                    </div>
+                    <p class="section-eyebrow" style="color:rgba(29,41,81,0.35); margin-bottom:10px;">Illustration</p>
+                    <h3 class="font-playfair" style="font-size:22px; font-weight:500; color:var(--color-space-cadet); margin-bottom:16px;">일러스트</h3>
+                    <p style="font-size:12px; color:rgba(29,41,81,0.55); line-height:1.8; margin-bottom:12px;">
+                        책 삽화·브랜딩·SNS 콘텐츠 이미지 제작.
+                    </p>
+                    <p style="font-size:11px; font-weight:700; color:rgba(29,41,81,0.35); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:28px; font-family:'Noto Sans KR',sans-serif;">
+                        납기 1 – 3주
+                    </p>
+                    <a href="https://forms.gle/1VrCGSSSHsVGJpeA9" target="_blank" rel="noopener noreferrer" class="btn-primary" style="justify-content:center;">
+                        의뢰 신청
+                    </a>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================================================
+         Section 4: Process
+    ================================================================ -->
+    <section id="process" class="process-section">
+        <div class="max-w-7xl mx-auto px-6">
+
+            <!-- Header -->
+            <div style="margin-bottom:64px; text-align:center;">
+                <p class="section-eyebrow" style="color:rgba(255,255,255,0.3); margin-bottom:12px;">How it Works</p>
+                <h2 class="font-playfair text-white" style="font-size:clamp(32px,5vw,48px); font-weight:400; line-height:1.2;">
+                    진행 절차
+                </h2>
+            </div>
+
+            <!-- Steps -->
+            <div class="process-grid">
+
+                <!-- Step 1 -->
+                <div class="process-step" style="padding-top:0;">
+                    <p class="process-step-num">01</p>
+                    <h3 class="font-playfair text-white" style="font-size:22px; font-weight:500; margin-bottom:12px;">신청</h3>
+                    <p style="font-size:12px; color:rgba(255,255,255,0.45); line-height:1.8; font-family:'Noto Sans KR',sans-serif;">
+                        구글 폼으로 간단 의뢰/수업 신청
+                    </p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="process-step" style="padding-top:0;">
+                    <p class="process-step-num">02</p>
+                    <h3 class="font-playfair text-white" style="font-size:22px; font-weight:500; margin-bottom:12px;">상담</h3>
+                    <p style="font-size:12px; color:rgba(255,255,255,0.45); line-height:1.8; font-family:'Noto Sans KR',sans-serif;">
+                        작업 범위·일정·비용 조율
+                    </p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="process-step" style="padding-top:0;">
+                    <p class="process-step-num">03</p>
+                    <h3 class="font-playfair text-white" style="font-size:22px; font-weight:500; margin-bottom:12px;">제작</h3>
+                    <p style="font-size:12px; color:rgba(255,255,255,0.45); line-height:1.8; font-family:'Noto Sans KR',sans-serif;">
+                        작가가 정성껏 제작
+                    </p>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="process-step" style="padding-top:0;">
+                    <p class="process-step-num">04</p>
+                    <h3 class="font-playfair text-white" style="font-size:22px; font-weight:500; margin-bottom:12px;">전달</h3>
+                    <p style="font-size:12px; color:rgba(255,255,255,0.45); line-height:1.8; font-family:'Noto Sans KR',sans-serif;">
+                        완성본 전달 및 수정
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================================================
+         Section 5: Booking CTA
+    ================================================================ -->
+    <section id="booking-form" class="booking-section">
+        <div class="max-w-7xl mx-auto px-6" style="text-align:center;">
+
+            <p class="section-eyebrow" style="color:rgba(29,41,81,0.35); margin-bottom:16px;">Book / Commission</p>
+            <h2 class="font-playfair" style="font-size:clamp(32px,5vw,56px); font-weight:400; color:var(--color-space-cadet); line-height:1.2; margin-bottom:20px;">
+                함께 만들어요
+            </h2>
+            <p style="font-size:13px; color:rgba(29,41,81,0.55); line-height:1.85; margin-bottom:40px; max-width:440px; margin-left:auto; margin-right:auto; font-family:'Noto Sans KR',sans-serif;">
+                수업 예약과 커미션 의뢰는 구글 폼을 통해 신청해주세요.
+            </p>
+
+            <a href="https://forms.gle/1VrCGSSSHsVGJpeA9" target="_blank" rel="noopener noreferrer" class="btn-cta-large">
+                <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:12px;"></i>
+                신청 폼 바로가기
+            </a>
+
+            <p style="font-size:11px; color:rgba(29,41,81,0.35); margin-top:24px; font-family:'Noto Sans KR',sans-serif; letter-spacing:0.05em;">
+                문의사항은 인스타그램 DM으로도 가능합니다
+            </p>
+
+        </div>
+    </section>
+
+    <!-- ================================================================
+         Footer
+    ================================================================ -->
+    <footer>
+        <div class="max-w-7xl mx-auto px-6">
+
+            <!-- Top row -->
+            <div style="display:flex; flex-wrap:wrap; align-items:flex-start; justify-content:space-between; gap:32px; padding-bottom:40px; border-bottom:1px solid rgba(255,255,255,0.1);">
+
+                <!-- Brand -->
+                <div>
+                    <a href="story.html" class="font-playfair" style="font-size:22px; font-weight:700; color:#fff; text-decoration:none; letter-spacing:0.12em; display:block; margin-bottom:10px;">ARTHAUS</a>
+                    <p style="font-size:11px; color:rgba(255,255,255,0.35); line-height:1.7; font-family:'Noto Sans KR',sans-serif; max-width:220px;">
+                        예술과 일상을 잇는 공간
+                    </p>
+                </div>
+
+                <!-- Nav -->
+                <nav aria-label="Footer navigation" style="display:flex; gap:32px; flex-wrap:wrap; align-items:center;">
+                    <a href="story.html"     style="font-size:11px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.45); text-decoration:none; transition:color 0.2s;"
+                       onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.45)'">Home</a>
+                    <a href="artist.html"    style="font-size:11px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.45); text-decoration:none; transition:color 0.2s;"
+                       onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.45)'">Artist</a>
+                    <a href="exhibition.html" style="font-size:11px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.45); text-decoration:none; transition:color 0.2s;"
+                       onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.45)'">Exhibition</a>
+                    <a href="magazine.html"  style="font-size:11px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.45); text-decoration:none; transition:color 0.2s;"
+                       onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.45)'">Magazine</a>
+                    <a href="atelier.html"   style="font-size:11px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:#fff; text-decoration:none;">Atelier</a>
+                </nav>
+
+            </div>
+
+            <!-- Copyright -->
+            <p style="font-size:10px; color:rgba(255,255,255,0.2); margin-top:24px; letter-spacing:0.08em; font-family:'Noto Sans KR',sans-serif;">
+                &copy; 2026 ARTHAUS. All rights reserved.
+            </p>
+
+        </div>
+    </footer>
+
+</body>
+</html>

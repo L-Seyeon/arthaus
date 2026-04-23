@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="no-referrer">
+    <title>Magazine — ARTHAUS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --color-space-cadet: #1D2951; }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background: #F8F9FA;
+            color: var(--color-space-cadet);
+        }
+
+        h1, h2, h3, h4, .font-playfair {
+            font-family: 'Cormorant Garamond', 'Gowun Batang', serif;
+        }
+
+        /* ── Nav ── */
+        #site-nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            height: 64px;
+            background: rgba(248,249,250,0.92);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(29,41,81,0.08);
+        }
+        #site-nav .nav-inner {
+            max-width: 80rem; margin: 0 auto; padding: 0 24px;
+            height: 64px; display: flex; align-items: center; justify-content: space-between;
+        }
+        #site-nav .nav-brand {
+            font-family: 'Cormorant Garamond', 'Gowun Batang', serif;
+            font-size: 1.2rem; font-weight: 700; letter-spacing: 0.08em;
+            color: #1D2951; text-decoration: none;
+        }
+        #site-nav .nav-links {
+            display: flex; align-items: center; gap: 32px;
+        }
+        #site-nav .nav-links a {
+            font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+            color: rgba(29,41,81,0.45); text-decoration: none;
+            transition: color 0.2s;
+        }
+        #site-nav .nav-links a:hover { color: #1D2951; }
+        #site-nav .nav-links a.active  { color: #1D2951; }
+
+        /* ── Hero ── */
+        .hero {
+            background: var(--color-space-cadet);
+            padding: 160px 0 100px;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute; inset: 0;
+            background: radial-gradient(ellipse 80% 60% at 70% 50%, rgba(99,130,220,0.12) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        /* ── Back link ── */
+        .back-link {
+            display: inline-flex; align-items: center; gap: 8px;
+            font-size: 10px; font-weight: 700; letter-spacing: 0.15em;
+            text-transform: uppercase; text-decoration: none;
+            color: rgba(255,255,255,0.65);
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.15);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-radius: 100px;
+            padding: 10px 20px;
+            transition: background 0.25s, border-color 0.25s, color 0.25s;
+        }
+        .back-link:hover {
+            background: rgba(255,255,255,0.15);
+            border-color: rgba(255,255,255,0.3);
+            color: #fff;
+        }
+
+        /* ── Category filter bar ── */
+        .filter-bar {
+            background: rgba(248,249,250,0.95);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(29,41,81,0.08);
+            position: sticky;
+            top: 65px; /* clears the nav */
+            z-index: 90;
+        }
+
+        .filter-btn {
+            display: inline-flex; align-items: center;
+            padding: 8px 20px;
+            border-radius: 100px;
+            font-size: 10px; font-weight: 700; letter-spacing: 0.14em;
+            text-transform: uppercase;
+            border: 1.5px solid rgba(29,41,81,0.18);
+            background: transparent;
+            color: rgba(29,41,81,0.5);
+            cursor: pointer;
+            transition: background 0.22s, border-color 0.22s, color 0.22s;
+            white-space: nowrap;
+        }
+        .filter-btn:hover {
+            border-color: var(--color-space-cadet);
+            color: var(--color-space-cadet);
+        }
+        .filter-btn.active {
+            background: var(--color-space-cadet);
+            border-color: var(--color-space-cadet);
+            color: #fff;
+        }
+
+        /* ── Featured card ── */
+        .featured-card {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            cursor: pointer;
+            min-height: 480px;
+            display: flex;
+            align-items: flex-end;
+        }
+        .featured-card img {
+            position: absolute; inset: 0;
+            width: 100%; height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+        .featured-card:hover img { transform: scale(1.04); }
+        .featured-overlay {
+            position: absolute; inset: 0;
+            background: linear-gradient(to top, rgba(10,14,40,0.88) 0%, rgba(10,14,40,0.35) 55%, transparent 100%);
+        }
+        .featured-content {
+            position: relative; z-index: 2;
+            padding: 48px;
+        }
+
+        /* ── Article cards ── */
+        .article-card {
+            background: #fff;
+            border-radius: 18px;
+            overflow: hidden;
+            transition: transform 0.32s ease, box-shadow 0.32s ease;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+        }
+        .article-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 20px 56px rgba(29,41,81,0.12);
+        }
+        .article-thumb-wrap { overflow: hidden; }
+        .article-thumb {
+            width: 100%;
+            aspect-ratio: 16/10;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        .article-card:hover .article-thumb { transform: scale(1.05); }
+
+        /* ── Category badges ── */
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 100px;
+            font-size: 9px; font-weight: 700;
+            letter-spacing: 0.16em; text-transform: uppercase;
+        }
+        .badge-interview { background: rgba(29,41,81,0.1);  color: var(--color-space-cadet); }
+        .badge-review    { background: rgba(71,85,105,0.1); color: #475569; }
+        .badge-insight   { background: rgba(180,130,0,0.1); color: #b48200; }
+        .badge-market    { background: rgba(5,130,80,0.1);  color: #058250; }
+        .badge-interior  { background: rgba(200,50,80,0.1); color: #c83250; }
+
+        /* ── Newsletter CTA ── */
+        .newsletter-section {
+            background: var(--color-space-cadet);
+            position: relative;
+            overflow: hidden;
+        }
+        .newsletter-section::before {
+            content: '';
+            position: absolute; inset: 0;
+            background: radial-gradient(ellipse 70% 60% at 30% 50%, rgba(99,130,220,0.14) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .newsletter-input {
+            flex: 1;
+            min-width: 0;
+            padding: 14px 20px;
+            border: 1.5px solid rgba(255,255,255,0.18);
+            border-radius: 100px 0 0 100px;
+            background: rgba(255,255,255,0.07);
+            color: #fff;
+            font-family: 'Noto Sans KR', sans-serif;
+            font-size: 13px;
+            outline: none;
+            transition: border-color 0.22s;
+        }
+        .newsletter-input::placeholder { color: rgba(255,255,255,0.35); }
+        .newsletter-input:focus { border-color: rgba(255,255,255,0.45); }
+        .newsletter-btn {
+            padding: 14px 28px;
+            background: #fff;
+            color: var(--color-space-cadet);
+            font-family: 'Noto Sans KR', sans-serif;
+            font-size: 12px; font-weight: 700;
+            letter-spacing: 0.08em;
+            border: none; border-radius: 0 100px 100px 0;
+            cursor: pointer;
+            transition: background 0.22s, transform 0.18s;
+            white-space: nowrap;
+        }
+        .newsletter-btn:hover { background: #e8eaf2; transform: translateX(2px); }
+
+        /* ── Footer ── */
+        footer {
+            background: var(--color-space-cadet);
+            border-top: 1px solid rgba(255,255,255,0.06);
+        }
+
+        /* ── Divider line ── */
+        .section-rule {
+            width: 40px; height: 2px;
+            background: var(--color-space-cadet);
+            border-radius: 2px;
+        }
+
+        /* ── Responsive helpers ── */
+        @media (max-width: 767px) {
+            .hero { padding: 130px 0 72px; }
+            .featured-content { padding: 28px; }
+            .featured-card { min-height: 380px; }
+            .filter-bar { top: 57px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ══════════════════════════════════════
+         NAV
+    ══════════════════════════════════════ -->
+    <nav id="site-nav">
+        <div class="nav-inner">
+            <a href="story.html" class="nav-brand">ARTHAUS</a>
+            <div class="nav-links">
+                <a href="story.html">Home</a>
+                <a href="artist.html">Artist</a>
+                <a href="exhibition.html">Exhibition</a>
+                <a href="magazine.html" class="active">Magazine</a>
+                <a href="atelier.html">Atelier</a>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- ══════════════════════════════════════
+         HERO
+    ══════════════════════════════════════ -->
+    <section class="hero" aria-label="매거진 히어로">
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+
+            <!-- Back link -->
+            <a href="story.html#story" class="back-link" style="margin-bottom:48px;">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                    <path d="M10 7H4M7 10L4 7l3-3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                돌아가기
+            </a>
+
+            <!-- Eyebrow -->
+            <p class="mt-10 mb-5"
+               style="font-size:10px; font-weight:700; letter-spacing:0.4em; text-transform:uppercase;
+                      color:rgba(255,255,255,0.35); font-family:'Noto Sans KR',sans-serif;">
+                <i class="fa-solid fa-book-open mr-2" aria-hidden="true"></i>Art &amp; Culture
+            </p>
+
+            <!-- H1 -->
+            <h1 class="font-playfair font-light text-white leading-tight mb-6"
+                style="font-size: clamp(3rem, 7vw, 5.5rem);">
+                Art <em>Magazine</em>
+            </h1>
+
+            <!-- Subtitle -->
+            <p style="font-size:13px; color:rgba(255,255,255,0.45); max-width:480px;
+                      line-height:1.85; font-family:'Noto Sans KR',sans-serif;">
+                작가 인터뷰, 전시 리뷰, 아트마켓 트렌드까지 — 예술의 깊이를 더하는 이야기.
+            </p>
+        </div>
+    </section>
+
+
+    <!-- ══════════════════════════════════════
+         CATEGORY FILTER BAR
+    ══════════════════════════════════════ -->
+    <div class="filter-bar" role="navigation" aria-label="카테고리 필터">
+        <div class="max-w-7xl mx-auto px-6 py-4">
+            <div class="flex items-center gap-3 overflow-x-auto pb-1" style="scrollbar-width:none; -ms-overflow-style:none;">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="interview">Interview</button>
+                <button class="filter-btn" data-filter="review">Review</button>
+                <button class="filter-btn" data-filter="insight">Insight</button>
+                <button class="filter-btn" data-filter="market">Market</button>
+                <button class="filter-btn" data-filter="interior">Interior</button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ══════════════════════════════════════
+         FEATURED ARTICLE
+    ══════════════════════════════════════ -->
+    <main>
+        <section class="py-16" aria-label="피처드 아티클">
+            <div class="max-w-7xl mx-auto px-6">
+
+                <div class="mb-8 flex items-center gap-4">
+                    <div class="section-rule"></div>
+                    <p style="font-size:10px; font-weight:700; letter-spacing:0.25em; text-transform:uppercase; color:rgba(29,41,81,0.4);">Featured Story</p>
+                </div>
+
+                <article class="featured-card article-card" data-category="interview" tabindex="0" role="button" aria-label="피처드 아티클: 마음을 그리는 사람">
+                    <img src="https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?auto=format&fit=crop&w=1600&q=80"
+                         alt="이중섭 작품 세계를 재조명하는 피처드 아티클 커버 이미지"
+                         width="1600" height="900" loading="eager">
+                    <div class="featured-overlay"></div>
+                    <div class="featured-content">
+                        <span class="badge badge-interview mb-4" style="display:inline-block;">Interview</span>
+                        <h2 class="font-playfair font-light text-white mb-3"
+                            style="font-size: clamp(1.6rem, 3.5vw, 2.6rem); line-height:1.25; max-width:680px;">
+                            마음을 그리는 사람 —&nbsp;이중섭이 남긴 것들
+                        </h2>
+                        <p style="font-size:13px; color:rgba(255,255,255,0.6); max-width:520px; line-height:1.75; margin-bottom:28px; font-family:'Noto Sans KR',sans-serif;">
+                            한국 근대미술의 거장, 그의 삶과 작품을 재조명하다
+                        </p>
+                        <a href="#"
+                           style="display:inline-flex; align-items:center; gap:8px;
+                                  padding:12px 28px; border-radius:100px;
+                                  background:#fff; color:var(--color-space-cadet);
+                                  font-size:10px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase;
+                                  text-decoration:none; transition:background 0.22s, transform 0.18s;"
+                           onmouseover="this.style.background='#e8eaf2'; this.style.transform='translateX(3px)'"
+                           onmouseout="this.style.background='#fff'; this.style.transform=''">
+                            Read More
+                            <i class="fa-solid fa-arrow-right text-xs" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+
+        <!-- ══════════════════════════════════════
+             ARTICLES GRID
+        ══════════════════════════════════════ -->
+        <section class="pb-24" aria-label="아티클 목록">
+            <div class="max-w-7xl mx-auto px-6">
+
+                <div class="mb-10 flex items-center gap-4">
+                    <div class="section-rule"></div>
+                    <p style="font-size:10px; font-weight:700; letter-spacing:0.25em; text-transform:uppercase; color:rgba(29,41,81,0.4);">Latest Articles</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="articles-grid">
+
+                    <!-- 1. Interview — 김선우 -->
+                    <article class="article-card" data-category="interview" tabindex="0" role="button" aria-label="아티클: 붓 하나로 세계를 여행한 작가, 김선우">
+                        <div class="article-thumb-wrap">
+                            <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=800&q=80"
+                                 alt="붓 하나로 세계를 여행한 작가 김선우의 작업실 풍경"
+                                 width="800" height="500" loading="lazy" class="article-thumb">
+                        </div>
+                        <div class="p-6 flex flex-col flex-1">
+                            <span class="badge badge-interview mb-3">Interview</span>
+                            <h3 class="font-playfair font-medium mb-2 leading-snug" style="font-size:1.15rem; color:var(--color-space-cadet);">
+                                붓 하나로 세계를 여행한 작가, 김선우
+                            </h3>
+                            <p style="font-size:12px; color:rgba(29,41,81,0.55); line-height:1.75; margin-bottom:auto; padding-bottom:16px;
+                                      display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">
+                                10년간 30개국을 돌며 현지 풍경을 캔버스에 담아온 김선우 작가의 여정과 철학.
+                            </p>
+                            <div class="flex items-center gap-3 pt-4" style="border-top:1px solid rgba(29,41,81,0.07);">
+                                <span style="font-size:11px; color:rgba(29,41,81,0.38);">2026.04.10</span>
+                                <span style="font-size:11px; color:rgba(29,41,81,0.22);">·</span>
+                                <span style="font-size:11px; color:rgba(29,41,81,0.38);">5 min read</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- 2. Review — 모네전 -->
+                    <article class="article-card" data-category="review" tabindex="0" role="button" aria-label="아티클: 모네전 리뷰">
+                        <div class="article-thumb-wrap">
+                            <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?auto=format&fit=crop&w=800&q=80"
+                                 alt="모네전 전시장 내부 빛의 인상파 작품들"
+                                 width="800" height="500" loading="lazy" class="article-thumb">
+                        </div>
+                        <div class="p-6 flex flex-col flex-1">
+                            <span class="badge badge-review mb-3">Review</span>
+                            <h3 class="font-playfair font-medium mb-2 leading-snug" style="font-size:1.15rem; color:var(--color-space-cadet);">
+                                모네전 리뷰: 빛은 어떻게 감동이 되는가
+                            </h3>
+                            <p style="font-size:12px; color:rgba(29,41,81,0.55); line-height:1.75; margin-bottom:auto; padding-bottom:16px;
+                                      display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">
+                                서울시립미술관에서 열리는 모네 특별전, 90점의 원작이 전하는 묵직한 울림.
+                            </p>
+                            <div class="flex items-center gap-3 pt-4" style="border-top:1px solid rgba(29,41,81,0.07);">
+                                <span style="font-size:11px; color:rgba(29,41,81,0.38);">2026.04.05</span>
+                                <span style="font-size:11px; color:rgba(29,41,81,0.22);">·</span>
+                                <span style="font-size:11px; color:rgba(29,41,81,0.38);">4 min read</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- 3. Insight — Z세대 -->
+                    <article class="article-card" data-category="insight" tabindex="0" role="button" aria-label="아티클: Z세대는 왜 미술관에 가는가">
+                        <div class="article-thumb-wrap">
+                            <img src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?auto=format&fit=crop&w=800&q=80"
+                                 alt="미술관에서 작품을 감상하는 젊은 관람객들"
+                                 width="800" height="500" loading="lazy" class="article-thumb">
+                        </div>
+                        <div class="p-6 flex flex-col flex-1">
+                            <span class="badge badge-insight mb-3">Insight</span>
+                            <h3 class="font-playfair font-medium mb-2 leading-snug" style="font-size:1.15rem; color:var(--color-space-cadet);">
+                                Z세대는 왜 미술관에 가는가
+                            </h3>
+                            <p style="font-size:12px; color:rgba(29,41,81,0.55); line-height:1.75; margin-bottom:auto; padding-bottom:16px;
+                                      display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">
+                                SNS 미술 콘텐츠 열풍과 함께 달라진 관람 문화, 그 이면을 들여다본다.
+                            </p>
+                            <div class="flex items-center gap-3 pt-4" style="border-top:1px solid rgba(29,41,81,0.07);">
+                                <span style="font-size:11px; color:rgba(29,41,81,0.38);">2026.03.28</span>
+                                <span style="font-size:11px; color:rgba(29,41,81,0.22);">·</span>
+                                <span style="font-size:11px; color:rgba(29,41,81,0.38);">6 min read</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- 4. Market — 아트마켓 트렌드 -->
+                    <article class="article-card" data-category="market" tabindex="0" role="button" aria-label="아티클: 2026 한국 아트마켓 트렌드 리포트">
+                        <div class="article-thumb-wrap">
+                            <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?auto=format&fit=crop&w=800&q=80"
+                                 alt="아트페어 현장 전경과 갤러리 방문객"
+                                 width="800" height="500" loading="lazy" class="article-thumb">
+                        </div>
+                        <div class="p-6 flex flex-col flex-1">
+                            <span class="badge badge-market mb-3">Market</span>
+                            <h3 class="font-playfair font-medium mb-2 leading-snug" style="font-size:1.15rem; color:var(--color-space-cadet);">
+                                2026 한국 아트마켓 트렌드 리포트
+                            </h3>
+                            <p style="font-size:12px; color:rgba(29,41,81,0.55); line-height:1.75; margin-bottom:auto; padding-bottom:16px;
+                                      display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">
+                                아트페어 참가자 수 역대 최고, 온라인 경매 급성장 — 올해 미술 시장을 읽는 키워드.
+                            </p>
+                            <div class="flex items-center gap-3 pt-4" style="border-top:1px solid rgba(29,41,81,0.07);">
+                                <span style="font-size:11px; color:rgba(29,41,81,0.38);">2026.03.20</span>
+                                <span style="font-size:11px; color:rgba(29,41,81,0.22);">·</span>
+                                <span style="font-size:11px; color:rgba(29,41,81,0.38);">8 min read</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- 5. Interior — 그림 한 점 -->
+                    <article class="article-card" data-category="interior" tabindex="0" role="button" aria-label="아티클: 그림 한 점이 공간을 바꾼다">
+                        <div class="article-thumb-wrap">
+                            <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=800&q=80"
+                                 alt="그림이 걸린 모던한 인테리어 공간"
+                                 width="800" height="500" loading="lazy" class="article-thumb">
+                        </div>
+                        <div class="p-6 flex flex-col flex-1">
+                            <span class="badge badge-interior mb-3">Interior</span>
+                            <h3 class="font-playfair font-medium mb-2 leading-snug" style="font-size:1.15rem; color:var(--color-space-cadet);">
+                                그림 한 점이 공간을 바꾼다
+                            </h3>
+                            <p style="font-size:12px; color:rgba(29,41,81,0.55); line-height:1.75; margin-bottom:auto; padding-bottom:16px;
+                                      display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">
+                                인테리어 디자이너 3인이 추천하는 작품 배치법과 프레이밍 가이드.
+                            </p>
+                            <div class="flex items-center gap-3 pt-4" style="border-top:1px solid rgba(29,41,81,0.07);">
+                                <span style="font-size:11px; color:rgba(29,41,81,0.38);">2026.03.15</span>
+                                <span style="font-size:11px; color:rgba(29,41,81,0.22);">·</span>
+                                <span style="font-size:11px; color:rgba(29,41,81,0.38);">4 min read</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- 6. Interview — 박지현 -->
+                    <article class="article-card" data-category="interview" tabindex="0" role="button" aria-label="아티클: 디지털과 아날로그 사이, 박지현 작가">
+                        <div class="article-thumb-wrap">
+                            <img src="https://images.unsplash.com/photo-1547826039-bfc35e0f1ea8?auto=format&fit=crop&w=800&q=80"
+                                 alt="태블릿과 유화 도구를 함께 사용하는 작가의 작업 환경"
+                                 width="800" height="500" loading="lazy" class="article-thumb">
+                        </div>
+                        <div class="p-6 flex flex-col flex-1">
+                            <span class="badge badge-interview mb-3">Interview</span>
+                            <h3 class="font-playfair font-medium mb-2 leading-snug" style="font-size:1.15rem; color:var(--color-space-cadet);">
+                                디지털과 아날로그 사이, 박지현 작가
+                            </h3>
+                            <p style="font-size:12px; color:rgba(29,41,81,0.55); line-height:1.75; margin-bottom:auto; padding-bottom:16px;
+                                      display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">
+                                태블릿과 유화 물감을 동시에 쓰는 작가가 말하는 매체의 경계와 자유.
+                            </p>
+                            <div class="flex items-center gap-3 pt-4" style="border-top:1px solid rgba(29,41,81,0.07);">
+                                <span style="font-size:11px; color:rgba(29,41,81,0.38);">2026.03.08</span>
+                                <span style="font-size:11px; color:rgba(29,41,81,0.22);">·</span>
+                                <span style="font-size:11px; color:rgba(29,41,81,0.38);">5 min read</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- 7. Review — 단색화 3인전 -->
+                    <article class="article-card" data-category="review" tabindex="0" role="button" aria-label="아티클: 단색화 3인전: 침묵이 말하는 것들">
+                        <div class="article-thumb-wrap">
+                            <img src="https://images.unsplash.com/photo-1561214115-f2f134cc4912?auto=format&fit=crop&w=800&q=80"
+                                 alt="단색화 작품들이 나란히 걸린 갤러리 전시 공간"
+                                 width="800" height="500" loading="lazy" class="article-thumb">
+                        </div>
+                        <div class="p-6 flex flex-col flex-1">
+                            <span class="badge badge-review mb-3">Review</span>
+                            <h3 class="font-playfair font-medium mb-2 leading-snug" style="font-size:1.15rem; color:var(--color-space-cadet);">
+                                단색화 3인전: 침묵이 말하는 것들
+                            </h3>
+                            <p style="font-size:12px; color:rgba(29,41,81,0.55); line-height:1.75; margin-bottom:auto; padding-bottom:16px;
+                                      display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">
+                                박서보·정상화·하종현 세 거장의 앙상블, 갤러리현대에서 느끼는 한국 추상의 정수.
+                            </p>
+                            <div class="flex items-center gap-3 pt-4" style="border-top:1px solid rgba(29,41,81,0.07);">
+                                <span style="font-size:11px; color:rgba(29,41,81,0.38);">2026.02.25</span>
+                                <span style="font-size:11px; color:rgba(29,41,81,0.22);">·</span>
+                                <span style="font-size:11px; color:rgba(29,41,81,0.38);">4 min read</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- 8. Insight — AI 시대 -->
+                    <article class="article-card" data-category="insight" tabindex="0" role="button" aria-label="아티클: AI 시대, 예술가의 자리는 어디인가">
+                        <div class="article-thumb-wrap">
+                            <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=80"
+                                 alt="디지털 화면 앞에서 창작하는 예술가의 작업 환경"
+                                 width="800" height="500" loading="lazy" class="article-thumb">
+                        </div>
+                        <div class="p-6 flex flex-col flex-1">
+                            <span class="badge badge-insight mb-3">Insight</span>
+                            <h3 class="font-playfair font-medium mb-2 leading-snug" style="font-size:1.15rem; color:var(--color-space-cadet);">
+                                AI 시대, 예술가의 자리는 어디인가
+                            </h3>
+                            <p style="font-size:12px; color:rgba(29,41,81,0.55); line-height:1.75; margin-bottom:auto; padding-bottom:16px;
+                                      display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">
+                                생성형 AI가 그림을 그리는 시대, 창작의 본질에 대한 예술가들의 진솔한 대화.
+                            </p>
+                            <div class="flex items-center gap-3 pt-4" style="border-top:1px solid rgba(29,41,81,0.07);">
+                                <span style="font-size:11px; color:rgba(29,41,81,0.38);">2026.02.18</span>
+                                <span style="font-size:11px; color:rgba(29,41,81,0.22);">·</span>
+                                <span style="font-size:11px; color:rgba(29,41,81,0.38);">7 min read</span>
+                            </div>
+                        </div>
+                    </article>
+
+                </div><!-- /#articles-grid -->
+            </div>
+        </section>
+
+
+        <!-- ══════════════════════════════════════
+             NEWSLETTER CTA
+        ══════════════════════════════════════ -->
+        <section class="newsletter-section py-24" aria-label="아트레터 구독">
+            <div class="max-w-7xl mx-auto px-6 relative z-10 text-center">
+
+                <p style="font-size:10px; font-weight:700; letter-spacing:0.35em; text-transform:uppercase;
+                          color:rgba(255,255,255,0.3); margin-bottom:20px;">
+                    <i class="fa-regular fa-envelope mr-2" aria-hidden="true"></i>Newsletter
+                </p>
+
+                <h2 class="font-playfair font-light text-white mb-5"
+                    style="font-size: clamp(2rem, 4vw, 3rem); line-height:1.2;">
+                    아트레터 구독하기
+                </h2>
+
+                <p style="font-size:13px; color:rgba(255,255,255,0.5); max-width:480px;
+                          margin:0 auto 40px; line-height:1.85; font-family:'Noto Sans KR',sans-serif;">
+                    매주 월요일, 큐레이팅된 전시·작가·아트마켓 소식을 전해드립니다.
+                </p>
+
+                <!-- Inline form — visual only -->
+                <form class="flex justify-center" onsubmit="return false;" aria-label="뉴스레터 구독 폼" style="max-width:480px; margin:0 auto;">
+                    <label for="newsletter-email" class="sr-only">이메일 주소</label>
+                    <input id="newsletter-email"
+                           type="email"
+                           class="newsletter-input"
+                           placeholder="이메일 주소를 입력하세요"
+                           autocomplete="email">
+                    <button type="submit" class="newsletter-btn">
+                        구독하기
+                    </button>
+                </form>
+
+                <p style="font-size:10px; color:rgba(255,255,255,0.2); margin-top:16px;">
+                    언제든지 구독 취소할 수 있습니다.
+                </p>
+            </div>
+        </section>
+    </main>
+
+
+    <!-- ══════════════════════════════════════
+         FOOTER
+    ══════════════════════════════════════ -->
+    <footer class="py-16">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-8 pb-10"
+                 style="border-bottom:1px solid rgba(255,255,255,0.08);">
+
+                <!-- Brand -->
+                <div>
+                    <a href="story.html"
+                       class="font-playfair text-2xl font-bold tracking-wider text-white"
+                       style="text-decoration:none;">ARTHAUS</a>
+                    <p style="font-size:11px; color:rgba(255,255,255,0.3); margin-top:8px; letter-spacing:0.05em;">
+                        Art &amp; Culture Magazine
+                    </p>
+                </div>
+
+                <!-- Nav -->
+                <nav aria-label="푸터 네비게이션">
+                    <div class="flex flex-wrap items-center gap-6">
+                        <a href="story.html"
+                           style="font-size:11px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase;
+                                  color:rgba(255,255,255,0.4); text-decoration:none; transition:color 0.2s;"
+                           onmouseover="this.style.color='rgba(255,255,255,0.85)'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">Home</a>
+                        <a href="artist.html"
+                           style="font-size:11px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase;
+                                  color:rgba(255,255,255,0.4); text-decoration:none; transition:color 0.2s;"
+                           onmouseover="this.style.color='rgba(255,255,255,0.85)'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">Artist</a>
+                        <a href="exhibition.html"
+                           style="font-size:11px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase;
+                                  color:rgba(255,255,255,0.4); text-decoration:none; transition:color 0.2s;"
+                           onmouseover="this.style.color='rgba(255,255,255,0.85)'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">Exhibition</a>
+                        <!-- Active: Magazine -->
+                        <a href="magazine.html"
+                           style="font-size:11px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase;
+                                  color:rgba(255,255,255,0.85); text-decoration:none;">Magazine</a>
+                        <a href="atelier.html"
+                           style="font-size:11px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase;
+                                  color:rgba(255,255,255,0.4); text-decoration:none; transition:color 0.2s;"
+                           onmouseover="this.style.color='rgba(255,255,255,0.85)'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">Atelier</a>
+                    </div>
+                </nav>
+            </div>
+
+            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <p style="font-size:11px; color:rgba(255,255,255,0.2); letter-spacing:0.05em;">
+                    &copy; 2026 ARTHAUS. All rights reserved.
+                </p>
+                <p style="font-size:11px; color:rgba(255,255,255,0.15); letter-spacing:0.05em;">
+                    Art &amp; Culture · Seoul
+                </p>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- ══════════════════════════════════════
+         JS — Category filter
+    ══════════════════════════════════════ -->
+    <script defer>
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const cat = btn.dataset.filter;
+                document.querySelectorAll('.article-card').forEach(card => {
+                    card.style.display = (cat === 'all' || card.dataset.category === cat) ? '' : 'none';
+                });
+            });
+        });
+
+        /* Keyboard activation for article cards */
+        document.querySelectorAll('.article-card').forEach(card => {
+            card.addEventListener('keydown', e => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    card.click();
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
