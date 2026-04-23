@@ -13,7 +13,6 @@ import re
 import xml.etree.ElementTree as ET
 from datetime import datetime, date, timedelta
 from pathlib import Path
-from urllib.parse import urlencode
 
 import requests
 from bs4 import BeautifulSoup
@@ -36,16 +35,16 @@ HEADERS = {
 # ── 그라디언트 색상 (미술관별) ─────────────────────────────────────────────────
 
 GRAD_MAP = {
-    "국립현대미술관":          "linear-gradient(135deg,#0a1228,#1a2a50)",
-    "서울시립미술관":          "linear-gradient(135deg,#1a3050,#2a5070)",
-    "예술의전당":             "linear-gradient(135deg,#3a2800,#5a4000)",
-    "국립중앙박물관":          "linear-gradient(135deg,#0d1a2e,#1a3055)",
-    "대구미술관":             "linear-gradient(135deg,#2a1a08,#3a2810)",
-    "부산현대미술관":          "linear-gradient(135deg,#180808,#2a1010)",
-    "리움미술관":             "linear-gradient(135deg,#1a0a28,#2a1040)",
-    "갤러리현대":             "linear-gradient(135deg,#2a2620,#3a3228)",
-    "환기미술관":             "linear-gradient(135deg,#020810,#081838)",
-    "아트선재센터":            "linear-gradient(135deg,#080418,#180a30)",
+    "국립현대미술관":  "linear-gradient(135deg,#0a1228,#1a2a50)",
+    "서울시립미술관":  "linear-gradient(135deg,#1a3050,#2a5070)",
+    "예술의전당":     "linear-gradient(135deg,#3a2800,#5a4000)",
+    "국립중앙박물관":  "linear-gradient(135deg,#0d1a2e,#1a3055)",
+    "대구미술관":     "linear-gradient(135deg,#2a1a08,#3a2810)",
+    "부산현대미술관":  "linear-gradient(135deg,#180808,#2a1010)",
+    "리움미술관":     "linear-gradient(135deg,#1a0a28,#2a1040)",
+    "갤러리현대":     "linear-gradient(135deg,#2a2620,#3a3228)",
+    "환기미술관":     "linear-gradient(135deg,#020810,#081838)",
+    "아트선재센터":   "linear-gradient(135deg,#080418,#180a30)",
 }
 
 DEFAULT_GRAD = "linear-gradient(135deg,#1a2040,#2a3060)"
@@ -72,35 +71,63 @@ def fetch_culture_api(service_key: str) -> list:
         "serviceKey": service_key,
         "from":       today.strftime("%Y%m%d"),
         "to":         end_date.strftime("%Y%m%d"),
-        "cPage":      1,
-        "rows":       50,
-        "sortStdr":   1,      # 날짜순
-        "realmCode":  "D",    # D = 전시
+        "cPage":      "1",
+        "rows":       "50",
+        "sortStdr":   "1",
+        "realmCode":  "D",
     }
 
     print("  culture.go.kr API 호출 중...")
     try:
-        resp = requests.get(CULTURE_API_URL, params=params, headers=HEADERS, timeout=15)
+        resp = requests.get(CULTURE_API_URL, params=params, headers=HEADERS, timeout=20)
         resp.encoding = "utf-8"
     except Exception as e:
         print(f"  ❌ API 요청 실패: {e}")
         return []
+
+    print(f"  HTTP 상태: {resp.status_code}")
 
     # XML 파싱
     try:
         root = ET.fromstring(resp.text)
     except ET.ParseError as e:
         print(f"  ❌ XML 파싱 실패: {e}")
+        print(f"  응답 미리보기: {resp.text[:300]}")
         return []
 
-    # 오류 응답 체크
-    err = root.findtext(".//resultCode") or root.findtext(".//errMsg")
-    if err and err not in ("00", "정상"):
-        print(f"  ❌ API 오류: {err}")
+    # 오류 응답 체크 — 여러 경로 시도
+    result_code = (
+        root.findtext(".//resultCode")
+        or root.findtext(".//result/resultCode")
+        or root.findtext("resultCode")
+        or "00"
+    )
+    result_msg = (
+        root.findtext(".//resultMsg")
+        or root.findtext(".//result/resultMsg")
+        or ""
+    )
+
+    print(f"  API resultCode: {result_code} / {result_msg}")
+
+    if result_code not in ("00", "0000", "정상", ""):
+        print(f"  ❌ API 오류 코드: {result_code}")
         return []
+
+    # item 태그 수집 — 여러 경로 시도
+    items = root.findall(".//item")
+    if not items:
+        items = root.findall("item")
+    if not items:
+        # 전체 XML 구조 출력 (디버깅용)
+        print(f"  ⚠️ item 태그 없음. 루트 태그: {root.tag}")
+        print(f"  자식 태그: {[c.tag for c in root][:10]}")
+        return []
+
+    print(f"  item 태그 {len(items)}개 발견")
 
     results = []
-    for item in root.findall(".//item"):
+    for item in items:
         title      = item.findtext("title", "").strip()
         place      = item.findtext("place", "").strip()
         start_date = item.findtext("startDate", "").strip()
@@ -112,19 +139,19 @@ def fetch_culture_api(service_key: str) -> list:
         if not title or not place:
             continue
 
-        # 날짜 형식 변환: YYYYMMDD → YYYY-MM-DD
         def fmt(d):
             return f"{d[:4]}-{d[4:6]}-{d[6:8]}" if len(d) == 8 else None
 
         results.append({
-            "title": title,
-            "venue": place,
-            "desc":  (contents[:120] + "…") if len(contents) > 120 else contents,
-            "start": fmt(start_date),
-            "end":   fmt(end_date_),
-            "url":   url or f"https://www.culture.go.kr",
-            "img":   thumbnail if thumbnail else None,
-            "grad":  get_grad(place),
+            "title":   title,
+            "venue":   place,
+            "desc":    (contents[:120] + "…") if len(contents) > 120 else contents,
+            "start":   fmt(start_date),
+            "end":     fmt(end_date_),
+            "url":     url or "https://www.culture.go.kr",
+            "img":     thumbnail if thumbnail else None,
+            "grad":    get_grad(place),
+            "_source": "api",
         })
 
     print(f"  공공 API → {len(results)}개 전시 수집")
@@ -187,7 +214,7 @@ def crawl_private_museums() -> str:
 
 
 # ════════════════════════════════════════════════════════════════════
-#  3. Gemini AI — 크롤링 데이터 정제
+#  3. Gemini AI — 크롤링 데이터 정제 (재시도 로직 포함)
 # ════════════════════════════════════════════════════════════════════
 
 def build_gemini_prompt(raw_text: str) -> str:
@@ -230,25 +257,42 @@ def parse_json_from_response(text: str) -> list:
         return []
 
 
-def refine_with_gemini(raw_text: str) -> list:
+def refine_with_gemini(raw_text: str, max_retries: int = 3) -> list:
     api_key = os.environ.get("GEMINI_API_KEY")
     if not api_key:
         print("  ⚠️ GEMINI_API_KEY 없음 — 크롤링 데이터 건너뜀")
         return []
 
     client = genai.Client(api_key=api_key)
-    print("  Gemini API 호출 중...")
-    try:
-        response = client.models.generate_content(
-            model="gemini-2.0-flash",
-            contents=build_gemini_prompt(raw_text),
-        )
-        results = parse_json_from_response(response.text)
-        print(f"  Gemini → {len(results)}개 사립 전시 추출")
-        return results
-    except Exception as e:
-        print(f"  ⚠️ Gemini 오류: {e}")
-        return []
+
+    for attempt in range(1, max_retries + 1):
+        print(f"  Gemini API 호출 중... (시도 {attempt}/{max_retries})")
+        try:
+            response = client.models.generate_content(
+                model="gemini-2.0-flash",
+                contents=build_gemini_prompt(raw_text),
+            )
+            results = parse_json_from_response(response.text)
+            print(f"  Gemini → {len(results)}개 사립 전시 추출")
+            return results
+
+        except Exception as e:
+            err_str = str(e)
+            print(f"  ⚠️ Gemini 오류 (시도 {attempt}): {err_str[:120]}")
+
+            # 429 (할당량 초과) 또는 503 → 대기 후 재시도
+            if "429" in err_str or "quota" in err_str.lower() or "503" in err_str:
+                wait = 30 * attempt  # 30초, 60초, 90초
+                if attempt < max_retries:
+                    print(f"  ⏳ {wait}초 대기 후 재시도...")
+                    time.sleep(wait)
+                else:
+                    print("  ❌ Gemini 재시도 횟수 초과 — 크롤링 결과 건너뜀")
+            else:
+                # 다른 오류는 재시도 불필요
+                break
+
+    return []
 
 
 # ════════════════════════════════════════════════════════════════════
@@ -259,7 +303,7 @@ REQUIRED_KEYS = {"title", "venue", "url"}
 
 def validate(items: list) -> list:
     valid = []
-    seen = set()
+    seen  = set()
     for item in items:
         if not REQUIRED_KEYS.issubset(item.keys()):
             continue
@@ -274,6 +318,7 @@ def validate(items: list) -> list:
         item.setdefault("start", None)
         item.setdefault("end",   None)
         item.setdefault("desc",  "")
+        item.pop("_source", None)
         valid.append(item)
     return valid
 
@@ -310,8 +355,15 @@ def main():
     print("[3/3] exhibitions.json 저장...")
     exhibitions = validate(all_exhibitions)
 
+    print(f"  수집된 전시 총 {len(exhibitions)}개")
+
     if len(exhibitions) < 3:
         print("  ❌ 전시 데이터 부족 (3개 미만). 기존 파일 유지.")
+        # 기존 파일이 있으면 내용 출력
+        if OUTPUT_FILE.exists():
+            with open(OUTPUT_FILE, encoding="utf-8") as f:
+                existing = json.load(f)
+            print(f"  (기존 파일: {len(existing)}개 유지)")
         return
 
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
@@ -321,8 +373,7 @@ def main():
     print(f"\n{'─'*44}")
     print("업데이트된 전시 목록:")
     for i, exh in enumerate(exhibitions, 1):
-        src  = "📡" if exh.get("_source") == "api" else "🔍"
-        end  = exh.get("end") or "미정"
+        end = exh.get("end") or "미정"
         print(f"  {i:2d}. {exh['title']} — {exh['venue']} (~{end})")
     print(f"{'─'*44}\n")
 
