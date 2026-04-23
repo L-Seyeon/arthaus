@@ -61,7 +61,7 @@ def get_grad(venue: str) -> str:
 #  1. culture.go.kr 공공 API  (국립·공립 기관 — 실제 데이터)
 # ════════════════════════════════════════════════════════════════════
 
-CULTURE_API_URL = "http://www.culture.go.kr/openapi/rest/publicperformancedisplays/period"
+CULTURE_API_URL = "https://apis.data.go.kr/B553457/cultureinfo/realm2"
 
 def fetch_culture_api(service_key: str) -> list:
     """culture.go.kr 공연전시정보 API 호출 → 전시(D) 항목만 반환"""
@@ -70,12 +70,10 @@ def fetch_culture_api(service_key: str) -> list:
 
     # 서비스 키는 따로 붙여야 이중 인코딩 방지 (한국 공공 API 공통 이슈)
     other_params = {
-        "from":      today.strftime("%Y%m%d"),
-        "to":        end_date.strftime("%Y%m%d"),
+        "realmCode": "D0405",   # 전시 분야 코드 (한국문화정보원 B553457)
         "cPage":     "1",
         "rows":      "50",
-        "sortStdr":  "1",
-        "realmCode": "I",    # I = 전시 (D = 무용)
+        "type":      "xml",
     }
     # 키 정규화: plain text든 이미 인코딩된 키든 → 올바르게 URL-encode
     key_encoded = quote(unquote(service_key), safe="")
