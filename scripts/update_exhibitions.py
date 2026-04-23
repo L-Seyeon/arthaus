@@ -16,6 +16,7 @@ from pathlib import Path
 
 import requests
 from bs4 import BeautifulSoup
+from urllib.parse import urlencode
 from google import genai
 
 # ── 경로 설정 ──────────────────────────────────────────────────────────────────
@@ -67,19 +68,20 @@ def fetch_culture_api(service_key: str) -> list:
     today    = date.today()
     end_date = today + timedelta(days=90)
 
-    params = {
-        "serviceKey": service_key,
-        "from":       today.strftime("%Y%m%d"),
-        "to":         end_date.strftime("%Y%m%d"),
-        "cPage":      "1",
-        "rows":       "50",
-        "sortStdr":   "1",
-        "realmCode":  "I",    # I = 전시 (D = 무용)
+    # 서비스 키는 따로 붙여야 이중 인코딩 방지 (한국 공공 API 공통 이슈)
+    other_params = {
+        "from":      today.strftime("%Y%m%d"),
+        "to":        end_date.strftime("%Y%m%d"),
+        "cPage":     "1",
+        "rows":      "50",
+        "sortStdr":  "1",
+        "realmCode": "I",    # I = 전시 (D = 무용)
     }
+    url = f"{CULTURE_API_URL}?serviceKey={service_key}&{urlencode(other_params)}"
 
     print("  culture.go.kr API 호출 중...")
     try:
-        resp = requests.get(CULTURE_API_URL, params=params, headers=HEADERS, timeout=20)
+        resp = requests.get(url, headers=HEADERS, timeout=20)
         resp.encoding = "utf-8"
     except Exception as e:
         print(f"  ❌ API 요청 실패: {e}")
@@ -93,6 +95,12 @@ def fetch_culture_api(service_key: str) -> list:
     except ET.ParseError as e:
         print(f"  ❌ XML 파싱 실패: {e}")
         print(f"  응답 미리보기: {resp.text[:300]}")
+        return []
+
+    # HTML 오류 페이지 감지 (이중 인코딩 등 키 오류 시 HTML 반환됨)
+    if root.tag.lower() in ("html", "{http://www.w3.org/1999/xhtml}html"):
+        print(f"  ❌ HTML 응답 수신 — 서비스 키 오류 또는 API 인증 실패")
+        print(f"  응답 미리보기: {resp.text[:200]}")
         return []
 
     # 오류 응답 체크 — 여러 경로 시도
@@ -269,7 +277,7 @@ def refine_with_gemini(raw_text: str, max_retries: int = 3) -> list:
         print(f"  Gemini API 호출 중... (시도 {attempt}/{max_retries})")
         try:
             response = client.models.generate_content(
-                model="gemini-1.5-flash",
+                model="gemini-1.5-flash-latest",
                 contents=build_gemini_prompt(raw_text),
             )
             results = parse_json_from_response(response.text)
