@@ -9,7 +9,7 @@
     <script type="module" src="https://unpkg.com/@splinetool/viewer@1.12.81/build/spline-viewer.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts: Playfair Display for Serif, Noto Sans KR for Base -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
     
     <style>
         :root {
@@ -52,7 +52,7 @@
             transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .exh-card-hover:hover img {
-            transform: scale(1.05);
+            transform: none;
         }
         .curator-badge {
             writing-mode: vertical-rl;
@@ -262,7 +262,7 @@
 
         /* ── Artwork Lightbox ── */
         #artwork-lightbox {
-            display: none;
+            display: flex;
             position: fixed;
             inset: 0;
             z-index: 1100;
@@ -272,14 +272,13 @@
             align-items: center;
             justify-content: center;
             padding: 24px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.28s ease, visibility 0.28s ease;
         }
         #artwork-lightbox.open {
-            display: flex;
-            animation: lbFadeIn 0.28s cubic-bezier(0.16, 1, 0.3, 1) both;
-        }
-        @keyframes lbFadeIn {
-            from { opacity: 0; }
-            to   { opacity: 1; }
+            opacity: 1;
+            visibility: visible;
         }
         #lightbox-inner {
             border-radius: 16px;
@@ -287,12 +286,14 @@
             max-width: 92vw;
             max-height: 90vh;
             box-shadow: 0 40px 80px rgba(0,0,0,0.5);
-            animation: lbSlideUp 0.32s cubic-bezier(0.16, 1, 0.3, 1) both;
             line-height: 0;
+            opacity: 0;
+            transform: translateY(20px) scale(0.97);
+            transition: opacity 0.3s ease, transform 0.36s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        @keyframes lbSlideUp {
-            from { opacity: 0; transform: translateY(24px) scale(0.97); }
-            to   { opacity: 1; transform: translateY(0) scale(1); }
+        #artwork-lightbox.open #lightbox-inner {
+            opacity: 1;
+            transform: translateY(0) scale(1);
         }
         #lightbox-inner img {
             display: block;
@@ -452,9 +453,9 @@
                 <div class="hidden md:flex space-x-10 text-[11px] font-bold tracking-widest uppercase text-gray-400">
                     <a href="#gallery" class="hover:text-space-cadet transition-colors">Gallery</a>
                     <a href="artist.html" class="hover:text-space-cadet transition-colors">Artist</a>
-                    <a href="#exhibition" class="hover:text-space-cadet transition-colors">Exhibition</a>
-                    <a href="#story" class="hover:text-space-cadet transition-colors">Story</a>
-                    <a href="#magazine" class="hover:text-space-cadet transition-colors">Magazine</a>
+                    <a href="exhibition.html" class="hover:text-space-cadet transition-colors">Exhibition</a>
+                    <a href="magazine.html" class="hover:text-space-cadet transition-colors">Magazine</a>
+                    <a href="atelier.html" class="hover:text-space-cadet transition-colors">Atelier</a>
                 </div>
                 <div class="flex items-center space-x-5 text-gray-500">
                     <div class="flex items-center">
@@ -625,7 +626,7 @@
         <!-- Side Featured Card — Absolute Bottom Right -->
         <div class="glass-card hidden lg:block absolute bottom-10 right-8 lg:right-16 w-72 p-5 rounded-2xl shadow-xl cursor-pointer z-20">
             <div class="aspect-square bg-white/40 rounded-xl mb-5 overflow-hidden border border-white/20">
-                <img src="images/water_lilies.jpg" alt="Water Lilies" class="w-full h-full object-cover transition-transform duration-700 hover:scale-105">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Claude_Monet_-_Water_Lilies_-_1906%2C_Ryerson.jpg/1280px-Claude_Monet_-_Water_Lilies_-_1906%2C_Ryerson.jpg" alt="Water Lilies" class="w-full h-full object-cover transition-transform duration-700 hover:scale-105">
             </div>
             <div class="space-y-1.5 px-1">
                 <p class="text-[10px] text-space-cadet font-bold tracking-widest uppercase opacity-60">Featured Work</p>
@@ -640,7 +641,7 @@
                         data-artist="Claude Monet"
                         data-price="9200"
                         data-price-display="$9,200"
-                        data-image="images/water_lilies.jpg"
+                        data-image="https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Claude_Monet_-_Water_Lilies_-_1906%2C_Ryerson.jpg/1280px-Claude_Monet_-_Water_Lilies_-_1906%2C_Ryerson.jpg"
                         class="w-8 h-8 bg-white/80 rounded-full flex items-center justify-center text-space-cadet shadow-sm hover:bg-space-cadet hover:text-white transition-colors">
                         <i class="fa-solid fa-plus text-[10px] pointer-events-none"></i>
                     </button>
@@ -842,7 +843,7 @@
                 <div class="artist-card" onclick="location.href='artist.html#vangogh'" style="cursor:pointer;">
                     <div class="artist-image-container">
                         <!-- Van Gogh Self-Portrait (1889) — public domain -->
-                        <img src="images/vangogh_self.jpg" alt="Vincent van Gogh" class="artist-img">
+                        <img src="https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?auto=format&fit=crop&w=800&q=80" alt="Vincent van Gogh" class="artist-img">
                     </div>
                     <div>
                         <h3 class="text-2xl font-playfair text-space-cadet mb-2 italic">Vincent van Gogh</h3>
@@ -870,7 +871,7 @@
                 <!-- Artist Card 3 — Pierre-Auguste Renoir -->
                 <div class="artist-card" onclick="location.href='artist.html#renoir'" style="cursor:pointer;">
                     <div class="artist-image-container">
-                        <img src="images/renoir_sisters.jpg" alt="Pierre-Auguste Renoir" class="artist-img">
+                        <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=800&q=80" alt="Pierre-Auguste Renoir" class="artist-img">
                     </div>
                     <div>
                         <h3 class="text-2xl font-playfair text-space-cadet mb-2 italic">Pierre-Auguste Renoir</h3>
@@ -941,7 +942,7 @@
                         <div class="aspect-[16/9] overflow-hidden relative">
                             <div class="absolute inset-0 bg-black/5 z-10"></div>
                             <span class="absolute top-8 left-8 z-20 bg-white px-4 py-1.5 rounded-full text-[10px] font-bold text-space-cadet tracking-widest shadow-sm uppercase">현재 전시 중</span>
-                            <img src="https://images.unsplash.com/photo-1554188248-986adbb73be4?auto=format&fit=crop&w=1200&q=80" alt="Main Exhibition" class="w-full h-full object-cover transition-transform duration-1000">
+                            <img id="exh-featured-img" src="https://images.unsplash.com/photo-1554188248-986adbb73be4?auto=format&fit=crop&w=1200&q=80" alt="Main Exhibition" class="w-full h-full object-cover transition-transform duration-1000">
                         </div>
                         <div class="p-10 md:p-14">
                             <div class="flex items-start gap-8 mb-10">
@@ -949,63 +950,63 @@
                                     <span class="curator-badge text-[10px] font-bold tracking-[0.5em] text-gray-300 uppercase">ArtHaus Selection</span>
                                 </div>
                                 <div class="flex-grow">
-                                    <h3 class="text-3xl md:text-4xl font-light text-space-cadet mb-6 leading-tight">
+                                    <h3 id="exh-featured-title" class="text-3xl md:text-4xl font-light text-space-cadet mb-6 leading-tight">
                                         고요의 본질 : <br>
                                         <span class="italic">여백이 주는 위로와 사유</span>
                                     </h3>
                                     <div class="note-line">
                                         <p class="text-[10px] font-bold text-space-cadet uppercase tracking-widest mb-3 italic">Curator's Note</p>
-                                        <p class="text-gray-500 text-sm leading-loose max-w-2xl italic">
+                                        <p id="exh-featured-desc" class="text-gray-500 text-sm leading-loose max-w-2xl italic">
                                             "우리는 너무 많은 소음에 둘러싸여 있습니다. 이번 전시는 복잡한 구성을 배제하고 선과 면, 그리고 여백만으로 공간을 채우는 작품들을 모았습니다."
                                         </p>
                                     </div>
                                 </div>
                             </div>
                             <div class="flex flex-wrap items-center gap-6 pt-4 border-t border-gray-50">
-                                <button class="btn-primary text-white px-10 py-4 rounded-full text-[11px] font-bold tracking-[0.2em] uppercase shadow-lg shadow-blue-900/20">
+                                <a id="exh-featured-link" href="exhibition.html" class="btn-primary text-white px-10 py-4 rounded-full text-[11px] font-bold tracking-[0.2em] uppercase shadow-lg shadow-blue-900/20">
                                     View Collection
-                                </button>
-                                <span class="text-[11px] font-medium text-gray-400 italic">2026. 04. 01 - 04. 30</span>
+                                </a>
+                                <span id="exh-featured-dates" class="text-[11px] font-medium text-gray-400 italic">2026. 04. 01 - 04. 30</span>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="lg:col-span-4 flex flex-col gap-8">
-                    <div class="sub-exh-block p-6 rounded-2xl border border-gray-100 cursor-pointer">
-                        <div class="flex gap-6 items-center">
-                            <div class="w-20 h-20 rounded-xl overflow-hidden flex-shrink-0 bg-gray-50">
-                                <img src="https://images.unsplash.com/photo-1547826039-bfc35e0f1ea8?auto=format&fit=crop&w=300&q=80" alt="Upcoming" class="w-full h-full object-cover">
-                            </div>
-                            <div>
-                                <span class="text-[9px] font-bold text-blue-600 tracking-widest uppercase mb-1 block">Coming Soon</span>
-                                <h4 class="text-sm font-bold text-space-cadet mb-1">도시의 빛 : 야경의 서사</h4>
-                                <p class="text-[10px] text-gray-400">05. 05 - 06. 02</p>
-                            </div>
+                <div class="lg:col-span-4 flex flex-col gap-5">
+
+                    <!-- 세로형 카드 1 -->
+                    <a id="exh-side-1-link" href="exhibition.html" class="group rounded-2xl overflow-hidden bg-white border border-gray-100 shadow-sm hover:shadow-lg transition-shadow duration-300" style="text-decoration:none; display:block;">
+                        <div class="overflow-hidden" style="aspect-ratio:4/3;">
+                            <img id="exh-side-1-img" src="https://images.unsplash.com/photo-1547826039-bfc35e0f1ea8?auto=format&fit=crop&w=600&q=80" alt="Exhibition" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
                         </div>
-                    </div>
-                    <div class="sub-exh-block p-6 rounded-2xl border border-gray-100 cursor-pointer">
-                        <div class="flex gap-6 items-center">
-                            <div class="w-20 h-20 rounded-xl overflow-hidden flex-shrink-0 bg-gray-50">
-                                <img src="https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=300&q=80" alt="Upcoming" class="w-full h-full object-cover">
-                            </div>
-                            <div>
-                                <span class="text-[9px] font-bold text-gray-400 tracking-widest uppercase mb-1 block">Curation</span>
-                                <h4 class="text-sm font-bold text-space-cadet mb-1">봄의 숨결 : 추상으로 피어나다</h4>
-                                <p class="text-[10px] text-gray-400">06. 10 - 07. 15</p>
-                            </div>
+                        <div class="p-5">
+                            <span class="text-[9px] font-bold text-blue-500 tracking-widest uppercase mb-2 block">Coming Soon</span>
+                            <h4 id="exh-side-1-title" class="text-sm font-bold mb-2" style="color:#1D2951;">도시의 빛 : 야경의 서사</h4>
+                            <p id="exh-side-1-dates" class="text-[10px] text-gray-400">05. 05 - 06. 02</p>
                         </div>
-                    </div>
-                    <div class="flex-grow mt-2 bg-space-cadet rounded-2xl p-10 text-white relative overflow-hidden group shadow-2xl shadow-blue-900/40">
-                        <div class="absolute -right-10 -top-10 w-40 h-40 bg-white/5 rounded-full blur-3xl transition-transform duration-1000 group-hover:scale-150"></div>
-                        <div class="relative z-10">
-                            <i class="fa-solid fa-wand-magic-sparkles text-2xl mb-6 opacity-60"></i>
-                            <h4 class="text-2xl font-light mb-4 leading-tight">당신만을 위한 <br><span class="italic font-normal">맞춤형 아트 큐레이션</span></h4>
-                            <button class="text-[10px] font-bold tracking-[0.3em] uppercase border-b border-white pb-2 hover:text-blue-200 transition-colors">
-                                Get Started
-                            </button>
+                    </a>
+
+                    <!-- 세로형 카드 2 -->
+                    <a id="exh-side-2-link" href="exhibition.html" class="group rounded-2xl overflow-hidden bg-white border border-gray-100 shadow-sm hover:shadow-lg transition-shadow duration-300" style="text-decoration:none; display:block;">
+                        <div class="overflow-hidden" style="aspect-ratio:4/3;">
+                            <img id="exh-side-2-img" src="https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=600&q=80" alt="Exhibition" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
                         </div>
-                    </div>
+                        <div class="p-5">
+                            <span class="text-[9px] font-bold text-gray-400 tracking-widest uppercase mb-2 block">Curation</span>
+                            <h4 id="exh-side-2-title" class="text-sm font-bold mb-2" style="color:#1D2951;">봄의 숨결 : 추상으로 피어나다</h4>
+                            <p id="exh-side-2-dates" class="text-[10px] text-gray-400">06. 10 - 07. 15</p>
+                        </div>
+                    </a>
+
+                    <!-- Magazine 띠 -->
+                    <a href="magazine.html" class="rounded-2xl px-6 py-4 flex items-center justify-between group" style="background-color:#1D2951; text-decoration:none;">
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-book-open text-sm" style="color:rgba(255,255,255,0.5);"></i>
+                            <span class="text-[11px] font-bold text-white tracking-widest uppercase">Art Magazine</span>
+                        </div>
+                        <span class="text-[10px] font-bold tracking-widest uppercase" style="color:rgba(255,255,255,0.5); transition:color 0.2s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">Read →</span>
+                    </a>
+
                 </div>
             </div>
         </div>
@@ -1029,13 +1030,13 @@
             </div>
 
             <!-- Main Content Grid -->
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start mb-24">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
 
                 <!-- Left: Large image + floating quote card -->
                 <div class="lg:col-span-5 relative pb-10">
                     <div class="aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl shadow-gray-200/80 group">
                         <!-- Van Gogh — Bedroom in Arles (1888) — public domain -->
-                        <img src="images/vangogh_bedroom.jpg" alt="Van Gogh — Bedroom in Arles" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Vincent_van_Gogh_-_De_slaapkamer_-_Google_Art_Project.jpg/1280px-Vincent_van_Gogh_-_De_slaapkamer_-_Google_Art_Project.jpg" alt="Van Gogh — Bedroom in Arles" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
                     </div>
                     <!-- Floating quote card — echoes the dark CTA from Exhibition -->
                     <div class="absolute -bottom-2 -right-4 md:-right-6 max-w-[250px] bg-[#1D2951] text-white p-7 rounded-2xl shadow-2xl shadow-blue-900/30 z-10">
@@ -1077,114 +1078,100 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
 
-            <!-- Stats Row — editorial numbers, Playfair italic -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 pt-16 border-t border-gray-100">
-                <div class="text-center group">
-                    <p class="text-4xl md:text-5xl font-playfair italic text-space-cadet mb-2 group-hover:opacity-70 transition-opacity">2.4k<span class="text-2xl opacity-30">+</span></p>
-                    <p class="text-[10px] font-bold uppercase tracking-widest text-gray-300">Collectors</p>
-                </div>
-                <div class="text-center group">
-                    <p class="text-4xl md:text-5xl font-playfair italic text-space-cadet mb-2 group-hover:opacity-70 transition-opacity">380<span class="text-2xl opacity-30">+</span></p>
-                    <p class="text-[10px] font-bold uppercase tracking-widest text-gray-300">Curated Artists</p>
-                </div>
-                <div class="text-center group">
-                    <p class="text-4xl md:text-5xl font-playfair italic text-space-cadet mb-2 group-hover:opacity-70 transition-opacity">12k<span class="text-2xl opacity-30">+</span></p>
-                    <p class="text-[10px] font-bold uppercase tracking-widest text-gray-300">Works Sold</p>
-                </div>
-                <div class="text-center group">
-                    <p class="text-4xl md:text-5xl font-playfair italic text-space-cadet mb-2 group-hover:opacity-70 transition-opacity">42<span class="text-2xl opacity-30">+</span></p>
-                    <p class="text-[10px] font-bold uppercase tracking-widest text-gray-300">Exhibitions</p>
-                </div>
-            </div>
-        </div>
+                    <!-- Stats Row — editorial numbers, Playfair italic -->
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 pt-12 mt-12 border-t border-gray-100">
+                        <div class="text-center group">
+                            <p class="text-4xl md:text-5xl font-playfair italic text-space-cadet mb-2 group-hover:opacity-70 transition-opacity">2.4k<span class="text-2xl opacity-30">+</span></p>
+                            <p class="text-[10px] font-bold uppercase tracking-widest text-gray-300">Collectors</p>
+                        </div>
+                        <div class="text-center group">
+                            <p class="text-4xl md:text-5xl font-playfair italic text-space-cadet mb-2 group-hover:opacity-70 transition-opacity">380<span class="text-2xl opacity-30">+</span></p>
+                            <p class="text-[10px] font-bold uppercase tracking-widest text-gray-300">Curated Artists</p>
+                        </div>
+                        <div class="text-center group">
+                            <p class="text-4xl md:text-5xl font-playfair italic text-space-cadet mb-2 group-hover:opacity-70 transition-opacity">12k<span class="text-2xl opacity-30">+</span></p>
+                            <p class="text-[10px] font-bold uppercase tracking-widest text-gray-300">Works Sold</p>
+                        </div>
+                        <div class="text-center group">
+                            <p class="text-4xl md:text-5xl font-playfair italic text-space-cadet mb-2 group-hover:opacity-70 transition-opacity">42<span class="text-2xl opacity-30">+</span></p>
+                            <p class="text-[10px] font-bold uppercase tracking-widest text-gray-300">Exhibitions</p>
+                        </div>
+                    </div><!-- /stats row -->
+                </div><!-- /right col -->
+            </div><!-- /main grid -->
+        </div><!-- /max-w -->
     </section>
 
-    <!-- MAGAZINE SECTION -->
-    <section id="magazine" class="py-32 bg-[#F8F9FA] relative z-20">
+    <!-- ATELIER SECTION -->
+    <section id="atelier" class="py-24 bg-[#F8F9FA] relative z-20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-            <!-- Section Header — left-aligned, matching Exhibition / Story -->
-            <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-4">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 gap-4">
                 <div>
-                    <p class="text-[10px] font-bold tracking-[0.4em] uppercase text-gray-300 mb-4">Arthaus Magazine</p>
-                    <h2 class="text-4xl md:text-5xl font-light text-space-cadet mb-6 leading-tight">
-                        Insight, <br>Inspiration
+                    <p class="text-[10px] font-bold tracking-[0.4em] uppercase text-gray-300 mb-4">Classes & Commission</p>
+                    <h2 class="text-4xl md:text-5xl font-light text-space-cadet leading-tight" style="font-family:'Gowun Batang',serif;">
+                        Atelier
                     </h2>
                 </div>
-                <a href="magazine.html" class="text-[11px] font-bold text-space-cadet tracking-[0.2em] uppercase border-b border-space-cadet pb-1 hover:opacity-60 transition-opacity">
-                    All Articles
+                <a href="atelier.html" class="text-[11px] font-bold text-space-cadet tracking-[0.2em] uppercase border-b border-space-cadet pb-1 hover:opacity-60 transition-opacity">
+                    Atelier 바로가기
                 </a>
             </div>
 
-            <!-- Featured + Stacked Cards Layout (mirrors Exhibition's 8+4 grid) -->
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
 
-                <!-- Featured article (large, left 7 cols) -->
-                <div class="lg:col-span-7 group cursor-pointer">
-                    <div class="aspect-[16/10] overflow-hidden rounded-2xl mb-8 shadow-xl shadow-gray-200/60 relative">
-                        <img src="https://images.unsplash.com/photo-1505330622279-bf7d7fc918f4?auto=format&fit=crop&q=80" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                        <span class="absolute top-6 left-6 text-[9px] font-bold uppercase tracking-widest bg-white px-4 py-2 rounded-full text-space-cadet shadow-sm">Interview</span>
+                <!-- 왼쪽: 클래스 소개 — 하나의 박스 -->
+                <a href="atelier.html" class="lg:col-span-7 group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300" style="text-decoration:none; display:block;">
+                    <div class="overflow-hidden relative" style="aspect-ratio:16/7;">
+                        <img src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?auto=format&fit=crop&q=80" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+                        <span class="absolute top-5 left-5 text-[9px] font-bold uppercase tracking-widest bg-white px-4 py-2 rounded-full shadow-sm" style="color:#1D2951;">원데이클래스</span>
                     </div>
-                    <div>
-                        <span class="text-[10px] font-bold uppercase tracking-widest text-gray-300 mb-4 block">2024. 03. 15</span>
-                        <h3 class="text-2xl md:text-3xl font-light text-space-cadet mb-4 leading-snug group-hover:opacity-70 transition-opacity">
-                            질감의 미학: 캔버스 위에 <span class="italic font-playfair">흐르는 무의식</span>
+                    <div class="p-8">
+                        <p class="text-[10px] font-bold uppercase tracking-widest text-gray-300 mb-3">수채화 · 유화 · 디지털 · 드로잉</p>
+                        <h3 class="text-2xl font-light text-space-cadet mb-3 leading-snug group-hover:opacity-70 transition-opacity" style="font-family:'Gowun Batang',serif;">
+                            직접 그려보는 하루
                         </h3>
-                        <p class="text-xs text-gray-400 leading-relaxed max-w-lg mb-6">
-                            박지훈 작가가 전하는 추상 회화의 가치와 우리가 작품을 통해 얻는 정서적 해방감에 대하여...
+                        <p class="text-xs text-gray-400 leading-relaxed mb-6">
+                            붓을 처음 잡는 분도 괜찮아요. 작가와 함께하는 소규모 클래스에서 나만의 작품을 완성해보세요. 수채화 · 유화 · 디지털 · 드로잉 4가지 과정 운영 중.
                         </p>
                         <span class="flex items-center gap-3 text-[11px] font-bold text-space-cadet uppercase tracking-[0.2em] border-b border-space-cadet pb-1 w-fit group-hover:gap-5 transition-all duration-300">
-                            Read More <i class="fa-solid fa-arrow-right-long"></i>
+                            클래스 예약하기 <i class="fa-solid fa-arrow-right-long"></i>
                         </span>
                     </div>
-                </div>
+                </a>
 
-                <!-- Right column: 2 compact cards + newsletter CTA -->
-                <div class="lg:col-span-5 flex flex-col gap-6">
+                <!-- 오른쪽: 커미션 — 하나의 박스 -->
+                <div class="lg:col-span-5 bg-white rounded-2xl overflow-hidden shadow-lg flex flex-col">
+                    <div class="p-8 flex flex-col flex-grow">
+                        <p class="text-[10px] font-bold uppercase tracking-widest text-gray-300 mb-4">Commission & 외주</p>
+                        <h3 class="text-2xl font-light text-space-cadet mb-3 leading-snug" style="font-family:'Gowun Batang',serif;">
+                            원하는 작품을<br>작가에게 직접 의뢰하세요
+                        </h3>
+                        <p class="text-xs text-gray-400 leading-relaxed mb-6">
+                            회화부터 디지털 일러스트까지, 작가가 직접 작업합니다. 초상화·풍경화·굿즈 디자인·브랜딩 이미지 등 다양한 형태로 의뢰 가능해요.
+                        </p>
 
-                    <!-- Card 2 -->
-                    <div class="group cursor-pointer flex gap-5 items-start p-6 bg-white rounded-2xl border border-gray-100 hover:shadow-xl hover:shadow-gray-100/80 hover:-translate-y-1 transition-all duration-300">
-                        <div class="w-24 h-24 flex-shrink-0 overflow-hidden rounded-xl">
-                            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <!-- 매체 태그 -->
+                        <div class="flex flex-wrap gap-2 mb-8">
+                            <span class="text-[9px] font-bold uppercase tracking-widest px-4 py-2 rounded-full border border-gray-200 text-gray-500">회화</span>
+                            <span class="text-[9px] font-bold uppercase tracking-widest px-4 py-2 rounded-full border border-gray-200 text-gray-500">디지털</span>
+                            <span class="text-[9px] font-bold uppercase tracking-widest px-4 py-2 rounded-full border border-gray-200 text-gray-500">일러스트</span>
+                            <span class="text-[9px] font-bold uppercase tracking-widest px-4 py-2 rounded-full border border-gray-200 text-gray-500">납기 1–4주</span>
                         </div>
-                        <div class="flex-1 min-w-0">
-                            <span class="text-[9px] font-bold uppercase tracking-widest text-space-cadet bg-gray-50 px-3 py-1 rounded-full mb-3 inline-block">Interior</span>
-                            <h3 class="text-sm font-medium text-space-cadet mb-1 leading-snug">공간의 완성: 미니멀리즘과 대형 회화의 조화</h3>
-                            <p class="text-[10px] text-gray-400 leading-relaxed line-clamp-2 mt-1">당신의 거실이 갤러리가 되는 방법.</p>
-                            <span class="text-[9px] font-bold uppercase tracking-widest text-gray-300 mt-3 block">2024. 03. 02</span>
-                        </div>
-                    </div>
 
-                    <!-- Card 3 -->
-                    <div class="group cursor-pointer flex gap-5 items-start p-6 bg-white rounded-2xl border border-gray-100 hover:shadow-xl hover:shadow-gray-100/80 hover:-translate-y-1 transition-all duration-300">
-                        <div class="w-24 h-24 flex-shrink-0 overflow-hidden rounded-xl">
-                            <img src="https://images.unsplash.com/photo-1482160549825-59d1b23cb208?auto=format&fit=crop&q=80" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                        </div>
-                        <div class="flex-1 min-w-0">
-                            <span class="text-[9px] font-bold uppercase tracking-widest text-space-cadet bg-gray-50 px-3 py-1 rounded-full mb-3 inline-block">Insight</span>
-                            <h3 class="text-sm font-medium text-space-cadet mb-1 leading-snug">컬렉팅의 시작: 가치 있는 예술 투자를 위한 3가지 질문</h3>
-                            <p class="text-[10px] text-gray-400 leading-relaxed line-clamp-2 mt-1">초보 컬렉터를 위한 안목 기르는 조언.</p>
-                            <span class="text-[9px] font-bold uppercase tracking-widest text-gray-300 mt-3 block">2024. 02. 20</span>
-                        </div>
-                    </div>
-
-                    <!-- Newsletter CTA — mirrors Exhibition's dark promo card -->
-                    <div class="bg-[#1D2951] rounded-2xl p-8 text-white relative overflow-hidden group shadow-2xl shadow-blue-900/30">
-                        <div class="absolute -right-8 -bottom-8 w-40 h-40 bg-white/5 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-1000"></div>
-                        <div class="relative z-10">
-                            <i class="fa-regular fa-envelope text-xl mb-5 opacity-50 block"></i>
-                            <h4 class="text-lg font-light mb-5 leading-snug">매주 가장 영감적인 <br><span class="italic">아트 스토리를 받으세요.</span></h4>
-                            <div class="flex gap-2">
-                                <input type="email" placeholder="이메일 입력" class="bg-white/10 border border-white/20 rounded-full px-4 py-2.5 text-[11px] flex-grow text-white placeholder-white/40 focus:outline-none focus:border-white/50 transition-colors">
-                                <button class="bg-white text-space-cadet rounded-full px-5 py-2.5 text-[10px] font-bold uppercase tracking-widest flex-shrink-0 hover:bg-gray-100 transition-colors">Join</button>
-                            </div>
+                        <div class="mt-auto flex flex-col gap-3">
+                            <a href="https://forms.gle/1VrCGSSSHsVGJpeA9" target="_blank" class="w-full text-center text-white text-[11px] font-bold tracking-[0.2em] uppercase py-4 rounded-full transition-opacity hover:opacity-80" style="background-color:#1D2951; text-decoration:none;">
+                                구글 폼으로 의뢰하기
+                            </a>
+                            <a href="atelier.html" class="w-full text-center text-[11px] font-bold tracking-[0.2em] uppercase py-4 rounded-full border border-gray-200 hover:border-gray-400 transition-colors" style="color:#1D2951; text-decoration:none;">
+                                Atelier 자세히 보기
+                            </a>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
@@ -1251,7 +1238,7 @@
               tags: ["impressionist","portrait","warm","expressive","gestural"],
               price: 6200,  priceDisplay: "$6,200",  dateAdded: "2023-06-20",
               sizeCategory: "under-30", sizeDisplay: "40.5 × 31.6 cm · 약 8호",
-              image: "images/vangogh_self.jpg" },
+              image: "https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?auto=format&fit=crop&w=800&q=80" },
 
             { id: 4,  title: "Irises",                      artist: "Vincent van Gogh",         year: 1889,
               category: "painting", style: "Post-Impressionism",
@@ -1265,7 +1252,7 @@
               tags: ["impressionist","interior","warm","expressive","domestic"],
               price: 9100,  priceDisplay: "$9,100",  dateAdded: "2023-12-01",
               sizeCategory: "30-50",    sizeDisplay: "72.4 × 91.3 cm · 약 30호",
-              image: "images/vangogh_bedroom.jpg" },
+              image: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Vincent_van_Gogh_-_De_slaapkamer_-_Google_Art_Project.jpg/1280px-Vincent_van_Gogh_-_De_slaapkamer_-_Google_Art_Project.jpg" },
 
             // ─ Monet ─
             { id: 3,  title: "Water Lilies",                artist: "Claude Monet",             year: 1906,
@@ -1273,7 +1260,7 @@
               tags: ["impressionist","nature","serene","water","light"],
               price: 9200,  priceDisplay: "$9,200",  dateAdded: "2024-03-10",
               sizeCategory: "30-50",    sizeDisplay: "89.5 × 94.0 cm · 약 30호",
-              image: "images/water_lilies.jpg" },
+              image: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Claude_Monet_-_Water_Lilies_-_1906%2C_Ryerson.jpg/1280px-Claude_Monet_-_Water_Lilies_-_1906%2C_Ryerson.jpg" },
 
             { id: 6,  title: "Impression, Sunrise",         artist: "Claude Monet",             year: 1872,
               category: "painting", style: "Impressionism",
@@ -1309,7 +1296,7 @@
               tags: ["impressionist","figurative","warm","serene","portrait"],
               price: 15800, priceDisplay: "$15,800", dateAdded: "2024-03-22",
               sizeCategory: "30-50",    sizeDisplay: "100.4 × 80.9 cm · 약 40호",
-              image: "images/renoir_sisters.jpg" },
+              image: "https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=800&q=80" },
 
             // ─ Sorolla ─
             { id: 5,  title: "Strolling on the Beach",      artist: "Joaquín Sorolla",          year: 1909,
@@ -1391,13 +1378,16 @@
         function openLightbox(artwork) {
             lbImg.src = artwork.image;
             lbImg.alt = artwork.title;
-            lightbox.classList.add('open');
+            const scrollbarW = window.innerWidth - document.documentElement.clientWidth;
+            document.body.style.paddingRight = scrollbarW + 'px';
             document.body.style.overflow = 'hidden';
+            lightbox.classList.add('open');
         }
 
         function closeLightbox() {
             lightbox.classList.remove('open');
             document.body.style.overflow = '';
+            document.body.style.paddingRight = '';
         }
 
         lightbox.addEventListener('click', closeLightbox);
@@ -1513,7 +1503,7 @@
                 id:2, title:"Self-Portrait with Straw Hat", artist:"Vincent van Gogh", year:1887,
                 category:"painting", style:"Post-Impressionism",
                 price:6200, priceDisplay:"$6,200", dateAdded:"2023-06-20",
-                image:"images/vangogh_self.jpg",
+                image:"https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?auto=format&fit=crop&w=800&q=80",
                 tags:['초상화','자화상','인물','얼굴','사람','남성','모자','한명','눈빛','표정'],
                 desc:"밀짚모자를 쓴 남성의 자화상. 강렬한 눈빛과 따뜻한 노란색 배경의 인물 초상화. 한 명의 얼굴을 클로즈업한 표현적인 그림.",
                 vp:{ abstraction:'representational', mood:'serene', colorTemp:'warm',
@@ -1533,7 +1523,7 @@
                 id:11, title:"Bedroom in Arles", artist:"Vincent van Gogh", year:1888,
                 category:"painting", style:"Post-Impressionism",
                 price:9100, priceDisplay:"$9,100", dateAdded:"2023-12-01",
-                image:"images/vangogh_bedroom.jpg",
+                image:"https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Vincent_van_Gogh_-_De_slaapkamer_-_Google_Art_Project.jpg/1280px-Vincent_van_Gogh_-_De_slaapkamer_-_Google_Art_Project.jpg",
                 tags:['실내','방','침실','건물','가구','침대','의자','테이블','창문','인테리어','노란'],
                 desc:"노란 벽과 침대, 의자, 테이블이 있는 침실 실내 풍경. 정돈된 방 내부와 창문이 보이는 건물 인테리어 그림.",
                 vp:{ abstraction:'representational', mood:'serene', colorTemp:'warm',
@@ -1544,7 +1534,7 @@
                 id:3, title:"Water Lilies", artist:"Claude Monet", year:1906,
                 category:"painting", style:"Impressionism",
                 price:9200, priceDisplay:"$9,200", dateAdded:"2024-03-10",
-                image:"images/water_lilies.jpg",
+                image:"https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Claude_Monet_-_Water_Lilies_-_1906%2C_Ryerson.jpg/1280px-Claude_Monet_-_Water_Lilies_-_1906%2C_Ryerson.jpg",
                 tags:['물','연못','수련','정원','꽃','자연','반사','풍경','녹색','고요','평화','풀'],
                 desc:"잔잔한 연못 위에 수련이 떠있는 지베르니 정원 풍경. 물에 반사된 녹색과 파란색의 고요하고 평화로운 자연.",
                 vp:{ abstraction:'representational', mood:'serene', colorTemp:'cool',
@@ -1595,7 +1585,7 @@
                 id:13, title:"Two Sisters (On the Terrace)", artist:"Pierre-Auguste Renoir", year:1881,
                 category:"painting", style:"Impressionism",
                 price:15800, priceDisplay:"$15,800", dateAdded:"2024-03-22",
-                image:"images/renoir_sisters.jpg",
+                image:"https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=800&q=80",
                 tags:['인물','초상화','여성','두명','자매','꽃','야외','봄','사람','온화'],
                 desc:"야외 테라스에서 두 명의 여성이 앉아있는 봄날 초상화. 꽃과 따뜻한 배경 속 부드럽고 온화한 인물화.",
                 vp:{ abstraction:'representational', mood:'serene', colorTemp:'warm',
@@ -2221,7 +2211,7 @@
                 { sel: '#artist-horizontal p.text-xs', section: '#artist-horizontal', label: 'Artist' },
                 { sel: '#exhibition h3',           section: '#exhibition',        label: 'Exhibition' },
                 { sel: '#story h2, #story p',      section: '#story',             label: 'Story' },
-                { sel: '#magazine h3',             section: '#magazine',          label: 'Magazine' },
+                { sel: '#atelier h2',              section: '#atelier',           label: 'Atelier' },
             ];
             selectors.forEach(({ sel, section, label }) => {
                 document.querySelectorAll(sel).forEach(el => {
@@ -2308,6 +2298,54 @@
             if (searchOpen && !searchBtn.contains(e.target) && !searchBar.contains(e.target) && !searchDropdown.contains(e.target))
                 closeSearch();
         });
+    </script>
+
+    <script>
+        // exhibitions.json 연동 — 미리보기 섹션
+        (async () => {
+            try {
+                const res = await fetch('exhibitions.json?t=' + Date.now());
+                if (!res.ok) return;
+                const data = await res.json();
+                if (!data || data.length === 0) return;
+
+                const fmt = d => d ? d.replace(/-/g, '. ') : '';
+
+                // 메인 피처드 카드 (첫 번째 전시)
+                const f = data[0];
+                document.getElementById('exh-featured-title').textContent = f.title;
+                document.getElementById('exh-featured-desc').textContent = f.desc || '';
+                document.getElementById('exh-featured-dates').textContent =
+                    (f.start ? fmt(f.start) : '') + (f.end ? ' - ' + fmt(f.end) : '');
+                if (f.url) document.getElementById('exh-featured-link').href = f.url;
+                if (f.img) {
+                    const img = document.getElementById('exh-featured-img');
+                    img.src = f.img;
+                }
+
+                // 사이드 카드 1 (두 번째 전시)
+                if (data[1]) {
+                    const s1 = data[1];
+                    document.getElementById('exh-side-1-title').textContent = s1.title;
+                    document.getElementById('exh-side-1-dates').textContent =
+                        (s1.start ? fmt(s1.start) : '') + (s1.end ? ' ~ ' + fmt(s1.end) : '');
+                    if (s1.url) document.getElementById('exh-side-1-link').href = s1.url;
+                    if (s1.img) document.getElementById('exh-side-1-img').src = s1.img;
+                }
+
+                // 사이드 카드 2 (세 번째 전시)
+                if (data[2]) {
+                    const s2 = data[2];
+                    document.getElementById('exh-side-2-title').textContent = s2.title;
+                    document.getElementById('exh-side-2-dates').textContent =
+                        (s2.start ? fmt(s2.start) : '') + (s2.end ? ' ~ ' + fmt(s2.end) : '');
+                    if (s2.url) document.getElementById('exh-side-2-link').href = s2.url;
+                    if (s2.img) document.getElementById('exh-side-2-img').src = s2.img;
+                }
+            } catch (e) {
+                // 로드 실패 시 기존 하드코딩 내용 유지
+            }
+        })();
     </script>
 </body>
 </html>
