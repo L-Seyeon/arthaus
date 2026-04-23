@@ -99,10 +99,14 @@ def fetch_culture_api(service_key: str) -> list:
         print(f"  응답 미리보기: {resp.text[:300]}")
         return []
 
-    # HTML 오류 페이지 감지 (이중 인코딩 등 키 오류 시 HTML 반환됨)
+    # HTML 오류 페이지 감지
     if root.tag.lower() in ("html", "{http://www.w3.org/1999/xhtml}html"):
-        print(f"  ❌ HTML 응답 수신 — 서비스 키 오류 또는 API 인증 실패")
-        print(f"  응답 미리보기: {resp.text[:200]}")
+        # 에러 메시지 추출 시도
+        from bs4 import BeautifulSoup as _BS
+        soup = _BS(resp.text, "html.parser")
+        err_msg = soup.get_text(separator=" ", strip=True)[:300]
+        print(f"  ❌ HTML 에러페이지 수신")
+        print(f"  에러 내용: {err_msg}")
         return []
 
     # 오류 응답 체크 — 여러 경로 시도
@@ -273,36 +277,43 @@ def refine_with_gemini(raw_text: str, max_retries: int = 3) -> list:
         print("  ⚠️ GEMINI_API_KEY 없음 — 크롤링 데이터 건너뜀")
         return []
 
-    # v1 API 명시 — gemini-1.5-flash는 v1beta가 아닌 v1에 있음
-    client = genai.Client(api_key=api_key, http_options={"api_version": "v1"})
+    client = genai.Client(api_key=api_key)
 
-    for attempt in range(1, max_retries + 1):
-        print(f"  Gemini API 호출 중... (시도 {attempt}/{max_retries})")
-        try:
-            response = client.models.generate_content(
-                model="gemini-1.5-flash",
-                contents=build_gemini_prompt(raw_text),
-            )
-            results = parse_json_from_response(response.text)
-            print(f"  Gemini → {len(results)}개 사립 전시 추출")
-            return results
+    # 사용 가능한 모델 순서대로 시도
+    models_to_try = ["gemini-2.0-flash", "gemini-2.0-flash-lite"]
 
-        except Exception as e:
-            err_str = str(e)
-            print(f"  ⚠️ Gemini 오류 (시도 {attempt}): {err_str[:120]}")
+    for model_name in models_to_try:
+        for attempt in range(1, max_retries + 1):
+            print(f"  Gemini API 호출 중... 모델={model_name} (시도 {attempt}/{max_retries})")
+            try:
+                response = client.models.generate_content(
+                    model=model_name,
+                    contents=build_gemini_prompt(raw_text),
+                )
+                results = parse_json_from_response(response.text)
+                print(f"  Gemini ({model_name}) → {len(results)}개 사립 전시 추출")
+                return results
 
-            # 429 (할당량 초과) 또는 503 → 대기 후 재시도
-            if "429" in err_str or "quota" in err_str.lower() or "503" in err_str:
-                wait = 30 * attempt  # 30초, 60초, 90초
-                if attempt < max_retries:
-                    print(f"  ⏳ {wait}초 대기 후 재시도...")
-                    time.sleep(wait)
+            except Exception as e:
+                err_str = str(e)
+                print(f"  ⚠️ Gemini 오류 (시도 {attempt}): {err_str[:150]}")
+
+                if "404" in err_str or "not found" in err_str.lower():
+                    print(f"  모델 {model_name} 미지원 — 다음 모델 시도")
+                    break  # 다음 모델로
+
+                if "429" in err_str or "quota" in err_str.lower() or "503" in err_str:
+                    wait = 30 * attempt
+                    if attempt < max_retries:
+                        print(f"  ⏳ {wait}초 대기 후 재시도...")
+                        time.sleep(wait)
+                    else:
+                        print(f"  ❌ {model_name} 재시도 초과 — 다음 모델 시도")
+                        break
                 else:
-                    print("  ❌ Gemini 재시도 횟수 초과 — 크롤링 결과 건너뜀")
-            else:
-                # 다른 오류는 재시도 불필요
-                break
+                    break  # 알 수 없는 오류 → 다음 모델
 
+    print("  ❌ 모든 Gemini 모델 실패")
     return []
 
 
