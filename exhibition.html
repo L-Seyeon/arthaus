@@ -33,7 +33,7 @@
         #site-nav .nav-links a:hover { color: #1D2951; }
         #site-nav .nav-links a.active { color: #1D2951; }
 
-        /* ── Hero (compact) ──────────────────────────────────── */
+        /* ── Hero ───────────────────────────────────────────── */
         .hero {
             background: var(--navy); padding: 108px 0 52px;
             position: relative; overflow: hidden;
@@ -57,49 +57,42 @@
         @keyframes ticker { from { transform: translateX(0) } to { transform: translateX(-50%) } }
 
         /* ── Section ─────────────────────────────────────────── */
-        .exh-section { padding: 60px 0 68px; border-bottom: 1px solid rgba(29,41,81,0.06); }
+        .exh-section { padding: 60px 0 64px; border-bottom: 1px solid rgba(29,41,81,0.06); }
         .exh-section:last-of-type { border-bottom: none; }
 
         .section-header {
             max-width: 1280px; margin: 0 auto 20px; padding: 0 24px;
-            display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap;
+            display: flex; align-items: flex-end; gap: 10px; flex-wrap: wrap;
         }
         .section-label {
-            font-size: 9px; font-weight: 700; letter-spacing: 0.32em;
+            font-size: 9px; font-weight: 700; letter-spacing: 0.3em;
             text-transform: uppercase; color: rgba(29,41,81,0.28); margin-bottom: 4px;
         }
-        .section-title {
-            font-size: 1.6rem; font-weight: 700; color: var(--navy);
-            letter-spacing: -0.01em;
-        }
+        .section-title { font-size: 1.5rem; font-weight: 700; color: var(--navy); }
         .section-sub {
-            font-size: 11px; font-weight: 400; color: rgba(29,41,81,0.38);
-            letter-spacing: 0.02em;
+            font-size: 11px; color: rgba(29,41,81,0.38);
+            margin-bottom: 2px; margin-left: 2px;
         }
         .section-count {
-            margin-left: auto;
-            font-size: 10px; font-weight: 700; color: rgba(29,41,81,0.28);
-            letter-spacing: 0.06em;
+            margin-left: auto; font-size: 10px; font-weight: 700;
+            color: rgba(29,41,81,0.26); letter-spacing: 0.05em;
         }
 
-        /* ── Swiper wrapper (for side buttons) ─────────────── */
+        /* ── Swiper wrap (side buttons 기준) ─────────────────── */
         .swiper-section-wrap { position: relative; }
 
         /* ── Side nav buttons ───────────────────────────────── */
         .side-btn {
             position: absolute; top: 50%; transform: translateY(-50%);
             z-index: 20; width: 44px; height: 44px; border-radius: 50%;
-            background: rgba(255,255,255,0.96); border: none; cursor: pointer;
-            box-shadow: 0 4px 20px rgba(29,41,81,0.13);
+            background: rgba(255,255,255,0.95); border: none; cursor: pointer;
+            box-shadow: 0 4px 20px rgba(29,41,81,0.14);
             display: flex; align-items: center; justify-content: center;
             color: var(--navy); font-size: 13px;
             transition: background 0.2s, color 0.2s, transform 0.2s;
         }
-        .side-btn:hover {
-            background: var(--navy); color: #fff;
-            transform: translateY(-50%) scale(1.08);
-        }
-        .side-btn.swiper-button-disabled { opacity: 0.18; pointer-events: none; }
+        .side-btn:hover { background: var(--navy); color: #fff; transform: translateY(-50%) scale(1.1); }
+        .side-btn.swiper-button-disabled { opacity: 0.15; pointer-events: none; }
         .side-prev { left: 16px; }
         .side-next { right: 16px; }
 
@@ -107,78 +100,77 @@
         .main-swiper {
             width: 100%;
             overflow: visible !important;
-            padding: 40px 0 !important;
+            padding: 44px 0 !important;
         }
         .main-swiper .swiper-wrapper { align-items: center; }
         .main-swiper .swiper-slide {
-            width: 280px;
-            transform: scale(0.78); opacity: 0.38;
+            width: 340px;
+            transform: scale(0.72);
+            opacity: 0.32;
             transition: transform 0.45s cubic-bezier(0.16,1,0.3,1), opacity 0.45s ease;
         }
-        .main-swiper .swiper-slide-active  { transform: scale(1);    opacity: 1; }
+        .main-swiper .swiper-slide-active  { transform: scale(1.0); opacity: 1; }
         .main-swiper .swiper-slide-prev,
-        .main-swiper .swiper-slide-next    { transform: scale(0.88); opacity: 0.62; }
+        .main-swiper .swiper-slide-next    { transform: scale(0.84); opacity: 0.65; }
 
-        /* ── Card (full-bleed poster) ────────────────────────── */
+        /* ── Card ────────────────────────────────────────────── */
         .exh-card {
-            border-radius: 12px; overflow: hidden;
-            position: relative; aspect-ratio: 3/4;
+            background: #fff; border-radius: 12px; overflow: hidden;
+            box-shadow: 0 4px 24px rgba(29,41,81,0.07);
+            transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s;
             cursor: pointer;
-            box-shadow: 0 4px 20px rgba(29,41,81,0.07);
-            transition: box-shadow 0.45s ease;
         }
-        .swiper-slide-active .exh-card {
-            box-shadow: 0 24px 64px rgba(29,41,81,0.18);
+        /* 호버: 이미지 아닌 카드 전체가 위로 뜸 */
+        .swiper-slide:hover .exh-card {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 56px rgba(29,41,81,0.16);
+        }
+        .swiper-slide-active:hover .exh-card {
+            box-shadow: 0 28px 72px rgba(29,41,81,0.22);
         }
 
-        /* Image fills entire card */
+        /* 이미지 영역 — 크롭 없이 전체 보임 */
+        .card-img-wrap {
+            width: 100%; height: 290px;
+            position: relative; overflow: hidden;
+        }
         .card-img {
             position: absolute; inset: 0;
-            width: 100%; height: 100%; object-fit: cover; display: block;
-            transition: transform 0.65s cubic-bezier(0.16,1,0.3,1);
+            width: 100%; height: 100%;
+            object-fit: contain; /* 잘림 없이 전체 포스터 표시 */
+            display: block;
         }
-        .exh-card:hover .card-img { transform: scale(1.07); }
-
         .card-grad {
             position: absolute; inset: 0;
             display: flex; align-items: center; justify-content: center;
-            transition: transform 0.65s cubic-bezier(0.16,1,0.3,1);
         }
-        .exh-card:hover .card-grad { transform: scale(1.07); }
         .card-grad-text {
-            font-size: 8px; font-weight: 700; letter-spacing: 0.22em;
+            font-size: 8px; font-weight: 700; letter-spacing: 0.2em;
             text-transform: uppercase; color: rgba(255,255,255,0.32);
             text-align: center; max-width: 100px; line-height: 1.8; padding: 0 8px;
         }
 
-        /* Text overlay at bottom */
-        .card-overlay {
-            position: absolute; bottom: 0; left: 0; right: 0;
-            background: rgba(255,255,255,0.90);
-            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-            padding: 13px 16px 17px;
-            transition: transform 0.4s cubic-bezier(0.16,1,0.3,1),
-                        background 0.3s ease;
-        }
-        .exh-card:hover .card-overlay {
-            background: rgba(255,255,255,0.97);
-            transform: translateY(-4px);
+        /* 텍스트: 이미지 아래 흰 배경 */
+        .card-info {
+            padding: 14px 16px 18px;
+            background: #fff;
+            border-top: 1px solid rgba(29,41,81,0.05);
         }
         .card-venue {
             font-size: 8px; font-weight: 700; letter-spacing: 0.16em;
-            text-transform: uppercase; color: rgba(29,41,81,0.4);
+            text-transform: uppercase; color: rgba(29,41,81,0.38);
             margin-bottom: 6px;
             white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
         }
         .card-title {
             font-size: 13px; font-weight: 500; color: var(--navy);
-            line-height: 1.4; margin-bottom: 8px;
+            line-height: 1.45; margin-bottom: 8px;
             display: -webkit-box; -webkit-line-clamp: 2; line-clamp: 2;
             -webkit-box-orient: vertical; overflow: hidden;
         }
         .card-date {
             font-size: 12px; font-weight: 400;
-            color: rgba(29,41,81,0.55); letter-spacing: 0.01em;
+            color: rgba(29,41,81,0.52);
         }
 
         /* ── Thumb Swiper ────────────────────────────────────── */
@@ -186,9 +178,9 @@
         .thumb-swiper .swiper-slide {
             width: 64px !important; height: 48px;
             border-radius: 6px; overflow: hidden;
-            opacity: 0.36; cursor: pointer;
+            opacity: 0.35; cursor: pointer;
             transition: opacity 0.25s;
-            border: 2px solid transparent; box-sizing: border-box; flex-shrink: 0;
+            border: 2px solid transparent; box-sizing: border-box;
         }
         .thumb-swiper .swiper-slide-thumb-active { opacity: 1; border-color: var(--navy); }
         .thumb-swiper img { width: 100%; height: 100%; object-fit: cover; display: block; }
@@ -199,7 +191,8 @@
         .skel { background: #ededeb; border-radius: 8px; animation: pulse 1.5s ease-in-out infinite; }
 
         @media (max-width: 640px) {
-            .main-swiper .swiper-slide { width: 220px; }
+            .main-swiper .swiper-slide { width: 240px; }
+            .card-img-wrap { height: 210px; }
         }
     </style>
 </head>
@@ -222,13 +215,13 @@
 <!-- Hero -->
 <section class="hero">
     <div class="hero-content">
-        <p style="font-size:9px; font-weight:700; letter-spacing:0.4em; text-transform:uppercase; color:rgba(255,255,255,0.28); margin-bottom:16px; font-family:'Noto Sans KR',sans-serif;">
+        <p style="font-size:9px; font-weight:700; letter-spacing:0.4em; text-transform:uppercase; color:rgba(255,255,255,0.28); margin-bottom:16px;">
             <i class="fa-solid fa-building-columns" style="margin-right:8px;"></i>Curation &amp; Exhibition
         </p>
-        <h1 style="font-size:clamp(2.2rem,5.5vw,4rem); font-weight:300; color:#fff; line-height:1.1; margin-bottom:12px; font-family:'Noto Sans KR',sans-serif; letter-spacing:-0.01em;">
+        <h1 style="font-size:clamp(2.2rem,5.5vw,4rem); font-weight:300; color:#fff; line-height:1.1; margin-bottom:12px; letter-spacing:-0.01em;">
             Korean Exhibitions
         </h1>
-        <p style="font-size:12px; color:rgba(255,255,255,0.38); font-family:'Noto Sans KR',sans-serif; line-height:1.7;">
+        <p style="font-size:12px; color:rgba(255,255,255,0.38); line-height:1.7;">
             국내 주요 미술관·갤러리의 화제 전시를 한눈에
         </p>
     </div>
@@ -248,17 +241,17 @@
     </div>
 </section>
 
-<!-- Main — filled by JS -->
+<!-- Main — JS로 채워짐 -->
 <main id="exh-main" style="padding-bottom: 80px;">
     <div style="padding: 60px 24px;">
         <div style="max-width:1280px; margin:0 auto 28px;">
             <div class="skel" style="height:9px; width:60px; margin-bottom:10px;"></div>
-            <div class="skel" style="height:24px; width:140px;"></div>
+            <div class="skel" style="height:22px; width:120px;"></div>
         </div>
         <div style="display:flex; gap:20px; justify-content:center; align-items:center;">
-            <div class="skel" style="width:218px; height:357px; border-radius:12px; flex-shrink:0; transform:scale(0.78); opacity:0.38;"></div>
-            <div class="skel" style="width:280px; height:373px; border-radius:12px; flex-shrink:0;"></div>
-            <div class="skel" style="width:218px; height:357px; border-radius:12px; flex-shrink:0; transform:scale(0.78); opacity:0.38;"></div>
+            <div class="skel" style="width:245px; height:397px; border-radius:12px; flex-shrink:0; transform:scale(0.72); opacity:0.32;"></div>
+            <div class="skel" style="width:340px; height:397px; border-radius:12px; flex-shrink:0;"></div>
+            <div class="skel" style="width:245px; height:397px; border-radius:12px; flex-shrink:0; transform:scale(0.72); opacity:0.32;"></div>
         </div>
     </div>
 </main>
@@ -266,27 +259,22 @@
 <footer style="background:#fff; border-top:1px solid rgba(29,41,81,0.07); padding:48px 0 32px;">
     <div style="max-width:1280px; margin:0 auto; padding:0 24px; display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:16px;">
         <a href="story.html" style="font-family:'Cormorant Garamond',serif; font-size:1.1rem; font-weight:700; color:var(--navy); text-decoration:none;">ARTHAUS</a>
-        <p style="font-size:10px; color:rgba(29,41,81,0.3); font-family:'Noto Sans KR',sans-serif;">전시 정보 제공: 공공데이터포털 문화정보 API</p>
-        <p style="font-size:10px; color:rgba(29,41,81,0.3); font-family:'Noto Sans KR',sans-serif;">© 2025 ARTHAUS COLLECTIVE</p>
+        <p style="font-size:10px; color:rgba(29,41,81,0.3);">전시 정보 제공: 공공데이터포털 문화정보 API</p>
+        <p style="font-size:10px; color:rgba(29,41,81,0.3);">© 2025 ARTHAUS COLLECTIVE</p>
     </div>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
-/* ─────────────────────────────────────────────────────
-   exhibitions.json → 지역별 Swiper 섹션 렌더
-───────────────────────────────────────────────────── */
-
-/* ── 지역 분류 테이블 ── */
+/* ─────────────────────────────────────────────────────────
+   지역 분류 테이블  (서울 / 경기·인천 분리)
+───────────────────────────────────────────────────────── */
 const REGION_RULES = [
     {
-        region: '수도권',
-        sub: '서울 · 경기 · 인천',
+        region: '서울',
+        sub: 'Seoul',
         keywords: [
-            '서울','경기','인천','수원','성남','안양','부천','고양','의정부',
-            '파주','용인','시흥','광명','군포','하남','오산','화성','평택',
-            '안성','김포','양주','구리','남양주','과천','의왕','여주','포천',
-            '연천','동두천','가평','양평','이천',
+            '서울',
             '성북','종로','중구','용산','성동','광진','동대문','중랑','도봉',
             '노원','강북','은평','서대문','마포','양천','강서','구로','금천',
             '영등포','동작','관악','서초','강남','송파','강동',
@@ -295,14 +283,24 @@ const REGION_RULES = [
         ],
     },
     {
+        region: '경기·인천',
+        sub: '경기도 · 인천',
+        keywords: [
+            '경기','인천','수원','성남','안양','부천','고양','의정부','파주',
+            '용인','시흥','광명','군포','하남','오산','화성','평택','안성',
+            '김포','양주','구리','남양주','과천','의왕','여주','포천','연천',
+            '동두천','가평','양평','이천','영종',
+        ],
+    },
+    {
         region: '경상권',
         sub: '부산 · 대구 · 울산 · 경상도',
         keywords: [
             '부산','대구','울산','경북','경남','포항','경주','안동','구미',
             '영주','영천','상주','문경','경산','칠곡','예천','봉화','울진',
-            '울릉','독도','창원','진주','통영','사천','김해','밀양','거제',
-            '양산','의령','함안','창녕','남해','하동','산청','함양','거창',
-            '합천','솔거',
+            '울릉','독도','김천','창원','진주','통영','사천','김해','밀양',
+            '거제','양산','의령','함안','창녕','남해','하동','산청','함양',
+            '거창','합천','솔거',
         ],
     },
     {
@@ -342,7 +340,7 @@ const REGION_RULES = [
     },
 ];
 
-const SECTION_ORDER = ['수도권', '경상권', '전라·광주권', '충청권', '강원', '제주', '기타 지역'];
+const SECTION_ORDER = ['서울','경기·인천','경상권','전라·광주권','충청권','강원','제주','기타 지역'];
 
 function getRegion(venue) {
     for (const { region, keywords } of REGION_RULES) {
@@ -376,9 +374,11 @@ function onImgError(el) {
     el.parentNode.replaceChild(d, el);
 }
 
+/* object-fit: contain → 이미지 잘림 없음, 빈 공간은 그라디언트로 채움 */
 function cardImg(item) {
     if (item.img) {
         return `<img class="card-img" src="${item.img}" alt="${item.title}"
+            style="background:${item.grad};"
             data-grad="${item.grad}" data-venue="${item.venue}"
             onerror="onImgError(this)">`;
     }
@@ -390,7 +390,7 @@ function cardImg(item) {
 function thumbImg(item) {
     if (item.img) {
         return `<img src="${item.img}" alt=""
-            data-grad="${item.grad}" data-venue=""
+            style="background:${item.grad};"
             onerror="this.parentNode.style.background='${item.grad}'">`;
     }
     return `<div class="thumb-grad-sm" style="background:${item.grad};"></div>`;
@@ -399,19 +399,14 @@ function thumbImg(item) {
 /* ── 지역별 그룹 ── */
 function groupByRegion(items) {
     const groups = new Map();
-
     items.forEach(item => {
         if (getStatus(item) !== 'open') return;
-        const region = getRegion(item.venue);
-        if (!groups.has(region)) groups.set(region, []);
-        groups.get(region).push(item);
+        const r = getRegion(item.venue);
+        if (!groups.has(r)) groups.set(r, []);
+        groups.get(r).push(item);
     });
-
-    const ordered = [];
-    SECTION_ORDER.forEach(key => {
-        if (groups.has(key)) ordered.push(key);
-    });
-    return { groups, order: ordered };
+    const order = SECTION_ORDER.filter(k => groups.has(k));
+    return { groups, order };
 }
 
 /* ── 섹션 렌더 + Swiper 초기화 ── */
@@ -421,14 +416,16 @@ function renderSection(key, items, idx) {
     const prevId  = `sp${idx}`;
     const nextId  = `sn${idx}`;
 
-    const rule   = REGION_RULES.find(r => r.region === key);
+    const rule    = REGION_RULES.find(r => r.region === key);
     const subText = rule ? rule.sub : '';
 
     const slides = items.map(item => `
         <div class="swiper-slide" onclick="window.open('${item.url}','_blank')">
             <div class="exh-card">
-                ${cardImg(item)}
-                <div class="card-overlay">
+                <div class="card-img-wrap" style="background:${item.grad};">
+                    ${cardImg(item)}
+                </div>
+                <div class="card-info">
                     <p class="card-venue">${item.venue}</p>
                     <p class="card-title">${item.title}</p>
                     <p class="card-date">~ ${fmtDate(item.end)}</p>
@@ -446,7 +443,7 @@ function renderSection(key, items, idx) {
             <div>
                 <p class="section-label">지역별 전시</p>
                 <h2 class="section-title">${key}</h2>
-                <p class="section-sub" style="margin-top:4px;">${subText}</p>
+                <p class="section-sub">${subText}</p>
             </div>
             <span class="section-count">${items.length}개 전시</span>
         </div>
@@ -498,22 +495,16 @@ async function loadExhibitions() {
         document.getElementById('exh-main').innerHTML = '';
 
         if (!order.length) {
-            document.getElementById('exh-main').innerHTML = `
-                <p style="text-align:center;padding:80px 24px;color:rgba(29,41,81,0.4);
-                   font-size:13px;font-family:'Noto Sans KR',sans-serif;">
-                    현재 진행 중인 전시가 없습니다.
-                </p>`;
+            document.getElementById('exh-main').innerHTML =
+                `<p style="text-align:center;padding:80px 24px;color:rgba(29,41,81,0.4);font-size:13px;">현재 진행 중인 전시가 없습니다.</p>`;
             return;
         }
 
         order.forEach((key, idx) => renderSection(key, groups.get(key), idx));
 
     } catch (e) {
-        document.getElementById('exh-main').innerHTML = `
-            <p style="text-align:center;padding:80px 24px;color:rgba(29,41,81,0.4);
-               font-size:13px;font-family:'Noto Sans KR',sans-serif;">
-                전시 정보를 불러오는 중 오류가 발생했습니다.<br>잠시 후 다시 시도해주세요.
-            </p>`;
+        document.getElementById('exh-main').innerHTML =
+            `<p style="text-align:center;padding:80px 24px;color:rgba(29,41,81,0.4);font-size:13px;">전시 정보를 불러오는 중 오류가 발생했습니다.<br>잠시 후 다시 시도해주세요.</p>`;
     }
 }
 
