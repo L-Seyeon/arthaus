@@ -1013,94 +1013,78 @@
     </section>
 
 <!-- STORY SECTION -->
-    <section id="story" class="py-32 relative z-20 overflow-hidden" style="background:#f6f4ef;">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="story" class="relative z-20 overflow-hidden" style="min-height:100vh;">
+        <!-- Parallax Background Image -->
+        <div style="position:absolute; inset:0;
+            background-image: url('https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=1920&q=80');
+            background-size:cover; background-position:center center;
+            background-attachment:fixed;
+            background-color:#0c1528;">
+        </div>
+        <!-- Dark Overlay -->
+        <div style="position:absolute; inset:0; background:linear-gradient(to bottom, rgba(10,17,38,0.72) 0%, rgba(13,22,46,0.60) 60%, rgba(10,17,38,0.78) 100%);"></div>
 
-            <!-- Section Header — left-aligned, same pattern as Exhibition -->
-            <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-20 gap-4">
-                <div>
-                    <p class="text-[10px] font-bold tracking-[0.4em] uppercase text-gray-300 mb-4">Our Philosophy</p>
-                    <h2 class="text-4xl md:text-5xl font-light text-space-cadet mb-6 leading-tight">
-                        The Art of <br>Connection
-                    </h2>
+        <!-- Content -->
+        <div class="relative z-10 py-28 md:py-36">
+            <div class="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
+
+                <!-- Header -->
+                <p style="font-size:9px; letter-spacing:0.45em; text-transform:uppercase; color:rgba(255,255,255,0.35); margin:0 0 18px;">Our Philosophy</p>
+                <h2 style="font-family:'Playfair Display',serif; font-size:clamp(2.2rem,5vw,3.6rem); font-weight:400; color:#fff; line-height:1.2; margin:0 0 20px; letter-spacing:0.02em;">
+                    The Art of<br>Connection
+                </h2>
+                <p style="font-size:13px; color:rgba(255,255,255,0.55); line-height:1.9; margin:0 auto 60px; max-width:480px;">
+                    ARTHAUS는 작가의 진심이 수집가의 일상에 스며드는 순간을 설계합니다.<br>예술이 삶을 풍요롭게 만드는 보편적인 가치가 되길 믿습니다.
+                </p>
+
+                <!-- Values — 3 columns -->
+                <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); border-top:1px solid rgba(255,255,255,0.1); margin-bottom:64px;">
+                    <div style="padding:36px 28px; border-bottom:1px solid rgba(255,255,255,0.07); text-align:left;" class="md-border-r">
+                        <span style="font-family:'Playfair Display',serif; font-size:22px; font-style:italic; color:rgba(255,255,255,0.18); display:block; margin-bottom:16px;">01</span>
+                        <h4 style="font-size:10px; font-weight:700; letter-spacing:0.25em; text-transform:uppercase; color:#fff; margin:0 0 10px;">작가와의 진정성 있는 연결</h4>
+                        <p style="font-size:11px; color:rgba(255,255,255,0.45); line-height:1.8; margin:0;">작가의 작업실에서 수집가의 공간까지, 모든 과정에서 함께합니다.</p>
+                    </div>
+                    <div style="padding:36px 28px; border-bottom:1px solid rgba(255,255,255,0.07); border-left:1px solid rgba(255,255,255,0.07); text-align:left;">
+                        <span style="font-family:'Playfair Display',serif; font-size:22px; font-style:italic; color:rgba(255,255,255,0.18); display:block; margin-bottom:16px;">02</span>
+                        <h4 style="font-size:10px; font-weight:700; letter-spacing:0.25em; text-transform:uppercase; color:#fff; margin:0 0 10px;">엄선된 큐레이션 서비스</h4>
+                        <p style="font-size:11px; color:rgba(255,255,255,0.45); line-height:1.8; margin:0;">취향과 공간을 분석한 전문 큐레이터의 맞춤 추천으로 최적의 작품을 만나세요.</p>
+                    </div>
+                    <div style="padding:36px 28px; border-left:1px solid rgba(255,255,255,0.07); text-align:left;">
+                        <span style="font-family:'Playfair Display',serif; font-size:22px; font-style:italic; color:rgba(255,255,255,0.18); display:block; margin-bottom:16px;">03</span>
+                        <h4 style="font-size:10px; font-weight:700; letter-spacing:0.25em; text-transform:uppercase; color:#fff; margin:0 0 10px;">투명한 작품 유통 프로세스</h4>
+                        <p style="font-size:11px; color:rgba(255,255,255,0.45); line-height:1.8; margin:0;">작품의 출처, 가치, 이력 모든 정보를 투명하게 공개합니다.</p>
+                    </div>
                 </div>
-                <a href="#" class="text-[11px] font-bold text-space-cadet tracking-[0.2em] uppercase border-b border-space-cadet pb-1 hover:opacity-60 transition-opacity flex items-center gap-3">
-                    Our Full Story <i class="fa-solid fa-arrow-right-long"></i>
-                </a>
+
+                <!-- Stats Row -->
+                <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:0; border-top:1px solid rgba(255,255,255,0.1); padding-top:48px;">
+                    <div style="text-align:center; padding:0 16px;">
+                        <p style="font-family:'Playfair Display',serif; font-size:clamp(2rem,4vw,3rem); font-style:italic; color:#fff; margin:0 0 6px; letter-spacing:0.02em;">2.4k<span style="font-size:1.2rem; opacity:0.3;">+</span></p>
+                        <p style="font-size:9px; font-weight:700; letter-spacing:0.3em; text-transform:uppercase; color:rgba(255,255,255,0.3); margin:0;">Collectors</p>
+                    </div>
+                    <div style="text-align:center; padding:0 16px; border-left:1px solid rgba(255,255,255,0.08);">
+                        <p style="font-family:'Playfair Display',serif; font-size:clamp(2rem,4vw,3rem); font-style:italic; color:#fff; margin:0 0 6px;">380<span style="font-size:1.2rem; opacity:0.3;">+</span></p>
+                        <p style="font-size:9px; font-weight:700; letter-spacing:0.3em; text-transform:uppercase; color:rgba(255,255,255,0.3); margin:0;">Curated Artists</p>
+                    </div>
+                    <div style="text-align:center; padding:0 16px; border-left:1px solid rgba(255,255,255,0.08);">
+                        <p style="font-family:'Playfair Display',serif; font-size:clamp(2rem,4vw,3rem); font-style:italic; color:#fff; margin:0 0 6px;">12k<span style="font-size:1.2rem; opacity:0.3;">+</span></p>
+                        <p style="font-size:9px; font-weight:700; letter-spacing:0.3em; text-transform:uppercase; color:rgba(255,255,255,0.3); margin:0;">Works Sold</p>
+                    </div>
+                    <div style="text-align:center; padding:0 16px; border-left:1px solid rgba(255,255,255,0.08);">
+                        <p style="font-family:'Playfair Display',serif; font-size:clamp(2rem,4vw,3rem); font-style:italic; color:#fff; margin:0 0 6px;">42<span style="font-size:1.2rem; opacity:0.3;">+</span></p>
+                        <p style="font-size:9px; font-weight:700; letter-spacing:0.3em; text-transform:uppercase; color:rgba(255,255,255,0.3); margin:0;">Exhibitions</p>
+                    </div>
+                </div>
+
+                <!-- CTA -->
+                <div style="margin-top:56px;">
+                    <a href="#" style="display:inline-flex; align-items:center; gap:12px; font-size:10px; font-weight:700; letter-spacing:0.25em; text-transform:uppercase; color:rgba(255,255,255,0.6); text-decoration:none; border-bottom:1px solid rgba(255,255,255,0.25); padding-bottom:4px; transition:color .2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">
+                        Our Full Story <i class="fa-solid fa-arrow-right-long"></i>
+                    </a>
+                </div>
+
             </div>
-
-            <!-- Main Content Grid -->
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
-
-                <!-- Left: Large image + floating quote card -->
-                <div class="lg:col-span-5 relative pb-10">
-                    <div class="aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl shadow-gray-200/80 group">
-                        <!-- Van Gogh — Bedroom in Arles (1888) — public domain -->
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Vincent_van_Gogh_-_De_slaapkamer_-_Google_Art_Project.jpg/1280px-Vincent_van_Gogh_-_De_slaapkamer_-_Google_Art_Project.jpg" alt="Van Gogh — Bedroom in Arles" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                    </div>
-                    <!-- Floating quote card — echoes the dark CTA from Exhibition -->
-                    <div class="absolute -bottom-2 -right-4 md:-right-6 max-w-[250px] bg-[#1D2951] text-white p-7 rounded-2xl shadow-2xl shadow-blue-900/30 z-10">
-                        <p class="text-[9px] font-bold uppercase tracking-[0.3em] opacity-50 mb-3">Artist Voice</p>
-                        <p class="text-xs font-light leading-relaxed italic">"나는 별이 빛나는 밤에도, 태양이 이글거리는 낮에도 그림을 그린다. 예술은 나를 살게 한다."</p>
-                        <div class="mt-4 pt-4 border-t border-white/10">
-                            <p class="text-[9px] opacity-50 font-bold">— Vincent van Gogh</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Right: Philosophy + numbered list -->
-                <div class="lg:col-span-7 lg:pl-4 pt-4">
-                    <p class="text-gray-500 text-sm leading-loose mb-12 max-w-lg">
-                        ARTHAUS는 작가의 진심이 수집가의 일상에 스며드는 순간을 설계합니다. 우리는 예술이 특별한 소수의 전유물이 아닌, 삶을 풍요롭게 만드는 보편적인 가치가 되길 믿습니다.
-                    </p>
-
-                    <!-- Values: mirroring exhibition's curator note style -->
-                    <div class="space-y-0 border-t border-gray-100">
-                        <div class="flex items-start gap-8 group cursor-default py-7 border-b border-gray-100 hover:border-gray-200 transition-colors">
-                            <span class="text-space-cadet font-playfair text-2xl italic opacity-15 group-hover:opacity-100 transition-opacity duration-300 flex-shrink-0 w-8 pt-0.5">01</span>
-                            <div>
-                                <h4 class="text-xs font-bold uppercase tracking-widest text-space-cadet mb-2">작가와의 진정성 있는 연결</h4>
-                                <p class="text-[11px] text-gray-400 leading-relaxed">작가의 작업실에서 수집가의 공간까지, 모든 과정에서 함께합니다.</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start gap-8 group cursor-default py-7 border-b border-gray-100 hover:border-gray-200 transition-colors">
-                            <span class="text-space-cadet font-playfair text-2xl italic opacity-15 group-hover:opacity-100 transition-opacity duration-300 flex-shrink-0 w-8 pt-0.5">02</span>
-                            <div>
-                                <h4 class="text-xs font-bold uppercase tracking-widest text-space-cadet mb-2">엄선된 큐레이션 서비스</h4>
-                                <p class="text-[11px] text-gray-400 leading-relaxed">취향과 공간을 분석한 전문 큐레이터의 맞춤 추천으로 최적의 작품을 만나세요.</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start gap-8 group cursor-default py-7 hover:border-gray-200 transition-colors">
-                            <span class="text-space-cadet font-playfair text-2xl italic opacity-15 group-hover:opacity-100 transition-opacity duration-300 flex-shrink-0 w-8 pt-0.5">03</span>
-                            <div>
-                                <h4 class="text-xs font-bold uppercase tracking-widest text-space-cadet mb-2">투명한 작품 유통 프로세스</h4>
-                                <p class="text-[11px] text-gray-400 leading-relaxed">작품의 출처, 가치, 이력 모든 정보를 투명하게 공개합니다.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Stats Row — editorial numbers, Playfair italic -->
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 pt-12 mt-12 border-t border-gray-100">
-                        <div class="text-center group">
-                            <p class="text-4xl md:text-5xl font-playfair italic text-space-cadet mb-2 group-hover:opacity-70 transition-opacity">2.4k<span class="text-2xl opacity-30">+</span></p>
-                            <p class="text-[10px] font-bold uppercase tracking-widest text-gray-300">Collectors</p>
-                        </div>
-                        <div class="text-center group">
-                            <p class="text-4xl md:text-5xl font-playfair italic text-space-cadet mb-2 group-hover:opacity-70 transition-opacity">380<span class="text-2xl opacity-30">+</span></p>
-                            <p class="text-[10px] font-bold uppercase tracking-widest text-gray-300">Curated Artists</p>
-                        </div>
-                        <div class="text-center group">
-                            <p class="text-4xl md:text-5xl font-playfair italic text-space-cadet mb-2 group-hover:opacity-70 transition-opacity">12k<span class="text-2xl opacity-30">+</span></p>
-                            <p class="text-[10px] font-bold uppercase tracking-widest text-gray-300">Works Sold</p>
-                        </div>
-                        <div class="text-center group">
-                            <p class="text-4xl md:text-5xl font-playfair italic text-space-cadet mb-2 group-hover:opacity-70 transition-opacity">42<span class="text-2xl opacity-30">+</span></p>
-                            <p class="text-[10px] font-bold uppercase tracking-widest text-gray-300">Exhibitions</p>
-                        </div>
-                    </div><!-- /stats row -->
-                </div><!-- /right col -->
-            </div><!-- /main grid -->
-        </div><!-- /max-w -->
+        </div>
     </section>
 
     <!-- ATELIER SECTION -->
