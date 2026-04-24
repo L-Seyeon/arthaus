@@ -278,6 +278,23 @@
     </div>
 </main>
 
+<!-- ── NEWSLETTER ────────────────────────────────────────────────── -->
+<section style="background:#f6f4ef; padding:80px 24px;">
+    <div style="max-width:520px; margin:0 auto; text-align:center;">
+        <p style="font-size:9px; letter-spacing:0.45em; text-transform:uppercase; color:rgba(29,41,81,0.35); margin:0 0 16px;">Newsletter</p>
+        <h2 style="font-family:'Playfair Display',serif; font-size:30px; font-weight:600; color:#1D2951; margin:0 0 14px; letter-spacing:0.04em;">Stay Updated</h2>
+        <p style="font-size:13px; color:rgba(29,41,81,0.5); line-height:1.85; margin:0 0 36px;">새로운 전시와 아티스트 소식을<br>가장 먼저 이메일로 받아보세요.</p>
+        <form onsubmit="arthausNewsletterSubmit(event)" style="display:flex; gap:10px; max-width:420px; margin:0 auto;">
+            <input type="email" id="footer-newsletter-email" placeholder="이메일 주소를 입력하세요" required
+                style="flex:1; background:#fff; border:1px solid rgba(29,41,81,0.14); border-radius:5px; padding:13px 16px; font-size:12px; color:#1D2951; outline:none; min-width:0;"
+                onfocus="this.style.borderColor='rgba(29,41,81,0.4)'" onblur="this.style.borderColor='rgba(29,41,81,0.14)'">
+            <button type="submit"
+                style="background:#1D2951; border:none; border-radius:5px; padding:13px 24px; font-size:10px; color:#fff; cursor:pointer; letter-spacing:0.15em; text-transform:uppercase; white-space:nowrap; transition:opacity .2s; flex-shrink:0;"
+                onmouseover="this.style.opacity='0.75'" onmouseout="this.style.opacity='1'">Subscribe</button>
+        </form>
+    </div>
+</section>
+
 <!-- ── ARTHAUS FOOTER ─────────────────────────────────────────────── -->
 <footer style="background:#1D2951; padding:56px 0 0; font-family:'Noto Sans KR',sans-serif;">
     <div style="max-width:1280px; margin:0 auto; padding:0 24px;">
@@ -312,19 +329,6 @@
                     <a href="#" style="color:rgba(255,255,255,0.45); font-size:18px; text-decoration:none; transition:color .2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.45)'" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
                     <a href="#" style="color:rgba(255,255,255,0.45); font-size:18px; text-decoration:none; transition:color .2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.45)'" aria-label="Naver Blog"><i class="fas fa-blog"></i></a>
                 </div>
-            </div>
-            <!-- Stay Updated -->
-            <div>
-                <h4 style="font-size:9px; font-weight:700; letter-spacing:0.35em; text-transform:uppercase; color:rgba(255,255,255,0.25); margin:0 0 20px; padding:0;">Stay Updated</h4>
-                <p style="font-size:11px; color:rgba(255,255,255,0.38); line-height:1.7; margin:0 0 16px;">새로운 전시와 아티스트 소식을<br>이메일로 받아보세요.</p>
-                <form onsubmit="arthausNewsletterSubmit(event)" style="display:flex; flex-direction:column; gap:10px;">
-                    <input type="email" id="footer-newsletter-email" placeholder="이메일을 입력하세요" required
-                        style="background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.15); border-radius:4px; padding:10px 14px; font-size:11px; color:#fff; outline:none; width:100%; box-sizing:border-box;"
-                        onfocus="this.style.borderColor='rgba(255,255,255,0.4)'" onblur="this.style.borderColor='rgba(255,255,255,0.15)'">
-                    <button type="submit"
-                        style="background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.2); border-radius:4px; padding:10px 14px; font-size:11px; color:rgba(255,255,255,0.7); cursor:pointer; letter-spacing:0.12em; text-transform:uppercase; transition:all .2s;"
-                        onmouseover="this.style.background='rgba(255,255,255,0.18)';this.style.color='#fff'" onmouseout="this.style.background='rgba(255,255,255,0.1)';this.style.color='rgba(255,255,255,0.7)'">Subscribe</button>
-                </form>
             </div>
         </div>
         <!-- Address & Copyright -->
