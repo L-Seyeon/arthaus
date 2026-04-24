@@ -2376,22 +2376,29 @@
     }, { threshold: 0.12 });
     entranceObserver.observe(storySec);
 
-    /* ── 2. Momentary pin when section fills viewport ────── */
+    /* ── 2. Momentary pin: snap to section top, hold, release ── */
     var pinFired = false;
     function onScrollPin() {
         if (pinFired) return;
         var rect = storySec.getBoundingClientRect();
-        /* fires when section top has just reached the top of the viewport */
-        if (rect.top <= 4 && rect.top >= -100) {
+        /* trigger when section top enters within 120px of viewport top */
+        if (rect.top <= 120 && rect.top >= -160) {
             pinFired = true;
+            window.removeEventListener('scroll', onScrollPin);
+
+            /* 1) smooth-scroll to snap the section top flush with viewport */
+            window.scrollTo({ top: storySec.offsetTop, behavior: 'smooth' });
+
+            /* 2) block wheel + touch while snapping & holding */
             var prevent = function (e) { e.preventDefault(); };
-            window.addEventListener('wheel',      prevent, { passive: false });
-            window.addEventListener('touchmove',  prevent, { passive: false });
+            window.addEventListener('wheel',     prevent, { passive: false });
+            window.addEventListener('touchmove', prevent, { passive: false });
+
+            /* 3) release after 950ms (smooth scroll ~300ms + hold ~650ms) */
             setTimeout(function () {
                 window.removeEventListener('wheel',     prevent);
                 window.removeEventListener('touchmove', prevent);
-                window.removeEventListener('scroll',    onScrollPin);
-            }, 680);
+            }, 950);
         }
     }
     window.addEventListener('scroll', onScrollPin, { passive: true });
