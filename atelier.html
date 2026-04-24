@@ -7,7 +7,7 @@
     <title>Atelier — ARTHAUS</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
         :root { --color-space-cadet: #1D2951; }
 
@@ -554,7 +554,7 @@
             <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:40px 48px; padding-bottom:48px; border-bottom:1px solid rgba(255,255,255,0.08);">
                 <!-- Brand -->
                 <div>
-                    <a href="index.html" style="font-family:'Cormorant Garamond',serif; font-size:1.35rem; font-weight:700; color:#fff; text-decoration:none; letter-spacing:0.1em; display:block; margin-bottom:14px;">ARTHAUS</a>
+                    <a href="index.html" style="font-family:'Playfair Display',serif; font-size:22px; font-weight:700; color:#fff; text-decoration:none; letter-spacing:0.12em; display:block; margin-bottom:14px;">ARTHAUS</a>
                     <p style="font-size:11px; color:rgba(255,255,255,0.38); line-height:1.9; margin:0;">
                         예술과 일상을 잇는 문화 큐레이션 플랫폼.<br>
                         전시, 작가, 아틀리에, 매거진을 한 곳에서.
@@ -571,21 +571,30 @@
                         <li><a href="atelier.html"    style="font-size:12px; color:rgba(255,255,255,0.5); text-decoration:none; transition:color .2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">Atelier</a></li>
                     </ul>
                 </div>
-                <!-- Support -->
+                <!-- Support + SNS -->
                 <div>
                     <h4 style="font-size:9px; font-weight:700; letter-spacing:0.35em; text-transform:uppercase; color:rgba(255,255,255,0.25); margin:0 0 20px; padding:0;">Support</h4>
-                    <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:13px;">
+                    <ul style="list-style:none; padding:0; margin:0 0 24px; display:flex; flex-direction:column; gap:13px;">
                         <li><a href="https://forms.gle/1VrCGSSSHsVGJpeA9" target="_blank" style="font-size:12px; color:rgba(255,255,255,0.5); text-decoration:none; transition:color .2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">문의하기</a></li>
                     </ul>
-                </div>
-                <!-- SNS -->
-                <div>
-                    <h4 style="font-size:9px; font-weight:700; letter-spacing:0.35em; text-transform:uppercase; color:rgba(255,255,255,0.25); margin:0 0 20px; padding:0;">SNS</h4>
                     <div style="display:flex; gap:18px; align-items:center;">
                         <a href="#" style="color:rgba(255,255,255,0.45); font-size:18px; text-decoration:none; transition:color .2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.45)'" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                         <a href="#" style="color:rgba(255,255,255,0.45); font-size:18px; text-decoration:none; transition:color .2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.45)'" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
                         <a href="#" style="color:rgba(255,255,255,0.45); font-size:18px; text-decoration:none; transition:color .2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.45)'" aria-label="Naver Blog"><i class="fas fa-blog"></i></a>
                     </div>
+                </div>
+                <!-- Stay Updated -->
+                <div>
+                    <h4 style="font-size:9px; font-weight:700; letter-spacing:0.35em; text-transform:uppercase; color:rgba(255,255,255,0.25); margin:0 0 20px; padding:0;">Stay Updated</h4>
+                    <p style="font-size:11px; color:rgba(255,255,255,0.38); line-height:1.7; margin:0 0 16px;">새로운 전시와 아티스트 소식을<br>이메일로 받아보세요.</p>
+                    <form onsubmit="arthausNewsletterSubmit(event)" style="display:flex; flex-direction:column; gap:10px;">
+                        <input type="email" id="footer-newsletter-email" placeholder="이메일을 입력하세요" required
+                            style="background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.15); border-radius:4px; padding:10px 14px; font-size:11px; color:#fff; outline:none; width:100%; box-sizing:border-box;"
+                            onfocus="this.style.borderColor='rgba(255,255,255,0.4)'" onblur="this.style.borderColor='rgba(255,255,255,0.15)'">
+                        <button type="submit"
+                            style="background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.2); border-radius:4px; padding:10px 14px; font-size:11px; color:rgba(255,255,255,0.7); cursor:pointer; letter-spacing:0.12em; text-transform:uppercase; transition:all .2s;"
+                            onmouseover="this.style.background='rgba(255,255,255,0.18)';this.style.color='#fff'" onmouseout="this.style.background='rgba(255,255,255,0.1)';this.style.color='rgba(255,255,255,0.7)'">Subscribe</button>
+                    </form>
                 </div>
             </div>
             <!-- Address & Copyright -->
@@ -598,6 +607,30 @@
             </div>
         </div>
     </footer>
+
+<!-- Newsletter Modal -->
+<div id="newsletter-modal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.65); z-index:9999; align-items:center; justify-content:center;" onclick="if(event.target===this)this.style.display='none'">
+    <div style="background:#1D2951; border:1px solid rgba(255,255,255,0.12); border-radius:12px; padding:40px 48px; max-width:400px; width:90%; text-align:center;">
+        <div style="width:52px; height:52px; background:rgba(255,255,255,0.08); border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 20px;">
+            <i class="fas fa-check" style="color:rgba(255,255,255,0.8); font-size:18px;"></i>
+        </div>
+        <h3 style="font-family:'Playfair Display',serif; font-size:20px; color:#fff; margin:0 0 10px; font-weight:600;">구독 신청 완료</h3>
+        <p id="newsletter-modal-msg" style="font-size:13px; color:rgba(255,255,255,0.5); line-height:1.8; margin:0 0 28px;"></p>
+        <button onclick="document.getElementById('newsletter-modal').style.display='none'"
+            style="background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.2); border-radius:6px; padding:10px 28px; font-size:12px; color:rgba(255,255,255,0.7); cursor:pointer; letter-spacing:0.1em; text-transform:uppercase; transition:all .2s;"
+            onmouseover="this.style.background='rgba(255,255,255,0.18)';this.style.color='#fff'" onmouseout="this.style.background='rgba(255,255,255,0.1)';this.style.color='rgba(255,255,255,0.7)'">확인</button>
+    </div>
+</div>
+<script>
+function arthausNewsletterSubmit(e) {
+    e.preventDefault();
+    var email = document.getElementById('footer-newsletter-email').value;
+    document.getElementById('newsletter-modal-msg').textContent = email + ' 주소로 새로운 소식을 보내드릴게요.';
+    document.getElementById('footer-newsletter-email').value = '';
+    var modal = document.getElementById('newsletter-modal');
+    modal.style.display = 'flex';
+}
+</script>
 
 </body>
 </html>
