@@ -438,6 +438,18 @@
             background: #f0a040;
             animation: discPulseDot 0.5s ease-in-out infinite;
         }
+
+        /* ── Story Section Entrance Animation ─────────────────────────── */
+        .story-anim {
+            opacity: 0;
+            transform: translateY(36px);
+            transition: opacity 0.85s cubic-bezier(0.22, 0.61, 0.36, 1),
+                        transform 0.85s cubic-bezier(0.22, 0.61, 0.36, 1);
+        }
+        .story-anim.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
     </style>
 </head>
 <body style="background:#f6f4ef;">
@@ -1029,31 +1041,31 @@
             <div class="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
 
                 <!-- Header -->
-                <p style="font-size:9px; letter-spacing:0.45em; text-transform:uppercase; color:rgba(255,255,255,0.35); margin:0 0 18px;">Our Philosophy</p>
-                <h2 style="font-family:'Playfair Display',serif; font-size:clamp(2.2rem,5vw,3.6rem); font-weight:400; color:#fff; line-height:1.2; margin:0 0 20px; letter-spacing:0.02em;">
+                <p class="story-anim" style="font-size:9px; letter-spacing:0.45em; text-transform:uppercase; color:rgba(255,255,255,0.35); margin:0 0 18px;">Our Philosophy</p>
+                <h2 class="story-anim" style="font-family:'Playfair Display',serif; font-size:clamp(2.2rem,5vw,3.6rem); font-weight:400; color:#fff; line-height:1.2; margin:0 0 20px; letter-spacing:0.02em;">
                     The Art of<br>Connection
                 </h2>
-                <p style="font-size:13px; color:rgba(255,255,255,0.55); line-height:1.9; margin:0 auto 60px; max-width:480px;">
+                <p class="story-anim" style="font-size:13px; color:rgba(255,255,255,0.55); line-height:1.9; margin:0 auto 60px; max-width:480px;">
                     ARTHAUS는 작가의 진심이 수집가의 일상에 스며드는 순간을 설계합니다.<br>예술이 삶을 풍요롭게 만드는 보편적인 가치가 되길 믿습니다.
                 </p>
 
                 <!-- Values — 3 columns with hover -->
                 <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); border-top:1px solid rgba(255,255,255,0.1); margin-bottom:64px;">
-                    <div style="padding:36px 28px; border-bottom:1px solid rgba(255,255,255,0.07); text-align:left; cursor:default;"
+                    <div class="story-anim" style="padding:36px 28px; border-bottom:1px solid rgba(255,255,255,0.07); text-align:left; cursor:default;"
                         onmouseover="this.querySelector('.vnum').style.color='rgba(255,255,255,0.85)'; this.querySelector('.vdesc').style.color='rgba(255,255,255,0.75)';"
                         onmouseout="this.querySelector('.vnum').style.color='rgba(255,255,255,0.18)'; this.querySelector('.vdesc').style.color='rgba(255,255,255,0.45)';">
                         <span class="vnum" style="font-family:'Playfair Display',serif; font-size:22px; font-style:italic; color:rgba(255,255,255,0.18); display:block; margin-bottom:16px; transition:color .3s;">01</span>
                         <h4 style="font-size:10px; font-weight:700; letter-spacing:0.25em; text-transform:uppercase; color:#fff; margin:0 0 10px;">작가와의 진정성 있는 연결</h4>
                         <p class="vdesc" style="font-size:11px; color:rgba(255,255,255,0.45); line-height:1.8; margin:0; transition:color .3s;">작가의 작업실에서 수집가의 공간까지, 모든 과정에서 함께합니다.</p>
                     </div>
-                    <div style="padding:36px 28px; border-bottom:1px solid rgba(255,255,255,0.07); border-left:1px solid rgba(255,255,255,0.07); text-align:left; cursor:default;"
+                    <div class="story-anim" style="padding:36px 28px; border-bottom:1px solid rgba(255,255,255,0.07); border-left:1px solid rgba(255,255,255,0.07); text-align:left; cursor:default;"
                         onmouseover="this.querySelector('.vnum').style.color='rgba(255,255,255,0.85)'; this.querySelector('.vdesc').style.color='rgba(255,255,255,0.75)';"
                         onmouseout="this.querySelector('.vnum').style.color='rgba(255,255,255,0.18)'; this.querySelector('.vdesc').style.color='rgba(255,255,255,0.45)';">
                         <span class="vnum" style="font-family:'Playfair Display',serif; font-size:22px; font-style:italic; color:rgba(255,255,255,0.18); display:block; margin-bottom:16px; transition:color .3s;">02</span>
                         <h4 style="font-size:10px; font-weight:700; letter-spacing:0.25em; text-transform:uppercase; color:#fff; margin:0 0 10px;">엄선된 큐레이션 서비스</h4>
                         <p class="vdesc" style="font-size:11px; color:rgba(255,255,255,0.45); line-height:1.8; margin:0; transition:color .3s;">취향과 공간을 분석한 전문 큐레이터의 맞춤 추천으로 최적의 작품을 만나세요.</p>
                     </div>
-                    <div style="padding:36px 28px; border-left:1px solid rgba(255,255,255,0.07); text-align:left; cursor:default;"
+                    <div class="story-anim" style="padding:36px 28px; border-left:1px solid rgba(255,255,255,0.07); text-align:left; cursor:default;"
                         onmouseover="this.querySelector('.vnum').style.color='rgba(255,255,255,0.85)'; this.querySelector('.vdesc').style.color='rgba(255,255,255,0.75)';"
                         onmouseout="this.querySelector('.vnum').style.color='rgba(255,255,255,0.18)'; this.querySelector('.vdesc').style.color='rgba(255,255,255,0.45)';">
                         <span class="vnum" style="font-family:'Playfair Display',serif; font-size:22px; font-style:italic; color:rgba(255,255,255,0.18); display:block; margin-bottom:16px; transition:color .3s;">03</span>
@@ -1063,7 +1075,7 @@
                 </div>
 
                 <!-- Artist Quote — typographic -->
-                <div style="border-top:1px solid rgba(255,255,255,0.08); padding-top:56px; position:relative;">
+                <div class="story-anim" style="border-top:1px solid rgba(255,255,255,0.08); padding-top:56px; position:relative;">
                     <span style="font-family:'Gowun Batang',serif; font-size:clamp(5rem,12vw,9rem); line-height:0.7; color:rgba(255,255,255,0.08); position:absolute; top:36px; left:0; pointer-events:none; user-select:none;">&ldquo;</span>
                     <blockquote style="margin:0; padding:0 0 0 clamp(48px,6vw,80px); text-align:left;">
                         <p style="font-family:'Gowun Batang',serif; font-size:clamp(1.2rem,2.8vw,1.9rem); font-weight:400; color:rgba(255,255,255,0.88); line-height:1.75; margin:0 0 28px; letter-spacing:0.02em;">
@@ -2347,7 +2359,46 @@
         })();
     </script>
 
-    <!-- Newsletter Modal -->
+    <!-- Story Section — Entrance Animation + Scroll Pin -->
+<script>
+(function () {
+    var storySec = document.getElementById('story');
+    if (!storySec) return;
+
+    /* ── 1. Stagger entrance ─────────────────────────────── */
+    var animEls = storySec.querySelectorAll('.story-anim');
+    var entranceObserver = new IntersectionObserver(function (entries) {
+        if (!entries[0].isIntersecting) return;
+        animEls.forEach(function (el, i) {
+            setTimeout(function () { el.classList.add('is-visible'); }, i * 140);
+        });
+        entranceObserver.disconnect();
+    }, { threshold: 0.12 });
+    entranceObserver.observe(storySec);
+
+    /* ── 2. Momentary pin when section fills viewport ────── */
+    var pinFired = false;
+    function onScrollPin() {
+        if (pinFired) return;
+        var rect = storySec.getBoundingClientRect();
+        /* fires when section top has just reached the top of the viewport */
+        if (rect.top <= 4 && rect.top >= -100) {
+            pinFired = true;
+            var prevent = function (e) { e.preventDefault(); };
+            window.addEventListener('wheel',      prevent, { passive: false });
+            window.addEventListener('touchmove',  prevent, { passive: false });
+            setTimeout(function () {
+                window.removeEventListener('wheel',     prevent);
+                window.removeEventListener('touchmove', prevent);
+                window.removeEventListener('scroll',    onScrollPin);
+            }, 680);
+        }
+    }
+    window.addEventListener('scroll', onScrollPin, { passive: true });
+})();
+</script>
+
+<!-- Newsletter Modal -->
     <div id="newsletter-modal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.65); z-index:9999; align-items:center; justify-content:center;" onclick="if(event.target===this)this.style.display='none'">
         <div style="background:#1D2951; border:1px solid rgba(255,255,255,0.12); border-radius:12px; padding:40px 48px; max-width:400px; width:90%; text-align:center;">
             <div style="width:52px; height:52px; background:rgba(255,255,255,0.08); border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 20px;">
