@@ -2325,37 +2325,37 @@
 
                 const fmt = d => d ? d.replace(/-/g, '. ') : '';
 
-                // 메인 피처드 카드 (첫 번째 전시)
-                const f = data[0];
-                document.getElementById('exh-featured-title').textContent = f.title;
-                document.getElementById('exh-featured-desc').textContent = f.desc || '';
-                document.getElementById('exh-featured-dates').textContent =
-                    (f.start ? fmt(f.start) : '') + (f.end ? ' - ' + fmt(f.end) : '');
-                if (f.url) document.getElementById('exh-featured-link').href = f.url;
-                if (f.img) {
-                    const img = document.getElementById('exh-featured-img');
-                    img.src = f.img;
-                }
+                // 우선 노출 기관 목록 (앞에 있을수록 우선순위 높음)
+                const PRIORITY_VENUES = [
+                    '국립현대미술관', '국립중앙박물관', '국립민속박물관',
+                    '국립부여박물관', '서울시립미술관', '국립어린이청소년도서관',
+                ];
 
-                // 사이드 카드 1 (두 번째 전시)
-                if (data[1]) {
-                    const s1 = data[1];
-                    document.getElementById('exh-side-1-title').textContent = s1.title;
-                    document.getElementById('exh-side-1-dates').textContent =
-                        (s1.start ? fmt(s1.start) : '') + (s1.end ? ' ~ ' + fmt(s1.end) : '');
-                    if (s1.url) document.getElementById('exh-side-1-link').href = s1.url;
-                    if (s1.img) document.getElementById('exh-side-1-img').src = s1.img;
-                }
+                // 우선 기관 전시를 개관일 최신순으로 정렬 후 3개 선택
+                // 부족하면 나머지 전시로 채움
+                const priority = data
+                    .filter(item => PRIORITY_VENUES.some(v => item.venue && item.venue.includes(v)))
+                    .sort((a, b) => (b.start || '').localeCompare(a.start || ''));
+                const rest = data
+                    .filter(item => !PRIORITY_VENUES.some(v => item.venue && item.venue.includes(v)))
+                    .sort((a, b) => (b.start || '').localeCompare(a.start || ''));
+                const picks = [...priority, ...rest].slice(0, 3);
 
-                // 사이드 카드 2 (세 번째 전시)
-                if (data[2]) {
-                    const s2 = data[2];
-                    document.getElementById('exh-side-2-title').textContent = s2.title;
-                    document.getElementById('exh-side-2-dates').textContent =
-                        (s2.start ? fmt(s2.start) : '') + (s2.end ? ' ~ ' + fmt(s2.end) : '');
-                    if (s2.url) document.getElementById('exh-side-2-link').href = s2.url;
-                    if (s2.img) document.getElementById('exh-side-2-img').src = s2.img;
-                }
+                const fill = (item, ids) => {
+                    const { title, venue, desc, start, end, url, img } = item;
+                    document.getElementById(ids.title).textContent = title;
+                    if (ids.desc)  document.getElementById(ids.desc).textContent  = desc || '';
+                    if (ids.venue) document.getElementById(ids.venue).textContent = venue || '';
+                    document.getElementById(ids.dates).textContent =
+                        (start ? fmt(start) : '') + (end ? (ids.sep || ' - ') + fmt(end) : '');
+                    if (url) document.getElementById(ids.link).href = url;
+                    if (img) document.getElementById(ids.img).src  = img;
+                };
+
+                if (picks[0]) fill(picks[0], { title:'exh-featured-title', desc:'exh-featured-desc', dates:'exh-featured-dates', link:'exh-featured-link', img:'exh-featured-img', sep:' - ' });
+                if (picks[1]) fill(picks[1], { title:'exh-side-1-title',   dates:'exh-side-1-dates',   link:'exh-side-1-link',   img:'exh-side-1-img',   sep:' ~ ' });
+                if (picks[2]) fill(picks[2], { title:'exh-side-2-title',   dates:'exh-side-2-dates',   link:'exh-side-2-link',   img:'exh-side-2-img',   sep:' ~ ' });
+
             } catch (e) {
                 // 로드 실패 시 기존 하드코딩 내용 유지
             }
