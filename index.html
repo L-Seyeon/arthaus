@@ -2225,7 +2225,7 @@
         const searchDropdown = document.createElement('div');
         searchDropdown.id = 'search-dropdown';
         searchDropdown.style.cssText = `
-            position:fixed; top:64px; right:4rem;
+            position:fixed;
             width:280px; max-height:360px; overflow-y:auto;
             background:rgba(255,255,255,0.95); backdrop-filter:blur(12px);
             border:1px solid #eee; border-radius:12px;
@@ -2234,6 +2234,12 @@
             font-family:'Noto Sans KR',sans-serif;
         `;
         document.body.appendChild(searchDropdown);
+
+        function positionDropdown() {
+            const rect = searchBar.getBoundingClientRect();
+            searchDropdown.style.top  = (rect.bottom + 6) + 'px';
+            searchDropdown.style.left = rect.left + 'px';
+        }
 
         function buildIndex() {
             const index = [];
@@ -2272,6 +2278,7 @@
             const hits = INDEX.filter(item => item.text.toLowerCase().includes(kw)).slice(0, 8);
             if (!hits.length) {
                 searchDropdown.innerHTML = `<div style="padding:1rem 1.2rem;font-size:13px;color:#aaa;">결과 없음</div>`;
+                positionDropdown();
                 searchDropdown.style.display = 'block';
                 return;
             }
@@ -2297,6 +2304,7 @@
                     if (target) setTimeout(() => target.scrollIntoView({ behavior:'smooth', block:'center' }), 100);
                 });
             });
+            positionDropdown();
             searchDropdown.style.display = 'block';
         }
 
