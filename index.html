@@ -2339,6 +2339,10 @@
             if (searchOpen && !searchBtn.contains(e.target) && !searchBar.contains(e.target) && !searchDropdown.contains(e.target))
                 closeSearch();
         });
+
+        window.addEventListener('resize', () => {
+            if (searchDropdown.style.display !== 'none') positionDropdown();
+        });
     </script>
 
     <script>
