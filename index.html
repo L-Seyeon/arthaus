@@ -2325,6 +2325,27 @@
 
                 const fmt = d => d ? d.replace(/-/g, '. ') : '';
 
+                const VENUE_URLS = {
+                    '국립현대미술관':            'https://www.mmca.go.kr',
+                    '국립중앙박물관':            'https://www.museum.go.kr',
+                    '국립민속박물관':            'https://www.nfm.go.kr',
+                    '국립부여박물관':            'https://buyeo.museum.go.kr',
+                    '국립어린이청소년도서관':    'https://www.nlcy.go.kr',
+                    '서울시립미술관':            'https://sema.seoul.go.kr',
+                    '서울식물원':               'https://botanicpark.seoul.go.kr',
+                    '경기도미술관':             'https://gmoma.ggcf.kr',
+                    '제주도립미술관':           'https://www.jeju.go.kr/jmoa/',
+                };
+                const getCardUrl = item => {
+                    if (item.url && item.url !== 'https://www.culture.go.kr') return item.url;
+                    if (item.venue) {
+                        for (const [key, url] of Object.entries(VENUE_URLS)) {
+                            if (item.venue.includes(key)) return url;
+                        }
+                    }
+                    return 'https://search.naver.com/search.naver?query=' + encodeURIComponent((item.title || '') + ' ' + (item.venue || ''));
+                };
+
                 // 우선 노출 기관 목록 (앞에 있을수록 우선순위 높음)
                 const PRIORITY_VENUES = [
                     '국립현대미술관', '국립중앙박물관', '국립민속박물관',
@@ -2342,14 +2363,14 @@
                 const picks = [...priority, ...rest].slice(0, 3);
 
                 const fill = (item, ids) => {
-                    const { title, venue, desc, start, end, url, img } = item;
+                    const { title, venue, desc, start, end, img } = item;
                     document.getElementById(ids.title).textContent = title;
                     if (ids.desc)  document.getElementById(ids.desc).textContent  = desc || '';
                     if (ids.venue) document.getElementById(ids.venue).textContent = venue || '';
                     document.getElementById(ids.dates).textContent =
                         (start ? fmt(start) : '') + (end ? (ids.sep || ' - ') + fmt(end) : '');
-                    if (url) document.getElementById(ids.link).href = url;
-                    if (img) document.getElementById(ids.img).src  = img;
+                    document.getElementById(ids.link).href = getCardUrl(item);
+                    if (img) document.getElementById(ids.img).src = img;
                 };
 
                 if (picks[0]) fill(picks[0], { title:'exh-featured-title', desc:'exh-featured-desc', dates:'exh-featured-dates', link:'exh-featured-link', img:'exh-featured-img', sep:' - ' });
