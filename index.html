@@ -507,7 +507,7 @@
             </button>
         </div>
 
-        <div id="cart-items" class="flex-1 overflow-y-auto px-6 py-4 space-y-4"></div>
+        <div id="cart-items" class="flex-1 overflow-y-auto px-6 py-4 space-y-4 hidden"></div>
 
         <div id="cart-empty" class="flex-1 flex flex-col items-center justify-center text-center px-6">
             <i class="fa-regular fa-bag-shopping text-3xl text-gray-200 mb-4"></i>
@@ -2088,10 +2088,12 @@
             cartCountEl.textContent = cart.length;
             if (!cart.length) {
                 cartItemsEl.innerHTML = '';
+                cartItemsEl.classList.add('hidden');
                 cartEmptyEl.classList.remove('hidden');
                 cartFooterEl.classList.add('hidden');
                 return;
             }
+            cartItemsEl.classList.remove('hidden');
             cartEmptyEl.classList.add('hidden');
             cartFooterEl.classList.remove('hidden');
 
