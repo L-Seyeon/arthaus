@@ -455,7 +455,7 @@
 <body style="background:#f6f4ef;">
 
     <!-- NAV -->
-    <nav class="fixed w-full z-50 bg-white/40 backdrop-blur-md border-b border-gray-100/20">
+    <nav id="main-nav" class="fixed w-full z-50 bg-white/40 backdrop-blur-md border-b border-gray-100/20" style="transition: opacity 0.4s ease, transform 0.4s ease;">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <a href="index.html" class="flex items-center gap-2 cursor-pointer">
@@ -2345,6 +2345,35 @@
         window.addEventListener('resize', () => {
             if (searchDropdown.style.display !== 'none') positionDropdown();
         });
+
+        // Story 섹션에서 스크롤 멈추면 nav 숨김
+        (function () {
+            const nav = document.getElementById('main-nav');
+            const story = document.getElementById('story');
+            let hideTimer = null;
+
+            function isInStory() {
+                const r = story.getBoundingClientRect();
+                return r.top < window.innerHeight && r.bottom > 0;
+            }
+
+            function showNav() {
+                nav.style.opacity = '1';
+                nav.style.transform = 'translateY(0)';
+            }
+            function hideNav() {
+                nav.style.opacity = '0';
+                nav.style.transform = 'translateY(-100%)';
+            }
+
+            window.addEventListener('scroll', () => {
+                clearTimeout(hideTimer);
+                showNav();
+                if (isInStory()) {
+                    hideTimer = setTimeout(hideNav, 1200);
+                }
+            }, { passive: true });
+        })();
     </script>
 
     <script>
