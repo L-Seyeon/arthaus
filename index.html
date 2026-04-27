@@ -951,10 +951,11 @@
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
                 <div class="lg:col-span-8">
                     <div class="group relative bg-white rounded-2xl overflow-hidden shadow-2xl shadow-gray-200/50 flex flex-col exh-card-hover">
-                        <div class="aspect-[16/9] overflow-hidden relative">
-                            <div class="absolute inset-0 bg-black/5 z-10"></div>
+                        <div class="aspect-[16/9] overflow-hidden relative bg-gray-900">
+                            <div id="exh-featured-bg" class="absolute inset-0 z-0" style="background-size:cover; background-position:center; filter:blur(22px) brightness(0.45); transform:scale(1.18);"></div>
+                            <div class="absolute inset-0 bg-black/10 z-10"></div>
                             <span class="absolute top-8 left-8 z-20 bg-white px-4 py-1.5 rounded-full text-[10px] font-bold text-space-cadet tracking-widest shadow-sm uppercase">현재 전시 중</span>
-                            <img id="exh-featured-img" src="https://images.unsplash.com/photo-1554188248-986adbb73be4?auto=format&fit=crop&w=1200&q=80" alt="Main Exhibition" class="w-full h-full object-cover transition-transform duration-1000">
+                            <img id="exh-featured-img" src="https://images.unsplash.com/photo-1554188248-986adbb73be4?auto=format&fit=crop&w=1200&q=80" alt="Main Exhibition" class="w-full h-full object-contain relative z-10 transition-transform duration-1000">
                         </div>
                         <div class="p-10 md:p-14">
                             <div class="flex items-start gap-8 mb-10">
@@ -2363,21 +2364,28 @@
 
                 const fill = (item, ids) => {
                     const { title, venue, desc, start, end, img } = item;
+                    const src = img ? img.replace(/^http:\/\//i, 'https://') : '';
                     document.getElementById(ids.title).textContent = title;
                     if (ids.desc)  document.getElementById(ids.desc).textContent  = desc || '';
                     if (ids.venue) document.getElementById(ids.venue).textContent = venue || '';
                     document.getElementById(ids.dates).textContent =
                         (start ? fmt(start) : '') + (end ? (ids.sep || ' - ') + fmt(end) : '');
                     document.getElementById(ids.link).href = getCardUrl(item);
-                    if (img) document.getElementById(ids.img).src = img.replace(/^http:\/\//i, 'https://');
+                    if (src) {
+                        document.getElementById(ids.img).src = src;
+                        if (ids.bg) {
+                            const bg = document.getElementById(ids.bg);
+                            if (bg) bg.style.backgroundImage = `url('${src}')`;
+                        }
+                    }
                 };
 
-                if (picks[0]) fill(picks[0], { title:'exh-featured-title', desc:'exh-featured-desc', dates:'exh-featured-dates', link:'exh-featured-link', img:'exh-featured-img', sep:' - ' });
+                if (picks[0]) fill(picks[0], { title:'exh-featured-title', desc:'exh-featured-desc', dates:'exh-featured-dates', link:'exh-featured-link', img:'exh-featured-img', bg:'exh-featured-bg', sep:' - ' });
                 if (picks[1]) fill(picks[1], { title:'exh-side-1-title',   dates:'exh-side-1-dates',   link:'exh-side-1-link',   img:'exh-side-1-img',   sep:' ~ ' });
                 if (picks[2]) fill(picks[2], { title:'exh-side-2-title',   dates:'exh-side-2-dates',   link:'exh-side-2-link',   img:'exh-side-2-img',   sep:' ~ ' });
 
             } catch (e) {
-                // 로드 실패 시 기존 하드코딩 내용 유지
+                console.warn('[Exhibition] 로드 실패:', e.message);
             }
         })();
     </script>
