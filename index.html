@@ -1141,7 +1141,7 @@
                             직접 그려보는 하루
                         </h3>
                         <p class="text-xs text-gray-400 leading-relaxed mb-6">
-                            붓을 처음 잡는 분도 괜찮아요. 작가와 함께하는 소규모 클래스에서 나만의 작품을 완성해보세요. 수채화 · 유화 · 디지털 · 드로잉 4가지 과정 운영 중.
+                            붓을 처음 잡는 분도 괜찮아요. 작가와 함께하는 소규모 클래스에서 나만의 작품을 완성해보세요. <br>수채화 · 유화 · 디지털 · 드로잉 4가지 과정 운영 중.
                         </p>
                         <span class="flex items-center gap-3 text-[11px] font-bold text-space-cadet uppercase tracking-[0.2em] border-b border-space-cadet pb-1 w-fit group-hover:gap-5 transition-all duration-300">
                             클래스 예약하기 <i class="fa-solid fa-arrow-right-long"></i>
@@ -1157,7 +1157,7 @@
                             원하는 작품을<br>작가에게 직접 의뢰하세요
                         </h3>
                         <p class="text-xs text-gray-400 leading-relaxed mb-6">
-                            회화부터 디지털 일러스트까지, 작가가 직접 작업합니다. 초상화·풍경화·굿즈 디자인·브랜딩 이미지 등 다양한 형태로 의뢰 가능해요.
+                            회화부터 디지털 일러스트까지, 작가가 직접 작업합니다. <br>초상화·풍경화·굿즈 디자인·브랜딩 이미지 등 다양한 형태로 의뢰 가능해요.
                         </p>
 
                         <!-- 매체 태그 -->
@@ -1188,7 +1188,7 @@
     <!-- ── NEWSLETTER ────────────────────────────────────────────────── -->
     <section style="background:#f6f4ef; border-top:1px solid rgba(0,0,0,0.1); border-bottom:1px solid rgba(0,0,0,0.1);">
         <div style="max-width:520px; margin:0 auto; padding:150px 24px 200px; text-align:center;">
-            <h2 style="font-family:'Playfair Display',serif; font-size:15px; font-weight:400; letter-spacing:0.28em; text-transform:uppercase; color:#1D2951; margin:0 0 52px;">Sign Up For Our Newsletter</h2>
+            <h2 style="font-family:'Playfair Display',serif; font-size:25px; font-weight:400; letter-spacing:0.28em; text-transform:uppercase; color:#1D2951; margin:0 0 52px;">Sign Up For Our Newsletter</h2>
             <form onsubmit="arthausNewsletterSubmit(event)" style="display:flex; flex-direction:column; gap:0; text-align:left;">
                 <div style="margin-bottom:18px;">
                     <label style="display:block; font-size:13px; color:#888; margin-bottom:9px; font-family:'Noto Sans KR',sans-serif;">email <span style="color:#c0392b;">•</span></label>
@@ -2519,6 +2519,13 @@
         var modal = document.getElementById('newsletter-modal');
         modal.style.display = 'flex';
     }
+
+    document.addEventListener('keydown', function(e) {
+        var modal = document.getElementById('newsletter-modal');
+        if (e.key === 'Enter' && modal.style.display === 'flex') {
+            modal.style.display = 'none';
+        }
+    });
     </script>
 </body>
 </html>
