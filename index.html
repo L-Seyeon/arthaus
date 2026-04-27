@@ -1373,7 +1373,7 @@
             div.dataset.date     = artwork.dateAdded;
 
             div.innerHTML = `
-                <div class="aspect-[3/4] overflow-hidden bg-gray-100 rounded-lg mb-6 relative">
+                <div class="aspect-[3/4] overflow-hidden bg-gray-100 rounded-lg mb-3 sm:mb-6 relative">
                     <img src="${artwork.image}" alt="${artwork.title}"
                          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
                     <div class="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
@@ -1389,14 +1389,12 @@
                         </button>
                     </div>
                 </div>
-                <div class="flex justify-between items-start">
-                    <div>
-                        <p class="text-[12px] text-gray-400 font-bold uppercase tracking-widest mb-1">${artwork.style}</p>
-                        <h3 class="text-xl text-space-cadet font-medium">${artwork.title}</h3>
-                        <p class="text-sm text-gray-500 mt-1 italic">${artwork.artist}, ${artwork.year}</p>
-                        ${artwork.sizeDisplay ? `<p class="text-[12px] text-gray-400 mt-1">${artwork.sizeDisplay}</p>` : ''}
-                    </div>
-                    <p class="text-base font-bold text-space-cadet">${artwork.priceDisplay}</p>
+                <div>
+                    <p class="text-[10px] sm:text-[12px] text-gray-400 font-bold uppercase tracking-widest mb-1">${artwork.style}</p>
+                    <h3 class="text-sm sm:text-xl text-space-cadet font-medium leading-snug">${artwork.title}</h3>
+                    <p class="text-xs sm:text-sm text-gray-500 mt-1 italic">${artwork.artist}, ${artwork.year}</p>
+                    ${artwork.sizeDisplay ? `<p class="text-[10px] sm:text-[12px] text-gray-400 mt-1">${artwork.sizeDisplay}</p>` : ''}
+                    <p class="text-sm sm:text-base font-bold text-space-cadet mt-2">${artwork.priceDisplay}</p>
                 </div>`;
 
             div.addEventListener('click', (e) => {
