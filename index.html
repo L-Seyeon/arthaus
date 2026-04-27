@@ -2369,7 +2369,7 @@
                     document.getElementById(ids.dates).textContent =
                         (start ? fmt(start) : '') + (end ? (ids.sep || ' - ') + fmt(end) : '');
                     document.getElementById(ids.link).href = getCardUrl(item);
-                    if (img) document.getElementById(ids.img).src = img;
+                    if (img) document.getElementById(ids.img).src = img.replace(/^http:\/\//i, 'https://');
                 };
 
                 if (picks[0]) fill(picks[0], { title:'exh-featured-title', desc:'exh-featured-desc', dates:'exh-featured-dates', link:'exh-featured-link', img:'exh-featured-img', sep:' - ' });

@@ -192,7 +192,8 @@
             border: 2px solid transparent; box-sizing: border-box;
         }
         .thumb-swiper .swiper-slide-thumb-active { opacity: 1; border-color: var(--navy); }
-        .thumb-swiper img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .thumb-swiper img { position:absolute; inset:0; width:100%; height:100%; object-fit:contain; display:block; z-index:1; }
+        .thumb-bg-blur { position:absolute; inset:-20%; background-size:cover; background-position:center; filter:blur(8px) brightness(0.6); z-index:0; }
         .thumb-grad-sm { width: 100%; height: 100%; }
 
         /* ── Skeleton ────────────────────────────────────────── */
@@ -530,12 +531,16 @@ function onImgError(el) {
     }
 }
 
+/* http → https 업그레이드 (GitHub Pages mixed-content 차단 방지) */
+const toHttps = url => url ? url.replace(/^http:\/\//i, 'https://') : url;
+
 /* 블러 배경 + contain 이미지: 잘림 없이 카드 꽉 채움 */
 function cardImg(item) {
     if (item.img) {
+        const src = toHttps(item.img);
         return `
-            <div class="card-bg-blur" style="background-image:url('${item.img}');"></div>
-            <img class="card-img" src="${item.img}" alt="${item.title}"
+            <div class="card-bg-blur" style="background-image:url('${src}');"></div>
+            <img class="card-img" src="${src}" alt="${item.title}"
                 data-grad="${item.grad}" data-venue="${item.venue}"
                 onerror="onImgError(this)">`;
     }
@@ -546,9 +551,12 @@ function cardImg(item) {
 
 function thumbImg(item) {
     if (item.img) {
-        return `<img src="${item.img}" alt=""
-            style="background:${item.grad};"
-            onerror="this.parentNode.style.background='${item.grad}'">`;
+        const src = toHttps(item.img);
+        return `<div style="position:relative;width:100%;height:100%;">
+            <div class="thumb-bg-blur" style="background-image:url('${src}');"></div>
+            <img src="${src}" alt=""
+                onerror="this.parentNode.style.background='${item.grad}'; this.remove();">
+        </div>`;
     }
     return `<div class="thumb-grad-sm" style="background:${item.grad};"></div>`;
 }
