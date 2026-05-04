@@ -40,26 +40,6 @@
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
-    "title": "2025년 독도박물관 특별전시회 &#39;어부지용&#39;",
-    "venue": "독도박물관",
-    "desc": "",
-    "start": "2025-05-01",
-    "end": "2026-04-30",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=325772",
-    "img": "http://www.culture.go.kr/upload/rdf/25/05/show_2025052710511794399.jpg",
-    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
-  },
-  {
-    "title": "MMCA 서울 상설전《한국현대미술 하이라이트》",
-    "venue": "국립현대미술관 서울관",
-    "desc": "",
-    "start": "2025-05-01",
-    "end": "2026-05-03",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=322612",
-    "img": "http://www.culture.go.kr/upload/rdf/25/05/show_20250581653291531.jpg",
-    "grad": "linear-gradient(135deg,#0a1228,#1a2a50)"
-  },
-  {
     "title": "2025 기형도문학관 기획 전시 &lt;바람은 그대 쪽으로&gt;",
     "venue": "광명문화재단",
     "desc": "",
@@ -190,6 +170,16 @@
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
+    "title": "미술은행 20주년 특별전《돌아온 미래: 형태와 생각의 발현》",
+    "venue": "국립현대미술관 청주관",
+    "desc": "",
+    "start": "2025-08-08",
+    "end": "2026-07-31",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=338921",
+    "img": "http://www.culture.go.kr/upload/rdf/25/08/show_2025081117472658878.jpg",
+    "grad": "linear-gradient(135deg,#0a1228,#1a2a50)"
+  },
+  {
     "title": "2025 국립경찰박물관 특별전 &lt;나의 영웅, 우리의 경찰&gt;",
     "venue": "경찰박물관",
     "desc": "",
@@ -310,16 +300,6 @@
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
-    "title": "킹 오브 킹스 전시 : The Greatest Love",
-    "venue": "롯데백화점 문화홀 [김포공항]",
-    "desc": "",
-    "start": "2025-10-31",
-    "end": "2026-04-30",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=356604",
-    "img": "http://www.culture.go.kr/upload/rdf/25/11/show_2025111519111412761.jpg",
-    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
-  },
-  {
     "title": "2025년 특별기획전《경산에서 타오른 의병의 불꽃_임진왜란의 기억》",
     "venue": "경산시립박물관",
     "desc": "",
@@ -337,26 +317,6 @@
     "end": "2026-06-28",
     "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=359339",
     "img": "http://www.culture.go.kr/upload/rdf/25/11/rdf_2025112721421348299.jpg",
-    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
-  },
-  {
-    "title": "2025 영종역사관 특별기획전 &lt;영종진:永宗, 그 시작&gt;",
-    "venue": "영종역사관",
-    "desc": "",
-    "start": "2025-11-28",
-    "end": "2026-04-30",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=360049",
-    "img": "http://www.culture.go.kr/upload/rdf/25/12/show_202512214314672348.jpg",
-    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
-  },
-  {
-    "title": "2025 예천박물관 기탁문중 특별전 &#39;記錄, 역사가 되다&#39;",
-    "venue": "예천박물관",
-    "desc": "",
-    "start": "2025-12-03",
-    "end": "2026-04-30",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=364002",
-    "img": "http://www.culture.go.kr/upload/rdf/25/12/rdf_2025122921221343782.jpg",
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
@@ -400,13 +360,13 @@
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
-    "title": "[원주 갤러리 원] 2026년 상반기 공모 모집",
-    "venue": "갤러리 원",
+    "title": "2025년 대전근현대사전시관 특별전 &lt;추억의 문방구&gt;",
+    "venue": "대전근현대사전시관",
     "desc": "",
-    "start": "2026-01-01",
-    "end": "2026-06-30",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=361867",
-    "img": "http://www.culture.go.kr/upload/rdf/25/12/show_2025121014255276762.jpg",
+    "start": "2025-12-23",
+    "end": "2026-07-31",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=366670",
+    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202601/bca0bdc5940d420ca33d75bc53ccfba6.jpg",
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
@@ -417,6 +377,16 @@
     "end": "2026-06-30",
     "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=358527",
     "img": "http://www.culture.go.kr/upload/rdf/25/11/show_202511251691533388.jpg",
+    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
+  },
+  {
+    "title": "[원주 갤러리 원] 2026년 상반기 공모 모집",
+    "venue": "갤러리 원",
+    "desc": "",
+    "start": "2026-01-01",
+    "end": "2026-06-30",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=361867",
+    "img": "http://www.culture.go.kr/upload/rdf/25/12/show_2025121014255276762.jpg",
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
@@ -448,16 +418,6 @@
     "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=368318",
     "img": "http://www.culture.go.kr/upload/rdf/26/02/show_2026021121194444113.jpg",
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
-  },
-  {
-    "title": "소멸의 시학: 삭는 미술에 대하여",
-    "venue": "국립현대미술관 서울관",
-    "desc": "",
-    "start": "2026-01-30",
-    "end": "2026-05-03",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=359867",
-    "img": "http://www.culture.go.kr/upload/rdf/25/11/rdf_2025113021384317280.jpg",
-    "grad": "linear-gradient(135deg,#0a1228,#1a2a50)"
   },
   {
     "title": "[울산시립미술관] 안소니 맥콜: 원뿔을 그리는 선 2.0",
@@ -497,6 +457,46 @@
     "end": "2026-06-30",
     "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=373328",
     "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202603/e889841b696d461a90fbd75b463c0769.png",
+    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
+  },
+  {
+    "title": "사물의 잔상: 모노하의 확장과 변주",
+    "venue": "영암군립 하정웅미술관",
+    "desc": "",
+    "start": "2026-03-03",
+    "end": "2026-07-26",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=372786",
+    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202603/378171ab8bb8412997b659a253dd26e8.jpg",
+    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
+  },
+  {
+    "title": "박신양의 전시쑈 &lt;제 4의 벽&gt;",
+    "venue": "세종문화회관 미술관",
+    "desc": "",
+    "start": "2026-03-06",
+    "end": "2026-05-10",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=371602",
+    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202603/0b931592ecba4785b8dfbc932ab124ef.jpg",
+    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
+  },
+  {
+    "title": "｢푸른눈의 연서(戀書) &ndash; 100년 전 판화, 오늘의 한복으로 피어나다｣ 展",
+    "venue": "순천창작예술촌 장안창작마당",
+    "desc": "",
+    "start": "2026-03-11",
+    "end": "2026-05-07",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=370988",
+    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202603/68f02d120c674fc19ca81192a782d6dc.jpg",
+    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
+  },
+  {
+    "title": "Nocturama",
+    "venue": "021갤러리",
+    "desc": "",
+    "start": "2026-03-12",
+    "end": "2026-05-06",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=372693",
+    "img": "http://www.culture.go.kr/upload/rdf/26/03/show_2026032021172807733.png",
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   }
 ]
