@@ -40,16 +40,6 @@
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
-    "title": "2025 기형도문학관 기획 전시 &lt;바람은 그대 쪽으로&gt;",
-    "venue": "광명문화재단",
-    "desc": "",
-    "start": "2025-05-13",
-    "end": "2026-05-10",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=325792",
-    "img": "http://www.culture.go.kr/upload/rdf/25/05/show_202505279525932086.jpg",
-    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
-  },
-  {
     "title": "[서울식물원] 2025년 서울식물원 기획 전시 [우리들의 자연, 행성적 공존]",
     "venue": "서울식물원",
     "desc": "",
@@ -68,16 +58,6 @@
     "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=326563",
     "img": "http://www.culture.go.kr/upload/rdf/25/05/rdf_2025052921234548129.jpg",
     "grad": "linear-gradient(135deg,#3a2800,#5a4000)"
-  },
-  {
-    "title": "《크리스찬 히다카: 하늘이 극장이 되고, 극장이 하늘에 있으니》",
-    "venue": "서울시립미술관 북서울미술관",
-    "desc": "",
-    "start": "2025-06-05",
-    "end": "2026-05-10",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=327927",
-    "img": "http://www.culture.go.kr/upload/rdf/25/06/show_20250691738659556.jpg",
-    "grad": "linear-gradient(135deg,#1a3050,#2a5070)"
   },
   {
     "title": "2025 귀비고 기획전시 《달을 그리다》",
@@ -107,16 +87,6 @@
     "end": "2026-05-11",
     "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=332215",
     "img": "http://www.culture.go.kr/upload/rdf/25/07/show_20250721038856901.JPG",
-    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
-  },
-  {
-    "title": "[검단선사박물관] 구석구석, 유물이의 세상 나들이 展",
-    "venue": "인천검단선사박물관",
-    "desc": "",
-    "start": "2025-07-01",
-    "end": "2026-05-10",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=332796",
-    "img": "http://www.culture.go.kr/upload/rdf/25/07/rdf_202507072159938497.jpg",
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
@@ -160,16 +130,6 @@
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
-    "title": "제주도립미술관 중정프로젝트 《우주목(宇宙木)》",
-    "venue": "제주도립미술관",
-    "desc": "",
-    "start": "2025-08-05",
-    "end": "2026-05-10",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=350269",
-    "img": "http://www.culture.go.kr/upload/rdf/25/10/show_202510161635920727.png",
-    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
-  },
-  {
     "title": "미술은행 20주년 특별전《돌아온 미래: 형태와 생각의 발현》",
     "venue": "국립현대미술관 청주관",
     "desc": "",
@@ -178,6 +138,16 @@
     "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=338921",
     "img": "http://www.culture.go.kr/upload/rdf/25/08/show_2025081117472658878.jpg",
     "grad": "linear-gradient(135deg,#0a1228,#1a2a50)"
+  },
+  {
+    "title": "《우리 이토록 작은 존재들 We, Such Fragile Beings》",
+    "venue": "포도뮤지엄",
+    "desc": "",
+    "start": "2025-08-09",
+    "end": "2026-08-08",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=373571",
+    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202603/8e59b89398244083a65ecb6c2ca09bac.jpg",
+    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
     "title": "2025 국립경찰박물관 특별전 &lt;나의 영웅, 우리의 경찰&gt;",
@@ -240,16 +210,6 @@
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
-    "title": "양평군립미술관 야외조각전",
-    "venue": "양평군립미술관",
-    "desc": "",
-    "start": "2025-09-27",
-    "end": "2026-05-10",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=347917",
-    "img": "http://www.culture.go.kr/upload/rdf/25/09/rdf_2025092921324632468.jpg",
-    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
-  },
-  {
     "title": "공감 천안: 격세지감",
     "venue": "천안박물관",
     "desc": "",
@@ -300,16 +260,6 @@
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
-    "title": "2025년 특별기획전《경산에서 타오른 의병의 불꽃_임진왜란의 기억》",
-    "venue": "경산시립박물관",
-    "desc": "",
-    "start": "2025-11-15",
-    "end": "2026-05-10",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=366787",
-    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202601/2b64a448310a4fa48722846e10536700.jpg",
-    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
-  },
-  {
     "title": "2025 기획특별전 &lt;空과 時, 그 안의 人&gt;",
     "venue": "성북선잠박물관",
     "desc": "",
@@ -320,16 +270,6 @@
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
-    "title": "《출산, 모두의 잔치》",
-    "venue": "국립민속박물관",
-    "desc": "",
-    "start": "2025-12-03",
-    "end": "2026-05-10",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=365859",
-    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202601/e6329a08643e44db8c2db3c961d754aa.jpg",
-    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
-  },
-  {
     "title": "제16회 기획전시 『여성, 삶을 이끌다!: 사랑 &amp; 헌신』 전(展)",
     "venue": "반기문평화기념관",
     "desc": "",
@@ -337,16 +277,6 @@
     "end": "2026-06-07",
     "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=363990",
     "img": "http://www.culture.go.kr/upload/rdf/25/12/rdf_202512292122912491.jpg",
-    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
-  },
-  {
-    "title": "교육개혁 30년 기념 한밭교육박물관 특별전 [오늘의 교육, 과거가 그린 미래]",
-    "venue": "한밭교육박물관",
-    "desc": "",
-    "start": "2025-12-19",
-    "end": "2026-05-10",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=363491",
-    "img": "http://www.culture.go.kr/upload/rdf/25/12/rdf_2025122321263637480.jpg",
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
@@ -370,16 +300,6 @@
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
-    "title": "청주 갤러리 원 2026년 상반기 공모전 안내",
-    "venue": "CGV청주(서문) 갤러리원 1층",
-    "desc": "",
-    "start": "2026-01-01",
-    "end": "2026-06-30",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=358527",
-    "img": "http://www.culture.go.kr/upload/rdf/25/11/show_202511251691533388.jpg",
-    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
-  },
-  {
     "title": "[원주 갤러리 원] 2026년 상반기 공모 모집",
     "venue": "갤러리 원",
     "desc": "",
@@ -387,6 +307,16 @@
     "end": "2026-06-30",
     "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=361867",
     "img": "http://www.culture.go.kr/upload/rdf/25/12/show_2025121014255276762.jpg",
+    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
+  },
+  {
+    "title": "청주 갤러리 원 2026년 상반기 공모전 안내",
+    "venue": "CGV청주(서문) 갤러리원 1층",
+    "desc": "",
+    "start": "2026-01-01",
+    "end": "2026-06-30",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=358527",
+    "img": "http://www.culture.go.kr/upload/rdf/25/11/show_202511251691533388.jpg",
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
@@ -440,14 +370,14 @@
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
-    "title": "2026 경북대미술관 소장품전: 80개의 시선",
-    "venue": "경북대학교미술관",
+    "title": "2025 신소장품 보고전",
+    "venue": "대구미술관",
     "desc": "",
-    "start": "2026-02-09",
-    "end": "2026-05-09",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=367441",
-    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202602/010f7dd450a84535935763189e8ca3ce.png",
-    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
+    "start": "2026-02-10",
+    "end": "2026-08-09",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=368075",
+    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202602/04e03fdf49e1494791a1febe42a10bba.jpg",
+    "grad": "linear-gradient(135deg,#2a1a08,#3a2810)"
   },
   {
     "title": "레픽 아나돌 : 라지 네이처 모델",
@@ -470,33 +400,103 @@
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
-    "title": "박신양의 전시쑈 &lt;제 4의 벽&gt;",
-    "venue": "세종문화회관 미술관",
-    "desc": "",
-    "start": "2026-03-06",
-    "end": "2026-05-10",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=371602",
-    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202603/0b931592ecba4785b8dfbc932ab124ef.jpg",
-    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
-  },
-  {
-    "title": "｢푸른눈의 연서(戀書) &ndash; 100년 전 판화, 오늘의 한복으로 피어나다｣ 展",
-    "venue": "순천창작예술촌 장안창작마당",
-    "desc": "",
-    "start": "2026-03-11",
-    "end": "2026-05-07",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=370988",
-    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202603/68f02d120c674fc19ca81192a782d6dc.jpg",
-    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
-  },
-  {
-    "title": "Nocturama",
-    "venue": "021갤러리",
+    "title": "SeMA 프로젝트V_얄루",
+    "venue": "서울시립 서서울미술관",
     "desc": "",
     "start": "2026-03-12",
-    "end": "2026-05-06",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=372693",
-    "img": "http://www.culture.go.kr/upload/rdf/26/03/show_2026032021172807733.png",
+    "end": "2026-06-07",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=371409",
+    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202603/5b5b6f437a294545a4d48f78f7f8724e.jpg",
+    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
+  },
+  {
+    "title": "서서울미술관 개관특별전 《우리의 시간은 여기서부터》",
+    "venue": "서울시립 서서울미술관",
+    "desc": "",
+    "start": "2026-03-12",
+    "end": "2026-07-12",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=371408",
+    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202603/51ba65e7eb0d4e6dabb14493853c14ff.jpg",
+    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
+  },
+  {
+    "title": "판타와 지노의 공룡탐험전",
+    "venue": "포천반월아트홀 전시장",
+    "desc": "",
+    "start": "2026-03-13",
+    "end": "2026-05-17",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=368335",
+    "img": "http://www.culture.go.kr/upload/ucms/rlyPerfInfo/2026/202602/bf911fb4372945a581cf44c943835cde.jpg",
+    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
+  },
+  {
+    "title": "양평군립미술관 야외소장품 컨테이너 展 《UNBOXING》",
+    "venue": "양평군립미술관",
+    "desc": "",
+    "start": "2026-03-14",
+    "end": "2026-07-19",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=372266",
+    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202603/89bbe2b82464419c949c54b85b619109.jpg",
+    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
+  },
+  {
+    "title": "대구미술관 개관 15주년 기념 특별전 《서화무진 書畵無盡》",
+    "venue": "대구미술관",
+    "desc": "",
+    "start": "2026-03-17",
+    "end": "2026-06-14",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=372689",
+    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202603/4970a65ae5ea41afa5d641ae034c4bac.png",
+    "grad": "linear-gradient(135deg,#2a1a08,#3a2810)"
+  },
+  {
+    "title": "2026 천안시립미술관 로컬스케이프 프로젝트 《천안 이후: 함께 가는 길이 만나는 곳》",
+    "venue": "천안시립미술관",
+    "desc": "",
+    "start": "2026-03-17",
+    "end": "2026-05-31",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=372151",
+    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202603/bf28d956b1364cb9bc6af088031439b7.png",
+    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
+  },
+  {
+    "title": "현대미술기획전 《앤디 워홀: 예술을 팔다 Andy Warhol: The Business of Art》",
+    "venue": "대전시립미술관",
+    "desc": "",
+    "start": "2026-03-18",
+    "end": "2026-06-21",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=369787",
+    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202602/0d36386590334fc5a96ec6432be32159.png",
+    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
+  },
+  {
+    "title": "2026 어린이미술 기획전 《열한번째 트윙클》",
+    "venue": "대전시립미술관",
+    "desc": "",
+    "start": "2026-03-18",
+    "end": "2026-06-21",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=369844",
+    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202602/c2eeb54d98ac477bb37b9d5d65d92d01.jpg",
+    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
+  },
+  {
+    "title": "直軒 허달재, 삶을 품다",
+    "venue": "전남도립미술관",
+    "desc": "",
+    "start": "2026-03-18",
+    "end": "2026-06-14",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=372688",
+    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202603/083b501b28a54738aa3f0ca0b9ec74ac.png",
+    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
+  },
+  {
+    "title": "포토 디스커버리 프로젝트 《사진집》",
+    "venue": "서울시립 사진미술관",
+    "desc": "",
+    "start": "2026-03-18",
+    "end": "2026-06-14",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=371766",
+    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202603/ca2e604cf66c4d45afccbae4fa6bbe07.jpg",
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   }
 ]
