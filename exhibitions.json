@@ -80,16 +80,6 @@
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
-    "title": "한반도의 평화를 수호한 도시, 오산",
-    "venue": "유엔군초전기념관",
-    "desc": "",
-    "start": "2025-06-21",
-    "end": "2026-05-11",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=332215",
-    "img": "http://www.culture.go.kr/upload/rdf/25/07/show_20250721038856901.JPG",
-    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
-  },
-  {
     "title": "2025년 어린이실 테마전시 &#39;반구천의 암각화로 놀러 와!&#39;",
     "venue": "울산암각화박물관",
     "desc": "",
@@ -197,16 +187,6 @@
     "end": "2026-07-26",
     "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=361461",
     "img": "http://www.culture.go.kr/upload/rdf/25/12/rdf_2025120821315882450.jpg",
-    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
-  },
-  {
-    "title": "국가유산 미디어아트 특별전",
-    "venue": "제주세계자연유산센터",
-    "desc": "",
-    "start": "2025-09-26",
-    "end": "2026-05-15",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=363492",
-    "img": "http://www.culture.go.kr/upload/rdf/25/12/rdf_2025122321263750109.jpg",
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
@@ -320,26 +300,6 @@
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
-    "title": "《김창영：샌드 플레이, 존재와 기억의 방식》",
-    "venue": "포항시립미술관",
-    "desc": "",
-    "start": "2026-01-27",
-    "end": "2026-05-17",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=374111",
-    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202604/8ee7f25212794088bd65963f707921e2.jpg",
-    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
-  },
-  {
-    "title": "2026 소장품전 《POMA Collection: Steel Sculpture》",
-    "venue": "포항시립미술관",
-    "desc": "",
-    "start": "2026-01-27",
-    "end": "2026-05-17",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=374112",
-    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202604/d1a2dc8e5afe4fa4a00ce162e19b537b.jpg",
-    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
-  },
-  {
     "title": "유선태 초대전  'My Garden, My Artelier'",
     "venue": "갤러리 가이아",
     "desc": "",
@@ -420,16 +380,6 @@
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
-    "title": "판타와 지노의 공룡탐험전",
-    "venue": "포천반월아트홀 전시장",
-    "desc": "",
-    "start": "2026-03-13",
-    "end": "2026-05-17",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=368335",
-    "img": "http://www.culture.go.kr/upload/ucms/rlyPerfInfo/2026/202602/bf911fb4372945a581cf44c943835cde.jpg",
-    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
-  },
-  {
     "title": "양평군립미술관 야외소장품 컨테이너 展 《UNBOXING》",
     "venue": "양평군립미술관",
     "desc": "",
@@ -437,6 +387,16 @@
     "end": "2026-07-19",
     "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=372266",
     "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202603/89bbe2b82464419c949c54b85b619109.jpg",
+    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
+  },
+  {
+    "title": "2026 천안시립미술관 로컬스케이프 프로젝트 《천안 이후: 함께 가는 길이 만나는 곳》",
+    "venue": "천안시립미술관",
+    "desc": "",
+    "start": "2026-03-17",
+    "end": "2026-05-31",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=372151",
+    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202603/bf28d956b1364cb9bc6af088031439b7.png",
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
@@ -450,13 +410,23 @@
     "grad": "linear-gradient(135deg,#2a1a08,#3a2810)"
   },
   {
-    "title": "2026 천안시립미술관 로컬스케이프 프로젝트 《천안 이후: 함께 가는 길이 만나는 곳》",
-    "venue": "천안시립미술관",
+    "title": "포토 디스커버리 프로젝트 《사진집》",
+    "venue": "서울시립 사진미술관",
     "desc": "",
-    "start": "2026-03-17",
-    "end": "2026-05-31",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=372151",
-    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202603/bf28d956b1364cb9bc6af088031439b7.png",
+    "start": "2026-03-18",
+    "end": "2026-06-14",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=371766",
+    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202603/ca2e604cf66c4d45afccbae4fa6bbe07.jpg",
+    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
+  },
+  {
+    "title": "直軒 허달재, 삶을 품다",
+    "venue": "전남도립미술관",
+    "desc": "",
+    "start": "2026-03-18",
+    "end": "2026-06-14",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=372688",
+    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202603/083b501b28a54738aa3f0ca0b9ec74ac.png",
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
@@ -480,23 +450,53 @@
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
-    "title": "直軒 허달재, 삶을 품다",
-    "venue": "전남도립미술관",
+    "title": "《어디에나 있고 어디에도 없을》",
+    "venue": "경남도립미술관",
     "desc": "",
     "start": "2026-03-18",
-    "end": "2026-06-14",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=372688",
-    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202603/083b501b28a54738aa3f0ca0b9ec74ac.png",
+    "end": "2026-06-28",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=372686",
+    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202603/f01b8266613542beac9febd643f732d6.jpg",
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
-    "title": "포토 디스커버리 프로젝트 《사진집》",
-    "venue": "서울시립 사진미술관",
+    "title": "《MMCA 이건희컬렉션 : 피카소 도예》",
+    "venue": "경남도립미술관",
     "desc": "",
     "start": "2026-03-18",
+    "end": "2026-06-28",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=372687",
+    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202603/adaed7afd7704c4fb7103a9c36d7ccca.jpg",
+    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
+  },
+  {
+    "title": "[울산시립미술관] 한국 근현대 동양화 기획전 時代之筆(시대지필)",
+    "venue": "울산시립미술관",
+    "desc": "",
+    "start": "2026-03-19",
     "end": "2026-06-14",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=371766",
-    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202603/ca2e604cf66c4d45afccbae4fa6bbe07.jpg",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=375822",
+    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202604/b739dd94c7da48e8812f4e3e0f01cc36.jpg",
+    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
+  },
+  {
+    "title": "불연속의 접점들",
+    "venue": "백남준아트센터",
+    "desc": "",
+    "start": "2026-03-19",
+    "end": "2026-06-14",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=372685",
+    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202603/aa9d2c50e8b84b73920a91d3022f2ee9.png",
+    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
+  },
+  {
+    "title": "입는 존재",
+    "venue": "수원시립미술관",
+    "desc": "",
+    "start": "2026-03-19",
+    "end": "2026-06-28",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=372683",
+    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202603/e5c41e194dac415593ef83e6d9d3f245.png",
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   }
 ]
