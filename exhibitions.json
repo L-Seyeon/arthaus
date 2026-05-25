@@ -40,16 +40,6 @@
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
-    "title": "[서울식물원] 2025년 서울식물원 기획 전시 [우리들의 자연, 행성적 공존]",
-    "venue": "서울식물원",
-    "desc": "",
-    "start": "2025-05-27",
-    "end": "2026-05-24",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=327290",
-    "img": "http://www.culture.go.kr/upload/rdf/25/06/rdf_202506042123935071.jpg",
-    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
-  },
-  {
     "title": "제7회 수선화 정기전",
     "venue": "의정부예술의전당",
     "desc": "",
@@ -160,6 +150,16 @@
     "grad": "linear-gradient(135deg,#0d1a2e,#1a3055)"
   },
   {
+    "title": "만인산: 보존과 해체의 기록",
+    "venue": "국립민속박물관 파주",
+    "desc": "",
+    "start": "2025-08-26",
+    "end": "2026-08-23",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=354401",
+    "img": "http://www.culture.go.kr/upload/rdf/25/11/show_202511511272110911.jpg",
+    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
+  },
+  {
     "title": "유휴공간 전시 《지구울림 - 헤르츠앤도우》",
     "venue": "서울시립미술관 북서울미술관",
     "desc": "",
@@ -168,6 +168,16 @@
     "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=373410",
     "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202603/c1b9584959d6455cb8850200d7b5e779.jpg",
     "grad": "linear-gradient(135deg,#1a3050,#2a5070)"
+  },
+  {
+    "title": "2025년 하반기 소래역사관 기획전시 &lt;좁은 선로, 넓은 이야기&gt;",
+    "venue": "소래역사관",
+    "desc": "",
+    "start": "2025-09-16",
+    "end": "2026-05-31",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=380747",
+    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202605/abaeeeb610fe48368c15957ad393dc81.png",
+    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
     "title": "「도시기록법: 우리가 부평을 기억하는 방법」",
@@ -360,6 +370,16 @@
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
+    "title": "열린수장고 기획전 《깊고 깊은 숲으로: 도로시의 원더링》",
+    "venue": "대전시립미술관",
+    "desc": "",
+    "start": "2026-03-03",
+    "end": "2026-08-17",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=369845",
+    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202602/bf042f9df7a342e99cd74328cdab9b7f.jpg",
+    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
+  },
+  {
     "title": "SeMA 프로젝트V_얄루",
     "venue": "서울시립 서서울미술관",
     "desc": "",
@@ -477,26 +497,6 @@
     "end": "2026-06-14",
     "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=375822",
     "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202604/b739dd94c7da48e8812f4e3e0f01cc36.jpg",
-    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
-  },
-  {
-    "title": "불연속의 접점들",
-    "venue": "백남준아트센터",
-    "desc": "",
-    "start": "2026-03-19",
-    "end": "2026-06-14",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=372685",
-    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202603/aa9d2c50e8b84b73920a91d3022f2ee9.png",
-    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
-  },
-  {
-    "title": "입는 존재",
-    "venue": "수원시립미술관",
-    "desc": "",
-    "start": "2026-03-19",
-    "end": "2026-06-28",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=372683",
-    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202603/e5c41e194dac415593ef83e6d9d3f245.png",
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   }
 ]
