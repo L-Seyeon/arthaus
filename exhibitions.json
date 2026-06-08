@@ -40,16 +40,6 @@
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
-    "title": "제7회 수선화 정기전",
-    "venue": "의정부예술의전당",
-    "desc": "",
-    "start": "2025-05-29",
-    "end": "2026-06-04",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=326563",
-    "img": "http://www.culture.go.kr/upload/rdf/25/05/rdf_2025052921234548129.jpg",
-    "grad": "linear-gradient(135deg,#3a2800,#5a4000)"
-  },
-  {
     "title": "2025년 어린이실 테마전시 &#39;반구천의 암각화로 놀러 와!&#39;",
     "venue": "울산암각화박물관",
     "desc": "",
@@ -190,13 +180,13 @@
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
-    "title": "제16회 기획전시 『여성, 삶을 이끌다!: 사랑 &amp; 헌신』 전(展)",
-    "venue": "반기문평화기념관",
+    "title": "사랑(Deep Affection)",
+    "venue": "창원시립마산문신미술관",
     "desc": "",
     "start": "2025-12-16",
-    "end": "2026-06-07",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=363990",
-    "img": "http://www.culture.go.kr/upload/rdf/25/12/rdf_202512292122912491.jpg",
+    "end": "2026-08-31",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=362779",
+    "img": "http://www.culture.go.kr/upload/rdf/25/12/show_202512171016759559.jpg",
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
@@ -220,16 +210,6 @@
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
-    "title": "[원주 갤러리 원] 2026년 상반기 공모 모집",
-    "venue": "갤러리 원",
-    "desc": "",
-    "start": "2026-01-01",
-    "end": "2026-06-30",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=361867",
-    "img": "http://www.culture.go.kr/upload/rdf/25/12/show_2025121014255276762.jpg",
-    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
-  },
-  {
     "title": "청주 갤러리 원 2026년 상반기 공모전 안내",
     "venue": "CGV청주(서문) 갤러리원 1층",
     "desc": "",
@@ -237,6 +217,16 @@
     "end": "2026-06-30",
     "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=358527",
     "img": "http://www.culture.go.kr/upload/rdf/25/11/show_202511251691533388.jpg",
+    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
+  },
+  {
+    "title": "[원주 갤러리 원] 2026년 상반기 공모 모집",
+    "venue": "갤러리 원",
+    "desc": "",
+    "start": "2026-01-01",
+    "end": "2026-06-30",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=361867",
+    "img": "http://www.culture.go.kr/upload/rdf/25/12/show_2025121014255276762.jpg",
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
@@ -300,16 +290,6 @@
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
-    "title": "SeMA 프로젝트V_얄루",
-    "venue": "서울시립 서서울미술관",
-    "desc": "",
-    "start": "2026-03-12",
-    "end": "2026-06-07",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=371409",
-    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202603/5b5b6f437a294545a4d48f78f7f8724e.jpg",
-    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
-  },
-  {
     "title": "서서울미술관 개관특별전 《우리의 시간은 여기서부터》",
     "venue": "서울시립 서서울미술관",
     "desc": "",
@@ -340,6 +320,16 @@
     "grad": "linear-gradient(135deg,#2a1a08,#3a2810)"
   },
   {
+    "title": "直軒 허달재, 삶을 품다",
+    "venue": "전남도립미술관",
+    "desc": "",
+    "start": "2026-03-18",
+    "end": "2026-06-14",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=372688",
+    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202603/083b501b28a54738aa3f0ca0b9ec74ac.png",
+    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
+  },
+  {
     "title": "포토 디스커버리 프로젝트 《사진집》",
     "venue": "서울시립 사진미술관",
     "desc": "",
@@ -350,13 +340,13 @@
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
-    "title": "直軒 허달재, 삶을 품다",
-    "venue": "전남도립미술관",
+    "title": "현대미술기획전 《앤디 워홀: 예술을 팔다 Andy Warhol: The Business of Art》",
+    "venue": "대전시립미술관",
     "desc": "",
     "start": "2026-03-18",
-    "end": "2026-06-14",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=372688",
-    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202603/083b501b28a54738aa3f0ca0b9ec74ac.png",
+    "end": "2026-06-21",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=369787",
+    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202602/0d36386590334fc5a96ec6432be32159.png",
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
@@ -390,13 +380,13 @@
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
-    "title": "현대미술기획전 《앤디 워홀: 예술을 팔다 Andy Warhol: The Business of Art》",
-    "venue": "대전시립미술관",
+    "title": "불연속의 접점들",
+    "venue": "백남준아트센터",
     "desc": "",
-    "start": "2026-03-18",
-    "end": "2026-06-21",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=369787",
-    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202602/0d36386590334fc5a96ec6432be32159.png",
+    "start": "2026-03-19",
+    "end": "2026-06-14",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=372685",
+    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202603/aa9d2c50e8b84b73920a91d3022f2ee9.png",
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
@@ -410,16 +400,6 @@
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
-    "title": "불연속의 접점들",
-    "venue": "백남준아트센터",
-    "desc": "",
-    "start": "2026-03-19",
-    "end": "2026-06-14",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=372685",
-    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202603/aa9d2c50e8b84b73920a91d3022f2ee9.png",
-    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
-  },
-  {
     "title": "입는 존재",
     "venue": "수원시립미술관",
     "desc": "",
@@ -427,16 +407,6 @@
     "end": "2026-06-28",
     "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=372683",
     "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202603/e5c41e194dac415593ef83e6d9d3f245.png",
-    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
-  },
-  {
-    "title": "청주시립미술관 기획전《그것만이 내 세상》- 씨킴",
-    "venue": "청주시립미술관",
-    "desc": "",
-    "start": "2026-03-20",
-    "end": "2026-06-21",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=372453",
-    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202603/cf08055d38694a1d95f9827862f626fa.png",
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
@@ -450,6 +420,16 @@
     "grad": "linear-gradient(135deg,#080418,#180a30)"
   },
   {
+    "title": "청주시립미술관 기획전《그것만이 내 세상》- 씨킴",
+    "venue": "청주시립미술관",
+    "desc": "",
+    "start": "2026-03-20",
+    "end": "2026-06-21",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=372453",
+    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202603/cf08055d38694a1d95f9827862f626fa.png",
+    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
+  },
+  {
     "title": "데이미언 허스트",
     "venue": "국립현대미술관 서울관",
     "desc": "",
@@ -458,16 +438,6 @@
     "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=364988",
     "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202602/8a4d9970faab4156a69c07480e5b0477.jpg",
     "grad": "linear-gradient(135deg,#0a1228,#1a2a50)"
-  },
-  {
-    "title": "2026년 경운박물관 특별기획전 &lt;노라 노: First &amp; Forever&gt;",
-    "venue": "경운박물관",
-    "desc": "",
-    "start": "2026-03-21",
-    "end": "2026-07-16",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=371442",
-    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202603/2d804bce92f44691907d423a615d2949.jpg",
-    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
     "title": "해동문화예술촌 3월 기획전시 &#39;틈새의 공생&#39;展",
@@ -480,6 +450,16 @@
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
+    "title": "코뿔소와 유니콘",
+    "venue": "부산현대미술관",
+    "desc": "",
+    "start": "2026-03-21",
+    "end": "2026-07-19",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=372451",
+    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202603/123be64d456b4e31b81506921c474f2d.jpg",
+    "grad": "linear-gradient(135deg,#180808,#2a1010)"
+  },
+  {
     "title": "소장품섬_몸의 증언: 김순기&middot;아나 멘디에타&middot;크리스 버든",
     "venue": "부산현대미술관",
     "desc": "",
@@ -490,13 +470,33 @@
     "grad": "linear-gradient(135deg,#180808,#2a1010)"
   },
   {
-    "title": "코뿔소와 유니콘",
-    "venue": "부산현대미술관",
+    "title": "2026년 경운박물관 특별기획전 &lt;노라 노: First &amp; Forever&gt;",
+    "venue": "경운박물관",
     "desc": "",
     "start": "2026-03-21",
-    "end": "2026-07-19",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=372451",
-    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202603/123be64d456b4e31b81506921c474f2d.jpg",
-    "grad": "linear-gradient(135deg,#180808,#2a1010)"
+    "end": "2026-07-16",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=371442",
+    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202603/2d804bce92f44691907d423a615d2949.jpg",
+    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
+  },
+  {
+    "title": "해동문화예술촌 어린이 체험형 예술전시 &#39;장미 작가와 함께하는 마음보관소&#39; 展",
+    "venue": "해동문화예술촌",
+    "desc": "",
+    "start": "2026-03-21",
+    "end": "2026-09-06",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=373043",
+    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202603/a2f6092e7568455ab04fcaa03a6f33de.jpg",
+    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
+  },
+  {
+    "title": "직조하는 손, 여성의 시간: 아세안의 직물공예",
+    "venue": "아세안문화원",
+    "desc": "",
+    "start": "2026-03-25",
+    "end": "2026-08-30",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=373412",
+    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202603/49c2b4802b3f4d75b7072ce8f5587916.png",
+    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   }
 ]
