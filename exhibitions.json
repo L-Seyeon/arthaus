@@ -170,6 +170,16 @@
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
+    "title": "킹 오브 킹스 전시 : The Greatest Love",
+    "venue": "롯데백화점 문화홀 [김포공항]",
+    "desc": "",
+    "start": "2025-10-31",
+    "end": "2026-08-31",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=356604",
+    "img": "http://www.culture.go.kr/upload/rdf/25/11/show_2025111519111412761.jpg",
+    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
+  },
+  {
     "title": "2025 기획특별전 &lt;空과 時, 그 안의 人&gt;",
     "venue": "성북선잠박물관",
     "desc": "",
@@ -210,16 +220,6 @@
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
-    "title": "청주 갤러리 원 2026년 상반기 공모전 안내",
-    "venue": "CGV청주(서문) 갤러리원 1층",
-    "desc": "",
-    "start": "2026-01-01",
-    "end": "2026-06-30",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=358527",
-    "img": "http://www.culture.go.kr/upload/rdf/25/11/show_202511251691533388.jpg",
-    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
-  },
-  {
     "title": "[원주 갤러리 원] 2026년 상반기 공모 모집",
     "venue": "갤러리 원",
     "desc": "",
@@ -230,13 +230,13 @@
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
-    "title": "[울산시립미술관] 안소니 맥콜: 원뿔을 그리는 선 2.0",
-    "venue": "울산시립미술관",
+    "title": "청주 갤러리 원 2026년 상반기 공모전 안내",
+    "venue": "CGV청주(서문) 갤러리원 1층",
     "desc": "",
-    "start": "2026-02-05",
-    "end": "2026-06-14",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=375825",
-    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202604/2a1730240b1a4428b2c9505ca9f2b5bf.png",
+    "start": "2026-01-01",
+    "end": "2026-06-30",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=358527",
+    "img": "http://www.culture.go.kr/upload/rdf/25/11/show_202511251691533388.jpg",
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
@@ -310,36 +310,6 @@
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
-    "title": "대구미술관 개관 15주년 기념 특별전 《서화무진 書畵無盡》",
-    "venue": "대구미술관",
-    "desc": "",
-    "start": "2026-03-17",
-    "end": "2026-06-14",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=372689",
-    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202603/4970a65ae5ea41afa5d641ae034c4bac.png",
-    "grad": "linear-gradient(135deg,#2a1a08,#3a2810)"
-  },
-  {
-    "title": "直軒 허달재, 삶을 품다",
-    "venue": "전남도립미술관",
-    "desc": "",
-    "start": "2026-03-18",
-    "end": "2026-06-14",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=372688",
-    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202603/083b501b28a54738aa3f0ca0b9ec74ac.png",
-    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
-  },
-  {
-    "title": "포토 디스커버리 프로젝트 《사진집》",
-    "venue": "서울시립 사진미술관",
-    "desc": "",
-    "start": "2026-03-18",
-    "end": "2026-06-14",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=371766",
-    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202603/ca2e604cf66c4d45afccbae4fa6bbe07.jpg",
-    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
-  },
-  {
     "title": "현대미술기획전 《앤디 워홀: 예술을 팔다 Andy Warhol: The Business of Art》",
     "venue": "대전시립미술관",
     "desc": "",
@@ -347,26 +317,6 @@
     "end": "2026-06-21",
     "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=369787",
     "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202602/0d36386590334fc5a96ec6432be32159.png",
-    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
-  },
-  {
-    "title": "《MMCA 이건희컬렉션 : 피카소 도예》",
-    "venue": "경남도립미술관",
-    "desc": "",
-    "start": "2026-03-18",
-    "end": "2026-06-28",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=372687",
-    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202603/adaed7afd7704c4fb7103a9c36d7ccca.jpg",
-    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
-  },
-  {
-    "title": "《어디에나 있고 어디에도 없을》",
-    "venue": "경남도립미술관",
-    "desc": "",
-    "start": "2026-03-18",
-    "end": "2026-06-28",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=372686",
-    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202603/f01b8266613542beac9febd643f732d6.jpg",
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
@@ -380,23 +330,23 @@
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
-    "title": "불연속의 접점들",
-    "venue": "백남준아트센터",
+    "title": "《어디에나 있고 어디에도 없을》",
+    "venue": "경남도립미술관",
     "desc": "",
-    "start": "2026-03-19",
-    "end": "2026-06-14",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=372685",
-    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202603/aa9d2c50e8b84b73920a91d3022f2ee9.png",
+    "start": "2026-03-18",
+    "end": "2026-06-28",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=372686",
+    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202603/f01b8266613542beac9febd643f732d6.jpg",
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
-    "title": "[울산시립미술관] 한국 근현대 동양화 기획전 時代之筆(시대지필)",
-    "venue": "울산시립미술관",
+    "title": "《MMCA 이건희컬렉션 : 피카소 도예》",
+    "venue": "경남도립미술관",
     "desc": "",
-    "start": "2026-03-19",
-    "end": "2026-06-14",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=375822",
-    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202604/b739dd94c7da48e8812f4e3e0f01cc36.jpg",
+    "start": "2026-03-18",
+    "end": "2026-06-28",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=372687",
+    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202603/adaed7afd7704c4fb7103a9c36d7ccca.jpg",
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
@@ -408,16 +358,6 @@
     "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=372683",
     "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202603/e5c41e194dac415593ef83e6d9d3f245.png",
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
-  },
-  {
-    "title": "《스펙트로신테시스 서울 Spectrosynthesis Seoul》",
-    "venue": "아트선재센터",
-    "desc": "",
-    "start": "2026-03-20",
-    "end": "2026-06-28",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=373905",
-    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202603/89f33016caaa424cb445f258b6a57ece.jpg",
-    "grad": "linear-gradient(135deg,#080418,#180a30)"
   },
   {
     "title": "청주시립미술관 기획전《그것만이 내 세상》- 씨킴",
@@ -440,24 +380,24 @@
     "grad": "linear-gradient(135deg,#0a1228,#1a2a50)"
   },
   {
-    "title": "해동문화예술촌 3월 기획전시 &#39;틈새의 공생&#39;展",
-    "venue": "해동문화예술촌",
+    "title": "《스펙트로신테시스 서울 Spectrosynthesis Seoul》",
+    "venue": "아트선재센터",
     "desc": "",
-    "start": "2026-03-21",
-    "end": "2026-06-14",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=373042",
-    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202603/95ecffa5e890481683b7be87fff2ee20.jpg",
-    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
+    "start": "2026-03-20",
+    "end": "2026-06-28",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=373905",
+    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202603/89f33016caaa424cb445f258b6a57ece.jpg",
+    "grad": "linear-gradient(135deg,#080418,#180a30)"
   },
   {
-    "title": "코뿔소와 유니콘",
-    "venue": "부산현대미술관",
+    "title": "2026년 경운박물관 특별기획전 &lt;노라 노: First &amp; Forever&gt;",
+    "venue": "경운박물관",
     "desc": "",
     "start": "2026-03-21",
-    "end": "2026-07-19",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=372451",
-    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202603/123be64d456b4e31b81506921c474f2d.jpg",
-    "grad": "linear-gradient(135deg,#180808,#2a1010)"
+    "end": "2026-07-16",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=371442",
+    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202603/2d804bce92f44691907d423a615d2949.jpg",
+    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
     "title": "소장품섬_몸의 증언: 김순기&middot;아나 멘디에타&middot;크리스 버든",
@@ -470,14 +410,14 @@
     "grad": "linear-gradient(135deg,#180808,#2a1010)"
   },
   {
-    "title": "2026년 경운박물관 특별기획전 &lt;노라 노: First &amp; Forever&gt;",
-    "venue": "경운박물관",
+    "title": "코뿔소와 유니콘",
+    "venue": "부산현대미술관",
     "desc": "",
     "start": "2026-03-21",
-    "end": "2026-07-16",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=371442",
-    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202603/2d804bce92f44691907d423a615d2949.jpg",
-    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
+    "end": "2026-07-19",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=372451",
+    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202603/123be64d456b4e31b81506921c474f2d.jpg",
+    "grad": "linear-gradient(135deg,#180808,#2a1010)"
   },
   {
     "title": "해동문화예술촌 어린이 체험형 예술전시 &#39;장미 작가와 함께하는 마음보관소&#39; 展",
@@ -497,6 +437,66 @@
     "end": "2026-08-30",
     "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=373412",
     "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202603/49c2b4802b3f4d75b7072ce8f5587916.png",
+    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
+  },
+  {
+    "title": "알렉사에게",
+    "venue": "서울시립 미술아카이브",
+    "desc": "",
+    "start": "2026-03-26",
+    "end": "2026-07-26",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=373409",
+    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202603/dcfa1113e81541e7ab81db56750dd56c.jpg",
+    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
+  },
+  {
+    "title": "[울산시립미술관] 동행(同行): 아이와 보는 미술",
+    "venue": "울산시립미술관",
+    "desc": "",
+    "start": "2026-03-26",
+    "end": "2026-08-02",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=375645",
+    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202604/4be051b2b9cd4eb3b51b379f93866a33.jpg",
+    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
+  },
+  {
+    "title": "2026 경기도자미술관 기획전 《흙과 우리 사이에 놓인 것들》",
+    "venue": "경기도자미술관",
+    "desc": "",
+    "start": "2026-03-27",
+    "end": "2026-07-12",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=373930",
+    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202604/693b8abbb5af4bb09b497145ec5eb476.jpg",
+    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
+  },
+  {
+    "title": "2026 청주시한국공예관 로컬레이어《사물이 비워진 자리》",
+    "venue": "한국공예관 문화제조창",
+    "desc": "",
+    "start": "2026-03-31",
+    "end": "2026-06-28",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=376089",
+    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202604/2c84a1ed2c314d7a8835d0aab7b6ec50.png",
+    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
+  },
+  {
+    "title": "박일광 초대전 &lt;찾아헤맨 모든 꿈&gt;",
+    "venue": "영암군립 하정웅미술관 창작교육관",
+    "desc": "",
+    "start": "2026-03-31",
+    "end": "2026-07-26",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=372787",
+    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202603/7ec235b9f67845fb8c97168d8fa4f411.png",
+    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
+  },
+  {
+    "title": "박일광 전시연계 아트놀이터 〈마음 모양〉",
+    "venue": "영암군립 하정웅미술관 창작교육관",
+    "desc": "",
+    "start": "2026-03-31",
+    "end": "2026-07-26",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=372785",
+    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202603/e200794f72e24510854764b3428d849c.png",
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   }
 ]
