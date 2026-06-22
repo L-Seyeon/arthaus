@@ -90,16 +90,6 @@
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
-    "title": "각角진 백자 이야기",
-    "venue": "국립중앙박물관",
-    "desc": "",
-    "start": "2025-08-26",
-    "end": "2026-06-21",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=342161",
-    "img": "http://www.culture.go.kr/upload/rdf/25/08/show_202508289404894345.png",
-    "grad": "linear-gradient(135deg,#0d1a2e,#1a3055)"
-  },
-  {
     "title": "만인산: 보존과 해체의 기록",
     "venue": "국립민속박물관 파주",
     "desc": "",
@@ -107,16 +97,6 @@
     "end": "2026-08-23",
     "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=354401",
     "img": "http://www.culture.go.kr/upload/rdf/25/11/show_202511511272110911.jpg",
-    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
-  },
-  {
-    "title": "「도시기록법: 우리가 부평을 기억하는 방법」",
-    "venue": "부평역사박물관",
-    "desc": "",
-    "start": "2025-09-23",
-    "end": "2026-06-21",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=347899",
-    "img": "http://www.culture.go.kr/upload/rdf/25/09/rdf_2025092921324115285.jpg",
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
@@ -310,26 +290,6 @@
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
-    "title": "현대미술기획전 《앤디 워홀: 예술을 팔다 Andy Warhol: The Business of Art》",
-    "venue": "대전시립미술관",
-    "desc": "",
-    "start": "2026-03-18",
-    "end": "2026-06-21",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=369787",
-    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202602/0d36386590334fc5a96ec6432be32159.png",
-    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
-  },
-  {
-    "title": "2026 어린이미술 기획전 《열한번째 트윙클》",
-    "venue": "대전시립미술관",
-    "desc": "",
-    "start": "2026-03-18",
-    "end": "2026-06-21",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=369844",
-    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202602/c2eeb54d98ac477bb37b9d5d65d92d01.jpg",
-    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
-  },
-  {
     "title": "《어디에나 있고 어디에도 없을》",
     "venue": "경남도립미술관",
     "desc": "",
@@ -360,14 +320,14 @@
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
-    "title": "청주시립미술관 기획전《그것만이 내 세상》- 씨킴",
-    "venue": "청주시립미술관",
+    "title": "《스펙트로신테시스 서울 Spectrosynthesis Seoul》",
+    "venue": "아트선재센터",
     "desc": "",
     "start": "2026-03-20",
-    "end": "2026-06-21",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=372453",
-    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202603/cf08055d38694a1d95f9827862f626fa.png",
-    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
+    "end": "2026-06-28",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=373905",
+    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202603/89f33016caaa424cb445f258b6a57ece.jpg",
+    "grad": "linear-gradient(135deg,#080418,#180a30)"
   },
   {
     "title": "데이미언 허스트",
@@ -378,16 +338,6 @@
     "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=364988",
     "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202602/8a4d9970faab4156a69c07480e5b0477.jpg",
     "grad": "linear-gradient(135deg,#0a1228,#1a2a50)"
-  },
-  {
-    "title": "《스펙트로신테시스 서울 Spectrosynthesis Seoul》",
-    "venue": "아트선재센터",
-    "desc": "",
-    "start": "2026-03-20",
-    "end": "2026-06-28",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=373905",
-    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202603/89f33016caaa424cb445f258b6a57ece.jpg",
-    "grad": "linear-gradient(135deg,#080418,#180a30)"
   },
   {
     "title": "2026년 경운박물관 특별기획전 &lt;노라 노: First &amp; Forever&gt;",
@@ -480,6 +430,16 @@
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
+    "title": "박일광 전시연계 아트놀이터 〈마음 모양〉",
+    "venue": "영암군립 하정웅미술관 창작교육관",
+    "desc": "",
+    "start": "2026-03-31",
+    "end": "2026-07-26",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=372785",
+    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202603/e200794f72e24510854764b3428d849c.png",
+    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
+  },
+  {
     "title": "박일광 초대전 &lt;찾아헤맨 모든 꿈&gt;",
     "venue": "영암군립 하정웅미술관 창작교육관",
     "desc": "",
@@ -490,13 +450,53 @@
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
-    "title": "박일광 전시연계 아트놀이터 〈마음 모양〉",
-    "venue": "영암군립 하정웅미술관 창작교육관",
+    "title": "장욱진의 대화: 서로가 된 풍경",
+    "venue": "강릉시립미술관 솔올",
     "desc": "",
-    "start": "2026-03-31",
+    "start": "2026-04-01",
+    "end": "2026-07-05",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=377630",
+    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202604/81aa8e501abb447684a33ec56e0fab40.png",
+    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
+  },
+  {
+    "title": "쿤 반 덴 브룩 《지구의 피부》",
+    "venue": "전남도립미술관",
+    "desc": "",
+    "start": "2026-04-07",
+    "end": "2026-07-19",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=375340",
+    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202604/9089b41e902a4ed2ac9ccc37c4a29bde.jpg",
+    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
+  },
+  {
+    "title": "2026 수원시립아트스페이스광교 교육체험전 《하나 쌓고, 하나 빼-기》",
+    "venue": "수원시립아트스페이스광교",
+    "desc": "",
+    "start": "2026-04-07",
+    "end": "2026-08-02",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=375339",
+    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202604/3ecb1082d8864802a2e76c59c331daa1.JPG",
+    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
+  },
+  {
+    "title": "[소마미술관] 이승택 : 조각의 바깥에서",
+    "venue": "소마미술관 1관",
+    "desc": "",
+    "start": "2026-04-10",
     "end": "2026-07-26",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=372785",
-    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202603/e200794f72e24510854764b3428d849c.png",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=372444",
+    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202603/64f956c57063471ba34223e6e767afb3.jpg",
+    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
+  },
+  {
+    "title": "83년 만에 만남, 경주 월성에서 찾은 비석 조각",
+    "venue": "국립경주박물관",
+    "desc": "",
+    "start": "2026-04-13",
+    "end": "2026-08-17",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=375293",
+    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202604/71eee995eb6c42fea6ffa2f4b182bcc3.png",
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   }
 ]
