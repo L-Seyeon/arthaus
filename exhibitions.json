@@ -20,16 +20,6 @@
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
-    "title": "경기북부어린이박물관 기획전시 《아이돌》",
-    "venue": "경기북부어린이박물관",
-    "desc": "",
-    "start": "2025-07-29",
-    "end": "2026-07-19",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=386189",
-    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202606/21bc6187a7c3431e97c76e94e25b0146.png",
-    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
-  },
-  {
     "title": "미술은행 20주년 특별전《돌아온 미래: 형태와 생각의 발현》",
     "venue": "국립현대미술관 청주관",
     "desc": "",
@@ -160,6 +150,16 @@
     "grad": "linear-gradient(135deg,#2a1a08,#3a2810)"
   },
   {
+    "title": "[광명업사이클아트센터] 2026 특별전시 업사이클 인터랙티브",
+    "venue": "광명업사이클아트센터",
+    "desc": "",
+    "start": "2026-02-13",
+    "end": "2026-10-18",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=371782",
+    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202603/0544719806c64b2a9a64a99745680c53.jpg",
+    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
+  },
+  {
     "title": "사물의 잔상: 모노하의 확장과 변주",
     "venue": "영암군립 하정웅미술관",
     "desc": "",
@@ -180,16 +180,6 @@
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
-    "title": "양평군립미술관 야외소장품 컨테이너 展 《UNBOXING》",
-    "venue": "양평군립미술관",
-    "desc": "",
-    "start": "2026-03-14",
-    "end": "2026-07-19",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=372266",
-    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202603/89bbe2b82464419c949c54b85b619109.jpg",
-    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
-  },
-  {
     "title": "ACC 필름앤비디오 《아시아의 장치들》",
     "venue": "국립아시아문화전당 문화창조원 복합 2관",
     "desc": "",
@@ -197,16 +187,6 @@
     "end": "2026-09-27",
     "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=369772",
     "img": "http://www.culture.go.kr/upload/rdf/26/02/rdf_2026022521262014953.jpg",
-    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
-  },
-  {
-    "title": "2026년 경운박물관 특별기획전 &lt;노라 노: First &amp; Forever&gt;",
-    "venue": "경운박물관",
-    "desc": "",
-    "start": "2026-03-21",
-    "end": "2026-07-16",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=371442",
-    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202603/2d804bce92f44691907d423a615d2949.jpg",
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
@@ -218,26 +198,6 @@
     "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=373043",
     "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202603/a2f6092e7568455ab04fcaa03a6f33de.jpg",
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
-  },
-  {
-    "title": "코뿔소와 유니콘",
-    "venue": "부산현대미술관",
-    "desc": "",
-    "start": "2026-03-21",
-    "end": "2026-07-19",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=372451",
-    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202603/123be64d456b4e31b81506921c474f2d.jpg",
-    "grad": "linear-gradient(135deg,#180808,#2a1010)"
-  },
-  {
-    "title": "소장품섬_몸의 증언: 김순기&middot;아나 멘디에타&middot;크리스 버든",
-    "venue": "부산현대미술관",
-    "desc": "",
-    "start": "2026-03-21",
-    "end": "2026-07-19",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=373044",
-    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202603/7bf145f5f0cc495583a030d4e6a4c74e.jpg",
-    "grad": "linear-gradient(135deg,#180808,#2a1010)"
   },
   {
     "title": "직조하는 손, 여성의 시간: 아세안의 직물공예",
@@ -287,16 +247,6 @@
     "end": "2026-07-26",
     "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=372787",
     "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202603/7ec235b9f67845fb8c97168d8fa4f411.png",
-    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
-  },
-  {
-    "title": "쿤 반 덴 브룩 《지구의 피부》",
-    "venue": "전남도립미술관",
-    "desc": "",
-    "start": "2026-04-07",
-    "end": "2026-07-19",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=375340",
-    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202604/9089b41e902a4ed2ac9ccc37c4a29bde.jpg",
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
@@ -380,26 +330,6 @@
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
-    "title": "2026 무안군오승우미술관 초대전 《건축적산수》",
-    "venue": "무안군오승우미술관",
-    "desc": "",
-    "start": "2026-04-18",
-    "end": "2026-07-19",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=376087",
-    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202604/d1a5d35f22ea425fb6ed97bafe0adbee.jpg",
-    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
-  },
-  {
-    "title": "아름다움을 나누는 마음 - 새로 맞이한 기증유물전 1",
-    "venue": "국립중앙박물관",
-    "desc": "",
-    "start": "2026-04-20",
-    "end": "2026-07-19",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=384999",
-    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202606/4791a4aec6ed4976a14472752f904774.png",
-    "grad": "linear-gradient(135deg,#0d1a2e,#1a3055)"
-  },
-  {
     "title": "페르난도 보테로: 형태의 미학",
     "venue": "예술의전당(한가람디자인미술관)",
     "desc": "",
@@ -420,13 +350,13 @@
     "grad": "linear-gradient(135deg,#0a1228,#1a2a50)"
   },
   {
-    "title": "빛&middot;울림&middot;힘 - 금속, 감각을 깨우다",
-    "venue": "국립청주박물관",
+    "title": "한불수교 140주년 기념전시 《더 하이브리드》",
+    "venue": "서울공예박물관",
     "desc": "",
     "start": "2026-04-28",
-    "end": "2026-08-30",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=374512",
-    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202604/c6e50fc73d064e3fa7d3e4309df3b417.jpg",
+    "end": "2026-07-26",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=378376",
+    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202605/4253f75051c74e859f34b12468d5162f.JPG",
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
@@ -440,13 +370,13 @@
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
-    "title": "한불수교 140주년 기념전시 《더 하이브리드》",
-    "venue": "서울공예박물관",
+    "title": "빛&middot;울림&middot;힘 - 금속, 감각을 깨우다",
+    "venue": "국립청주박물관",
     "desc": "",
     "start": "2026-04-28",
-    "end": "2026-07-26",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=378376",
-    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202605/4253f75051c74e859f34b12468d5162f.JPG",
+    "end": "2026-08-30",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=374512",
+    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202604/c6e50fc73d064e3fa7d3e4309df3b417.jpg",
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
@@ -460,14 +390,14 @@
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
-    "title": "수집: 결정의 방",
-    "venue": "부산현대미술관",
+    "title": "은은한 문제: 김창열의 신문지 작업",
+    "venue": "제주도립김창열미술관",
     "desc": "",
-    "start": "2026-04-30",
-    "end": "2026-07-19",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=378433",
-    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202605/30a40ade16114426bbb16d64c6021847.jpg",
-    "grad": "linear-gradient(135deg,#180808,#2a1010)"
+    "start": "2026-04-28",
+    "end": "2026-10-18",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=385359",
+    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202606/5c911e1fc1054105af695ba7e9290759.png",
+    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
     "title": "난지미술창작스튜디오 20주년 기념전 《사랑의 기원》",
@@ -480,16 +410,6 @@
     "grad": "linear-gradient(135deg,#1a3050,#2a5070)"
   },
   {
-    "title": "부산현대미술관 다원예술_몸, 실험 중",
-    "venue": "부산현대미술관",
-    "desc": "",
-    "start": "2026-04-30",
-    "end": "2026-07-19",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=371995",
-    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202603/3c5d28ecb26549c9aafda014da533c4d.jpg",
-    "grad": "linear-gradient(135deg,#180808,#2a1010)"
-  },
-  {
     "title": "[2026년 박물관&middot;미술관 주간] 물길따라 사람 길을 잇다",
     "venue": "김만덕기념관",
     "desc": "",
@@ -497,6 +417,86 @@
     "end": "2026-08-30",
     "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=376703",
     "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202604/4ec500d61bfe45dd8eb7e2944014094f.jpg",
+    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
+  },
+  {
+    "title": "국립세계문자박물관 특별전시 &lt;글씨상점: 당신의 글씨, 당신의 취향&gt;",
+    "venue": "국립세계문자박물관",
+    "desc": "",
+    "start": "2026-05-01",
+    "end": "2026-08-23",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=387704",
+    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202607/f772aaf7ef6c4406a6df0d54bca3183a.jpg",
+    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
+  },
+  {
+    "title": "《이나괴 : 이상한데 나를 닮은 괴물》",
+    "venue": "전북도립미술관",
+    "desc": "",
+    "start": "2026-05-01",
+    "end": "2026-10-11",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=386847",
+    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202607/10dd591a1d65482ba49bd5ad1b9541e0.png",
+    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
+  },
+  {
+    "title": "단원 김홍도, 시대를 그리다",
+    "venue": "국립중앙박물관",
+    "desc": "",
+    "start": "2026-05-04",
+    "end": "2026-08-02",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=385022",
+    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202606/0dfd8a87e4b24d22931151f68ab7d122.png",
+    "grad": "linear-gradient(135deg,#0d1a2e,#1a3055)"
+  },
+  {
+    "title": "제목전(展)",
+    "venue": "한국영화박물관",
+    "desc": "",
+    "start": "2026-05-08",
+    "end": "2026-08-29",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=378574",
+    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202605/e7daf4dcdc76418bbbbdc4a77f78d50c.png",
+    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
+  },
+  {
+    "title": "색유만개 : 권순형 기증특별전시",
+    "venue": "서울공예박물관",
+    "desc": "",
+    "start": "2026-05-12",
+    "end": "2026-08-02",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=378377",
+    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202605/316c94e900c94006b51b66a15fb75c6c.JPG",
+    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
+  },
+  {
+    "title": "[2026년 박물관&middot;미술관 주간] 상식이 된 파격_그때는 힙스터: 지금은 꼰대",
+    "venue": "대구대학교박물관",
+    "desc": "",
+    "start": "2026-05-12",
+    "end": "2026-08-21",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=376704",
+    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202604/5852351dc5d54d15bc5b12733efd30e1.png",
+    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
+  },
+  {
+    "title": "가나다락 - 글놀이 말놀이",
+    "venue": "국립민속박물관",
+    "desc": "",
+    "start": "2026-05-13",
+    "end": "2026-08-30",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=380350",
+    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202605/b3116726911c45dd8767b5ad8b0ab0ab.jpg",
+    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
+  },
+  {
+    "title": "서울시립 서서울미술관 개관 특별 미디어 소장품전 《서서울의 투명한 | 청소년 | 기계》",
+    "venue": "서울시립 서서울미술관",
+    "desc": "",
+    "start": "2026-05-14",
+    "end": "2026-07-26",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=380354",
+    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202605/3a147db9d33547249fe951171122739c.jpg",
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   }
 ]
