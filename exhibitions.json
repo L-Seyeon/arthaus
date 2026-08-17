@@ -20,16 +20,6 @@
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
-    "title": "《우리 이토록 작은 존재들 We, Such Fragile Beings》",
-    "venue": "포도뮤지엄",
-    "desc": "",
-    "start": "2025-08-09",
-    "end": "2026-08-08",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=373571",
-    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202603/8e59b89398244083a65ecb6c2ca09bac.jpg",
-    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
-  },
-  {
     "title": "만인산: 보존과 해체의 기록",
     "venue": "국립민속박물관 파주",
     "desc": "",
@@ -100,16 +90,6 @@
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
-    "title": "2025 신소장품 보고전",
-    "venue": "대구미술관",
-    "desc": "",
-    "start": "2026-02-10",
-    "end": "2026-08-09",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=368075",
-    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202602/04e03fdf49e1494791a1febe42a10bba.jpg",
-    "grad": "linear-gradient(135deg,#2a1a08,#3a2810)"
-  },
-  {
     "title": "전북도립미술관 기증소장품전 《고귀하고 고귀한Ⅲ》",
     "venue": "전북도립미술관",
     "desc": "",
@@ -137,6 +117,16 @@
     "end": "2026-08-17",
     "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=369845",
     "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202602/bf042f9df7a342e99cd74328cdab9b7f.jpg",
+    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
+  },
+  {
+    "title": "가장 자유로운 길",
+    "venue": "이성자미술관",
+    "desc": "",
+    "start": "2026-03-04",
+    "end": "2026-11-08",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=384575",
+    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202606/4a969df3309443f9b046834dbbc58400.png",
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
@@ -230,16 +220,6 @@
     "grad": "linear-gradient(135deg,#0a1228,#1a2a50)"
   },
   {
-    "title": "⟪상, 상 이상: 모란조각대상의 작가들⟫",
-    "venue": "모란미술관",
-    "desc": "",
-    "start": "2026-04-28",
-    "end": "2026-08-16",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=385335",
-    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202606/2bd8c579c6484c1ca25cab09e07c2000.png",
-    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
-  },
-  {
     "title": "빛&middot;울림&middot;힘 - 금속, 감각을 깨우다",
     "venue": "국립청주박물관",
     "desc": "",
@@ -250,16 +230,6 @@
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
-    "title": "은은한 문제: 김창열의 신문지 작업",
-    "venue": "제주도립김창열미술관",
-    "desc": "",
-    "start": "2026-04-28",
-    "end": "2026-10-18",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=385359",
-    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202606/5c911e1fc1054105af695ba7e9290759.png",
-    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
-  },
-  {
     "title": "보이는 선, 보이지 않는 결",
     "venue": "양주시립장욱진미술관",
     "desc": "",
@@ -267,6 +237,16 @@
     "end": "2026-08-30",
     "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=378436",
     "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202605/c61f4cc818904b1a8344811916926d39.JPG",
+    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
+  },
+  {
+    "title": "은은한 문제: 김창열의 신문지 작업",
+    "venue": "제주도립김창열미술관",
+    "desc": "",
+    "start": "2026-04-28",
+    "end": "2026-10-18",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=385359",
+    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202606/5c911e1fc1054105af695ba7e9290759.png",
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
@@ -400,6 +380,16 @@
     "grad": "linear-gradient(135deg,#1a3050,#2a5070)"
   },
   {
+    "title": "그 우아한 청송심씨",
+    "venue": "충북대학교박물관",
+    "desc": "",
+    "start": "2026-05-27",
+    "end": "2026-08-21",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=391850",
+    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202608/04180c4892ac4ad08495681cc3077fb6.png",
+    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
+  },
+  {
     "title": "ACC 국제교류특별전〈자밀 프라이즈: 무빙 이미지〉",
     "venue": "국립아시아문화전당 문화창조원 복합 6관",
     "desc": "",
@@ -440,13 +430,23 @@
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
-    "title": "고상우 개인전 《Breathing with You: 너와 함께 쉬는 숨》",
-    "venue": "사비나미술관",
+    "title": "《네이단 콜리: 마음이 그려낸 풍경》",
+    "venue": "포항시립미술관",
     "desc": "",
-    "start": "2026-06-05",
-    "end": "2026-08-16",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=387183",
-    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202607/0e86a4367b3847dc8bb5302f871f100b.png",
+    "start": "2026-06-04",
+    "end": "2026-09-06",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=392566",
+    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202608/06616d1102c24023bbff6499eb9c4227.jpg",
+    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
+  },
+  {
+    "title": "제21회 장두건미술상 수상작가 안효찬 《친근하면서도, 낯선》",
+    "venue": "포항시립미술관",
+    "desc": "",
+    "start": "2026-06-04",
+    "end": "2026-09-06",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=392568",
+    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202608/a850dd3c87c74bd0a9a723e2139f4e58.jpg",
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
