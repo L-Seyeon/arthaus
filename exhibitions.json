@@ -10,6 +10,16 @@
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
+    "title": "고희동미술관 재개관 6주년기념전시  「만고상청萬古常靑: 군자의 품격」",
+    "venue": "종로구립 고희동미술관",
+    "desc": "",
+    "start": "2025-09-05",
+    "end": "2026-12-27",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=366684",
+    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202601/603582085b0141128b2e8a9fb5319ba1.jpg",
+    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
+  },
+  {
     "title": "종로구립 박노수미술관 개관12주년 기념전시 「산수&middot;격물」",
     "venue": "종로구립 박노수미술관",
     "desc": "",
@@ -17,16 +27,6 @@
     "end": "2026-12-06",
     "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=366683",
     "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202601/e0a7e01144474b71b7e691bada7de617.jpg",
-    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
-  },
-  {
-    "title": "2025 공공수장고 야외 전시 프로젝트 《강주현: 연결의 비정형》",
-    "venue": "제주현대미술관",
-    "desc": "",
-    "start": "2025-09-30",
-    "end": "2026-09-27",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=368065",
-    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202602/3f348feb75854fac80a0e4aa4846765a.jpg",
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
@@ -60,6 +60,16 @@
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
+    "title": "2026 소장품 상설전 《시대와 함께한 예술가, 이응노》",
+    "venue": "대전 이응노미술관",
+    "desc": "",
+    "start": "2026-01-16",
+    "end": "2026-12-25",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=365902",
+    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202601/e2a43c3526364478bfef1005b53b7bba.jpg",
+    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
+  },
+  {
     "title": "[광명업사이클아트센터] 2026 특별전시 업사이클 인터랙티브",
     "venue": "광명업사이클아트센터",
     "desc": "",
@@ -80,6 +90,16 @@
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
+    "title": "대학기록관 기획전시 &lt;1996, 무용원 한 발&gt;",
+    "venue": "한국예술종합학교 석관동캠퍼스",
+    "desc": "",
+    "start": "2026-03-03",
+    "end": "2026-12-18",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=371541",
+    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202603/70412e6a6ffc4e88bb9b27b83650f671.png",
+    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
+  },
+  {
     "title": "가장 자유로운 길",
     "venue": "이성자미술관",
     "desc": "",
@@ -87,16 +107,6 @@
     "end": "2026-11-08",
     "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=384575",
     "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202606/4a969df3309443f9b046834dbbc58400.png",
-    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
-  },
-  {
-    "title": "ACC 필름앤비디오 《아시아의 장치들》",
-    "venue": "국립아시아문화전당 문화창조원 복합 2관",
-    "desc": "",
-    "start": "2026-03-19",
-    "end": "2026-09-27",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=369772",
-    "img": "http://www.culture.go.kr/upload/rdf/26/02/rdf_2026022521262014953.jpg",
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
@@ -150,13 +160,13 @@
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
-    "title": "방혜자 - 천지에 마음의 빛 뿌리며 간다",
-    "venue": "국립현대미술관 청주관",
+    "title": "MMCA 필름앤비디오 2026",
+    "venue": "국립현대미술관 서울관",
     "desc": "",
-    "start": "2026-04-24",
-    "end": "2026-09-27",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=364985",
-    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202605/bafef63bcf7348c79795c33d589d0688.JPG",
+    "start": "2026-04-20",
+    "end": "2026-12-20",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=364987",
+    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202602/d9e4dd01c2124e5c9981cb96f8979844.jpg",
     "grad": "linear-gradient(135deg,#0a1228,#1a2a50)"
   },
   {
@@ -220,26 +230,6 @@
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
-    "title": "로드 무비: 1945년 이후 한&middot;일 미술",
-    "venue": "국립현대미술관 과천관",
-    "desc": "",
-    "start": "2026-05-14",
-    "end": "2026-09-27",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=292206",
-    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202605/6ca1f02cc0df425eb0b58fd13d748cbe.JPG",
-    "grad": "linear-gradient(135deg,#0a1228,#1a2a50)"
-  },
-  {
-    "title": "대학에서 우리는",
-    "venue": "서울생활사박물관",
-    "desc": "",
-    "start": "2026-05-15",
-    "end": "2026-09-27",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=380356",
-    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202605/f8546ab1c3da40ada576098e7fc2ad10.jpg",
-    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
-  },
-  {
     "title": "2026년 한국 근대 거장전 《유영국: 산은 내 안에 있다》",
     "venue": "서울시립미술관",
     "desc": "",
@@ -267,6 +257,16 @@
     "end": "2026-10-31",
     "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=382397",
     "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202606/3fb8ff93e0d34cf1afd4c5a5be172e56.jpg",
+    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
+  },
+  {
+    "title": "김창열 화가의 집 개관전 &lt;김창열, 물방울의 흔적&gt;",
+    "venue": "종로문화재단",
+    "desc": "",
+    "start": "2026-05-29",
+    "end": "2026-12-20",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=394839",
+    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202608/f673240ab58f486bb52d470357c90d3b.jpg",
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
@@ -360,26 +360,6 @@
     "grad": "linear-gradient(135deg,#0a1228,#1a2a50)"
   },
   {
-    "title": "2026 이응노미술관 기획전 《이응노&middot;김창열》",
-    "venue": "대전 이응노미술관",
-    "desc": "",
-    "start": "2026-06-23",
-    "end": "2026-09-27",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=385358",
-    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202606/a4f99afae7d045fc94d16c60ef83ae48.jpg",
-    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
-  },
-  {
-    "title": "내금강행 열차, 출발합니다",
-    "venue": "DMZ 박물관 [고성]",
-    "desc": "",
-    "start": "2026-06-25",
-    "end": "2026-09-27",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=394159",
-    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202608/0cfaf390868a4cde9753542b62b512a5.png",
-    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
-  },
-  {
     "title": "스페인의 거장 고야: 이성이 잠들 때, 괴물이 깨어난다",
     "venue": "예술의전당(한가람미술관)",
     "desc": "",
@@ -420,36 +400,6 @@
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
-    "title": "로비상설전 &quot;행복이 머무는 순간&quot;",
-    "venue": "울산북구문화예술회관",
-    "desc": "",
-    "start": "2026-06-30",
-    "end": "2026-09-23",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=387192",
-    "img": "http://www.culture.go.kr/upload/rdf/26/07/rdf_202607022122496637.jpg",
-    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
-  },
-  {
-    "title": "부산항 개항 150주년 기념 기획전시 &lt;개항, 부산항 150년&gt;",
-    "venue": "국립해양박물관",
-    "desc": "",
-    "start": "2026-06-30",
-    "end": "2026-09-27",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=387697",
-    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202607/8fb66ccd7bc447e8817d9b39db124d50.png",
-    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
-  },
-  {
-    "title": "순천 창작예술촌 3호 ｢2026 조강훈 컬렉션Ⅱ｣ 展",
-    "venue": "순천창작예술촌 장안창작마당",
-    "desc": "",
-    "start": "2026-07-01",
-    "end": "2026-09-27",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=385769",
-    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202606/ea9c7959cff04364b64a068839e6b510.png",
-    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
-  },
-  {
     "title": "우리들의 밥상",
     "venue": "국립중앙박물관",
     "desc": "",
@@ -470,16 +420,6 @@
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
-    "title": "[아트센터 화이트블럭] 선 너머 선",
-    "venue": "아트센터 화이트블럭",
-    "desc": "",
-    "start": "2026-07-03",
-    "end": "2026-09-27",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=387288",
-    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202607/9720336bb2af42828b625982fadd397f.jpg",
-    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
-  },
-  {
     "title": "대구포럼 V 《바깥을 향한 속삭임 Whispers Toward the Outside》",
     "venue": "대구미술관",
     "desc": "",
@@ -490,13 +430,73 @@
     "grad": "linear-gradient(135deg,#2a1a08,#3a2810)"
   },
   {
-    "title": "울산시립미술관-국립아시아문화전당재단 협력전시 《팬레터》",
-    "venue": "울산시립미술관",
+    "title": "《피카소 도예: 발로리스의 여름》",
+    "venue": "전북도립미술관",
     "desc": "",
-    "start": "2026-07-09",
-    "end": "2026-09-27",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=388567",
-    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202607/5a88d60929f74f72a64b0a3f3f3f80fa.png",
+    "start": "2026-07-10",
+    "end": "2026-10-11",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=386846",
+    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202607/6ea6f3dd295f45ba9f527dadd33a08ab.png",
+    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
+  },
+  {
+    "title": "《고귀하고 고귀한 Ⅳ》",
+    "venue": "전북도립미술관",
+    "desc": "",
+    "start": "2026-07-10",
+    "end": "2026-11-08",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=398833",
+    "img": "http://www.culture.go.kr/upload/rdf/26/09/rdf_2026091721183974962.jpg",
+    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
+  },
+  {
+    "title": "신평의 나이테",
+    "venue": "고양시예술창작공간 새들",
+    "desc": "",
+    "start": "2026-07-10",
+    "end": "2026-11-30",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=392728",
+    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202608/589f1a00d0094da6b0c16dd2efa7ad17.jpg",
+    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
+  },
+  {
+    "title": "2026 상상톡톡미술관 기획전시 &lt;빠씨를 찾아서&gt;",
+    "venue": "북서울 꿈의숲 상상톡톡미술관",
+    "desc": "",
+    "start": "2026-07-11",
+    "end": "2026-10-25",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=383911",
+    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202606/33dde24aea4847d0a3c1f2459c1c8f80.png",
+    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
+  },
+  {
+    "title": "2026 다티스트 《심윤: 회색 극장》",
+    "venue": "대구미술관",
+    "desc": "",
+    "start": "2026-07-14",
+    "end": "2026-10-11",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=394126",
+    "img": "http://www.culture.go.kr/upload/rdf/26/08/rdf_2026081921243500927.jpg",
+    "grad": "linear-gradient(135deg,#2a1a08,#3a2810)"
+  },
+  {
+    "title": "《데이터 사피엔스》 Data Sapiens",
+    "venue": "전남미술관",
+    "desc": "",
+    "start": "2026-07-14",
+    "end": "2026-10-18",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=391845",
+    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202608/520360a58cc14ac9bbcdf0aa6383e174.jpg",
+    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
+  },
+  {
+    "title": "K-콘텐츠 미디어아트 기획전시 &lt;영원한 안녕&gt;",
+    "venue": "김포아트빌리지 아트센터",
+    "desc": "",
+    "start": "2026-07-15",
+    "end": "2026-10-04",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=394148",
+    "img": "http://www.culture.go.kr/upload/rdf/26/08/rdf_2026081921244673825.jpg",
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   }
 ]
