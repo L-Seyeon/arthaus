@@ -180,16 +180,6 @@
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
-    "title": "[광명업사이클아트센터] 2026 특별전시 업사이클 인터랙티브",
-    "venue": "광명업사이클아트센터",
-    "desc": "",
-    "start": "2026-02-13",
-    "end": "2026-10-18",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=371782",
-    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202603/0544719806c64b2a9a64a99745680c53.jpg",
-    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
-  },
-  {
     "title": "열린수장고 상설전 《DMA 소장품 하이라이트 2026》",
     "venue": "대전시립미술관",
     "desc": "",
@@ -217,16 +207,6 @@
     "end": "2026-11-08",
     "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=384575",
     "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202606/4a969df3309443f9b046834dbbc58400.png",
-    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
-  },
-  {
-    "title": "최종태 전시관 개관기념전 《최종태의 질문 : 아름다움의 발견, 그리고 창조를 위한 기록》",
-    "venue": "대전시립미술관 창작센터",
-    "desc": "",
-    "start": "2026-04-01",
-    "end": "2026-10-18",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=400348",
-    "img": "http://www.culture.go.kr/upload/rdf/26/09/rdf_2026092921175371901.jpg",
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
@@ -300,13 +280,13 @@
     "grad": "linear-gradient(135deg,#0a1228,#1a2a50)"
   },
   {
-    "title": "은은한 문제: 김창열의 신문지 작업",
-    "venue": "제주도립김창열미술관",
+    "title": "Net-Zero 1,5&deg;C 의 경고",
+    "venue": "국토발전전시관",
     "desc": "",
     "start": "2026-04-28",
-    "end": "2026-10-18",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=385359",
-    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202606/5c911e1fc1054105af695ba7e9290759.png",
+    "end": "2026-10-31",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=399975",
+    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202609/a05d57d52857467a909b9bcb25b7a291.jpg",
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
@@ -317,16 +297,6 @@
     "end": "2026-10-31",
     "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=400093",
     "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202609/b4af12f0e63248d18fb3987e60e7f232.jpg",
-    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
-  },
-  {
-    "title": "Net-Zero 1,5&deg;C 의 경고",
-    "venue": "국토발전전시관",
-    "desc": "",
-    "start": "2026-04-28",
-    "end": "2026-10-31",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=399975",
-    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202609/a05d57d52857467a909b9bcb25b7a291.jpg",
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
@@ -430,6 +400,16 @@
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
+    "title": "공공수장고 미디어아트_곶자왈: 숨결의 시간",
+    "venue": "제주현대미술관",
+    "desc": "",
+    "start": "2026-06-02",
+    "end": "2026-11-08",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=401872",
+    "img": "http://www.culture.go.kr/upload/rdf/26/10/rdf_2026101221172444961.jpg",
+    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
+  },
+  {
     "title": "2026 기형도문학관 기획전시 &lt;다시, 그 길 위의 우리: 길 위에서 중얼거리다&gt;",
     "venue": "기형도문학관",
     "desc": "",
@@ -498,5 +478,25 @@
     "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=384792",
     "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202606/c1730ad3436d45d09af680e156644719.jpg",
     "grad": "linear-gradient(135deg,#0d1a2e,#1a3055)"
+  },
+  {
+    "title": "왕영미 개인전 《Sunflower Codes》",
+    "venue": "루나아틀리에",
+    "desc": "",
+    "start": "2026-07-01",
+    "end": "2026-12-31",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=393274",
+    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202608/392426b3e8384f2f90819e28fe92d513.jpg",
+    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
+  },
+  {
+    "title": "대구포럼 V 《바깥을 향한 속삭임 Whispers Toward the Outside》",
+    "venue": "대구미술관",
+    "desc": "",
+    "start": "2026-07-07",
+    "end": "2026-10-25",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=388571",
+    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202607/ed4f4a4b5ecd43a6870dade2370479f9.png",
+    "grad": "linear-gradient(135deg,#2a1a08,#3a2810)"
   }
 ]
