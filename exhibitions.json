@@ -280,26 +280,6 @@
     "grad": "linear-gradient(135deg,#0a1228,#1a2a50)"
   },
   {
-    "title": "Net-Zero 1,5&deg;C 의 경고",
-    "venue": "국토발전전시관",
-    "desc": "",
-    "start": "2026-04-28",
-    "end": "2026-10-31",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=399975",
-    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202609/a05d57d52857467a909b9bcb25b7a291.jpg",
-    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
-  },
-  {
-    "title": "시간을 잇는 철도",
-    "venue": "국토발전전시관",
-    "desc": "",
-    "start": "2026-04-28",
-    "end": "2026-10-31",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=400093",
-    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202609/b4af12f0e63248d18fb3987e60e7f232.jpg",
-    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
-  },
-  {
     "title": "대구미술관 교육형 전시 《고양이도 임금을 볼 수 있다》",
     "venue": "대구미술관",
     "desc": "",
@@ -320,26 +300,6 @@
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
-    "title": "G뮤지엄커넥트 《눈-길》",
-    "venue": "경기도미술관",
-    "desc": "",
-    "start": "2026-05-05",
-    "end": "2026-11-01",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=386212",
-    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202606/f0a0d4c513b547feab6006e872d06da2.jpg",
-    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
-  },
-  {
-    "title": "주거의 전환 : 나에게 맞춘 집",
-    "venue": "국토발전전시관",
-    "desc": "",
-    "start": "2026-05-13",
-    "end": "2026-11-01",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=400092",
-    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202609/397dcda34e544f29aa12e9dc3fc422cd.jpg",
-    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
-  },
-  {
     "title": "[지역 공립박물관 순회전시] 국보순회전, 우리 동네에서 만나는 보물",
     "venue": "진천종박물관",
     "desc": "",
@@ -357,16 +317,6 @@
     "end": "2026-11-22",
     "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=399970",
     "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202609/b950fe6d39b9477e97fb0215cb96f010.jpg",
-    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
-  },
-  {
-    "title": "2026 수주문학관 기획전시 &lt;술로 자라서 글에 살고&gt;展",
-    "venue": "부천문화재단",
-    "desc": "",
-    "start": "2026-05-29",
-    "end": "2026-10-31",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=382397",
-    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202606/3fb8ff93e0d34cf1afd4c5a5be172e56.jpg",
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
@@ -400,6 +350,16 @@
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
+    "title": "김포문화재단 소장전 《미래를 꿈꾸는 한강 문화8경》",
+    "venue": "김포문화재단",
+    "desc": "",
+    "start": "2026-06-23",
+    "end": "2026-12-31",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=387813",
+    "img": "http://www.culture.go.kr/upload/rdf/26/07/rdf_2026070721243506757.jpg",
+    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
+  },
+  {
     "title": "모던시대 선비의 안목이 머문 자리 - 일상과 예술의 균형",
     "venue": "국립나주박물관",
     "desc": "",
@@ -410,13 +370,13 @@
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
-    "title": "김포문화재단 소장전 《미래를 꿈꾸는 한강 문화8경》",
-    "venue": "김포문화재단",
+    "title": "2026년 기획전시 &lt;호랑이 담배 피던 시절&gt;",
+    "venue": "사상생활사박물관",
     "desc": "",
     "start": "2026-06-23",
-    "end": "2026-12-31",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=387813",
-    "img": "http://www.culture.go.kr/upload/rdf/26/07/rdf_2026070721243506757.jpg",
+    "end": "2027-01-31",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=386328",
+    "img": "http://www.culture.go.kr/upload/rdf/26/06/rdf_2026062921215853684.jpg",
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
@@ -490,13 +450,53 @@
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
-    "title": "과천관 40주년 프로젝트: 빛의 상상들",
-    "venue": "국립현대미술관 과천관",
+    "title": "[화성시어린이문화센터] 다정하게 이름을 부르면,",
+    "venue": "화성시생활문화센터",
     "desc": "",
     "start": "2026-07-21",
-    "end": "2026-11-01",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=364983",
-    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202608/d2feef8651584cd29ed927759d704aed.png",
+    "end": "2026-12-20",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=394109",
+    "img": "http://www.culture.go.kr/upload/rdf/26/08/rdf_2026081921242845315.jpg",
+    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
+  },
+  {
+    "title": "[기획전시] 기억의 포구",
+    "venue": "안산어촌민속박물관",
+    "desc": "",
+    "start": "2026-07-21",
+    "end": "2026-12-31",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=394094",
+    "img": "http://www.culture.go.kr/upload/rdf/26/08/rdf_2026081921241901866.jpg",
+    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
+  },
+  {
+    "title": "[기억프로젝트Ⅹ] 기억의 창고",
+    "venue": "안산어촌민속박물관",
+    "desc": "",
+    "start": "2026-07-21",
+    "end": "2026-12-31",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=394093",
+    "img": "http://www.culture.go.kr/upload/rdf/26/08/rdf_2026081921241925256.jpg",
+    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
+  },
+  {
+    "title": "올해의 작가상 2026",
+    "venue": "국립현대미술관 서울관",
+    "desc": "",
+    "start": "2026-07-24",
+    "end": "2026-12-06",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=364451",
+    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202607/c3ad9d7727864bab98c12659bad530b6.png",
     "grad": "linear-gradient(135deg,#0a1228,#1a2a50)"
+  },
+  {
+    "title": "해동문화예술촌 기획전시 《우리는 연결될 수밖에 없다》",
+    "venue": "해동문화예술촌",
+    "desc": "",
+    "start": "2026-07-25",
+    "end": "2026-11-15",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=398683",
+    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202609/517126d1699a4604873accd4b2bda402.png",
+    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   }
 ]
