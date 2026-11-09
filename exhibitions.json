@@ -200,16 +200,6 @@
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
-    "title": "가장 자유로운 길",
-    "venue": "이성자미술관",
-    "desc": "",
-    "start": "2026-03-04",
-    "end": "2026-11-08",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=384575",
-    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202606/4a969df3309443f9b046834dbbc58400.png",
-    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
-  },
-  {
     "title": "MMCA 다원예술 2026: 탐정의 시간",
     "venue": "국립현대미술관 서울관",
     "desc": "",
@@ -330,16 +320,6 @@
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
-    "title": "공공수장고 미디어아트_곶자왈: 숨결의 시간",
-    "venue": "제주현대미술관",
-    "desc": "",
-    "start": "2026-06-02",
-    "end": "2026-11-08",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=401872",
-    "img": "http://www.culture.go.kr/upload/rdf/26/10/rdf_2026101221172444961.jpg",
-    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
-  },
-  {
     "title": "2026 기형도문학관 기획전시 &lt;다시, 그 길 위의 우리: 길 위에서 중얼거리다&gt;",
     "venue": "기형도문학관",
     "desc": "",
@@ -350,16 +330,6 @@
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
-    "title": "김포문화재단 소장전 《미래를 꿈꾸는 한강 문화8경》",
-    "venue": "김포문화재단",
-    "desc": "",
-    "start": "2026-06-23",
-    "end": "2026-12-31",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=387813",
-    "img": "http://www.culture.go.kr/upload/rdf/26/07/rdf_2026070721243506757.jpg",
-    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
-  },
-  {
     "title": "모던시대 선비의 안목이 머문 자리 - 일상과 예술의 균형",
     "venue": "국립나주박물관",
     "desc": "",
@@ -367,6 +337,16 @@
     "end": "2026-12-31",
     "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=385584",
     "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202606/9fe99c8d32254b1586546502343819ea.jpg",
+    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
+  },
+  {
+    "title": "김포문화재단 소장전 《미래를 꿈꾸는 한강 문화8경》",
+    "venue": "김포문화재단",
+    "desc": "",
+    "start": "2026-06-23",
+    "end": "2026-12-31",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=387813",
+    "img": "http://www.culture.go.kr/upload/rdf/26/07/rdf_2026070721243506757.jpg",
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
@@ -410,16 +390,6 @@
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
-    "title": "《고귀하고 고귀한 Ⅳ》",
-    "venue": "전북도립미술관",
-    "desc": "",
-    "start": "2026-07-10",
-    "end": "2026-11-08",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=398833",
-    "img": "http://www.culture.go.kr/upload/rdf/26/09/rdf_2026091721183974962.jpg",
-    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
-  },
-  {
     "title": "신평의 나이테",
     "venue": "고양시예술창작공간 새들",
     "desc": "",
@@ -427,16 +397,6 @@
     "end": "2026-11-30",
     "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=392728",
     "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202608/589f1a00d0094da6b0c16dd2efa7ad17.jpg",
-    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
-  },
-  {
-    "title": "여민공수與民共守",
-    "venue": "서울역사박물관",
-    "desc": "",
-    "start": "2026-07-14",
-    "end": "2026-11-08",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=402111",
-    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202610/17694f6f1ca44f85a6c252762456129f.jpg",
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
@@ -460,16 +420,6 @@
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
-    "title": "[기획전시] 기억의 포구",
-    "venue": "안산어촌민속박물관",
-    "desc": "",
-    "start": "2026-07-21",
-    "end": "2026-12-31",
-    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=394094",
-    "img": "http://www.culture.go.kr/upload/rdf/26/08/rdf_2026081921241901866.jpg",
-    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
-  },
-  {
     "title": "[기억프로젝트Ⅹ] 기억의 창고",
     "venue": "안산어촌민속박물관",
     "desc": "",
@@ -477,6 +427,16 @@
     "end": "2026-12-31",
     "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=394093",
     "img": "http://www.culture.go.kr/upload/rdf/26/08/rdf_2026081921241925256.jpg",
+    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
+  },
+  {
+    "title": "[기획전시] 기억의 포구",
+    "venue": "안산어촌민속박물관",
+    "desc": "",
+    "start": "2026-07-21",
+    "end": "2026-12-31",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=394094",
+    "img": "http://www.culture.go.kr/upload/rdf/26/08/rdf_2026081921241901866.jpg",
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   },
   {
@@ -497,6 +457,46 @@
     "end": "2026-11-15",
     "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=398683",
     "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202609/517126d1699a4604873accd4b2bda402.png",
+    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
+  },
+  {
+    "title": "2026년 특별전 &#39;나뭇결에 담긴 장인의 숨결&#39;",
+    "venue": "송암미술관",
+    "desc": "",
+    "start": "2026-07-28",
+    "end": "2026-11-15",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=394089",
+    "img": "http://www.culture.go.kr/upload/rdf/26/08/rdf_2026081921241794213.jpg",
+    "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
+  },
+  {
+    "title": "2026년 한국 대표 조각가전 《조숙진: 지나가는 자리》",
+    "venue": "서울시립미술관 남서울미술관",
+    "desc": "",
+    "start": "2026-07-29",
+    "end": "2026-11-15",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=393394",
+    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202608/ee21d282de9f4279a452dfbd946d4535.jpg",
+    "grad": "linear-gradient(135deg,#1a3050,#2a5070)"
+  },
+  {
+    "title": "MMCA&times;LG OLED 시리즈 2026",
+    "venue": "국립현대미술관 서울관",
+    "desc": "",
+    "start": "2026-07-31",
+    "end": "2026-11-29",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=364982",
+    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202608/96695e3738dd4945bc847b34c8c7610d.png",
+    "grad": "linear-gradient(135deg,#0a1228,#1a2a50)"
+  },
+  {
+    "title": "그린그린 뮤지엄 : 감각 노트",
+    "venue": "수원시립만석전시관",
+    "desc": "",
+    "start": "2026-08-11",
+    "end": "2026-12-04",
+    "url": "https://www.culture.go.kr/culture/cultureEvent/cultureEventView.do?seq=394057",
+    "img": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202608/d27f66ecbd474eaaa87f50af653bff05.jpg",
     "grad": "linear-gradient(135deg,#1a2040,#2a3060)"
   }
 ]
